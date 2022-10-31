@@ -1,0 +1,98 @@
+.home--container {
+  background: url("../Assets/loginpage/loginpagebg.svg") no-repeat center
+    center/cover;
+  height: 100vh;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home--content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-between;
+  width: 414px;
+  text-align: center;
+}
+
+.home--header {
+  font-weight: 700;
+  font-size: 56px;
+  margin: 0;
+}
+
+.home--buttons--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.home--buttons {
+  font-weight: 700;
+  font-size: 24px;
+  background-color: rgb(255, 186, 10, 0.8);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  font-family: "Exo", sans-serif;
+  width: 133px;
+  height: 59px;
+}
+
+.home--buttons.is-active,
+.home--buttons:hover {
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .home--content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: space-between;
+    width: 1000px;
+    text-align: center;
+  }
+
+  .home--header {
+    font-weight: 700;
+    font-size: 75px;
+    margin: 0;
+  }
+
+  .home--buttons--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .home--buttons {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31.9px;
+    background-color: rgb(255, 186, 10, 0.8);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    font-family: "Exo", sans-serif;
+  }
+
+  .home--buttons.is-active,
+  .home--buttons:hover {
+    background-color: rgb(255, 186, 10 0.8);
+    color: var(--black);
+    cursor: pointer;
+  }
+}

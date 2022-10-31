@@ -1,0 +1,124 @@
+.home--page--container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black);
+  height: 100vh;
+  align-items: center;
+  background: url("../Assets/homepage/homepagebg.svg") no-repeat center
+    center/cover;
+}
+
+.home--page--top--section {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31.9px;
+  width: 340px;
+  color: var(--white);
+}
+
+.home--page--header span {
+  color: var(--orange);
+}
+
+.home--page--sub--header {
+  margin-top: 31px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 21.26px;
+}
+
+.home--page--middle--section {
+  display: flex;
+  justify-content: center;
+}
+
+.category--cards {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 20px;
+  grid-row-gap: 15px;
+}
+
+.category--cards--box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: var(--shadowing);
+  height: 85px;
+  width: 85px;
+}
+
+.category--cards--text {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.home--page--bottom--section {
+  width: 340px;
+}
+
+.home--page--sub--header2 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 21.26px;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.recommended--box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recommended--cards {
+  border: 1px solid black;
+  border-radius: 12px;
+  box-shadow: var(--shadowing);
+}
+
+.recommended--image {
+  width: 150px;
+  height: 150px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 1px solid black;
+}
+
+.recommended--description--section {
+  padding: 0px 0px 8px 8px;
+}
+
+.recommended--title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.26px;
+  color: var(--white);
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.recommended--name {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15.95px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  color: var(--white);
+}
+
+.recommended--profile--stars {
+  display: flex;
+  align-items: center;
+}
+
+.recommended--stars {
+  margin-left: 10px;
+}

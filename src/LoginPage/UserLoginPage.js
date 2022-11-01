@@ -8,7 +8,7 @@ const UserLoginPage = () => {
     <div className="user--login--page--container">
       <p className="user--login--page--header">Login</p>
       <div className="user--login--page--input--container">
-        <div className="email--login">
+        <div className="universal--input--forms mb24">
           <img src={emailIcon} className="user--login--input--icon" />
           <input
             type="text"
@@ -16,7 +16,7 @@ const UserLoginPage = () => {
             className="user--login-input"
           />
         </div>
-        <div className="password--login">
+        <div className="universal--input--forms">
           <img src={passwordKey} className="user--login--input--icon" />
           <input
             type="text"

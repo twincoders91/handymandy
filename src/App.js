@@ -13,8 +13,8 @@ export default function App() {
       {/* <LoginPage /> */}
       {/* <HomePage /> */}
       {/* <CategoryPage /> */}
-      {/* <UserLoginPage /> */}
-      <CharacterSelect />
+      <UserLoginPage />
+      {/* <CharacterSelect /> */}
     </div>
   );
 }

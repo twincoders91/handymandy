@@ -18,7 +18,7 @@ body {
 }
 
 ::-webkit-input-placeholder {
-  color: var(--black);
+  color: rgb(0, 0, 0, 0.5);
 }
 .container {
   max-width: 1280px;
@@ -26,4 +26,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.universal--input--forms {
+  display: flex;
+  align-items: center;
+  width: 296px;
+  height: 56px;
+  margin: 0;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 7px;
+  border: 1px black solid;
+}
+
+.mb4 {
+  margin-bottom: 4px;
+}
+
+.mb8 {
+  margin-bottom: 8px;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.mb24 {
+  margin-bottom: 24px;
 }

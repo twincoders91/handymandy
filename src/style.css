@@ -60,3 +60,32 @@ body {
 .mb24 {
   margin-bottom: 24px;
 }
+
+.mb36 {
+  margin-bottom: 36px;
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.fs16 {
+  font-size: 16px;
+}
+
+.fw700 {
+  font-weight: 700;
+}
+
+.fw400 {
+  font-weight: 400;
+}
+
+.white {
+  color: white;
+}
+
+.create--account--font1 {
+  text-align: left;
+  width: 296px;
+}

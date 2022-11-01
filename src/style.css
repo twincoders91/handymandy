@@ -37,6 +37,7 @@ body {
   background-color: rgb(255, 186, 10, 0.9);
   border-radius: 7px;
   border: 1px black solid;
+  box-shadow: var(--shadowing);
 }
 
 .back--button {

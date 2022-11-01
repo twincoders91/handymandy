@@ -60,4 +60,5 @@
   line-height: 31.9px;
   background-color: rgb(255, 186, 10, 0.9);
   border-radius: 7px;
+  box-shadow: var(--shadowing);
 }

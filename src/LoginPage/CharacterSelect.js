@@ -15,7 +15,22 @@ const CharacterSelect = () => {
         Join the <span>HandyMandy</span> community now.
       </p>
       <div className="character--select--characters--container">
-        <div className="character--select--characters"></div>
+        <div className="character--select--characters">
+          <img src={userCharacter} />
+          <div className="character--select--characters--type1">USER</div>
+          <p>
+            Join as a user and search for your ideal handyman to do any kind of
+            work around your home.
+          </p>
+        </div>
+        <div className="character--select--characters">
+          <img src={handymanCharacter} />
+          <div className="character--select--characters--type2">HANDYMAN</div>
+          <p>
+            Join as a handyman and advertise your business by creating a
+            profile. Your businesses are shown to potential users for free.
+          </p>
+        </div>
       </div>
     </div>
   );

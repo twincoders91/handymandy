@@ -39,6 +39,12 @@ body {
   border: 1px black solid;
 }
 
+.back--button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
 .mb4 {
   margin-bottom: 4px;
 }

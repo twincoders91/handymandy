@@ -9,12 +9,6 @@
   align-items: center;
 }
 
-.back--button {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-}
-
 .character--select--header {
   margin: 0;
   font-weight: 700;

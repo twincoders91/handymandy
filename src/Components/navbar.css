@@ -1,12 +1,12 @@
 .navbar--wrapper {
-  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
   z-index: 99;
   background-color: var(--orange);
-  padding: 0px 32px;
+  padding: 0px 20px;
   border-bottom: 3px solid var(--black);
+  padding-left: 70px;
 }
 
 .navbar--header {

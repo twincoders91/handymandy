@@ -15,7 +15,6 @@ import "./homepage.css";
 const HomePage = () => {
   return (
     <>
-      <Navbar />
       <div className="home--page--container">
         <div className="home--page--top--section">
           <p className="home--page--header">

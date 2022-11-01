@@ -6,7 +6,7 @@ import "./userloginpage.css";
 const UserLoginPage = () => {
   return (
     <div className="user--login--page--container">
-      <p className="user--login--page--header">Login</p>
+      <p className="user--login--page--header mb36">Login</p>
 
       <div className="universal--input--forms mb24">
         <img src={emailIcon} className="user--login--input--icon" />

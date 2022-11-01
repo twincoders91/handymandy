@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import backButton from "../Assets/universal/backbutton.svg";
 import "./navbar.css";
 
 const Navbar = () => {
@@ -7,6 +8,7 @@ const Navbar = () => {
   return (
     <div className="navbar--wrapper">
       <div className="container">
+        <img src={backButton} className="back--button" />
         <p className="navbar--header">HandyMandy</p>
         <div className="navbar--menu">
           <button className="is-active">Inbox</button>

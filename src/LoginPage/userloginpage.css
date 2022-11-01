@@ -1,0 +1,86 @@
+.user--login--page--container {
+  background: url("../Assets/loginpage/loginpagebg.svg") no-repeat center
+    center/cover;
+  height: 100vh;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user--login--page--header {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42.53px;
+  color: var(--white);
+  margin: 0;
+  margin-top: 46px;
+}
+
+.user--login--page--input--container {
+  margin: 0;
+  margin-top: 42px;
+}
+
+.email--login {
+  display: flex;
+  align-items: center;
+  width: 296px;
+  height: 56px;
+  margin: 0;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 7px;
+  border: 1px black solid;
+}
+
+.password--login {
+  display: flex;
+  align-items: center;
+  width: 296px;
+  height: 56px;
+  margin: 0;
+  margin-top: 29px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 7px;
+  border: 1px black solid;
+}
+
+.user--login--input--icon {
+  margin-left: 11px;
+  height: 30px;
+  width: 30px;
+}
+
+.user--login-input {
+  margin-left: 13px;
+  background-color: transparent;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  color: var(--black);
+}
+
+.user--login--page--no--account--header {
+  margin: 0;
+  margin-top: 159px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31.9px;
+}
+
+.user--login--page--signup--button {
+  margin-top: 19px;
+  width: 133px;
+  height: 59px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31.9px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 7px;
+}

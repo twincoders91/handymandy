@@ -4,9 +4,9 @@
   left: 0;
   right: 0;
   z-index: 99;
-  background-color: var(--black);
+  background-color: var(--orange);
   padding: 0px 32px;
-  border-bottom: 3px solid var(--orange);
+  border-bottom: 3px solid var(--black);
 }
 
 .navbar--header {
@@ -14,6 +14,7 @@
   font-weight: 800;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+  color: var(--black);
 }
 
 .navbar--menu {
@@ -35,8 +36,8 @@
 
 .navbar--menu button.is-active,
 .navbar--menu button:hover {
-  background-color: var(--orange);
-  color: var(--black);
+  background-color: var(--black);
+  color: var(--orange);
   cursor: pointer;
 }
 
@@ -59,7 +60,7 @@
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background-color: var(--orange);
+  background-color: var(--black);
   border-radius: 6px;
   z-index: 1;
   transform-origin: 0 0;

@@ -1,0 +1,38 @@
+.character--select--container {
+  position: relative;
+  background: url("../Assets/homepage/homepagebg.svg") no-repeat center
+    center/cover;
+  height: 100vh;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back--button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.character--select--header {
+  margin: 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42.53px;
+  margin-top: 46px;
+  color: var(--white);
+}
+
+.character--select--sub--header {
+  text-align: center;
+  margin-top: 34px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.95px;
+  color: var(--white);
+}
+
+.character--select--sub--header span {
+  color: var(--orange);
+}

@@ -17,11 +17,6 @@
   margin-top: 46px;
 }
 
-.user--login--page--input--container {
-  margin: 0;
-  margin-top: 42px;
-}
-
 .user--login--input--icon {
   margin-left: 11px;
   height: 30px;
@@ -60,4 +55,5 @@
   line-height: 31.9px;
   background-color: rgb(255, 186, 10, 0.9);
   border-radius: 7px;
+  box-shadow: var(--shadowing);
 }

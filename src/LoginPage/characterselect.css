@@ -25,8 +25,59 @@
   font-size: 12px;
   line-height: 15.95px;
   color: var(--white);
+  margin-bottom: 20px;
 }
 
 .character--select--sub--header span {
   color: var(--orange);
+}
+
+.character--select--characters--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 390px;
+}
+
+.character--select--characters {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 190px;
+  height: 355px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: var(--shadowing);
+}
+
+.character--select--characters p {
+  margin: 16px 15px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15.95px;
+  color: var(--white);
+}
+
+.character--select--characters--type1 {
+  position: absolute;
+  color: var(--orange);
+  transform: rotate(-90deg);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 37px;
+  top: 100px;
+  left: -10px;
+}
+
+.character--select--characters--type2 {
+  position: absolute;
+  color: var(--orange);
+  transform: rotate(-90deg);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 37px;
+  top: 100px;
+  left: -50px;
 }

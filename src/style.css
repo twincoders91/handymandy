@@ -66,6 +66,26 @@ body {
   margin-bottom: 36px;
 }
 
+.mt4 {
+  margin-top: 4px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.mt16 {
+  margin-top: 16px;
+}
+
+.mt24 {
+  margin-top: 24px;
+}
+
+.mt36 {
+  margin-top: 36px;
+}
+
 .fs12 {
   font-size: 12px;
 }

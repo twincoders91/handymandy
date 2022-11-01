@@ -1,6 +1,8 @@
 import React from "react";
+import CategoryPage from "./Category/CategoryPage";
 import HomePage from "./Home/HomePage";
 import LoginPage from "./LoginPage/LoginPage";
+import UserLoginPage from "./LoginPage/UserLoginPage";
 import "./style.css";
 
 export default function App() {
@@ -8,7 +10,9 @@ export default function App() {
     <div>
       {/* <Navbar /> */}
       {/* <LoginPage /> */}
-      <HomePage />
+      {/* <HomePage /> */}
+      {/* <CategoryPage /> */}
+      <UserLoginPage />
     </div>
   );
 }

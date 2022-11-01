@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.category--page--container {
+  background-color: var(--black);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("../Assets/homepage/homepagebg.svg") no-repeat center
+    center/cover;
+}
+
+.category--input--container {
+  position: relative;
+  display: flex;
+  background-color: var(--orange);
+  border: none;
+  border-radius: 5px;
+  margin-top: 30px;
+  width: 355px;
+  height: 38px;
+  margin-bottom: 30px;
+}
+
+.category--search--bar {
+  margin: auto 20px;
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-family: "Exo", sans-serif;
+  color: var(--darkblue);
+}
+
+.category--search--icon {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+}
+
+.category--header {
+  width: 355px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31.9px;
+  color: var(--white);
+}
+
+.category--header span {
+  color: var(--orange);
+}
+
+.category--cards--container {
+  margin-top: 20px;
+}
+
+.individual--category--card--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 366px;
+  height: 320px;
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px rgba(37, 37, 37, 0.4);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.individual--category--card--image {
+  background: url("../Assets/categorypage/categorycardtestimage.svg") no-repeat
+    center center/cover;
+  margin-top: 13px;
+  width: 350px;
+  height: 156px;
+  border-radius: 10px;
+}
+
+.individual--category--card--content--container {
+  width: 340px;
+  margin-top: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.individual--category--card--content--container--R {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.95px;
+  color: var(--white);
+  margin: auto 10px;
+}
+
+.individual--category--card--content--container--R p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.individual--category--card--price {
+  margin-top: 9px;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 42.53px;
+  color: var(--orange);
+}
+
+.individual--category--reviews--jobs--completed {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.95px;
+  margin-bottom: 10px;
+  color: var(--white);
+  width: 340px;
+  margin-left: 8px;
+  margin-top: 0px;
+}

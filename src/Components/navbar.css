@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 99;
-  background-color: var(--darkblue);
+  background-color: var(--black);
   padding: 0px 32px;
   border-bottom: 3px solid var(--orange);
 }

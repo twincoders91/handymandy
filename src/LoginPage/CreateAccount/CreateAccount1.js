@@ -19,7 +19,7 @@ const CreateAccount1 = () => {
           className="user--login-input"
         />
       </div>
-      <div className="universal--input--forms mb24">
+      <div className="universal--input--forms mb36">
         <img src={email} className="user--login--input--icon" />
         <input type="text" placeholder="email" className="user--login-input" />
       </div>
@@ -29,15 +29,20 @@ const CreateAccount1 = () => {
       <div className="universal--input--forms mb24">
         <img src={password} className="user--login--input--icon" />
         <input
-          type="password"
-          placeholder="username"
+          type="text"
+          placeholder="password"
           className="user--login-input"
         />
       </div>
-      <div className="universal--input--forms mb24">
+      <div className="universal--input--forms mb36">
         <img src={password} className="user--login--input--icon" />
-        <input type="text" placeholder="email" className="user--login-input" />
+        <input
+          type="text"
+          placeholder="password"
+          className="user--login-input"
+        />
       </div>
+      <div className="user--create--account--button">Create Account</div>
     </div>
   );
 };

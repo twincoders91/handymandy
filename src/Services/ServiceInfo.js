@@ -4,7 +4,7 @@ import Navbar from "../Components/Navbar";
 const ServiceInfo = () => {
   return (
     <>
-      <p className="serviceinfo--header fw700 fs32 ">Services</p>
+      <span className="fw700 fs32 mt24 mb36 white">Services</span>
       <div className="services--cards"></div>
     </>
   );

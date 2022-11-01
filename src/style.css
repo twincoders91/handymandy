@@ -107,7 +107,7 @@ body {
 }
 
 .white {
-  color: white;
+  color: var(--white);
 }
 
 .create--account--font1 {

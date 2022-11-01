@@ -8,3 +8,78 @@
   flex-direction: column;
   align-items: center;
 }
+
+.user--create--account--button {
+  margin-top: 19px;
+  width: 200px;
+  height: 59px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31.9px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  box-shadow: var(--shadowing);
+}
+.create--account2--container {
+  position: relative;
+  background: url("../../Assets/homepage/homepagebg.svg") no-repeat center
+    center/cover;
+  height: 100vh;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create--profile--header--container {
+  margin-top: 72px;
+  text-align: left;
+  width: 370px;
+}
+
+.create--profile--header--font {
+  margin: 0;
+}
+
+.create--profile--middle--container {
+  width: 100%;
+  text-align: left;
+  width: 370px;
+}
+
+.legal--name--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.universal--input--forms--half {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  height: 56px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  border: 1px black solid;
+  box-shadow: var(--shadowing);
+}
+
+.universal--input--forms--full {
+  display: flex;
+  align-items: center;
+  width: 370px;
+  height: 56px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  border: 1px black solid;
+  box-shadow: var(--shadowing);
+}
+
+.home--address--container {
+  display: flex;
+  flex-direction: column;
+}

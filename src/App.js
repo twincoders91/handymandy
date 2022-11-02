@@ -20,8 +20,8 @@ export default function App() {
       {/* <Services /> */}
       {/* <ServiceInfo /> */}
       {/* <UserLoginPage /> */}
-      <CharacterSelect />
-      {/* <CreateAccount1 /> */}
+      {/* <CharacterSelect /> */}
+      <CreateAccount1 />
     </div>
   );
 }

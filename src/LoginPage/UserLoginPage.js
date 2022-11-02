@@ -6,25 +6,31 @@ import "./userloginpage.css";
 const UserLoginPage = () => {
   return (
     <div className="user--login--page--container">
-      <p className="user--login--page--header mb36">Login</p>
+      <p className="user--login--page--header mb36 fw700 fs32 m0 mt46">Login</p>
 
       <div className="universal--input--forms mb24">
-        <img src={emailIcon} className="user--login--input--icon" />
-        <input type="text" placeholder="email" className="user--login-input" />
+        <img src={emailIcon} className="user--login--input--icon ml12" />
+        <input
+          type="text"
+          placeholder="email"
+          className="user--login-input ml12"
+        />
       </div>
       <div className="universal--input--forms">
-        <img src={passwordKey} className="user--login--input--icon" />
+        <img src={passwordKey} className="user--login--input--icon ml12" />
         <input
           type="text"
           placeholder="password"
-          className="user--login-input"
+          className="user--login-input ml12 fw400 fs16"
         />
       </div>
 
       <p className="user--login--page--no--account--header">
         Don't have an account yet?
       </p>
-      <div className="user--login--page--signup--button">Sign Up</div>
+      <div className="user--login--page--signup--button fw700 fs24 mt20 br4">
+        Sign Up
+      </div>
     </div>
   );
 };

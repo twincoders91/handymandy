@@ -18,6 +18,7 @@ export default function App() {
       {/* <LoginPage /> */}
       {/* <HomePage /> */}
       {/* <CategoryPage /> */}
+      <Services />
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccount1 /> */}

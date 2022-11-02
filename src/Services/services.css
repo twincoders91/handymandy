@@ -55,64 +55,24 @@
   margin-top: 20px;
 }
 
-.individual--category--card--container {
+.services--info--container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 366px;
-  height: 320px;
-  border: 2px solid black;
-  background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: 3px 3px rgba(37, 37, 37, 0.4);
-  border-radius: 10px;
-  padding: 5px;
+  height: 502px;
+  background: rgba(52, 51, 51, 0.7);
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    0px 1px 3px 1px rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
 }
 
-.individual--category--card--image {
-  background: url("../Assets/categorypage/categorycardtestimage.svg") no-repeat
-    center center/cover;
-  margin-top: 13px;
-  width: 350px;
-  height: 156px;
-  border-radius: 10px;
-}
-
-.individual--category--card--content--container {
-  width: 340px;
-  margin-top: 19px;
+.services--info--image--container {
   display: flex;
-  justify-content: space-between;
-}
-
-.individual--category--card--content--container--R {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15.95px;
-  color: var(--white);
-  margin: auto 10px;
-}
-
-.individual--category--card--content--container--R p {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.individual--category--card--price {
-  margin-top: 9px;
-  font-weight: 700;
-  font-size: 50px;
-  line-height: 42.53px;
-  color: var(--orange);
-}
-
-.individual--category--reviews--jobs--completed {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15.95px;
-  margin-bottom: 10px;
-  color: var(--white);
-  width: 340px;
-  margin-left: 8px;
-  margin-top: 0px;
+  align-items: center;
+  justify-content: center;
+  height: 40%;
+  width: 90%;
+  overflow: hidden;
 }

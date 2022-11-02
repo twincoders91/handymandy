@@ -1,6 +1,5 @@
 import React from "react";
 import "./services.css";
-
 import searchIcon from "../Assets/categorypage/searchicon.svg";
 import CategoryCards from "./CategoryCards";
 

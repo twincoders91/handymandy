@@ -7,43 +7,49 @@ import password from "../../Assets/createaccount/password.svg";
 
 const CreateAccount1 = () => {
   return (
-    <>
+    <div className="create--account--main--container mt46">
       <img src={backButton} className="back--button" />
-      <p className="character--select--header mb36">Create account</p>
+      <p className="create--account--header--font mb36 fs32 fw700 white">
+        Create account
+      </p>
 
       <div className="universal--input--forms mb24">
-        <img src={username} className="user--login--input--icon" />
+        <img src={username} className="user--login--input--icon ml12" />
         <input
           type="text"
           placeholder="username"
-          className="user--login-input"
+          className="create--account--input ml12"
         />
       </div>
       <div className="universal--input--forms mb36">
-        <img src={email} className="user--login--input--icon" />
-        <input type="text" placeholder="email" className="user--login-input" />
+        <img src={email} className="user--login--input--icon ml12" />
+        <input
+          type="text"
+          placeholder="email"
+          className="create--account--input ml12"
+        />
       </div>
       <span className="create--account--font1 fs16 fw700 white mb8">
         Create password
       </span>
       <div className="universal--input--forms mb24">
-        <img src={password} className="user--login--input--icon" />
+        <img src={password} className="user--login--input--icon ml12" />
         <input
           type="text"
           placeholder="password"
-          className="user--login-input"
+          className="create--account--input ml12"
         />
       </div>
       <div className="universal--input--forms mb36">
-        <img src={password} className="user--login--input--icon" />
+        <img src={password} className="user--login--input--icon ml12" />
         <input
           type="text"
           placeholder="password"
-          className="user--login-input"
+          className="create--account--input ml12"
         />
       </div>
-      <div className="user--create--account--button">Create Account</div>
-    </>
+      <button className="user--create--account--button">Create Account</button>
+    </div>
   );
 };
 

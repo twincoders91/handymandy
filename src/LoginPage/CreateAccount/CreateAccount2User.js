@@ -22,14 +22,14 @@ const CreateAccount2User = () => {
             <input
               type="text"
               placeholder="First name"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
           <div className="universal--input--forms--half">
             <input
               type="text"
               placeholder="Last name"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
         </div>
@@ -39,7 +39,7 @@ const CreateAccount2User = () => {
             <input
               type="text"
               placeholder="Email address"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
         </div>
@@ -49,26 +49,26 @@ const CreateAccount2User = () => {
             <input
               type="text"
               placeholder="Street address"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
           <div className="universal--input--forms--full mb8">
             <input
               type="text"
               placeholder="Block number #"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
           <div className="universal--input--forms--full">
             <input
               type="text"
               placeholder="Postal code"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
         </div>
       </div>
-      <div className="user--create--account--button">Create Account</div>
+      <button className="user--create--account--button">Create Account</button>
     </>
   );
 };

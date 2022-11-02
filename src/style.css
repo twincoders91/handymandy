@@ -78,6 +78,10 @@ body {
   margin-top: 8px;
 }
 
+.mt12 {
+  margin-top: 12px;
+}
+
 .mt16 {
   margin-top: 16px;
 }
@@ -157,4 +161,12 @@ body {
 
 .width414 {
   width: 414px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
 }

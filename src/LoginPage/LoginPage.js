@@ -5,10 +5,10 @@ const HomePage = () => {
   return (
     <div className="home--container">
       <div className="home--content">
-        <p className="home--header">Handy Mandy</p>
+        <p className="home--header fw700 fs56">Handy Mandy</p>
         <div className="home--buttons--container">
-          <button className="home--buttons">Sign Up</button>
-          <button className="home--buttons">Login</button>
+          <button className="home--buttons fs24 fw700">Sign Up</button>
+          <button className="home--buttons fs24 fw700">Login</button>
         </div>
       </div>
     </div>

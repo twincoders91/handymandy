@@ -25,6 +25,7 @@
   line-height: 24px;
   border: none;
   color: var(--black);
+  width: 90%;
 }
 
 .user--login--page--no--account--header {

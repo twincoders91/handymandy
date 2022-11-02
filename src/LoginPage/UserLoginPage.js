@@ -27,9 +27,9 @@ const UserLoginPage = () => {
       <p className="user--login--page--no--account--header">
         Don't have an account yet?
       </p>
-      <div className="user--login--page--signup--button fw700 fs24 mt20 br4">
+      <button className="user--login--page--signup--button fw700 fs24 mt20 br4">
         Sign Up
-      </div>
+      </button>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
+import downArrow from "../../Assets/universal/downarrow.svg";
 
 const CreateAccount2Handyman = () => {
   return (
@@ -22,14 +23,14 @@ const CreateAccount2Handyman = () => {
             <input
               type="text"
               placeholder="First name"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
           <div className="universal--input--forms--half">
             <input
               type="text"
               placeholder="Last name"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
         </div>
@@ -39,7 +40,7 @@ const CreateAccount2Handyman = () => {
             <input
               type="text"
               placeholder="Email address"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
         </div>
@@ -57,28 +58,44 @@ const CreateAccount2Handyman = () => {
             <input
               type="text"
               placeholder="e.g. Handyman services"
-              className="user--login-input"
+              className="create--account--input ml12"
             />
           </div>
           <span className="fs16 fw700 white">What are your specialities? </span>
-          <div className="universal--input--forms--full mb8 mt8">
+          <div className="universal--input--forms--full mb8 mt8 relative">
             <input
               type="text"
-              placeholder="Block number #"
-              className="user--login-input"
+              placeholder="e.g. Plumbing"
+              className="create--account--input ml12"
             />
+            <img
+              src={downArrow}
+              className="absolute create--account--downarrow"
+            ></img>
           </div>
           <span className="fs16 fw700 white">Years in business </span>
-          <div className="universal--input--forms--full mt8">
+          <div className="universal--input--forms--full mt8 mb8 relative">
             <input
               type="text"
-              placeholder="Postal code"
-              className="user--login-input"
+              placeholder="Number of years"
+              className="create--account--input ml12"
+            />
+            <img
+              src={downArrow}
+              className="absolute create--account--downarrow"
+            ></img>
+          </div>
+          <span className="fs16 fw700 white">About </span>
+          <div className="about--input--forms--full mt8">
+            <textarea
+              type="text"
+              placeholder="Tell us about yourself (200 characters)"
+              className="create--account--input ml12 mt12"
             />
           </div>
         </div>
       </div>
-      <div className="user--create--account--button">Create Account</div>
+      <button className="user--create--account--button">Submit</button>
     </>
   );
 };

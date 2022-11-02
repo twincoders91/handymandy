@@ -22,6 +22,7 @@ export default function App() {
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccount1 /> */}
+      <CreateAccountMain />
     </div>
   );
 }

@@ -17,11 +17,11 @@ export default function App() {
       {/* <LoginPage /> */}
       {/* <HomePage /> */}
       {/* <FindServices /> */}
-      {/* <Services /> */}
+      <Services />
       {/* <ServiceInfo /> */}
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
-      <CreateAccount1 />
+      {/* <CreateAccount1 /> */}
     </div>
   );
 }

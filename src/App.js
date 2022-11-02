@@ -11,6 +11,7 @@ import "./style.css";
 import ServiceInfo from "./Services/ServiceInfo";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
+import ServicesHandyman from "./Services/ServicesHandyman";
 
 export default function App() {
   return (
@@ -19,11 +20,12 @@ export default function App() {
       {/* <LoginPage /> */}
       {/* <HomePage /> */}
       {/* <CategoryPage /> */}
-      <Services />
+      {/* <Services /> */}
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
-      {/* <CreateAccount1 /> */}
-      {/* {/* <CreateAccountMain /> */}
+      {/* <CreateAccountMain /> */}
+      {/* <HomePageMain /> */}
+      <ServicesHandyman />
     </div>
   );
 }

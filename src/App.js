@@ -11,19 +11,21 @@ import "./style.css";
 import ServiceInfo from "./Services/ServiceInfo";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
+import ServicesHandyman from "./Services/ServicesHandyman";
 
 export default function App() {
   return (
     <div>
       {/* <Navbar /> */}
       {/* <LoginPage /> */}
-      <HomePage />
+      {/* <HomePage /> */}
       {/* <CategoryPage /> */}
-      {/* {/* <Services /> */} */}
+      {/* <Services /> */}
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
-      {/* <CreateAccount1 /> */}
-      {/* {/* <CreateAccountMain /> */} */}
+      {/* <CreateAccountMain /> */}
+      {/* <HomePageMain /> */}
+      <ServicesHandyman />
     </div>
   );
 }

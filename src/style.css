@@ -102,8 +102,16 @@ body {
   margin-top: 46px;
 }
 
+.ml8 {
+  margin-left: 8px;
+}
+
 .ml12 {
   margin-left: 12px;
+}
+
+.fs8 {
+  font-size: 8px;
 }
 
 .fs12 {

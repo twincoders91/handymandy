@@ -12,8 +12,7 @@ const Services = () => {
       <div className="category--page--container">
         {/* <HomePage /> */}
         {/* <FindServices /> */}
-        <CategoryCards />
-        {/* <ServiceInfo /> */}
+        <ServiceInfo />
       </div>
     </>
   );

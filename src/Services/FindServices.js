@@ -21,9 +21,8 @@ const FindServices = () => {
         <div className="category--header">
           <span>21</span> Lighting services for you.
         </div>
-        <div className="category--cards--container">
-          <CategoryCards />
-        </div>
+        <CategoryCards />
+        <CategoryCards />
       </div>
     </>
   );

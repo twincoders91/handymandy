@@ -16,13 +16,13 @@ export default function App() {
     <div>
       {/* <Navbar /> */}
       {/* <LoginPage /> */}
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <CategoryPage /> */}
-      <Services />
+      {/* <Services /> */}
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccount1 /> */}
-      <CreateAccountMain />
+      {/* <CreateAccountMain /> */}
     </div>
   );
 }

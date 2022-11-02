@@ -7,7 +7,7 @@ import password from "../../Assets/createaccount/password.svg";
 
 const CreateAccount1 = () => {
   return (
-    <div className="create--account--container">
+    <>
       <img src={backButton} className="back--button" />
       <p className="character--select--header mb36">Create account</p>
 
@@ -43,7 +43,7 @@ const CreateAccount1 = () => {
         />
       </div>
       <div className="user--create--account--button">Create Account</div>
-    </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import handymanCharacter from "../Assets/characterselect/handymancharacter.svg";
 
 const CharacterSelect = () => {
   return (
-    <div className="character--select--container">
+    <div className="">
       <img src={backButton} className="back--button" />
       <p className="fs32 fw700 mt46 white m0">Character Select</p>
       <p className="character--select--sub--header mt36 fs12 fw700 white mb24">

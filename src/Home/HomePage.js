@@ -74,9 +74,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="home--page--bottom--section">
+        <div className="home--page--bottom--section mb36">
           <p className="home--page--sub--header2">Recommended for you</p>
-          <div className="recommended--box">
+          <div className="recommended--box mb24">
             <div className="recommended--cards">
               <img
                 src={recommended4usampleimage}

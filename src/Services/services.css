@@ -167,6 +167,16 @@
   align-items: center;
 }
 
+.service--info--view--booknow--button {
+  height: 60px;
+  width: 180px;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+}
+
 .service--info--view--profile--button {
   height: 30px;
   width: 90px;
@@ -174,8 +184,51 @@
   background-color: var(--orange);
   outline: none;
   border: none;
-  top: 80%;
+  top: 82%;
   right: 20px;
   font-family: "Exo", sans-serif;
   color: var(--black);
+}
+
+/* =============================================== */
+.progress--icon--and--progress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.accepted--services--card {
+  display: flex;
+  width: 370px;
+  height: 120px;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.accepted--services--image {
+  width: 120px;
+  height: 100%;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: 2px solid black;
+}
+
+.accepted--services--description--container {
+  display: flex;
+  align-items: center;
+  width: 250px;
+}
+.accepted--services--description--section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.accepted--services--profile--pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -104,6 +104,10 @@ body {
   margin-top: 46px;
 }
 
+.mt60 {
+  margin-top: 60px;
+}
+
 .ml8 {
   margin-left: 8px;
 }
@@ -118,6 +122,10 @@ body {
 
 .ml24 {
   margin-left: 24px;
+}
+
+.ml36 {
+  margin-left: 36px;
 }
 
 .fs8 {

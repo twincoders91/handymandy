@@ -51,6 +51,12 @@
   box-shadow: var(--shadowing);
   height: 85px;
   width: 85px;
+  cursor: pointer;
+}
+.category--cards--box:hover {
+  background-color: rgb(255, 186, 10, 0.7);
+  color: var(--hoverblack);
+  cursor: pointer;
 }
 
 .category--cards--text {
@@ -61,6 +67,26 @@
 
 .home--page--bottom--section {
   width: 340px;
+}
+
+.home--page--create--section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
+.home--page--create--button {
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  width: 200px;
+  height: 59px;
+  cursor: pointer;
+}
+.home--page--create--button:hover {
+  background-color: var(--hoverblack);
+  color: var(--orange);
 }
 
 .home--page--sub--header2 {

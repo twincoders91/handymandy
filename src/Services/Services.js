@@ -13,7 +13,7 @@ const Services = () => {
       <div className="category--page--container">
         {/* <HomePage /> */}
         {/* <FindServices /> */}
-        {/* <ServiceInfo /> */}
+        <ServiceInfo />
         {/* <AcceptedServices /> */}
       </div>
     </>

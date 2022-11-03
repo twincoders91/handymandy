@@ -7,10 +7,10 @@ import CreateAccount2User from "./CreateAccount/CreateAccount2User";
 const CreateAccountMain = () => {
   return (
     <div className="create--account--container">
-      <CharacterSelect />
+      {/* <CharacterSelect /> */}
       {/* <CreateAccount1 /> */}
       {/* <CreateAccount2User /> */}
-      {/* <CreateAccount2Handyman /> */}
+      <CreateAccount2Handyman />
     </div>
   );
 };

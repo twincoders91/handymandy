@@ -38,7 +38,11 @@
   color: var(--black);
   cursor: pointer;
 }
-
+.buttons--align--center--box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .user--create--account--button {
   margin-top: 19px;
   width: 200px;
@@ -49,11 +53,19 @@
   color: var(--black);
   font-weight: 700;
   font-size: 24px;
-  line-height: 31.9px;
   background-color: rgb(255, 186, 10, 0.9);
   border-radius: 4px;
   box-shadow: var(--shadowing);
+  cursor: pointer;
+  outline: none;
+  border: none;
 }
+.user--create--account--button:hover {
+  cursor: pointer;
+  background-color: rgba(29, 29, 29, 0.9);
+  color: var(--orange);
+}
+
 .create--account2--container {
   position: relative;
   background: url("../../Assets/homepage/homepagebg.svg") no-repeat center

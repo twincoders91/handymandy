@@ -190,45 +190,25 @@
   color: var(--black);
 }
 
-/* =============================================== */
-.progress--icon--and--progress {
+.services--type--of--work--container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.accepted--services--card {
-  display: flex;
-  width: 370px;
-  height: 120px;
-  border: 2px solid black;
-  border-radius: 6px;
+.services--type--of--work--button {
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  height: 38px;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 2px;
   box-shadow: var(--shadowing);
-  background: rgba(0, 0, 0, 0.4);
 }
-
-.accepted--services--image {
-  width: 120px;
-  height: 100%;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-right: 2px solid black;
-}
-
-.accepted--services--description--container {
-  display: flex;
-  align-items: center;
-  width: 250px;
-}
-.accepted--services--description--section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.accepted--services--profile--pic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.services--type--of--work--button:hover {
+  color: var(--orange);
+  background-color: var(--hoverblack);
 }

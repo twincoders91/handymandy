@@ -107,7 +107,7 @@ const ProfileHandyman = () => {
             })}
           </div>
         </div>
-        <div className="message--button--box mb36">
+        <div className="message--button--box mb24">
           <button className="message--button fw700 fs16">
             <img src={message} />
             Message
@@ -115,7 +115,7 @@ const ProfileHandyman = () => {
         </div>
       </div>
       <div className="reviews--info--container">
-        <div className="reviews--header white fw700 fs16  mt46 mb4">
+        <div className="reviews--header white fw700 fs16 ml24 mt24 mb4">
           Reviews
         </div>
         {handymanData[0].reviews.map((items) => {

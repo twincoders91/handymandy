@@ -1,0 +1,132 @@
+.profile--info--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile--image--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  z-index: +1;
+}
+.profile--image {
+  top: 70px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.reviews--box {
+  right: 20px;
+  top: 20px;
+}
+
+.profile--info--card {
+  width: 370px;
+  height: fit-content;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+.profile--about--box {
+  display: flex;
+  flex-direction: column;
+}
+
+.category--profile--cards {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+.category--profile--cards--box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: var(--shadowing);
+  width: 85px;
+}
+
+.profile--description--cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category--profile--cards--icon {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.message--button--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.message--button {
+  margin-top: 19px;
+  width: 170px;
+  height: 59px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  box-shadow: var(--shadowing);
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.message--button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 186, 10, 1);
+}
+
+.reviews--info--container {
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+}
+.reviews--header {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+.reviews--cards--box {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: var(--shadowing);
+  width: 100%;
+  min-height: 80px;
+}
+.reviews--description--cards {
+  display: flex;
+  flex-direction: column;
+}
+.reviews--message {
+  word-wrap: break-word;
+  width: 75%;
+}
+.reviews--score--box {
+  right: 32px;
+}

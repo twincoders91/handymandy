@@ -21,12 +21,12 @@ export default function App() {
       {/* <LoginPage /> */}
       {/* <HomePage /> */}
       {/* <CategoryPage /> */}
-      {/* <Services /> */}
-      <AcceptedServicesModal />
+      <Services />
+      {/* <AcceptedServicesModal /> */}
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccountMain /> */}
-      <HomePageMain />
+      {/* <HomePageMain /> */}
     </div>
   );
 }

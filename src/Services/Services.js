@@ -16,9 +16,7 @@ const Services = () => {
         {/* <HomePage /> */}
         {/* <FindServices /> */}
         {/* <ServiceInfo /> */}
-        {/* <AcceptedServices /> */}
-        <AcceptedServiceInfo />
-        {/* <HamburgerModal /> */}
+        <AcceptedServices />
       </div>
     </>
   );

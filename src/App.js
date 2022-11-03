@@ -12,6 +12,7 @@ import ServiceInfo from "./Services/ServiceInfo";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
 import ServicesHandyman from "./Services/ServicesHandyman";
+import AcceptedServicesModal from "./Components/Modals/AcceptedServicesModal";
 
 export default function App() {
   return (
@@ -21,11 +22,12 @@ export default function App() {
       {/* <HomePage /> */}
       {/* <CategoryPage /> */}
       {/* <Services /> */}
+      <AcceptedServicesModal />
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccountMain /> */}
       {/* <HomePageMain /> */}
-      <ServicesHandyman />
+      {/* <ServicesHandyman /> */}
     </div>
   );
 }

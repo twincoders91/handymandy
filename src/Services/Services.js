@@ -14,7 +14,7 @@ const Services = () => {
         {/* <HomePage /> */}
         {/* <FindServices /> */}
         {/* <ServiceInfo /> */}
-        <AcceptedServices />
+        {/* <AcceptedServices /> */}
       </div>
     </>
   );

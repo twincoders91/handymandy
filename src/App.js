@@ -11,7 +11,7 @@ import "./style.css";
 import ServiceInfo from "./Services/ServiceInfo";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
-import ServicesHandyman from "./Services/ServicesHandyman";
+import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import AcceptedServicesModal from "./Components/Modals/AcceptedServicesModal";
 
 export default function App() {
@@ -26,8 +26,7 @@ export default function App() {
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccountMain /> */}
-      {/* <HomePageMain /> */}
-      {/* <ServicesHandyman /> */}
+      <HomePageMain />
     </div>
   );
 }

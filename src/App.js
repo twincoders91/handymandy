@@ -23,7 +23,7 @@ export default function App() {
       {/* <HomePage /> */}
       {/* <CategoryPage /> */}
       <Services />
-      {/* {/* <AcceptedServicesModal /> */} */}
+      {/* {/* <AcceptedServicesModal /> */}
       {/* <UserLoginPage /> */}
       {/* <CharacterSelect /> */}
       {/* <CreateAccountMain /> */}

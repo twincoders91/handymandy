@@ -15,7 +15,7 @@ const CreateAccount2Handyman = () => {
   };
 
   return (
-    <>
+    <div className="mb36">
       <img src={backButton} className="back--button" />
       <div className="create--profile--header--container mb24">
         <p className="fs24 fw700 mb8 white create--profile--header--font">
@@ -142,9 +142,11 @@ const CreateAccount2Handyman = () => {
             />
           </div>
         </div>
+        <div className="buttons--align--center--box">
+          <button className="user--create--account--button">Submit</button>
+        </div>
       </div>
-      <button className="user--create--account--button">Submit</button>
-    </>
+    </div>
   );
 };
 

@@ -179,3 +179,26 @@
   font-family: "Exo", sans-serif;
   color: var(--black);
 }
+
+.services--type--of--work--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.services--type--of--work--button {
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  height: 38px;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 2px;
+  box-shadow: var(--shadowing);
+}
+.services--type--of--work--button:hover {
+  color: var(--orange);
+  background-color: var(--hoverblack);
+}

@@ -73,6 +73,9 @@ const ServiceInfo = () => {
           </div>
         </div>
       </div>
+      <button className="service--info--view--booknow--button br4 fw700 fs24 mt60">
+        Book now
+      </button>
     </>
   );
 };

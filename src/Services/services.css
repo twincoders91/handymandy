@@ -167,6 +167,16 @@
   align-items: center;
 }
 
+.service--info--view--booknow--button {
+  height: 60px;
+  width: 180px;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+}
+
 .service--info--view--profile--button {
   height: 30px;
   width: 90px;
@@ -174,7 +184,7 @@
   background-color: var(--orange);
   outline: none;
   border: none;
-  top: 80%;
+  top: 82%;
   right: 20px;
   font-family: "Exo", sans-serif;
   color: var(--black);

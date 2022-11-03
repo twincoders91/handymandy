@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import HomePage from "../Home/HomePage";
 import ServiceInfo from "./ServiceInfo";
 import CategoryCards from "./CategoryCards";
+import AcceptedServices from "./AcceptedServices";
 
 const Services = () => {
   return (
@@ -12,7 +13,8 @@ const Services = () => {
       <div className="category--page--container">
         {/* <HomePage /> */}
         {/* <FindServices /> */}
-        <ServiceInfo />
+        {/* <ServiceInfo /> */}
+        <AcceptedServices />
       </div>
     </>
   );

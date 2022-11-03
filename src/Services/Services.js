@@ -5,6 +5,8 @@ import HomePage from "../Home/HomePage";
 import ServiceInfo from "./ServiceInfo";
 import CategoryCards from "./CategoryCards";
 import AcceptedServices from "./AcceptedServices";
+import AcceptedServiceInfo from "./AcceptedServiceInfo";
+import HamburgerModal from "../Components/Modals/HamburgerModal";
 
 const Services = () => {
   return (
@@ -14,7 +16,9 @@ const Services = () => {
         {/* <HomePage /> */}
         {/* <FindServices /> */}
         {/* <ServiceInfo /> */}
-        <AcceptedServices />
+        {/* <AcceptedServices /> */}
+        <AcceptedServiceInfo />
+        {/* <HamburgerModal /> */}
       </div>
     </>
   );

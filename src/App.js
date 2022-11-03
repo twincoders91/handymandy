@@ -13,6 +13,7 @@ import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
 import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import AcceptedServicesModal from "./Components/Modals/AcceptedServicesModal";
+import HamburgerModal from "./Components/Modals/HamburgerModal";
 
 export default function App() {
   return (

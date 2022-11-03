@@ -1,12 +1,14 @@
 .modal--overlay {
   top: 0%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   width: 100%;
   height: 100%;
+  z-index: 99;
 }
 
 .modal--container {
+  position: relative;
   width: 350px;
   height: 500px;
   position: fixed;
@@ -16,10 +18,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
+  border: 1px solid var(--orange);
   border-radius: 6px;
   box-shadow: var(--shadowing);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 20px 0px rgba(255, 0, 0, 0.8);
 }
 
 .modal--header {
@@ -65,8 +68,9 @@
 }
 
 .review--submit--button {
+  cursor: pointer;
   margin-top: 15px;
-  width: 100px;
+  width: 150px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -74,8 +78,57 @@
   color: var(--black);
   font-weight: 700;
   border: none;
-  line-height: 31.9px;
   background-color: rgb(255, 186, 10, 0.9);
   border-radius: 4px;
   box-shadow: var(--shadowing);
+}
+
+.modal--cross--button {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+/* ====================================HAMBURGER MODAL====================================== */
+.modal--hamburger--overlay {
+  top: 0%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
+.modal--hamburger--container {
+  position: relative;
+  width: 200px;
+  height: 500px;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--orange);
+  border-top: 0px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 20px 0px rgba(255, 0, 0, 0.8);
+  margin: auto;
+}
+
+.hamburger--modal--socials--icons {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  position: absolute;
+  top: 90%;
+}
+
+.hamburger--modal--socials--icon {
+  margin: auto;
+  height: 30px;
+  width: 30px;
 }

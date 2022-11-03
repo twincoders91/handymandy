@@ -255,3 +255,19 @@
   align-items: center;
   justify-content: center;
 }
+
+/* ===============================Accepted Service Info============================= */
+
+.review--and--submit--button {
+  cursor: pointer;
+  height: 50px;
+  width: 90px;
+  position: absolute;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  top: 75%;
+  right: 20px;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+}

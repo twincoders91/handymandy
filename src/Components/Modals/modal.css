@@ -54,16 +54,26 @@
   margin: 8px;
 }
 
+.review--star--box {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.review--stars {
+  transform: scale(0.8);
+}
+
 .review--submit--button {
-  margin-top: 19px;
-  width: 200px;
-  height: 59px;
+  margin-top: 15px;
+  width: 100px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--black);
   font-weight: 700;
-  font-size: 24px;
+  border: none;
   line-height: 31.9px;
   background-color: rgb(255, 186, 10, 0.9);
   border-radius: 4px;

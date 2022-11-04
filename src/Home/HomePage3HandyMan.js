@@ -4,7 +4,11 @@ import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
-const HomePage3HandyMan = () => {
+const HomePage3HandyMan = ({ setCreateService }) => {
+  const handleCreateServiceClick = () => {
+    setCreateService(true);
+  };
+
   return (
     <div className="hm3--page--container">
       <span className="fw700 fs32 mt24 mb24 white">Your Services</span>
@@ -73,7 +77,10 @@ const HomePage3HandyMan = () => {
           </div>
         </div>
       </div>
-      <button className="hm3--info--view--create--button br4 fw700 fs24 mt60">
+      <button
+        className="hm3--info--view--create--button br4 fw700 fs24 mt60"
+        onClick={handleCreateServiceClick}
+      >
         Create
       </button>
     </div>

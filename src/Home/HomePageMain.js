@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "../Profile/ProfileHandyman";
 import CreateServicesHandyman from "../Services/CreateServicesHandyman";
@@ -10,6 +10,8 @@ const HomePageMain = ({
   handymanServicesData,
   setServicesCategory,
 }) => {
+  const [createService, setCreateService] = useState(false);
+
   return (
     <div>
       <Navbar />
@@ -19,11 +21,13 @@ const HomePageMain = ({
           setServicesCategory={setServicesCategory}
         />
       )}
-      {charSelect == "handyman" && (
-        <HomePageHandyman handymanServicesData={handymanServicesData} />
+      {charSelect == "handyman" && createService == false && (
+        <HomePageHandyman
+          handymanServicesData={handymanServicesData}
+          setCreateService={setCreateService}
+        />
       )}
-
-      {/* <CreateServicesHandyman /> */}
+      {createService == true && <CreateServicesHandyman />}
       {/* <ProfileHandyman
         averageRating={averageRating}
         totalReviews={totalReviews}

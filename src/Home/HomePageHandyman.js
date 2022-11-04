@@ -1,20 +1,16 @@
 import React from "react";
+import CreateServicesHandyman from "../Services/CreateServicesHandyman";
+import HomePage2HandyMan from "./HomePage2HandyMan";
 
-const HomePageHandyman = () => {
+const HomePageHandyman = ({ handymanServicesData }) => {
+  //===========================if handymanServicesData is empty, show no services================
+  //==========================if handymanServicesData is not empty, show services================
+
   return (
-    <div className="home--page--container">
-      <div className="home--page--top--section">
-        <p className="home--page--header">
-          You have not created any <span>services</span> yet
-        </p>
-        <p className="home--page--sub--header">Start creating now.</p>
-      </div>
-      <div className="home--page--create--section">
-        <button className="home--page--create--button br4 fs24 fw700">
-          Create
-        </button>
-      </div>
-    </div>
+    <>
+      {handymanServicesData.length == 0 && <HomePage2HandyMan />}
+      {handymanServicesData.length !== 0 && <CreateServicesHandyman />}
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 
@@ -68,7 +69,11 @@ const CreateAccount2User = () => {
           </div>
         </div>
       </div>
-      <button className="user--create--account--button">Create Account</button>
+      <NavLink className="navlinks" to="/home">
+        <button className="user--create--account--button">
+          Create Account
+        </button>
+      </NavLink>
     </>
   );
 };

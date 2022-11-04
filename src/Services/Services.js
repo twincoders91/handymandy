@@ -8,13 +8,25 @@ import AcceptedServices from "./AcceptedServices";
 import AcceptedServiceInfo from "./AcceptedServiceInfo";
 import HamburgerModal from "../Components/Modals/HamburgerModal";
 
-const Services = () => {
+const Services = ({
+  averageRating,
+  totalReviews,
+  totalJobs,
+  handymanServicesData,
+  servicesCategory,
+}) => {
+  console.log(servicesCategory);
   return (
     <>
       <Navbar />
       <div className="category--page--container">
-        {/* <HomePage /> */}
-        <FindServices />
+        <FindServices
+          averageRating={averageRating}
+          totalJobs={totalJobs}
+          totalReviews={totalReviews}
+          handymanServicesData={handymanServicesData}
+          servicesCategory={servicesCategory}
+        />
         {/* <ServiceInfo /> */}
         {/* <AcceptedServices /> */}
         {/* <AcceptedServiceInfo /> */}

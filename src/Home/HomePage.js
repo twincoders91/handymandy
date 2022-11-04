@@ -1,5 +1,5 @@
-import React from "react";
-import Navbar from "../Components/Navbar";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import lighting from "../Assets/homepage/lightbulbs.svg";
 import plumber from "../Assets/homepage/plumber.svg";
 import airconditioner from "../Assets/homepage/airconditioner.svg";
@@ -12,7 +12,14 @@ import starfilled from "../Assets/homepage/starfilled.svg";
 import starunfilled from "../Assets/homepage/starunfilled.svg";
 import "./homepage.css";
 
-const HomePage = () => {
+const HomePage = ({ handymanServicesData, setServicesCategory }) => {
+  const handleCategoryClick = () => {
+    const categoryFilter = handymanServicesData.filter((filteredServices) => {
+      return filteredServices.title === "Lighting";
+    });
+    setServicesCategory(categoryFilter);
+  };
+
   return (
     <>
       <div className="home--page--container">
@@ -24,14 +31,20 @@ const HomePage = () => {
         </div>
         <div className="home--page--middle--section">
           <div className="category--cards">
-            <div className="category--cards--box">
-              <img
-                src={lighting}
-                className="category--cards--icon"
-                alt="images"
-              ></img>
-              <div className="category--cards--text">Lighting</div>
-            </div>
+            <NavLink
+              className="navlinks"
+              to="/services"
+              onClick={handleCategoryClick}
+            >
+              <div className="category--cards--box">
+                <img
+                  src={lighting}
+                  className="category--cards--icon"
+                  alt="images"
+                ></img>
+                <div className="category--cards--text">Lighting</div>
+              </div>
+            </NavLink>
             <div className="category--cards--box">
               <img
                 src={plumber}

@@ -15,7 +15,7 @@ const handymanServicesData = [
   },
   {
     first_name: "Electrician",
-    title: "Electrical services",
+    title: "Lighting",
     description:
       "At Electrical services, we work with clients closely to provide the best repair services, with no hidden costs.",
     type_of_work: [

@@ -2,11 +2,14 @@ import React from "react";
 import "./services.css";
 import searchIcon from "../Assets/categorypage/searchicon.svg";
 import CategoryCards from "./CategoryCards";
-import handymanServicesData from "../DummyDataSets/HandymanServices";
 
-const FindServices = () => {
-  console.log(handymanServicesData);
-
+const FindServices = ({
+  averageRating,
+  totalJobs,
+  totalReviews,
+  handymanServicesData,
+  servicesCategory,
+}) => {
   return (
     <>
       <div className="category--page--container">
@@ -22,9 +25,9 @@ const FindServices = () => {
           />
         </div>
         <div className="category--header">
-          <span>21</span> Lighting services for you.
+          <span>{servicesCategory.length}</span> Lighting services for you.
         </div>
-        {handymanServicesData.map((hmService) => {
+        {servicesCategory.map((hmService) => {
           return (
             <CategoryCards
               first_name={hmService.first_name}

@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 import ReactDom from "react-dom";
 import crossButton from "../../Assets/services/crossbutton.svg";
 import facebookIcon from "../../Assets/universal/facebook.svg";
@@ -11,18 +13,22 @@ const HamburgerModal = ({ setHamburgerModal, setIsActive }) => {
       {ReactDom.createPortal(
         <div className="modal--hamburger--overlay">
           <div className="modal--hamburger--container">
+            <NavLink className="navlinks" to="/home">
+              <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
+                Home
+              </p>
+            </NavLink>
             <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
               About
             </p>
             <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
-              Alerts
-            </p>
-            <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
               Inbox
             </p>
-            <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
-              Profile
-            </p>
+            <NavLink className="navlinks" to="/profile">
+              <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
+                Profile
+              </p>
+            </NavLink>
             <img
               src={crossButton}
               className="modal--cross--button"

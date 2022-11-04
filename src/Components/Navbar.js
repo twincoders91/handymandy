@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
 import HamburgerModal from "./Modals/HamburgerModal";
 import "./navbar.css";
@@ -25,8 +26,10 @@ const Navbar = () => {
             <button className="is-active">Inbox</button>
             <button>Jobs</button>
             <button>Services</button>
-            <button>Alerts</button>
-            <button>Profile</button>
+            <button>Home</button>
+            <NavLink className="navlinks" to="/profile">
+              <button>Profile</button>
+            </NavLink>
           </div>
 
           <button

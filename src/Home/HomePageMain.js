@@ -5,18 +5,33 @@ import CreateServicesHandyman from "../Services/CreateServicesHandyman";
 import HomePage from "./HomePage";
 import HomePageHandyman from "./HomePageHandyman";
 
-const HomePageMain = ({ totalReviews, averageRating, totalJobs }) => {
+const HomePageMain = ({
+  totalReviews,
+  averageRating,
+  totalJobs,
+  charSelect,
+  handymanServicesData,
+  setServicesCategory,
+}) => {
   return (
     <div>
       <Navbar />
-      {/* <HomePage />
-      <HomePageHandyman /> */}
+      {charSelect == "user" && (
+        <HomePage
+          handymanServicesData={handymanServicesData}
+          setServicesCategory={setServicesCategory}
+        />
+      )}
+      {charSelect == "handyman" && (
+        <HomePageHandyman handymanServicesData={handymanServicesData} />
+      )}
+
       {/* <CreateServicesHandyman /> */}
-      <ProfileHandyman
+      {/* <ProfileHandyman
         averageRating={averageRating}
         totalReviews={totalReviews}
         totalJobs={totalJobs}
-      />
+      /> */}
     </div>
   );
 };

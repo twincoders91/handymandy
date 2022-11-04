@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 import downArrow from "../../Assets/universal/downarrow.svg";
@@ -143,7 +144,9 @@ const CreateAccount2Handyman = () => {
           </div>
         </div>
         <div className="buttons--align--center--box">
-          <button className="user--create--account--button">Submit</button>
+          <NavLink className="navlinks" to="/home">
+            <button className="user--create--account--button">Submit</button>
+          </NavLink>
         </div>
       </div>
     </div>

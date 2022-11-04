@@ -5,14 +5,18 @@ import CreateServicesHandyman from "../Services/CreateServicesHandyman";
 import HomePage from "./HomePage";
 import HomePageHandyman from "./HomePageHandyman";
 
-const HomePageMain = () => {
+const HomePageMain = ({ totalReviews, averageRating, totalJobs }) => {
   return (
     <div>
       <Navbar />
       {/* <HomePage />
       <HomePageHandyman /> */}
       {/* <CreateServicesHandyman /> */}
-      <ProfileHandyman />
+      <ProfileHandyman
+        averageRating={averageRating}
+        totalReviews={totalReviews}
+        totalJobs={totalJobs}
+      />
     </div>
   );
 };

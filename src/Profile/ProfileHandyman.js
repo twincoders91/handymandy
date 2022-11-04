@@ -5,27 +5,15 @@ import handymanData from "../DummyDataSets/profileHandyman";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
 
-const ProfileHandyman = () => {
-  //========= total review_score and average review_score ===========
-  const reviews_sum = handymanData[0].reviews_score.reduce(
-    (accumulator, value) => {
-      return accumulator + value;
-    },
-    0
-  );
-  const reviews_average =
-    Math.round((reviews_sum / handymanData[0].number_of_reviews.reviews) * 10) /
-    10;
-
+const ProfileHandyman = ({ totalReviews, averageRating, totalJobs }) => {
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {
-    if (reviews_average >= index) {
+    if (averageRating >= index) {
       return starFilled;
     }
     return starUnfilled;
   };
-
   const starRating = useMemo(() => {
     return Array(count)
       .fill(0)
@@ -50,9 +38,7 @@ const ProfileHandyman = () => {
           } `}</span>
         </div>
         <div className="reviews--box ">
-          <div className="reviews--stars--box fw700 fs16">
-            {reviews_average}
-          </div>
+          <div className="reviews--stars--box fw700 fs16">{averageRating}</div>
           <div className="reviews--stars--box ml4 ">{starRating}</div>
         </div>
 
@@ -89,7 +75,7 @@ const ProfileHandyman = () => {
               ></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {handymanData[0].number_of_jobs.jobs}
+                  {totalJobs}
                 </div>
                 <div className="fw400 fs12">completed</div>
               </div>
@@ -102,7 +88,7 @@ const ProfileHandyman = () => {
               ></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {handymanData[0].number_of_reviews.reviews}
+                  {totalReviews}
                 </div>
                 <div className="fw400 fs12">reviews</div>
               </div>

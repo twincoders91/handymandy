@@ -20,6 +20,8 @@ import handymanData from "./DummyDataSets/profileHandyman";
 
 export default function App() {
   const [averageRating, setAverageRating] = useState(0);
+  const [totalReviews, setTotalReviews] = useState(0);
+  const [totalJobs, setTotalJobs] = useState(0);
 
   //================total review_score and average review_score==================
   const reviews_sum = handymanData[0].reviews_score.reduce(
@@ -31,12 +33,13 @@ export default function App() {
   const reviews_average =
     Math.round((reviews_sum / handymanData[0].number_of_reviews.reviews) * 10) /
     10;
-  //======================================================================
+  //=============================================================================
 
   useEffect(() => {
     setAverageRating(reviews_average);
+    setTotalReviews(handymanData[0].number_of_reviews.reviews);
+    setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
-  console.log(averageRating);
 
   return (
     <div>
@@ -44,7 +47,16 @@ export default function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<UserLoginPage />} />
         <Route path="/signup" element={<CreateAccountMain />} />
-        <Route path="/home" element={<HomePageMain />} />
+        <Route
+          path="/home"
+          element={
+            <HomePageMain
+              averageRating={averageRating}
+              totalReviews={totalReviews}
+              totalJobs={totalJobs}
+            />
+          }
+        />
         <Route path="/services" element={<Services />} />
       </Routes>
     </div>

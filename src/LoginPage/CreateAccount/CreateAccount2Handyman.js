@@ -18,7 +18,7 @@ const CreateAccount2Handyman = () => {
   return (
     <div className="mb36">
       <img src={backButton} className="back--button" />
-      <div className="create--profile--header--container mb24">
+      <div className="create--profile--header--container mb24 mt60">
         <p className="fs24 fw700 mb8 white create--profile--header--font">
           Let's create your profile.
         </p>
@@ -135,7 +135,7 @@ const CreateAccount2Handyman = () => {
             )}
           </div>
           <span className="fs16 fw700 white">About your business</span>
-          <div className="about--input--forms--full mt8">
+          <div className="about--business--input--forms--full mt8">
             <textarea
               type="text"
               placeholder="Let others know more about your business (200 characters)"

@@ -1,6 +1,6 @@
 import { React, useMemo } from "react";
 import "./profile.css";
-import message from "../Assets/universal/message.svg";
+import edit from "../Assets/universal/edit.svg";
 import handymanData from "../DummyDataSets/profileHandyman";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
@@ -122,9 +122,9 @@ const ProfileHandyman = ({ totalReviews, averageRating, totalJobs }) => {
           </div>
         </div>
         <div className="message--button--box mb24">
-          <button className="message--button fw700 fs16">
-            <img src={message} />
-            Message
+          <button className="message--button fw700 fs14">
+            <img src={edit} />
+            Edit profile
           </button>
         </div>
       </div>

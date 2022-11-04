@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./Home/HomePage";
 import FindServices from "./Services/FindServices";
@@ -16,7 +16,28 @@ import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import AcceptedServicesModal from "./Components/Modals/AcceptedServicesModal";
 import HamburgerModal from "./Components/Modals/HamburgerModal";
 
+import handymanData from "./DummyDataSets/profileHandyman";
+
 export default function App() {
+  const [averageRating, setAverageRating] = useState(0);
+
+  //================total review_score and average review_score==================
+  const reviews_sum = handymanData[0].reviews_score.reduce(
+    (accumulator, value) => {
+      return accumulator + value;
+    },
+    0
+  );
+  const reviews_average =
+    Math.round((reviews_sum / handymanData[0].number_of_reviews.reviews) * 10) /
+    10;
+  //======================================================================
+
+  useEffect(() => {
+    setAverageRating(reviews_average);
+  }, []);
+  console.log(averageRating);
+
   return (
     <div>
       <Routes>

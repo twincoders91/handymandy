@@ -18,6 +18,7 @@ body {
   color: var(--orange);
   background: url("./Assets/homepage/homepagebg.svg") no-repeat center
     center/cover;
+  background-attachment: fixed;
 }
 
 ::-webkit-input-placeholder {

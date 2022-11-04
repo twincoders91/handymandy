@@ -6,9 +6,6 @@ import HomePage from "./HomePage";
 import HomePageHandyman from "./HomePageHandyman";
 
 const HomePageMain = ({
-  totalReviews,
-  averageRating,
-  totalJobs,
   charSelect,
   handymanServicesData,
   setServicesCategory,

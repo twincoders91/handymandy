@@ -1,6 +1,6 @@
 const handymanServicesData = [
   {
-    first_name: "Plumber",
+    first_name: "T.O.P",
     category: "Plumbing services",
     description:
       "At Plumber Jack, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -14,7 +14,7 @@ const handymanServicesData = [
     service_image: "https://i.imgur.com/FWAZJa8.png",
   },
   {
-    first_name: "Electrician",
+    first_name: "T.O.P",
     category: "Lighting",
     description:
       "At Electrical services, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -28,7 +28,7 @@ const handymanServicesData = [
     service_image: "https://i.imgur.com/FWAZJa8.png",
   },
   {
-    first_name: "Repair Man",
+    first_name: "T.O.P",
     category: "Repair services",
     description:
       "At Repair services, we work with clients closely to provide the best repair services, with no hidden costs.",

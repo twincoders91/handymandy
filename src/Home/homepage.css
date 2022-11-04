@@ -147,3 +147,101 @@
 .recommended--stars {
   margin-left: 10px;
 }
+
+/* ==============================HomePage3HandyMan========================= */
+
+.hm3--page--container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hm3--info--card {
+  width: 370px;
+  height: fit-content;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.hm3--info--card--top {
+  display: flex;
+  border-bottom: 2px solid black;
+}
+
+.hm3--info--image {
+  width: 120px;
+  height: 100%;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: 2px solid black;
+}
+
+.hm3--info--description--container {
+  display: flex;
+  align-items: center;
+  width: 250px;
+}
+.hm3--info--description--section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hm3--info--profile--stars {
+  display: flex;
+  align-items: center;
+}
+
+.hm3--info--stars {
+  margin-left: 10px;
+}
+
+.hm3--info--price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hm3--info--card--bottom {
+  position: relative;
+  padding: 12px;
+}
+
+.type--of--work {
+  width: 100%;
+}
+
+.type--of--work--content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hm3--info--view--create--button {
+  height: 60px;
+  width: 180px;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+}
+
+.hm3--info--view--profile--button {
+  height: 30px;
+  width: 90px;
+  position: absolute;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  top: 82%;
+  right: 20px;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+}

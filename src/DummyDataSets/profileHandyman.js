@@ -15,7 +15,7 @@ const handymanData = [
       icon: "time.svg",
     },
     number_of_jobs: {
-      jobs: "82",
+      jobs: 82,
       icon: "trophy.svg",
     },
     number_of_reviews: {

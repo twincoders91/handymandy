@@ -41,7 +41,7 @@ export default function App() {
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
 
-  console.log(handymanServicesData);
+  console.log(totalReviews);
   console.log(averageRating);
 
   return (
@@ -85,7 +85,17 @@ export default function App() {
             />
           }
         />
-        <Route path="/profile" element={<Profiles charSelect={charSelect} />} />
+        <Route
+          path="/profile"
+          element={
+            <Profiles
+              charSelect={charSelect}
+              averageRating={averageRating}
+              totalJobs={totalJobs}
+              totalReviews={totalReviews}
+            />
+          }
+        />
       </Routes>
     </div>
   );

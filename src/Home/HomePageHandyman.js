@@ -10,7 +10,10 @@ const HomePageHandyman = ({ handymanServicesData, setCreateService }) => {
     <>
       {handymanServicesData.length == 0 && <HomePage2HandyMan />}
       {handymanServicesData.length !== 0 && (
-        <HomePage3HandyMan setCreateService={setCreateService} />
+        <HomePage3HandyMan
+          handymanServicesData={handymanServicesData}
+          setCreateService={setCreateService}
+        />
       )}
     </>
   );

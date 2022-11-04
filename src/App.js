@@ -6,7 +6,6 @@ import UserLoginPage from "./LoginPage/UserLoginPage";
 import "./style.css";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
-
 import handymanData from "./DummyDataSets/profileHandyman";
 import handymanServicesData from "./DummyDataSets/HandymanServices";
 import Profiles from "./Profile/Profiles";
@@ -21,8 +20,9 @@ export default function App() {
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
 
   //=============================================================================
-  // const [handymanServicesData, setHandymanServicesData] = useState([]);
+
   const [servicesCategory, setServicesCategory] = useState("");
+
   //================total review_score and average review_score==================
   const reviews_sum = handymanData[0].reviews_score.reduce(
     (accumulator, value) => {

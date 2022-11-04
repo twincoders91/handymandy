@@ -150,8 +150,12 @@
 
 /* ==============================HomePage3HandyMan========================= */
 
+.hm3--header {
+  width: 100%;
+  text-align: center;
+}
+
 .hm3--page--container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,6 +227,12 @@
   align-items: center;
 }
 
+.hm3--info--view--create--button--container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .hm3--info--view--create--button {
   height: 60px;
   width: 180px;
@@ -240,7 +250,7 @@
   background-color: var(--orange);
   outline: none;
   border: none;
-  top: 82%;
+  bottom: 20px;
   right: 20px;
   font-family: "Exo", sans-serif;
   color: var(--black);

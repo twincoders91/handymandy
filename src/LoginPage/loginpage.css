@@ -1,6 +1,8 @@
 .home--container {
-  background: url("../Assets/loginpage/loginpagebg.svg") no-repeat center
+  background: url("../Assets/universal/background1.jpeg") no-repeat center
     center/cover;
+  /* background: url("../Assets/loginpage/loginpagebg.svg") no-repeat center
+    center/cover; */
   height: 100vh;
   display: flex;
   justify-content: center;

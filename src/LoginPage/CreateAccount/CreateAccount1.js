@@ -5,7 +5,7 @@ import username from "../../Assets/createaccount/username.svg";
 import email from "../../Assets/createaccount/email.svg";
 import password from "../../Assets/createaccount/password.svg";
 
-const CreateAccount1 = () => {
+const CreateAccount1 = ({ setUsercredentialscreated, setCharSelect }) => {
   return (
     <div className="create--account--main--container mt46">
       <img src={backButton} className="back--button" />
@@ -48,7 +48,15 @@ const CreateAccount1 = () => {
           className="create--account--input ml12"
         />
       </div>
-      <button className="user--create--account--button">Create Account</button>
+      <button
+        className="user--create--account--button"
+        onClick={() => {
+          setUsercredentialscreated(true);
+          setCharSelect("step1");
+        }}
+      >
+        Create Account
+      </button>
     </div>
   );
 };

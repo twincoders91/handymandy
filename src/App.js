@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./Home/HomePage";
 import FindServices from "./Services/FindServices";
 import CharacterSelect from "./LoginPage/CharacterSelect";
@@ -18,16 +19,13 @@ import HamburgerModal from "./Components/Modals/HamburgerModal";
 export default function App() {
   return (
     <div>
-      {/* <Navbar /> */}
-      {/* <LoginPage /> */}
-      {/* <HomePage /> */}
-      {/* <CategoryPage /> */}
-      {/* <Services /> */}
-      {/* {/* <AcceptedServicesModal /> */}
-      {/* <UserLoginPage /> */}
-      {/* <CharacterSelect /> */}
-      {/* <CreateAccountMain /> */}
-      <HomePageMain />
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<UserLoginPage />} />
+        <Route path="/signup" element={<CreateAccountMain />} />
+        <Route path="/home" element={<HomePageMain />} />
+        <Route path="/services" element={<Services />} />
+      </Routes>
     </div>
   );
 }

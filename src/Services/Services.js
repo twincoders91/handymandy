@@ -14,10 +14,10 @@ const Services = () => {
       <Navbar />
       <div className="category--page--container">
         {/* <HomePage /> */}
-        {/* <FindServices /> */}
+        <FindServices />
         {/* <ServiceInfo /> */}
         {/* <AcceptedServices /> */}
-        <AcceptedServiceInfo />
+        {/* <AcceptedServiceInfo /> */}
       </div>
     </>
   );

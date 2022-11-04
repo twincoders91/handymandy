@@ -3,7 +3,13 @@ import starfilled from "../Assets/homepage/starfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 
-const CategoryCards = () => {
+const CategoryCards = ({
+  first_name,
+  title,
+  service_image,
+  price_from,
+  type_of_work,
+}) => {
   return (
     <div className="individual--category--card mt24">
       <img
@@ -14,10 +20,10 @@ const CategoryCards = () => {
       <div className="individual--category--description--container">
         <div className="individual--category--description--section ml12">
           <p className="individual--category--title fs16 fw700 m0 white mb4">
-            Plumbing services
+            {title}
           </p>
           <p className="individual--category--name fs12 fw400 m0 white mb4">
-            Plumber Jack
+            {first_name}
           </p>
           <div className="individual--category--profile--stars mb4">
             <img src={recommendedprofile} alt="images"></img>
@@ -33,7 +39,7 @@ const CategoryCards = () => {
         </div>
         <div className="individual--category--price ml12">
           <p className="starting--from m0 white fw700">starting from</p>
-          <p className="starting--from--price m0 fs28 fw700">$150</p>
+          <p className="starting--from--price m0 fs28 fw700">${price_from}</p>
         </div>
       </div>
     </div>

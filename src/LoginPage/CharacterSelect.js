@@ -4,7 +4,7 @@ import backButton from "../Assets/universal/backbutton.svg";
 import userCharacter from "../Assets/characterselect/usercharacter.svg";
 import handymanCharacter from "../Assets/characterselect/handymancharacter.svg";
 
-const CharacterSelect = () => {
+const CharacterSelect = ({ setCharSelect }) => {
   return (
     <div className="character--select--main--container">
       <img src={backButton} className="back--button" />
@@ -15,7 +15,10 @@ const CharacterSelect = () => {
         Join the <span>HandyMandy</span> community now.
       </p>
       <div className="character--select--characters--container">
-        <div className="character--select--characters">
+        <div
+          className="character--select--characters"
+          onClick={() => setCharSelect("user")}
+        >
           <img src={userCharacter} />
           <div className="character--select--characters--type1 fs28 fw700 orange">
             USER
@@ -25,7 +28,10 @@ const CharacterSelect = () => {
             work around your home.
           </p>
         </div>
-        <div className="character--select--characters">
+        <div
+          className="character--select--characters"
+          onClick={() => setCharSelect("handyman")}
+        >
           <img src={handymanCharacter} />
           <div className="character--select--characters--type2 fs28 fw700 orange">
             HANDYMAN

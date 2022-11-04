@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import passwordKey from "../Assets/userloginpage/passwordkey.svg";
 import emailIcon from "../Assets/userloginpage/emailicon.svg";
 import "./userloginpage.css";
@@ -27,9 +28,11 @@ const UserLoginPage = () => {
       <p className="user--login--page--no--account--header">
         Don't have an account yet?
       </p>
-      <button className="user--login--page--signup--button fw700 fs24 mt20 br4">
-        Sign Up
-      </button>
+      <NavLink className="navlinks" to="/signup">
+        <button className="user--login--page--signup--button fw700 fs24 mt20 br4">
+          Sign Up
+        </button>
+      </NavLink>
     </div>
   );
 };

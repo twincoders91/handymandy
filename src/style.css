@@ -23,6 +23,11 @@ body {
 ::-webkit-input-placeholder {
   color: rgb(0, 0, 0, 0.5);
 }
+
+.navlinks {
+  text-decoration: none;
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;

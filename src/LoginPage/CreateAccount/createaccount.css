@@ -21,6 +21,14 @@
   justify-content: center;
   align-items: center;
 }
+.about--business--input--forms--full {
+  width: 370px;
+  height: 160px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  border: 1px black solid;
+  box-shadow: var(--shadowing);
+}
 
 .create--account--input {
   background-color: transparent;
@@ -44,7 +52,7 @@
   justify-content: center;
 }
 .user--create--account--button {
-  margin-top: 19px;
+  margin-top: 24px;
   width: 200px;
   height: 59px;
   display: flex;
@@ -77,8 +85,14 @@
   align-items: center;
 }
 
+.create--services--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .create--profile--header--container {
-  margin-top: 64px;
+  /* margin-top: 64px; */
   text-align: left;
   width: 370px;
 }

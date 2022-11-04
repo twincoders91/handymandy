@@ -1,7 +1,7 @@
 const handymanServicesData = [
   {
     first_name: "Plumber",
-    title: "Plumbing services",
+    category: "Plumbing services",
     description:
       "At Plumber Jack, we work with clients closely to provide the best repair services, with no hidden costs.",
     type_of_work: [
@@ -15,7 +15,7 @@ const handymanServicesData = [
   },
   {
     first_name: "Electrician",
-    title: "Lighting",
+    category: "Lighting",
     description:
       "At Electrical services, we work with clients closely to provide the best repair services, with no hidden costs.",
     type_of_work: [
@@ -29,7 +29,7 @@ const handymanServicesData = [
   },
   {
     first_name: "Repair Man",
-    title: "Repair services",
+    category: "Repair services",
     description:
       "At Repair services, we work with clients closely to provide the best repair services, with no hidden costs.",
     type_of_work: [

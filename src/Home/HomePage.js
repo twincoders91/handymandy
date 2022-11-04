@@ -15,7 +15,7 @@ import "./homepage.css";
 const HomePage = ({ handymanServicesData, setServicesCategory }) => {
   const handleCategoryClick = () => {
     const categoryFilter = handymanServicesData.filter((filteredServices) => {
-      return filteredServices.title === "Lighting";
+      return filteredServices.category === "Lighting";
     });
     setServicesCategory(categoryFilter);
   };

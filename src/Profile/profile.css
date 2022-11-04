@@ -19,8 +19,19 @@
 }
 
 .reviews--box {
-  right: 20px;
-  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: -16px; */
+}
+.reviews--stars--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile--name--box {
+  display: flex;
+  justify-content: center;
 }
 
 .profile--info--card {
@@ -38,6 +49,10 @@
   flex-direction: column;
 }
 
+.profile--medal--icons--box {
+  display: flex;
+  justify-content: center;
+}
 .category--profile--cards {
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -50,8 +65,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* padding-top: 10px; */
+  padding-top: 10px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid black;
   border-radius: 4px;
   box-shadow: var(--shadowing);
@@ -64,9 +81,8 @@
   align-items: center;
 }
 
-.category--profile--cards--icon {
+.profile--icons {
   height: 50px;
-  border-radius: 50%;
 }
 
 .message--button--box {

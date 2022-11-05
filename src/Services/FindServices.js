@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./services.css";
 import searchIcon from "../Assets/categorypage/searchicon.svg";
 import CategoryCards from "./CategoryCards";
@@ -11,11 +11,18 @@ const FindServices = ({
   servicesCategory,
   setChooseCategory,
   setServiceInfo,
+  setBackButtonVisibility,
+  setCurrentPage,
 }) => {
   const handleCategoryCard = (cardData) => {
     setChooseCategory(true);
     setServiceInfo(cardData);
   };
+
+  useEffect(() => {
+    setBackButtonVisibility(true);
+    setCurrentPage("FindServices");
+  });
 
   return (
     <>

@@ -1,4 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+
+const CreateServicesHandyman = ({
+  setCreateService,
+  setBackButtonVisibility,
+  setCurrentPage,
+}) => {
+  const handleSubmitCreateServices = () => {
+    setCreateService(false);
+    setBackButtonVisibility(false);
+    setCurrentPage("HomePageHandyman");
+  };
+
+  useEffect(() => {
+    setBackButtonVisibility(true);
+  });
 
 const CreateServicesHandyman = () => {
   const [tOWInput, setTOWInput] = useState("");
@@ -103,7 +118,12 @@ const CreateServicesHandyman = () => {
               </div>
             </div>
             <div className="buttons--align--center--box">
-              <button className="user--create--account--button ">Submit</button>
+              <button
+                className="user--create--account--button"
+                onClick={() => handleSubmitCreateServices()}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>

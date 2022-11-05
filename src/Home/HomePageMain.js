@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "../Profile/ProfileHandyman";
 import CreateServicesHandyman from "../Services/CreateServicesHandyman";
@@ -11,6 +11,10 @@ const HomePageMain = ({
   handymanServicesData,
   setServicesCategory,
   username,
+  setBackButtonVisibility,
+  backButtonVisibility,
+  setCurrentPage,
+  currentPage,
 }) => {
   //============================States to make sure correct pages show============================
   const [createService, setCreateService] = useState(false);
@@ -32,19 +36,27 @@ const HomePageMain = ({
 
   //======================================================================
 
+  console.log(charSelect);
+
   console.log(serviceCategory);
 
   return (
     <div>
-      <Navbar />
+      <Navbar
+        backButtonVisibility={backButtonVisibility}
+        setCurrentPage={setCurrentPage}
+        charSelect={charSelect}
+        currentPage={currentPage}
+      />
       {charSelect == "user" && (
         <HomePage
           handymanServicesData={handymanServicesData}
           setServicesCategory={setServicesCategory}
+          setCurrentPage={setCurrentPage}
         />
       )}
       {charSelect == "handyman" &&
-        createService == false &&
+        currentPage === "HomePageHandyman" &&
         updateService == false && (
           <HomePageHandyman
             HMindividualServices={HMindividualServices}
@@ -53,8 +65,12 @@ const HomePageMain = ({
             setUpdateServiceDetails={setUpdateServiceDetails}
           />
         )}
-      {createService == true && (
+      {currentPage === "CreateServicesHandyman" && (
+        // createService == true
         <CreateServicesHandyman
+          setCreateService={setCreateService}
+          setBackButtonVisibility={setBackButtonVisibility}
+          setCurrentPage={setCurrentPage}
           setServiceCategory={setServiceCategory}
           setServiceDescription={setServiceDescription}
           setServiceTOW={setServiceTOW}
@@ -70,6 +86,8 @@ const HomePageMain = ({
           setServicePriceFrom={setServicePriceFrom}
         />
       )}
+
+      {createService == true && <CreateServicesHandyman />}
       {/* <ProfileHandyman
         averageRating={averageRating}
         totalReviews={totalReviews}

@@ -12,6 +12,8 @@ const CreateAccountMain = ({
   setUsername,
   setPreviousPage,
   setAccountCreated,
+  setCurrentPage,
+  currentPage,
 }) => {
   return (
     <div className="create--account--container">
@@ -30,12 +32,14 @@ const CreateAccountMain = ({
         <CreateAccount2User
           setCharSelect={setCharSelect}
           setAccountCreated={setAccountCreated}
+          setCurrentPage={setCurrentPage}
         />
       )}
       {charSelect === "handyman" && usercredentialscreated && (
         <CreateAccount2Handyman
           setCharSelect={setCharSelect}
           setAccountCreated={setAccountCreated}
+          setCurrentPage={setCurrentPage}
         />
       )}
     </div>

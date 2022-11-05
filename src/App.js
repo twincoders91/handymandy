@@ -14,8 +14,11 @@ export default function App() {
   const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
   const [totalJobs, setTotalJobs] = useState(0);
-  const [previousPage, setPreviousPage] = useState();
 
+  //================================== Navbar States===========================================
+  const [backButtonVisibility, setBackButtonVisibility] = useState(true);
+  const [currentPage, setCurrentPage] = useState("");
+  const [previousPage, setPreviousPage] = useState();
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
@@ -55,7 +58,8 @@ export default function App() {
 
   console.log(totalReviews);
   console.log(averageRating);
-  console.log(accountCreated);
+  console.log(currentPage);
+  console.log(backButtonVisibility);
 
   return (
     <div>
@@ -81,6 +85,8 @@ export default function App() {
               setUsername={setUsername}
               setPreviousPage={setPreviousPage}
               setAccountCreated={setAccountCreated}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
             />
           }
         />
@@ -95,6 +101,10 @@ export default function App() {
               handymanServicesData={handymanServicesData}
               setServicesCategory={setServicesCategory}
               username={username}
+              setBackButtonVisibility={setBackButtonVisibility}
+              backButtonVisibility={backButtonVisibility}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
             />
           }
         />
@@ -107,6 +117,10 @@ export default function App() {
               totalJobs={totalJobs}
               handymanServicesData={handymanServicesData}
               servicesCategory={servicesCategory}
+              backButtonVisibility={backButtonVisibility}
+              setBackButtonVisibility={setBackButtonVisibility}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -118,6 +132,10 @@ export default function App() {
               averageRating={averageRating}
               totalJobs={totalJobs}
               totalReviews={totalReviews}
+              setBackButtonVisibility={setBackButtonVisibility}
+              backButtonVisibility={backButtonVisibility}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
             />
           }
         />

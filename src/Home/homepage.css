@@ -52,9 +52,10 @@
   height: 85px;
   width: 85px;
   cursor: pointer;
+  color: var(--orange);
 }
 .category--cards--box:hover {
-  background-color: rgb(255, 186, 10, 0.7);
+  background-color: rgb(255, 186, 10, 0.9);
   color: var(--hoverblack);
   cursor: pointer;
 }

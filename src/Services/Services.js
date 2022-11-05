@@ -14,6 +14,10 @@ const Services = ({
   totalJobs,
   handymanServicesData,
   servicesCategory,
+  setBackButtonVisibility,
+  backButtonVisibility,
+  currentPage,
+  setCurrentPage,
 }) => {
   //===========================================States for Service Info Page================================
   const [chooseCategory, setChooseCategory] = useState(false);
@@ -24,7 +28,10 @@ const Services = ({
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        backButtonVisibility={backButtonVisibility}
+        currentPage={currentPage}
+      />
       <div className="category--page--container">
         {!chooseCategory && (
           <FindServices
@@ -35,6 +42,8 @@ const Services = ({
             servicesCategory={servicesCategory}
             setChooseCategory={setChooseCategory}
             setServiceInfo={setServiceInfo}
+            setBackButtonVisibility={setBackButtonVisibility}
+            setCurrentPage={setCurrentPage}
           />
         )}
         {chooseCategory && <ServiceInfo serviceInfo={serviceInfo} />}

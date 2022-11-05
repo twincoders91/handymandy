@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import lighting from "../Assets/homepage/lightbulbs.svg";
 import plumber from "../Assets/homepage/plumber.svg";
@@ -12,13 +12,21 @@ import starfilled from "../Assets/homepage/starfilled.svg";
 import starunfilled from "../Assets/homepage/starunfilled.svg";
 import "./homepage.css";
 
-const HomePage = ({ handymanServicesData, setServicesCategory }) => {
+const HomePage = ({
+  handymanServicesData,
+  setServicesCategory,
+  setCurrentPage,
+}) => {
   const handleCategoryClick = () => {
     const categoryFilter = handymanServicesData.filter((filteredServices) => {
       return filteredServices.category === "Lighting";
     });
     setServicesCategory(categoryFilter);
   };
+
+  useEffect(() => {
+    setCurrentPage("HomePageUser");
+  });
 
   return (
     <>

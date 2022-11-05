@@ -4,7 +4,12 @@ import backButton from "../Assets/universal/backbutton.svg";
 import HamburgerModal from "./Modals/HamburgerModal";
 import "./navbar.css";
 
-const Navbar = () => {
+const Navbar = ({
+  backButtonVisibility,
+  setCurrentPage,
+  currentPage,
+  charSelect,
+}) => {
   //===============================STATES=======================================
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
@@ -16,11 +21,34 @@ const Navbar = () => {
         <HamburgerModal
           setHamburgerModal={setHamburgerModal}
           setIsActive={setIsActive}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          charSelect={charSelect}
         />
       )}
       <div className="navbar--wrapper">
         <div className="container">
-          <img src={backButton} className="back--button" />
+          {backButtonVisibility && currentPage == "FindServices" && (
+            <NavLink to="/home">
+              <img src={backButton} className="back--button" />
+            </NavLink>
+          )}
+          {backButtonVisibility && currentPage == "ProfileHandyman" && (
+            <NavLink
+              to="/home"
+              onClick={() => setCurrentPage("HomePageHandyman")}
+            >
+              <img src={backButton} className="back--button" />
+            </NavLink>
+          )}
+          {backButtonVisibility && currentPage == "CreateServicesHandyman" && (
+            <NavLink
+              to="/home"
+              onClick={() => setCurrentPage("HomePageHandyman")}
+            >
+              <img src={backButton} className="back--button" />
+            </NavLink>
+          )}
           <p className="navbar--header">HandyMandy</p>
           <div className="navbar--menu">
             <button className="is-active">Inbox</button>
@@ -38,7 +66,7 @@ const Navbar = () => {
             }
             onClick={() => {
               setIsActive((current) => !current);
-              setHamburgerModal(true);
+              setHamburgerModal((current) => !current);
             }}
           >
             <span></span>

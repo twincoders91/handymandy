@@ -1,11 +1,17 @@
-import { React, useMemo } from "react";
+import { React, useEffect, useMemo } from "react";
 import "./profile.css";
 import edit from "../Assets/universal/edit.svg";
 import handymanData from "../DummyDataSets/profileHandyman";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
 
-const ProfileHandyman = ({ totalReviews, averageRating, totalJobs }) => {
+const ProfileHandyman = ({
+  totalReviews,
+  averageRating,
+  totalJobs,
+  setBackButtonVisibility,
+  setCurrentPage,
+}) => {
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {
@@ -21,6 +27,11 @@ const ProfileHandyman = ({ totalReviews, averageRating, totalJobs }) => {
       .map((idx) => (
         <img src={starColour(idx)} key={idx} className="review--stars" />
       ));
+  });
+
+  useEffect(() => {
+    setBackButtonVisibility(true);
+    setCurrentPage("ProfileHandyman");
   });
 
   return (

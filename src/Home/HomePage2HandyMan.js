@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const HomePage2HandyMan = () => {
+const HomePage2HandyMan = ({ setBackButtonVisibility, setCurrentPage }) => {
+  const handleCreateServices = () => {
+    setCurrentPage("CreateServicesHandyman");
+  };
+
+  useEffect(() => {
+    setBackButtonVisibility(false);
+  });
+
   return (
     <div>
       <div className="home--page--container">
@@ -11,7 +19,12 @@ const HomePage2HandyMan = () => {
           <p className="home--page--sub--header">Start creating now.</p>
         </div>
         <div className="home--page--create--section">
-          <button className="home--page--create--button br4 fs24 fw700">
+          <button
+            className="home--page--create--button br4 fs24 fw700"
+            onClick={() => {
+              handleCreateServices();
+            }}
+          >
             Create
           </button>
         </div>

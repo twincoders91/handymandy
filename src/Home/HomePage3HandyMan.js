@@ -9,10 +9,12 @@ const HomePage3HandyMan = ({
   setCreateService,
   setUpdateService,
   setUpdateServiceDetails,
+  setCurrentPage,
 }) => {
   //=======================Clicking Create Service Button============================
   const handleCreateServiceClick = () => {
-    setCreateService(true);
+    // setCreateService(true);
+    setCurrentPage("CreateServicesHandyman");
   };
 
   //=========================Clicking Edit Service Button============================

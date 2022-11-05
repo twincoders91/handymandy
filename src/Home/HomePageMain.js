@@ -63,6 +63,8 @@ const HomePageMain = ({
             setCreateService={setCreateService}
             setUpdateService={setUpdateService}
             setUpdateServiceDetails={setUpdateServiceDetails}
+            setBackButtonVisibility={setBackButtonVisibility}
+            setCurrentPage={setCurrentPage}
           />
         )}
       {currentPage === "CreateServicesHandyman" && (

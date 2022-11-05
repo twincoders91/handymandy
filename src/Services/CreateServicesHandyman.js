@@ -1,21 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const CreateServicesHandyman = ({
   setCreateService,
   setBackButtonVisibility,
   setCurrentPage,
 }) => {
-  const handleSubmitCreateServices = () => {
-    setCreateService(false);
-    setBackButtonVisibility(false);
-    setCurrentPage("HomePageHandyman");
-  };
-
-  useEffect(() => {
-    setBackButtonVisibility(true);
-  });
-
-const CreateServicesHandyman = () => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
 
@@ -32,6 +21,16 @@ const CreateServicesHandyman = () => {
   };
 
   console.log(tOWArray);
+
+  const handleSubmitCreateServices = () => {
+    setCreateService(false);
+    setBackButtonVisibility(false);
+    setCurrentPage("HomePageHandyman");
+  };
+
+  useEffect(() => {
+    setBackButtonVisibility(true);
+  });
 
   return (
     <>

@@ -7,7 +7,6 @@ const UpdateServicesHandyman = ({
   setServiceTOW,
   setServicePriceFrom,
 }) => {
-  console.log(updateServiceDetails);
   const [categoryInput, setCategoryInput] = useState(
     updateServiceDetails.services.category
   );
@@ -40,8 +39,14 @@ const UpdateServicesHandyman = ({
     setServiceDescription(descriptionInput);
     setServiceTOW(tOWArray);
     setServicePriceFrom(priceFromInput);
+    const updatedServiceObj = {
+      categoryInput,
+      descriptionInput,
+      tOWArray,
+      priceFromInput,
+    };
+    console.log(updatedServiceObj);
   };
-  console.log(tOWArray);
 
   return (
     <>

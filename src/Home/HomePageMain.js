@@ -37,7 +37,9 @@ const HomePageMain = ({
           setCreateService={setCreateService}
         />
       )}
-      {createService == true && <CreateServicesHandyman />}
+      {createService == true && (
+        <CreateServicesHandyman setCreateService={setCreateService} />
+      )}
       {/* <ProfileHandyman
         averageRating={averageRating}
         totalReviews={totalReviews}

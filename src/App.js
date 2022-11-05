@@ -55,7 +55,6 @@ export default function App() {
 
   console.log(totalReviews);
   console.log(averageRating);
-  console.log(accountCreated);
 
   return (
     <div>

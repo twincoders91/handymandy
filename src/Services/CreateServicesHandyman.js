@@ -1,6 +1,9 @@
 import React from "react";
 
-const CreateServicesHandyman = () => {
+const CreateServicesHandyman = ({ setCreateService }) => {
+  const handleSubmitCreateServices = () => {
+    setCreateService(false);
+  };
   return (
     <>
       <div className="mb36">
@@ -59,7 +62,12 @@ const CreateServicesHandyman = () => {
               </div>
             </div>
             <div className="buttons--align--center--box">
-              <button className="user--create--account--button ">Submit</button>
+              <button
+                className="user--create--account--button"
+                onClick={() => handleSubmitCreateServices()}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>

@@ -10,9 +10,11 @@ const FindServices = ({
   handymanServicesData,
   servicesCategory,
   setChooseCategory,
+  setServiceInfo,
 }) => {
-  const handleCategoryCard = () => {
+  const handleCategoryCard = (cardData) => {
     setChooseCategory(true);
+    setServiceInfo(cardData);
   };
 
   return (
@@ -40,6 +42,7 @@ const FindServices = ({
               service_image={hmService.service_image}
               price_from={hmService.price_from}
               type_of_work={hmService.type_of_work}
+              description={hmService.description}
               handleCategoryCard={handleCategoryCard}
             />
           );

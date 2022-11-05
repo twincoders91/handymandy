@@ -20,8 +20,16 @@ export default function App() {
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [blockNumber, setBlockNumber] = useState("");
+  const [postalCode, setPostalCose] = useState("");
   const [accountCreated, setAccountCreated] = useState(false);
 
+  const [businessName, setBusinessName] = useState("");
+  const [specialities, setSpecialities] = useState([]);
+  const [yearsInBiz, setYearsInBiz] = useState("");
+  const [aboutBiz, setAboutBiz] = useState("");
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
 

@@ -15,7 +15,10 @@ const Services = ({
   handymanServicesData,
   servicesCategory,
 }) => {
+  //===========================================States for Service Info Page================================
   const [chooseCategory, setChooseCategory] = useState(false);
+  const [serviceInfo, setServiceInfo] = useState("");
+  //=================================================================================================================
 
   console.log(servicesCategory);
 
@@ -31,9 +34,10 @@ const Services = ({
             handymanServicesData={handymanServicesData}
             servicesCategory={servicesCategory}
             setChooseCategory={setChooseCategory}
+            setServiceInfo={setServiceInfo}
           />
         )}
-        {chooseCategory && <ServiceInfo />}
+        {chooseCategory && <ServiceInfo serviceInfo={serviceInfo} />}
         {/* <AcceptedServices /> */}
         {/* <AcceptedServiceInfo /> */}
       </div>

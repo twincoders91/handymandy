@@ -13,11 +13,14 @@ const HomePageMain = ({
 }) => {
   const [createService, setCreateService] = useState(false);
 
+  //============================Filtering HM data down to HM's username============================
   const HMindividualServices = handymanServicesData.filter(
     (filteredServices) => {
       return filteredServices.username === username;
     }
   );
+
+  //======================================================================
 
   return (
     <div>

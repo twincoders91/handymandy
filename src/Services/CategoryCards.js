@@ -10,11 +10,20 @@ const CategoryCards = ({
   price_from,
   type_of_work,
   handleCategoryCard,
+  description,
 }) => {
   return (
     <div
       className="individual--category--card mt24"
-      onClick={handleCategoryCard}
+      onClick={() => {
+        handleCategoryCard({
+          first_name,
+          category,
+          price_from,
+          description,
+          type_of_work,
+        });
+      }}
     >
       <img
         src={recommended4usampleimage}

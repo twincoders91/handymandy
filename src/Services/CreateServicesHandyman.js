@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const CreateServicesHandyman = ({ setCreateService }) => {
+const CreateServicesHandyman = ({
+  setCreateService,
+  setBackButtonVisibility,
+  setCurrentPage,
+}) => {
   const handleSubmitCreateServices = () => {
     setCreateService(false);
+    setBackButtonVisibility(false);
+    setCurrentPage("HomePageHandyman");
   };
+
+  useEffect(() => {
+    setBackButtonVisibility(true);
+  });
+
   return (
     <>
       <div className="mb36">

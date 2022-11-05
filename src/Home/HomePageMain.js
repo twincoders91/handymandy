@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "../Profile/ProfileHandyman";
 import CreateServicesHandyman from "../Services/CreateServicesHandyman";
@@ -10,6 +10,10 @@ const HomePageMain = ({
   handymanServicesData,
   setServicesCategory,
   username,
+  setBackButtonVisibility,
+  backButtonVisibility,
+  setCurrentPage,
+  currentPage,
 }) => {
   const [createService, setCreateService] = useState(false);
 
@@ -22,23 +26,44 @@ const HomePageMain = ({
 
   //======================================================================
 
+  useEffect(() => {
+    // if (charSelect == "handyman") {
+    //   setCurrentPage("HomePageHandyman");
+    // } else if (charSelect == "user") {
+    //   setCurrentPage("HomePageUser");
+    // }
+  });
+
   return (
     <div>
-      <Navbar />
+      <Navbar
+        backButtonVisibility={backButtonVisibility}
+        setCurrentPage={setCurrentPage}
+        charSelect={charSelect}
+        currentPage={currentPage}
+      />
       {charSelect == "user" && (
         <HomePage
           handymanServicesData={handymanServicesData}
           setServicesCategory={setServicesCategory}
         />
       )}
-      {charSelect == "handyman" && createService == false && (
+      {charSelect == "handyman" && currentPage === "HomePageHandyman" && (
+        // createService == false
         <HomePageHandyman
           HMindividualServices={HMindividualServices}
           setCreateService={setCreateService}
+          setBackButtonVisibility={setBackButtonVisibility}
+          setCurrentPage={setCurrentPage}
         />
       )}
-      {createService == true && (
-        <CreateServicesHandyman setCreateService={setCreateService} />
+      {currentPage === "CreateServicesHandyman" && (
+        // createService == true
+        <CreateServicesHandyman
+          setCreateService={setCreateService}
+          setBackButtonVisibility={setBackButtonVisibility}
+          setCurrentPage={setCurrentPage}
+        />
       )}
       {/* <ProfileHandyman
         averageRating={averageRating}

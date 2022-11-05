@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const HomePage2HandyMan = ({ setCreateService }) => {
+const HomePage2HandyMan = ({ setBackButtonVisibility, setCurrentPage }) => {
   const handleCreateServices = () => {
-    setCreateService(true);
+    setCurrentPage("CreateServicesHandyman");
   };
+
+  useEffect(() => {
+    setBackButtonVisibility(false);
+  });
 
   return (
     <div>

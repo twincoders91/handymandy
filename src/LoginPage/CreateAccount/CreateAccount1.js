@@ -35,14 +35,6 @@ const CreateAccount1 = ({
           }}
         />
       </div>
-      <div className="universal--input--forms mb36">
-        <img src={email} className="user--login--input--icon ml12" />
-        <input
-          type="text"
-          placeholder="email"
-          className="create--account--input ml12"
-        />
-      </div>
       <span className="create--account--font1 fs16 fw700 white mb8">
         Create password
       </span>

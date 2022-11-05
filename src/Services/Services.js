@@ -7,7 +7,6 @@ import CategoryCards from "./CategoryCards";
 import AcceptedServices from "./AcceptedServices";
 import AcceptedServiceInfo from "./AcceptedServiceInfo";
 import HamburgerModal from "../Components/Modals/HamburgerModal";
-import UpdateServicesHandyman from "./UpdateServicesHandyman";
 
 const Services = ({
   averageRating,
@@ -39,7 +38,6 @@ const Services = ({
           />
         )}
         {chooseCategory && <ServiceInfo serviceInfo={serviceInfo} />}
-        {/* {<UpdateServicesHandyman />} */}
         {/* <AcceptedServices /> */}
         {/* <AcceptedServiceInfo /> */}
       </div>

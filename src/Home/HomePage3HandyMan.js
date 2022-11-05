@@ -4,16 +4,22 @@ import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
-const HomePage3HandyMan = ({ HMindividualServices, setCreateService }) => {
+const HomePage3HandyMan = ({
+  HMindividualServices,
+  setCreateService,
+  setUpdateService,
+  setUpdateServiceDetails,
+}) => {
   //=======================Clicking Create Service Button============================
   const handleCreateServiceClick = () => {
     setCreateService(true);
   };
-  console.log(HMindividualServices);
 
   //=========================Clicking Edit Service Button============================
-  const handleUpdateServiceClick = (updateService) => {
-    console.log(updateService);
+  const handleUpdateServiceClick = (services) => {
+    setUpdateService(true);
+    setUpdateServiceDetails(services);
+    console.log(services);
   };
 
   return (

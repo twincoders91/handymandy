@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CreateServicesHandyman = () => {
+  const [tOWInput, setTOWInput] = useState("");
+  const [tOWArray, setTOWArray] = useState([]);
+
+  const handleAddTOW = (details) => {
+    const array = [...tOWArray, details];
+    setTOWArray(array);
+  };
+
+  const handleTOWDelete = (item) => {
+    console.log(item);
+    const remainingArray = tOWArray.filter((d, i) => d !== item);
+    setTOWArray(remainingArray);
+    console.log("clicked");
+  };
+
+  console.log(tOWArray);
+
   return (
     <>
       <div className="mb36">
@@ -35,16 +52,43 @@ const CreateServicesHandyman = () => {
                 />
               </div>
             </div>
-            <span className="fs16 fw700 white">Type of work</span>
+            <p className="fs16 fw700 white m0 mb16">Type of work</p>
+            <div className="services--type--of--work--added--container mt0">
+              {tOWArray.map((items) => {
+                return (
+                  <div className="services--type--of--work--added">
+                    <div className="services--type--of--work--added--text mt8">
+                      {items}
+                    </div>
+                    <button
+                      className="services--type--of--work--delete--button mb8 mt8"
+                      onClick={() => {
+                        handleTOWDelete(items);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
             <div className="services--type--of--work--container mt8 mb24">
               <div className="universal--input--forms--full">
                 <input
                   type="text"
                   placeholder="e.g. Sink repairs"
                   className="create--account--input ml12"
+                  onChange={(e) => {
+                    setTOWInput(e.target.value);
+                  }}
                 />
               </div>
-              <button className="services--type--of--work--button mt8 fs24 fw300">
+              <button
+                className="services--type--of--work--button mt8 fs24 fw300"
+                onClick={() => {
+                  handleAddTOW(tOWInput);
+                }}
+              >
                 +
               </button>
             </div>

@@ -3,9 +3,12 @@ import CreateServicesHandyman from "../Services/CreateServicesHandyman";
 import HomePage2HandyMan from "./HomePage2HandyMan";
 import HomePage3HandyMan from "./HomePage3HandyMan";
 
-const HomePageHandyman = ({ HMindividualServices, setCreateService }) => {
-  console.log(HMindividualServices);
-  console.log(HMindividualServices.length);
+const HomePageHandyman = ({
+  HMindividualServices,
+  setCreateService,
+  setUpdateService,
+  setUpdateServiceDetails,
+}) => {
   return (
     //===========================if handymanServicesData is empty, show no services================
     //==========================if handymanServicesData is not empty, show services================
@@ -15,6 +18,8 @@ const HomePageHandyman = ({ HMindividualServices, setCreateService }) => {
         <HomePage3HandyMan
           HMindividualServices={HMindividualServices}
           setCreateService={setCreateService}
+          setUpdateService={setUpdateService}
+          setUpdateServiceDetails={setUpdateServiceDetails}
         />
       )}
     </>

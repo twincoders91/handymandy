@@ -12,7 +12,6 @@ const FindServices = ({
   setChooseCategory,
   setServiceInfo,
   setBackButtonVisibility,
-  setCurrentPage,
 }) => {
   const handleCategoryCard = (cardData) => {
     setChooseCategory(true);
@@ -21,7 +20,6 @@ const FindServices = ({
 
   useEffect(() => {
     setBackButtonVisibility(true);
-    setCurrentPage("FindServices");
   });
 
   return (

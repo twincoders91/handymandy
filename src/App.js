@@ -19,7 +19,6 @@ export default function App() {
 
   //================================== Navbar States===========================================
   const [backButtonVisibility, setBackButtonVisibility] = useState(true);
-  const [previousPage, setPreviousPage] = useState();
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
@@ -91,7 +90,6 @@ export default function App() {
               usercredentialscreated={usercredentialscreated}
               setUsercredentialscreated={setUsercredentialscreated}
               setUsername={setUsername}
-              setPreviousPage={setPreviousPage}
               setAccountCreated={setAccountCreated}
             />
           }
@@ -131,6 +129,7 @@ export default function App() {
           path="/createservice"
           element={
             <CreateServicesHandyman
+              backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
               setServiceCategory={setServiceCategory}
               setServiceDescription={setServiceDescription}

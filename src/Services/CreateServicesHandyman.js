@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
-const CreateServicesHandyman = ({ setBackButtonVisibility }) => {
+const CreateServicesHandyman = ({
+  setBackButtonVisibility,
+  backButtonVisibility,
+}) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
 
@@ -24,11 +28,13 @@ const CreateServicesHandyman = ({ setBackButtonVisibility }) => {
   };
 
   useEffect(() => {
-    setBackButtonVisibility(true);
+    // setBackButtonVisibility(true);
   });
+  console.log(backButtonVisibility);
 
   return (
     <>
+      <Navbar backButtonVisibility={backButtonVisibility} />
       <div className="mb36">
         <div className="create--services--container">
           <div className="create--profile--header--container mb24 mt36">

@@ -6,14 +6,17 @@ import "./navbar.css";
 
 const Navbar = ({
   backButtonVisibility,
-  // setCurrentPage,
-  // currentPage,
   charSelect,
+  chooseCategory,
+  setChooseCategory,
 }) => {
   //===============================STATES=======================================
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
   const [hamburgerModal, setHamburgerModal] = useState(false); //modal animation states
+  const handleBackButtonClick = () => {
+    setChooseCategory(false);
+  };
 
   return (
     <>
@@ -21,36 +24,25 @@ const Navbar = ({
         <HamburgerModal
           setHamburgerModal={setHamburgerModal}
           setIsActive={setIsActive}
-          // currentPage={currentPage}
-          // setCurrentPage={setCurrentPage}
           charSelect={charSelect}
         />
       )}
       <div className="navbar--wrapper">
         <div className="container">
-          {backButtonVisibility && (
-            // currentPage == "FindServices" &&
+          {backButtonVisibility && chooseCategory && (
+            <NavLink to="/services">
+              <img
+                src={backButton}
+                className="back--button"
+                onClick={() => handleBackButtonClick()}
+              />
+            </NavLink>
+          )}
+          {backButtonVisibility && !chooseCategory && (
             <NavLink to="/home">
               <img src={backButton} className="back--button" />
             </NavLink>
           )}
-          {/* {backButtonVisibility && currentPage == "ProfileHandyman" && (
-            <NavLink
-              to="/home"
-              onClick={() => setCurrentPage("HomePageHandyman")}
-            >
-              <img src={backButton} className="back--button" />
-            </NavLink>
-          )} */}
-          {/* {backButtonVisibility && 
-          currentPage == "CreateServicesHandyman" && (
-            <NavLink
-              to="/home"
-              onClick={() => setCurrentPage("HomePageHandyman")}
-            >
-              <img src={backButton} className="back--button" />
-            </NavLink>
-          )} */}
           <p className="navbar--header">HandyMandy</p>
           <div className="navbar--menu">
             <button className="is-active">Inbox</button>

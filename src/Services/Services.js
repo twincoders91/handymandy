@@ -31,6 +31,8 @@ const Services = ({
       <Navbar
         backButtonVisibility={backButtonVisibility}
         currentPage={currentPage}
+        chooseCategory={chooseCategory}
+        setChooseCategory={setChooseCategory}
       />
       <div className="category--page--container">
         {!chooseCategory && (

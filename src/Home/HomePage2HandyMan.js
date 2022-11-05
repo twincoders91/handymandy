@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const HomePage2HandyMan = ({ setBackButtonVisibility, setCurrentPage }) => {
-  const handleCreateServices = () => {};
+  const handleCreateServices = () => {
+    setBackButtonVisibility(true);
+  };
 
   useEffect(() => {
     setBackButtonVisibility(false);

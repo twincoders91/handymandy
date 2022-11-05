@@ -11,6 +11,11 @@ const HomePage3HandyMan = ({ HMindividualServices, setCreateService }) => {
   };
   console.log(HMindividualServices);
 
+  //=========================Clicking Edit Service Button============================
+  const handleUpdateServiceClick = (updateService) => {
+    console.log(updateService);
+  };
+
   return (
     <>
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>
@@ -71,7 +76,14 @@ const HomePage3HandyMan = ({ HMindividualServices, setCreateService }) => {
                     );
                   })}
 
-                  <button className="hm3--info--view--profile--button br4 fw700 fs12">
+                  <button
+                    className="hm3--info--view--profile--button br4 fw700 fs12"
+                    onClick={() => {
+                      handleUpdateServiceClick({
+                        services,
+                      });
+                    }}
+                  >
                     Edit
                   </button>
                 </div>

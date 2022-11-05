@@ -4,6 +4,8 @@ import HomePage2HandyMan from "./HomePage2HandyMan";
 import HomePage3HandyMan from "./HomePage3HandyMan";
 
 const HomePageHandyman = ({ HMindividualServices, setCreateService }) => {
+  console.log(HMindividualServices);
+  console.log(HMindividualServices.length);
   return (
     //===========================if handymanServicesData is empty, show no services================
     //==========================if handymanServicesData is not empty, show services================

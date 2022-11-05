@@ -40,8 +40,8 @@
 
 .home--buttons.is-active,
 .home--buttons:hover {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--hoverblack);
+  color: var(--orange);
   cursor: pointer;
 }
 

@@ -4,7 +4,7 @@ import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 import downArrow from "../../Assets/universal/downarrow.svg";
 
-const CreateAccount2Handyman = () => {
+const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
   const [specialities, setSpecialities] = useState(false);
   const [years, setYears] = useState(false);
 
@@ -15,9 +15,22 @@ const CreateAccount2Handyman = () => {
     setYears((current) => !current);
   };
 
+  //================= Back button function ===================
+  const handleBackButtonClick = () => {
+    setCharSelect("step1");
+  };
+  //================= Confirm account created ===================
+  const handleSubmitButtonClick = () => {
+    setAccountCreated(true);
+  };
+
   return (
     <div className="mb36">
-      <img src={backButton} className="back--button" />
+      <img
+        src={backButton}
+        className="back--button"
+        onClick={() => handleBackButtonClick()}
+      />
       <div className="create--profile--header--container mb24 mt60">
         <p className="fs24 fw700 mb8 white create--profile--header--font">
           Let's create your profile.
@@ -145,7 +158,12 @@ const CreateAccount2Handyman = () => {
         </div>
         <div className="buttons--align--center--box">
           <NavLink className="navlinks" to="/home">
-            <button className="user--create--account--button">Submit</button>
+            <button
+              className="user--create--account--button"
+              onClick={() => handleSubmitButtonClick()}
+            >
+              Submit
+            </button>
           </NavLink>
         </div>
       </div>

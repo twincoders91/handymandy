@@ -53,6 +53,7 @@ body {
   position: absolute;
   left: 20px;
   top: 17px;
+  cursor: pointer;
 }
 
 .m0 {

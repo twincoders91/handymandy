@@ -41,12 +41,14 @@
   border-radius: 4px;
   box-shadow: var(--shadowing);
   color: white;
+  cursor: pointer;
 }
 
 .character--select--characters p {
   margin: 16px 15px;
 }
 .character--select--characters:hover {
+  cursor: pointer;
   background-color: rgba(49, 49, 49, 0.5);
   /* color: var(--orange); */
   filter: sepia(100%);

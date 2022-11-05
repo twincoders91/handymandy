@@ -1,5 +1,6 @@
 import React from "react";
 import "./characterselect.css";
+import { NavLink } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
 import userCharacter from "../Assets/characterselect/usercharacter.svg";
 import handymanCharacter from "../Assets/characterselect/handymancharacter.svg";
@@ -7,7 +8,9 @@ import handymanCharacter from "../Assets/characterselect/handymancharacter.svg";
 const CharacterSelect = ({ setCharSelect }) => {
   return (
     <div className="character--select--main--container">
-      <img src={backButton} className="back--button" />
+      <NavLink to="/login">
+        <img src={backButton} className="back--button" />
+      </NavLink>
       <p className="fs32 fw700 mt46 white m0">Character Select</p>
       <p className="character--select--sub--header mt36 fs14 fw700 white mb24">
         We all deserve better, even your house does!

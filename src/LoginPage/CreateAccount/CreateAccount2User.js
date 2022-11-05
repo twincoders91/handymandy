@@ -3,10 +3,23 @@ import { NavLink } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 
-const CreateAccount2User = () => {
+const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
+  //================= Back button function ===================
+  const handleBackButtonClick = () => {
+    setCharSelect("step1");
+  };
+  //================= Confirm account created ===================
+  const handleSubmitButtonClick = () => {
+    setAccountCreated(true);
+  };
+
   return (
     <>
-      <img src={backButton} className="back--button" />
+      <img
+        src={backButton}
+        className="back--button"
+        onClick={() => handleBackButtonClick()}
+      />
       <div className="create--profile--header--container mb24">
         <p className="fs24 fw700 mb8 mt60 white create--profile--header--font">
           Let's create your profile.
@@ -70,7 +83,10 @@ const CreateAccount2User = () => {
         </div>
       </div>
       <NavLink className="navlinks" to="/home">
-        <button className="user--create--account--button">
+        <button
+          className="user--create--account--button"
+          onClick={() => handleSubmitButtonClick()}
+        >
           Create Account
         </button>
       </NavLink>

@@ -1,5 +1,5 @@
 .user--login--page--container {
-  background: url("../Assets/homepage/homepagebg.svg") no-repeat center;
+  /* background: url("../Assets/homepage/homepagebg.svg") no-repeat center; */
 
   height: 100vh;
   background-attachment: fixed;
@@ -30,7 +30,7 @@
 
 .user--login--page--no--account--header {
   margin: 0;
-  margin-top: 300px;
+  margin-top: 120px;
   font-weight: 700;
   font-size: 24px;
   line-height: 31.9px;

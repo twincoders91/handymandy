@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./createaccount.css";
+import { NavLink } from "react-router-dom";
 import backButton from "../../Assets/universal/backbutton.svg";
 import username from "../../Assets/createaccount/username.svg";
 import email from "../../Assets/createaccount/email.svg";
@@ -19,7 +20,9 @@ const CreateAccount1 = ({
 
   return (
     <div className="create--account--main--container mt46">
-      <img src={backButton} className="back--button" />
+      <NavLink to="/">
+        <img src={backButton} className="back--button" />
+      </NavLink>
       <p className="create--account--header--font mb36 fs32 fw700 white">
         Create account
       </p>

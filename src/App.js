@@ -14,6 +14,7 @@ export default function App() {
   const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
   const [totalJobs, setTotalJobs] = useState(0);
+  const [previousPage, setPreviousPage] = useState();
 
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
@@ -23,6 +24,7 @@ export default function App() {
   const [streetAddress, setStreetAddress] = useState("");
   const [blockNumber, setBlockNumber] = useState("");
   const [postalCode, setPostalCose] = useState("");
+  const [accountCreated, setAccountCreated] = useState(false);
 
   const [businessName, setBusinessName] = useState("");
   const [specialities, setSpecialities] = useState([]);
@@ -43,6 +45,8 @@ export default function App() {
     10;
   //=============================================================================
 
+  //======================= Back button settings ===========================
+
   useEffect(() => {
     setAverageRating(reviews_average);
     setTotalReviews(handymanData[0].number_of_reviews.reviews);
@@ -51,12 +55,21 @@ export default function App() {
 
   console.log(totalReviews);
   console.log(averageRating);
+  console.log(accountCreated);
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/login" element={<UserLoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <UserLoginPage
+              charSelect={charSelect}
+              accountCreated={accountCreated}
+            />
+          }
+        />
         <Route
           path="/signup"
           element={
@@ -66,6 +79,8 @@ export default function App() {
               usercredentialscreated={usercredentialscreated}
               setUsercredentialscreated={setUsercredentialscreated}
               setUsername={setUsername}
+              setPreviousPage={setPreviousPage}
+              setAccountCreated={setAccountCreated}
             />
           }
         />

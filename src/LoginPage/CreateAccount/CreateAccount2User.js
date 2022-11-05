@@ -3,11 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 
-const CreateAccount2User = ({
-  setCharSelect,
-  setAccountCreated,
-  setCurrentPage,
-}) => {
+const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
   //================= Back button function ===================
   const handleBackButtonClick = () => {
     setCharSelect("step1");
@@ -15,7 +11,6 @@ const CreateAccount2User = ({
   //================= Confirm account created ===================
   const handleSubmitButtonClick = () => {
     setAccountCreated(true);
-    setCurrentPage("HomePageUser");
   };
 
   return (

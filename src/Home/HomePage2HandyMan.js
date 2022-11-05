@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const HomePage2HandyMan = ({ setBackButtonVisibility, setCurrentPage }) => {
-  const handleCreateServices = () => {
-    setCurrentPage("CreateServicesHandyman");
-  };
+  const handleCreateServices = () => {};
 
   useEffect(() => {
     setBackButtonVisibility(false);
@@ -19,14 +18,16 @@ const HomePage2HandyMan = ({ setBackButtonVisibility, setCurrentPage }) => {
           <p className="home--page--sub--header">Start creating now.</p>
         </div>
         <div className="home--page--create--section">
-          <button
-            className="home--page--create--button br4 fs24 fw700"
-            onClick={() => {
-              handleCreateServices();
-            }}
-          >
-            Create
-          </button>
+          <NavLink to="/createservice">
+            <button
+              className="home--page--create--button br4 fs24 fw700"
+              onClick={() => {
+                handleCreateServices();
+              }}
+            >
+              Create
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>

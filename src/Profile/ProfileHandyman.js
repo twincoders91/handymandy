@@ -10,7 +10,6 @@ const ProfileHandyman = ({
   averageRating,
   totalJobs,
   setBackButtonVisibility,
-  setCurrentPage,
 }) => {
   //======================Creating Star Ratings=======================
   let count = 5;
@@ -31,7 +30,6 @@ const ProfileHandyman = ({
 
   useEffect(() => {
     setBackButtonVisibility(true);
-    setCurrentPage("ProfileHandyman");
   });
 
   return (

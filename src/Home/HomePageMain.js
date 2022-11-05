@@ -11,8 +11,6 @@ const HomePageMain = ({
   username,
   setBackButtonVisibility,
   backButtonVisibility,
-  setCurrentPage,
-  currentPage,
   setUpdateServiceDetails,
 }) => {
   //============================States to make sure correct pages show============================
@@ -33,29 +31,23 @@ const HomePageMain = ({
     <div>
       <Navbar
         backButtonVisibility={backButtonVisibility}
-        setCurrentPage={setCurrentPage}
         charSelect={charSelect}
-        currentPage={currentPage}
       />
       {charSelect == "user" && (
         <HomePage
           handymanServicesData={handymanServicesData}
           setServicesCategory={setServicesCategory}
-          setCurrentPage={setCurrentPage}
+          setBackButtonVisibility={setBackButtonVisibility}
         />
       )}
-      {charSelect == "handyman" &&
-        currentPage === "HomePageHandyman" &&
-        updateService == false && (
-          <HomePageHandyman
-            HMindividualServices={HMindividualServices}
-            setUpdateService={setUpdateService}
-            setUpdateServiceDetails={setUpdateServiceDetails}
-            setBackButtonVisibility={setBackButtonVisibility}
-            setCurrentPage={setCurrentPage}
-          />
-        )}
-
+      {charSelect == "handyman" && updateService == false && (
+        <HomePageHandyman
+          HMindividualServices={HMindividualServices}
+          setUpdateService={setUpdateService}
+          setUpdateServiceDetails={setUpdateServiceDetails}
+          setBackButtonVisibility={setBackButtonVisibility}
+        />
+      )}
       {/* <ProfileHandyman
         averageRating={averageRating}
         totalReviews={totalReviews}

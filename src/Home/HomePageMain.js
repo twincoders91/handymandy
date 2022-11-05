@@ -26,13 +26,7 @@ const HomePageMain = ({
 
   //======================================================================
 
-  useEffect(() => {
-    // if (charSelect == "handyman") {
-    //   setCurrentPage("HomePageHandyman");
-    // } else if (charSelect == "user") {
-    //   setCurrentPage("HomePageUser");
-    // }
-  });
+  console.log(charSelect);
 
   return (
     <div>
@@ -46,6 +40,7 @@ const HomePageMain = ({
         <HomePage
           handymanServicesData={handymanServicesData}
           setServicesCategory={setServicesCategory}
+          setCurrentPage={setCurrentPage}
         />
       )}
       {charSelect == "handyman" && currentPage === "HomePageHandyman" && (

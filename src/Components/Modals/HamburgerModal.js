@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import ReactDom from "react-dom";
@@ -7,13 +7,36 @@ import facebookIcon from "../../Assets/universal/facebook.svg";
 import instagramIcon from "../../Assets/universal/instagram.svg";
 import twitterIcon from "../../Assets/universal/twitter.svg";
 
-const HamburgerModal = ({ setHamburgerModal, setIsActive }) => {
+const HamburgerModal = ({
+  setHamburgerModal,
+  setIsActive,
+  setCurrentPage,
+  charSelect,
+}) => {
+  const handleHomeButtonClick = () => {
+    if (charSelect === "handyman") {
+      setCurrentPage("HomePageHandyman");
+    } else if (charSelect === "user") {
+      setCurrentPage("HomePageUser");
+    }
+    setHamburgerModal((current) => !current);
+    setIsActive((current) => !current);
+  };
+  const handleProfileButtonClick = () => {
+    setHamburgerModal((current) => !current);
+    setIsActive((current) => !current);
+  };
+
   return (
     <>
       {ReactDom.createPortal(
         <div className="modal--hamburger--overlay">
           <div className="modal--hamburger--container">
-            <NavLink className="navlinks" to="/home">
+            <NavLink
+              className="navlinks"
+              to="/home"
+              onClick={() => handleHomeButtonClick()}
+            >
               <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
                 Home
               </p>
@@ -24,7 +47,13 @@ const HamburgerModal = ({ setHamburgerModal, setIsActive }) => {
             <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
               Inbox
             </p>
-            <NavLink className="navlinks" to="/profile">
+            <NavLink
+              className="navlinks"
+              to="/profile"
+              onClick={() => {
+                handleProfileButtonClick();
+              }}
+            >
               <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
                 Profile
               </p>
@@ -34,7 +63,7 @@ const HamburgerModal = ({ setHamburgerModal, setIsActive }) => {
               className="modal--cross--button"
               onClick={() => {
                 setHamburgerModal(false);
-                setIsActive(false);
+                setIsActive((current) => !current);
               }}
             />
             <div className="hamburger--modal--socials--icons">

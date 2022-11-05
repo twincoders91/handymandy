@@ -4,25 +4,35 @@ import backButton from "../Assets/universal/backbutton.svg";
 import HamburgerModal from "./Modals/HamburgerModal";
 import "./navbar.css";
 
-const Navbar = ({ backButtonVisibility, setCurrentPage, currentPage }) => {
+const Navbar = ({
+  backButtonVisibility,
+  setCurrentPage,
+  currentPage,
+  charSelect,
+}) => {
   //===============================STATES=======================================
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
   const [hamburgerModal, setHamburgerModal] = useState(false); //modal animation states
 
-  const handleBackButtonClick = () => {};
-
-  console.log(currentPage);
   return (
     <>
       {hamburgerModal && (
         <HamburgerModal
           setHamburgerModal={setHamburgerModal}
           setIsActive={setIsActive}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          charSelect={charSelect}
         />
       )}
       <div className="navbar--wrapper">
         <div className="container">
+          {backButtonVisibility && currentPage == "FindServices" && (
+            <NavLink to="/home">
+              <img src={backButton} className="back--button" />
+            </NavLink>
+          )}
           {backButtonVisibility && currentPage == "ProfileHandyman" && (
             <NavLink
               to="/home"
@@ -56,7 +66,7 @@ const Navbar = ({ backButtonVisibility, setCurrentPage, currentPage }) => {
             }
             onClick={() => {
               setIsActive((current) => !current);
-              setHamburgerModal(true);
+              setHamburgerModal((current) => !current);
             }}
           >
             <span></span>

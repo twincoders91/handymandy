@@ -117,6 +117,10 @@ export default function App() {
               totalJobs={totalJobs}
               handymanServicesData={handymanServicesData}
               servicesCategory={servicesCategory}
+              backButtonVisibility={backButtonVisibility}
+              setBackButtonVisibility={setBackButtonVisibility}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
           }
         />

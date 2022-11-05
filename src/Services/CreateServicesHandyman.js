@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const CreateServicesHandyman = ({
-  setCreateService,
-  setBackButtonVisibility,
-  setCurrentPage,
-}) => {
+const CreateServicesHandyman = ({ setBackButtonVisibility }) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
 
@@ -23,9 +20,7 @@ const CreateServicesHandyman = ({
   console.log(tOWArray);
 
   const handleSubmitCreateServices = () => {
-    setCreateService(false);
     setBackButtonVisibility(false);
-    setCurrentPage("HomePageHandyman");
   };
 
   useEffect(() => {
@@ -117,12 +112,14 @@ const CreateServicesHandyman = ({
               </div>
             </div>
             <div className="buttons--align--center--box">
-              <button
-                className="user--create--account--button"
-                onClick={() => handleSubmitCreateServices()}
-              >
-                Submit
-              </button>
+              <NavLink to="/home">
+                <button
+                  className="user--create--account--button"
+                  onClick={() => handleSubmitCreateServices()}
+                >
+                  Submit
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>

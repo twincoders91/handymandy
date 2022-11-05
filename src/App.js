@@ -19,7 +19,6 @@ export default function App() {
 
   //================================== Navbar States===========================================
   const [backButtonVisibility, setBackButtonVisibility] = useState(true);
-  const [currentPage, setCurrentPage] = useState("");
   const [previousPage, setPreviousPage] = useState();
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
@@ -68,7 +67,6 @@ export default function App() {
 
   console.log(totalReviews);
   console.log(averageRating);
-  console.log(currentPage);
   console.log(backButtonVisibility);
 
   return (
@@ -95,8 +93,6 @@ export default function App() {
               setUsername={setUsername}
               setPreviousPage={setPreviousPage}
               setAccountCreated={setAccountCreated}
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
             />
           }
         />
@@ -113,8 +109,6 @@ export default function App() {
               username={username}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
               setUpdateServiceDetails={setUpdateServiceDetails}
             />
           }
@@ -130,8 +124,6 @@ export default function App() {
               servicesCategory={servicesCategory}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -139,9 +131,7 @@ export default function App() {
           path="/createservice"
           element={
             <CreateServicesHandyman
-              setCreateService={setCreateService}
               setBackButtonVisibility={setBackButtonVisibility}
-              setCurrentPage={setCurrentPage}
               setServiceCategory={setServiceCategory}
               setServiceDescription={setServiceDescription}
               setServiceTOW={setServiceTOW}
@@ -172,8 +162,6 @@ export default function App() {
               totalReviews={totalReviews}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
             />
           }
         />

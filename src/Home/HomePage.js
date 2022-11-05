@@ -15,7 +15,7 @@ import "./homepage.css";
 const HomePage = ({
   handymanServicesData,
   setServicesCategory,
-  setCurrentPage,
+  setBackButtonVisibility,
 }) => {
   const handleCategoryClick = () => {
     const categoryFilter = handymanServicesData.filter((filteredServices) => {
@@ -25,7 +25,7 @@ const HomePage = ({
   };
 
   useEffect(() => {
-    setCurrentPage("HomePageUser");
+    setBackButtonVisibility(false);
   });
 
   return (

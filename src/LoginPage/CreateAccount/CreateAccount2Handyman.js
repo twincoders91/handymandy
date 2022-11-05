@@ -4,11 +4,7 @@ import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 import downArrow from "../../Assets/universal/downarrow.svg";
 
-const CreateAccount2Handyman = ({
-  setCharSelect,
-  setAccountCreated,
-  setCurrentPage,
-}) => {
+const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
   const [specialities, setSpecialities] = useState(false);
   const [years, setYears] = useState(false);
 
@@ -33,7 +29,6 @@ const CreateAccount2Handyman = ({
   //================= Confirm account created ===================
   const handleSubmitButtonClick = () => {
     setAccountCreated(true);
-    setCurrentPage("HomePageHandyman");
   };
 
   return (

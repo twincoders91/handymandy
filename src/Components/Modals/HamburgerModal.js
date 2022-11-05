@@ -10,14 +10,14 @@ import twitterIcon from "../../Assets/universal/twitter.svg";
 const HamburgerModal = ({
   setHamburgerModal,
   setIsActive,
-  setCurrentPage,
+  // setCurrentPage,
   charSelect,
 }) => {
   const handleHomeButtonClick = () => {
     if (charSelect === "handyman") {
-      setCurrentPage("HomePageHandyman");
+      // setCurrentPage("HomePageHandyman");
     } else if (charSelect === "user") {
-      setCurrentPage("HomePageUser");
+      // setCurrentPage("HomePageUser");
     }
     setHamburgerModal((current) => !current);
     setIsActive((current) => !current);

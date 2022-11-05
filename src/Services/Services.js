@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FindServices from "./FindServices";
 import Navbar from "../Components/Navbar";
 import HomePage from "../Home/HomePage";
@@ -15,19 +15,25 @@ const Services = ({
   handymanServicesData,
   servicesCategory,
 }) => {
+  const [chooseCategory, setChooseCategory] = useState(false);
+
   console.log(servicesCategory);
+
   return (
     <>
       <Navbar />
       <div className="category--page--container">
-        <FindServices
-          averageRating={averageRating}
-          totalJobs={totalJobs}
-          totalReviews={totalReviews}
-          handymanServicesData={handymanServicesData}
-          servicesCategory={servicesCategory}
-        />
-        {/* <ServiceInfo /> */}
+        {!chooseCategory && (
+          <FindServices
+            averageRating={averageRating}
+            totalJobs={totalJobs}
+            totalReviews={totalReviews}
+            handymanServicesData={handymanServicesData}
+            servicesCategory={servicesCategory}
+            setChooseCategory={setChooseCategory}
+          />
+        )}
+        {chooseCategory && <ServiceInfo />}
         {/* <AcceptedServices /> */}
         {/* <AcceptedServiceInfo /> */}
       </div>

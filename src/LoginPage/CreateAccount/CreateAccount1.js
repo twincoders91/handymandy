@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 import username from "../../Assets/createaccount/username.svg";
 import email from "../../Assets/createaccount/email.svg";
 import password from "../../Assets/createaccount/password.svg";
 
-const CreateAccount1 = ({ setUsercredentialscreated, setCharSelect }) => {
+const CreateAccount1 = ({
+  setUsercredentialscreated,
+  setCharSelect,
+  setUsername,
+}) => {
+  const [usernameInput, setUsernameInput] = useState("");
+
+  const handleCreateAccount = () => {
+    setUsername(usernameInput);
+    console.log(usernameInput);
+  };
+
   return (
     <div className="create--account--main--container mt46">
       <img src={backButton} className="back--button" />
@@ -19,6 +30,9 @@ const CreateAccount1 = ({ setUsercredentialscreated, setCharSelect }) => {
           type="text"
           placeholder="username"
           className="create--account--input ml12"
+          onChange={(e) => {
+            setUsernameInput(e.target.value);
+          }}
         />
       </div>
       <div className="universal--input--forms mb36">
@@ -53,6 +67,7 @@ const CreateAccount1 = ({ setUsercredentialscreated, setCharSelect }) => {
         onClick={() => {
           setUsercredentialscreated(true);
           setCharSelect("step1");
+          handleCreateAccount();
         }}
       >
         Create Account

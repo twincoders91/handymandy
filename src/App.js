@@ -15,12 +15,12 @@ export default function App() {
   const [totalReviews, setTotalReviews] = useState(0);
   const [totalJobs, setTotalJobs] = useState(0);
 
-  //=============================================================================
+  //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
+  const [username, setUsername] = useState("");
 
-  //=============================================================================
-
+  //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
 
   //================total review_score and average review_score==================
@@ -57,6 +57,7 @@ export default function App() {
               setCharSelect={setCharSelect}
               usercredentialscreated={usercredentialscreated}
               setUsercredentialscreated={setUsercredentialscreated}
+              setUsername={setUsername}
             />
           }
         />
@@ -70,6 +71,7 @@ export default function App() {
               charSelect={charSelect}
               handymanServicesData={handymanServicesData}
               setServicesCategory={setServicesCategory}
+              username={username}
             />
           }
         />

@@ -4,17 +4,17 @@ import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
-const HomePage3HandyMan = ({ handymanServicesData, setCreateService }) => {
+const HomePage3HandyMan = ({ HMindividualServices, setCreateService }) => {
   //=======================Clicking Create Service Button============================
   const handleCreateServiceClick = () => {
     setCreateService(true);
   };
-  console.log(handymanServicesData);
+  console.log(HMindividualServices);
 
   return (
     <>
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>
-      {handymanServicesData.map((services) => {
+      {HMindividualServices.map((services) => {
         return (
           <div className="hm3--page--container mt24">
             <div className="hm3--info--card">

@@ -9,9 +9,16 @@ const HomePageMain = ({
   charSelect,
   handymanServicesData,
   setServicesCategory,
+  username,
 }) => {
   const [createService, setCreateService] = useState(false);
-  console.log(createService);
+
+  const HMindividualServices = handymanServicesData.filter(
+    (filteredServices) => {
+      return filteredServices.username === username;
+    }
+  );
+
   return (
     <div>
       <Navbar />
@@ -23,7 +30,7 @@ const HomePageMain = ({
       )}
       {charSelect == "handyman" && createService == false && (
         <HomePageHandyman
-          handymanServicesData={handymanServicesData}
+          HMindividualServices={HMindividualServices}
           setCreateService={setCreateService}
         />
       )}

@@ -9,7 +9,12 @@ const FindServices = ({
   totalReviews,
   handymanServicesData,
   servicesCategory,
+  setChooseCategory,
 }) => {
+  const handleCategoryCard = () => {
+    setChooseCategory(true);
+  };
+
   return (
     <>
       <div className="category--page--container">
@@ -31,10 +36,11 @@ const FindServices = ({
           return (
             <CategoryCards
               first_name={hmService.first_name}
-              title={hmService.title}
+              category={hmService.category}
               service_image={hmService.service_image}
               price_from={hmService.price_from}
               type_of_work={hmService.type_of_work}
+              handleCategoryCard={handleCategoryCard}
             />
           );
         })}

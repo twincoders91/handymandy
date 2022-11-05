@@ -9,6 +9,7 @@ const CreateAccountMain = ({
   setCharSelect,
   usercredentialscreated,
   setUsercredentialscreated,
+  setUsername,
 }) => {
   return (
     <div className="create--account--container">
@@ -16,6 +17,7 @@ const CreateAccountMain = ({
         <CreateAccount1
           setUsercredentialscreated={setUsercredentialscreated}
           setCharSelect={setCharSelect}
+          setUsername={setUsername}
         />
       )}
       {charSelect === "step1" && (

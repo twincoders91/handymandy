@@ -5,13 +5,17 @@ import recommended4usampleimage from "../Assets/homepage/recommended4usampleimag
 
 const CategoryCards = ({
   first_name,
-  title,
+  category,
   service_image,
   price_from,
   type_of_work,
+  handleCategoryCard,
 }) => {
   return (
-    <div className="individual--category--card mt24">
+    <div
+      className="individual--category--card mt24"
+      onClick={handleCategoryCard}
+    >
       <img
         src={recommended4usampleimage}
         className="individual--category--image"
@@ -20,7 +24,7 @@ const CategoryCards = ({
       <div className="individual--category--description--container">
         <div className="individual--category--description--section ml12">
           <p className="individual--category--title fs16 fw700 m0 white mb4">
-            {title}
+            {category}
           </p>
           <p className="individual--category--name fs12 fw400 m0 white mb4">
             {first_name}

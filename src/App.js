@@ -8,6 +8,8 @@ import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
 import handymanData from "./DummyDataSets/profileHandyman";
 import handymanServicesData from "./DummyDataSets/HandymanServices";
+import CreateServicesHandyman from "./Services/CreateServicesHandyman";
+import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
 import Profiles from "./Profile/Profiles";
 
 export default function App() {
@@ -35,6 +37,14 @@ export default function App() {
   const [aboutBiz, setAboutBiz] = useState("");
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
+
+  //============================State that hold services data=====================================
+  const [createService, setCreateService] = useState(false);
+  const [serviceCategory, setServiceCategory] = useState("");
+  const [serviceDescription, setServiceDescription] = useState("");
+  const [serviceTOW, setServiceTOW] = useState([]);
+  const [servicePriceFrom, setServicePriceFrom] = useState("");
+  const [updateServiceDetails, setUpdateServiceDetails] = useState({});
 
   //================total review_score and average review_score==================
   const reviews_sum = handymanData[0].reviews_score.reduce(
@@ -105,6 +115,7 @@ export default function App() {
               backButtonVisibility={backButtonVisibility}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              setUpdateServiceDetails={setUpdateServiceDetails}
             />
           }
         />
@@ -124,6 +135,33 @@ export default function App() {
             />
           }
         />
+        <Route
+          path="/createservice"
+          element={
+            <CreateServicesHandyman
+              setCreateService={setCreateService}
+              setBackButtonVisibility={setBackButtonVisibility}
+              setCurrentPage={setCurrentPage}
+              setServiceCategory={setServiceCategory}
+              setServiceDescription={setServiceDescription}
+              setServiceTOW={setServiceTOW}
+              setServicePriceFrom={setServicePriceFrom}
+            />
+          }
+        />
+        <Route
+          path="/updateservice"
+          element={
+            <UpdateServicesHandyman
+              updateServiceDetails={updateServiceDetails}
+              setServiceCategory={setServiceCategory}
+              setServiceDescription={setServiceDescription}
+              setServiceTOW={setServiceTOW}
+              setServicePriceFrom={setServicePriceFrom}
+            />
+          }
+        />
+
         <Route
           path="/profile"
           element={

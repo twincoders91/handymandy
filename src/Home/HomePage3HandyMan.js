@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import starfilled from "../Assets/homepage/starfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
@@ -6,7 +7,6 @@ import tick from "../Assets/services/tick.svg";
 
 const HomePage3HandyMan = ({
   HMindividualServices,
-  setCreateService,
   setUpdateService,
   setUpdateServiceDetails,
   setCurrentPage,
@@ -83,17 +83,19 @@ const HomePage3HandyMan = ({
                       </div>
                     );
                   })}
-
-                  <button
-                    className="hm3--info--view--profile--button br4 fw700 fs12"
-                    onClick={() => {
-                      handleUpdateServiceClick({
-                        services,
-                      });
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <NavLink to="/updateservice">
+                    {" "}
+                    <button
+                      className="hm3--info--view--profile--button br4 fw700 fs12"
+                      onClick={() => {
+                        handleUpdateServiceClick({
+                          services,
+                        });
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </NavLink>
                 </div>
               </div>
             </div>

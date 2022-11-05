@@ -11,7 +11,7 @@ const HomePageMain = ({
   setServicesCategory,
 }) => {
   const [createService, setCreateService] = useState(false);
-
+  console.log(createService);
   return (
     <div>
       <Navbar />

@@ -1,6 +1,6 @@
 .user--login--page--container {
-  background: url("../Assets/loginpage/loginpagebg.svg") no-repeat center
-    center/cover;
+  background: url("../Assets/homepage/homepagebg.svg") no-repeat center;
+
   height: 100vh;
   background-attachment: fixed;
   display: flex;

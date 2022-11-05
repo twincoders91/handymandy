@@ -8,10 +8,10 @@ const CreateAccount2User = () => {
     <>
       <img src={backButton} className="back--button" />
       <div className="create--profile--header--container mb24">
-        <p className="fs16 fw700 mb8 white create--profile--header--font">
+        <p className="fs24 fw700 mb8 mt60 white create--profile--header--font">
           Let's create your profile.
         </p>
-        <span className="fs12 fw400 white">
+        <span className="fs14 fw400 white">
           HandyMandy uses this information to help ensure trust and safety for
           HandyMany users.
         </span>

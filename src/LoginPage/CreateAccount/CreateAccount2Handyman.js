@@ -4,14 +4,25 @@ import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 import downArrow from "../../Assets/universal/downarrow.svg";
 
-const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
+const CreateAccount2Handyman = ({
+  setCharSelect,
+  setAccountCreated,
+  setCurrentPage,
+}) => {
   const [specialities, setSpecialities] = useState(false);
   const [years, setYears] = useState(false);
 
+  //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
     setSpecialities((current) => !current);
   };
+  const handleClickSpecialitiesSelection = () => {
+    setSpecialities((current) => !current);
+  };
   const handleClickYears = () => {
+    setYears((current) => !current);
+  };
+  const handleClickYearsSelection = () => {
     setYears((current) => !current);
   };
 
@@ -22,6 +33,7 @@ const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
   //================= Confirm account created ===================
   const handleSubmitButtonClick = () => {
     setAccountCreated(true);
+    setCurrentPage("HomePageHandyman");
   };
 
   return (
@@ -99,13 +111,22 @@ const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
             </div>
             {specialities && (
               <div className="dropdown--menu--specialities absolute">
-                <div className="specialities--selection  fs14 fw300">
+                <div
+                  className="specialities--selection  fs14 fw300"
+                  onClick={() => handleClickSpecialitiesSelection()}
+                >
                   Lighting
                 </div>
-                <div className="specialities--selection  fs14 fw300">
+                <div
+                  className="specialities--selection  fs14 fw300"
+                  onClick={() => handleClickSpecialitiesSelection()}
+                >
                   Lighting
                 </div>
-                <div className="specialities--selection fs14 fw300">
+                <div
+                  className="specialities--selection fs14 fw300"
+                  onClick={() => handleClickSpecialitiesSelection()}
+                >
                   Lighting
                 </div>
               </div>
@@ -114,7 +135,7 @@ const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
           <span className="fs16 fw700 white">Years in business </span>
           <div className="mb8">
             <div
-              className="specialities--box--selection mt8 mb8 relative"
+              className="specialities--box--selection mt8  relative"
               onClick={() => handleClickYears()}
             >
               Select number of years
@@ -125,23 +146,40 @@ const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
             </div>
             {years && (
               <div className="dropdown--menu--specialities absolute">
-                <div className="specialities--selection  fs14 fw300">
+                <div
+                  className="specialities--selection  fs14 fw300"
+                  onClick={() => handleClickYearsSelection()}
+                >
                   0-2 years
                 </div>
-                <div className="specialities--selection  fs14 fw300">
+                <div
+                  className="specialities--selection  fs14 fw300"
+                  onClick={() => handleClickYearsSelection()}
+                >
                   2-4 years
                 </div>
-                <div className="specialities--selection fs14 fw300">
+                <div
+                  className="specialities--selection fs14 fw300"
+                  onClick={() => handleClickYearsSelection()}
+                >
                   4-6 years
                 </div>
-                <div className="specialities--selection fs14 fw300">
+                <div
+                  className="specialities--selection fs14 fw300"
+                  onClick={() => handleClickYearsSelection()}
+                >
                   6-8 years
                 </div>
-                <div className="specialities--selection fs14 fw300">
+                <div
+                  className="specialities--selection fs14 fw300"
+                  onClick={() => handleClickYearsSelection()}
+                >
                   8-10 years
                 </div>
-                <div className="specialities--selection fs14 fw300">
-                  {" "}
+                <div
+                  className="specialities--selection fs14 fw300"
+                  onClick={() => handleClickYearsSelection()}
+                >
                   {">"}10
                 </div>
               </div>

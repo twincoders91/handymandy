@@ -4,10 +4,15 @@ import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
-const HomePage3HandyMan = ({ HMindividualServices, setCreateService }) => {
+const HomePage3HandyMan = ({
+  HMindividualServices,
+  setCreateService,
+  setCurrentPage,
+}) => {
   //=======================Clicking Create Service Button============================
   const handleCreateServiceClick = () => {
-    setCreateService(true);
+    // setCreateService(true);
+    setCurrentPage("CreateServicesHandyman");
   };
   console.log(HMindividualServices);
 

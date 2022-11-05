@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "./ProfileHandyman";
 
-const Profiles = ({ charSelect, averageRating, totalJobs, totalReviews }) => {
+const Profiles = ({
+  charSelect,
+  averageRating,
+  totalJobs,
+  totalReviews,
+  setBackButtonVisibility,
+  backButtonVisibility,
+  setCurrentPage,
+  currentPage,
+}) => {
   return (
     <div>
-      <Navbar />
+      <Navbar
+        backButtonVisibility={backButtonVisibility}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
       {charSelect == "user" && <Profiles />}
       {charSelect == "handyman" && (
         <ProfileHandyman
           averageRating={averageRating}
           totalJobs={totalJobs}
           totalReviews={totalReviews}
+          setBackButtonVisibility={setBackButtonVisibility}
+          setCurrentPage={setCurrentPage}
         />
       )}
     </div>

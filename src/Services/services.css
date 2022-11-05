@@ -181,7 +181,7 @@
   background-color: var(--orange);
   outline: none;
   border: none;
-  top: 82%;
+  bottom: 20px;
   right: 20px;
   font-family: "Exo", sans-serif;
   color: var(--black);

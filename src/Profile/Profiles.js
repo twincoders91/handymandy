@@ -18,6 +18,7 @@ const Profiles = ({
         backButtonVisibility={backButtonVisibility}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
+        charSelect={charSelect}
       />
       {charSelect == "user" && <Profiles />}
       {charSelect == "handyman" && (

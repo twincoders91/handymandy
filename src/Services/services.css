@@ -57,6 +57,12 @@
   box-shadow: var(--shadowing);
   background: rgba(0, 0, 0, 0.4);
 }
+.individual--category--card:hover {
+  cursor: pointer;
+  background-color: rgba(49, 49, 49, 0.5);
+  /* color: var(--orange); */
+  filter: sepia(22%);
+}
 
 .individual--category--image {
   width: 120px;

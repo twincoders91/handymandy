@@ -46,6 +46,7 @@ const UpdateServicesHandyman = ({
       priceFromInput,
     };
     console.log(updatedServiceObj);
+    console.log(tOWArray);
   };
 
   return (

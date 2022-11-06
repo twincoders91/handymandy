@@ -11,6 +11,7 @@ import handymanServicesData from "./DummyDataSets/HandymanServices";
 import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
 import Profiles from "./Profile/Profiles";
+import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 
 export default function App() {
@@ -151,7 +152,7 @@ export default function App() {
             />
           }
         />
-
+        <Route path="/acceptedservice" element={<AcceptedServices />} />
         <Route
           path="/profile"
           element={

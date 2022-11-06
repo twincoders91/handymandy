@@ -1,0 +1,57 @@
+.edit-profile-image--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit--profile--image--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 100px;
+}
+
+.edit--profile--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.edit--profile--image {
+  opacity: 1;
+  display: block;
+  height: 100px;
+  transition: 0.69s ease;
+  backface-visibility: hidden;
+  top: 70px;
+  border-radius: 50%;
+}
+.middle--content {
+  transition: 0.69s ease;
+  opacity: 0;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit--profile--image--box:hover .edit--profile--image {
+  opacity: 0.5;
+}
+
+.middle--content:hover {
+  opacity: 1;
+}
+
+.middle--image {
+  height: 50px;
+  cursor: pointer;
+}

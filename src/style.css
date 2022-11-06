@@ -16,8 +16,10 @@ body {
   padding: 0;
   font-family: "Exo", sans-serif;
   color: var(--orange);
-  background: url("./Assets/homepage/homepagebg.svg") no-repeat center
+  background: url("./Assets/universal/background1.jpeg") no-repeat center
     center/cover;
+  /* background: url("./Assets/homepage/homepagebg.svg") no-repeat center
+    center/cover; */
   background-attachment: fixed;
 }
 

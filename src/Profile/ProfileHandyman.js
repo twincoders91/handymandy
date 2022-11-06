@@ -4,6 +4,9 @@ import edit from "../Assets/universal/edit.svg";
 import handymanData from "../DummyDataSets/profileHandyman";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
+import trophy from "../Assets/profile/trophy.svg";
+import time from "../Assets/profile/time.svg";
+import reviews from "../Assets/profile/reviews.svg";
 
 const ProfileHandyman = ({
   totalReviews,
@@ -64,11 +67,7 @@ const ProfileHandyman = ({
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
             <div className="category--profile--cards--box">
-              <img
-                src={require(`../Assets/profile/${handymanData[0].number_of_years.icon}`)}
-                className="profile--icons"
-                alt="images"
-              ></img>
+              <img src={time} className="profile--icons" alt="images"></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {handymanData[0].number_of_years.years}
@@ -78,8 +77,8 @@ const ProfileHandyman = ({
             </div>
             <div className="category--profile--cards--box">
               <img
-                src={require(`../Assets/profile/${handymanData[0].number_of_jobs.icon}`)}
-                className="profile--icons"
+                src={trophy}
+                className="profile--trophy--icons"
                 alt="images"
               ></img>
               <div className="profile--description--cards">
@@ -90,11 +89,7 @@ const ProfileHandyman = ({
               </div>
             </div>
             <div className="category--profile--cards--box">
-              <img
-                src={require(`../Assets/profile/${handymanData[0].number_of_reviews.icon}`)}
-                className="profile--icons"
-                alt="images"
-              ></img>
+              <img src={reviews} className="profile--icons" alt="images"></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {totalReviews}
@@ -146,7 +141,7 @@ const ProfileHandyman = ({
             <div className="reviews--cards--box mb8 relative">
               <img
                 src={require(`../Assets/profile/${items.icon}`)}
-                className="profile--icons ml16 mt16 mb16"
+                className="profile--image--icons ml16 mt16 mb16"
                 alt="images"
               ></img>
               <div className="reviews--description--cards ml16 mt16 mb16">

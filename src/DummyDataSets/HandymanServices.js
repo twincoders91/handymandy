@@ -2,6 +2,7 @@ const handymanServicesData = [
   {
     username: "T.O.P",
     first_name: "T.O.P",
+    last_name: "Jack",
     category: "Plumbing services",
     description:
       "At Plumber Jack, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -17,6 +18,7 @@ const handymanServicesData = [
   {
     username: "T.O.P",
     first_name: "T.O.P",
+    last_name: "Jack",
     category: "Lighting",
     description:
       "At Electrical services, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -43,6 +45,7 @@ const handymanServicesData = [
   {
     username: "T.O.P",
     first_name: "T.O.P",
+    last_name: "Jack",
     category: "Repair services",
     description:
       "At Repair services, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -53,6 +56,7 @@ const handymanServicesData = [
   {
     username: "G.D",
     first_name: "G.D",
+    last_name: "Ji Yoong",
     category: "Plumbing services",
     description:
       "At Plumber Jack, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -68,6 +72,7 @@ const handymanServicesData = [
   {
     username: "G.D",
     first_name: "G.D",
+    last_name: "Ji Yoong",
     category: "Lighting",
     description:
       "At Electrical services, we work with clients closely to provide the best repair services, with no hidden costs.",
@@ -78,6 +83,7 @@ const handymanServicesData = [
   {
     username: "G.D",
     first_name: "G.D",
+    last_name: "Ji Yoong",
     category: "Heaters services",
     description:
       "At Repair services, we work with clients closely to provide the best repair services, with no hidden costs.",

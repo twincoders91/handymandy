@@ -2,7 +2,8 @@ import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 
 const handymanData = [
   {
-    first_name: "Plumber",
+    user_name: "T.O.P",
+    first_name: "T.O.P",
     last_name: "Jack",
     email: "plumberjack@ga.com",
     business_name: "Plumber Jack pte ltd",

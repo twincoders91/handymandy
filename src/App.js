@@ -23,7 +23,7 @@ export default function App() {
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("User1");
   const [email, setEmail] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [blockNumber, setBlockNumber] = useState("");
@@ -64,10 +64,6 @@ export default function App() {
     setTotalReviews(handymanData[0].number_of_reviews.reviews);
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
-
-  console.log(totalReviews);
-  console.log(averageRating);
-  console.log(backButtonVisibility);
 
   return (
     <div>
@@ -151,7 +147,15 @@ export default function App() {
             />
           }
         />
-        <Route path="/acceptedservice" element={<AcceptedServices />} />
+        <Route
+          path="/acceptedservice"
+          element={
+            <AcceptedServices
+              handymanServicesData={handymanServicesData}
+              username={username}
+            />
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -166,6 +170,10 @@ export default function App() {
           }
         />
       </Routes>
+      <AcceptedServices
+        handymanServicesData={handymanServicesData}
+        username={username}
+      />
     </div>
   );
 }

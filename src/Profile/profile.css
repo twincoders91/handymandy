@@ -82,9 +82,15 @@
 }
 
 .profile--icons {
-  height: 50px;
+  height: 42px;
 }
-
+.profile--trophy--icons {
+  height: 38px;
+}
+.profile--image--icons {
+  border-radius: 50%;
+  height: 42px;
+}
 .message--button--box {
   display: flex;
   justify-content: center;

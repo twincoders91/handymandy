@@ -12,6 +12,7 @@ import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
 import Profiles from "./Profile/Profiles";
 import AcceptedServices from "./Services/AcceptedServices";
+import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 
 export default function App() {
   const [averageRating, setAverageRating] = useState(0);
@@ -169,6 +170,7 @@ export default function App() {
             />
           }
         />
+        <Route path="/editprofile" element={<EditProfileHandyMan />} />
       </Routes>
       <AcceptedServices
         handymanServicesData={handymanServicesData}

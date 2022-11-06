@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "./ProfileHandyman";
+import ViewProfileHandyman from "./ViewProfileHandyMan";
 
 const Profiles = ({
   charSelect,
@@ -9,6 +10,7 @@ const Profiles = ({
   totalReviews,
   setBackButtonVisibility,
   backButtonVisibility,
+  serviceInfo,
 }) => {
   return (
     <div>
@@ -23,6 +25,15 @@ const Profiles = ({
           totalJobs={totalJobs}
           totalReviews={totalReviews}
           setBackButtonVisibility={setBackButtonVisibility}
+        />
+      )}
+      {charSelect == "user" && (
+        <ViewProfileHandyman
+          averageRating={averageRating}
+          totalJobs={totalJobs}
+          totalReviews={totalReviews}
+          setBackButtonVisibility={setBackButtonVisibility}
+          serviceInfo={serviceInfo}
         />
       )}
     </div>

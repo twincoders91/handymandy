@@ -17,7 +17,7 @@ const AcceptedServices = ({ handymanServicesData, username }) => {
 
   let handyManMatched = [];
 
-  if (currentUser.hired_services) {
+  if (currentUser && currentUser.hired_services) {
     const handyMenHired = currentUser.hired_services.map(
       (hiredHandyman) => hiredHandyman.hm_username
     );

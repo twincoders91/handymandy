@@ -24,7 +24,7 @@ export default function App() {
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
-  const [username, setUsername] = useState("User1");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [blockNumber, setBlockNumber] = useState("");
@@ -37,6 +37,7 @@ export default function App() {
   const [aboutBiz, setAboutBiz] = useState("");
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
+  const [serviceInfo, setServiceInfo] = useState("");
 
   //============================State that hold services data=====================================
   const [createService, setCreateService] = useState(false);
@@ -45,6 +46,9 @@ export default function App() {
   const [serviceTOW, setServiceTOW] = useState([]);
   const [servicePriceFrom, setServicePriceFrom] = useState("");
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
+
+  //=============================Profile States=====================================
+  const [viewHandyMan, setViewHandyMan] = useState("");
 
   //================total review_score and average review_score==================
   const reviews_sum = handymanData[0].reviews_score.reduce(
@@ -120,6 +124,8 @@ export default function App() {
               servicesCategory={servicesCategory}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
+              serviceInfo={serviceInfo}
+              setServiceInfo={setServiceInfo}
             />
           }
         />
@@ -167,15 +173,12 @@ export default function App() {
               totalReviews={totalReviews}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
+              serviceInfo={serviceInfo}
             />
           }
         />
         <Route path="/editprofile" element={<EditProfileHandyMan />} />
       </Routes>
-      <AcceptedServices
-        handymanServicesData={handymanServicesData}
-        username={username}
-      />
     </div>
   );
 }

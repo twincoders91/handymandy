@@ -18,10 +18,12 @@ const Services = ({
   backButtonVisibility,
   currentPage,
   setCurrentPage,
+  serviceInfo,
+  setServiceInfo,
 }) => {
   //===========================================States for Service Info Page================================
   const [chooseCategory, setChooseCategory] = useState(false);
-  const [serviceInfo, setServiceInfo] = useState("");
+
   //=================================================================================================================
 
   console.log(servicesCategory);

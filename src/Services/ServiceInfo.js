@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import starfilled from "../Assets/homepage/starfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
@@ -60,10 +61,11 @@ const ServiceInfo = ({ serviceInfo }) => {
                 </div>
               );
             })}
-
-            <button className="service--info--view--profile--button br4 fw700 fs12">
-              View profile
-            </button>
+            <NavLink className="navlinks" to="/profile">
+              <button className="service--info--view--profile--button br4 fw700 fs12">
+                View profile
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>

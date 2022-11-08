@@ -60,8 +60,16 @@ export default function App() {
   const reviews_average =
     Math.round((reviews_sum / handymanData[0].number_of_reviews.reviews) * 10) /
     10;
-  //=============================================================================
+  //================================APIS=============================================
 
+  // const fetchUsers = async () => {
+  //   const res = await fetch("http://127.0.0.1:8001/user");
+  //   const data = await res.json();
+  //   console.log(data);
+  //   return data;
+  // };
+
+  // fetchUsers();
   //======================= Back button settings ===========================
 
   useEffect(() => {
@@ -91,6 +99,7 @@ export default function App() {
               setCharSelect={setCharSelect}
               usercredentialscreated={usercredentialscreated}
               setUsercredentialscreated={setUsercredentialscreated}
+              username={username}
               setUsername={setUsername}
               setAccountCreated={setAccountCreated}
             />

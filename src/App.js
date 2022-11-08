@@ -25,16 +25,8 @@ export default function App() {
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [blockNumber, setBlockNumber] = useState("");
-  const [postalCode, setPostalCose] = useState("");
   const [accountCreated, setAccountCreated] = useState(false);
-
-  const [businessName, setBusinessName] = useState("");
-  const [specialities, setSpecialities] = useState([]);
-  const [yearsInBiz, setYearsInBiz] = useState("");
-  const [aboutBiz, setAboutBiz] = useState("");
+  const [hm_id, setHm_id] = useState(14);
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
   const [serviceInfo, setServiceInfo] = useState("");
@@ -62,14 +54,6 @@ export default function App() {
     10;
   //================================APIS=============================================
 
-  // const fetchUsers = async () => {
-  //   const res = await fetch("http://127.0.0.1:8001/user");
-  //   const data = await res.json();
-  //   console.log(data);
-  //   return data;
-  // };
-
-  // fetchUsers();
   //======================= Back button settings ===========================
 
   useEffect(() => {
@@ -183,6 +167,7 @@ export default function App() {
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
               serviceInfo={serviceInfo}
+              hm_id={hm_id}
             />
           }
         />

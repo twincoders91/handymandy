@@ -19,18 +19,22 @@ const CreateAccount1 = ({
 
   //================================BACKEND FETCHING=======================================
   const validateUsername = async (usernameInput) => {
-    const res = await fetch(
-      `http://127.0.0.1:8001/user/validate/${usernameInput}`
-    );
-    const data = await res.json();
-    console.log(data);
-    if (data === "Username already exists") {
-      setCharSelect("");
-      setErrorModal(true);
-    } else {
-      setCharSelect("step1");
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/user/validate/${usernameInput}`
+      );
+      const data = await res.json();
+      console.log(data);
+      if (data === "Username already exists") {
+        setCharSelect("");
+        setErrorModal(true);
+      } else {
+        setCharSelect("step1");
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
     }
-    return data;
   };
 
   const handleCreateAccount = async (event) => {
@@ -59,7 +63,7 @@ const CreateAccount1 = ({
             placeholder="username"
             className="create--account--input ml12"
             onChange={(e) => {
-              setUsernameInput(e.target.value);
+              setUsernameInput(e.target.value.toLowerCase());
             }}
           />
         </div>

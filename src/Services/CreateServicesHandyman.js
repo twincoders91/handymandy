@@ -21,6 +21,7 @@ const CreateServicesHandyman = ({
   const [priceInput, setPriceInput] = useState("");
   const [price, setPrice] = useState("");
 
+  //==================== Type Of Work Array  ======================
   const handleAddTOW = (details) => {
     const array = [...tOWArray, details];
     setTOWArray(array);

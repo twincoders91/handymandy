@@ -12,10 +12,10 @@ const categoryData = [
     category: "Painting",
   },
   {
-    category: "Heaters",
+    category: "Heater",
   },
   {
-    category: "Cabinets",
+    category: "Cabinet",
   },
 ];
 

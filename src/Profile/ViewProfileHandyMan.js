@@ -1,4 +1,4 @@
-import { React, useEffect, useMemo } from "react";
+import { React, useEffect, useMemo, useState } from "react";
 import "./profile.css";
 import edit from "../Assets/universal/edit.svg";
 import handymanData from "../DummyDataSets/profileHandyman";
@@ -13,7 +13,16 @@ const ViewProfileHandyman = ({
   averageRating,
   totalJobs,
   setBackButtonVisibility,
+  hm_id,
 }) => {
+  //=============================FETCHING APIS============================
+
+  // const retreiveHandymanInfo = async () => {
+  //   const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`);
+  //   const data = await res.json();
+  //   console.log(data);
+  // };
+
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {

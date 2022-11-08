@@ -9,6 +9,7 @@ const CreateAccountMain = ({
   setCharSelect,
   usercredentialscreated,
   setUsercredentialscreated,
+  username,
   setUsername,
   setPreviousPage,
   setAccountCreated,
@@ -17,8 +18,10 @@ const CreateAccountMain = ({
     <div className="create--account--container">
       {charSelect === "" && (
         <CreateAccount1
+          charSelect={charSelect}
           setUsercredentialscreated={setUsercredentialscreated}
           setCharSelect={setCharSelect}
+          username={username}
           setUsername={setUsername}
           setPreviousPage={setPreviousPage}
         />

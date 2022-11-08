@@ -25,16 +25,8 @@ export default function App() {
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [blockNumber, setBlockNumber] = useState("");
-  const [postalCode, setPostalCose] = useState("");
   const [accountCreated, setAccountCreated] = useState(false);
-
-  const [businessName, setBusinessName] = useState("");
-  const [specialities, setSpecialities] = useState([]);
-  const [yearsInBiz, setYearsInBiz] = useState("");
-  const [aboutBiz, setAboutBiz] = useState("");
+  const [hm_id, setHm_id] = useState(14);
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
   const [serviceInfo, setServiceInfo] = useState("");
@@ -60,7 +52,7 @@ export default function App() {
   const reviews_average =
     Math.round((reviews_sum / handymanData[0].number_of_reviews.reviews) * 10) /
     10;
-  //=============================================================================
+  //================================APIS=============================================
 
   //======================= Back button settings ===========================
 
@@ -91,6 +83,7 @@ export default function App() {
               setCharSelect={setCharSelect}
               usercredentialscreated={usercredentialscreated}
               setUsercredentialscreated={setUsercredentialscreated}
+              username={username}
               setUsername={setUsername}
               setAccountCreated={setAccountCreated}
             />
@@ -174,6 +167,7 @@ export default function App() {
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
               serviceInfo={serviceInfo}
+              hm_id={hm_id}
             />
           }
         />

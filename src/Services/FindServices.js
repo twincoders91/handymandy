@@ -54,22 +54,26 @@ const FindServices = ({
           />
         </div>
         <div className="category--header">
-          <span>{servicesCategory.length}</span> Lighting services for you.
+          <span>{filteredServicesData.length}</span> services for you
         </div>
-        {filteredServicesData.map((hmService) => {
-          return (
-            <CategoryCards
-              first_name={hmService.first_name}
-              last_name={hmService.last_name}
-              category={hmService.category}
-              hm_id={hmService.hm_id}
-              price_from={hmService.price_from}
-              type_of_work={hmService.type_of_work}
-              description={hmService.description}
-              handleCategoryCard={handleCategoryCard}
-            />
-          );
-        })}
+        {filteredServicesData.length > 0 ? (
+          filteredServicesData.map((hmService) => {
+            return (
+              <CategoryCards
+                first_name={hmService.first_name}
+                last_name={hmService.last_name}
+                category={hmService.category}
+                hm_id={hmService.hm_id}
+                price_from={hmService.price_from}
+                type_of_work={hmService.type_of_work}
+                description={hmService.description}
+                handleCategoryCard={handleCategoryCard}
+              />
+            );
+          })
+        ) : (
+          <div className="fs32 fw700 mt24">No Services</div>
+        )}
         {/* {servicesCategory.map((hmService) => {
           return (
             <CategoryCards

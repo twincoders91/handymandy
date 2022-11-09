@@ -93,10 +93,10 @@ const CategoryCards = ({
           </div>
           {hmRatings.length > 0 ? (
             <p className="m0 fw700 fs8 white">
-              {hmRatings[0].total_jobs} jobs completed
+              {hmRatings[0].total_jobs} job(s) completed
             </p>
           ) : (
-            <p className="m0 fw700 fs8 white">0 jobs completed</p>
+            <p className="m0 fw700 fs8 white">0 job completed</p>
           )}
         </div>
         <div className="individual--category--price ml12">

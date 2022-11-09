@@ -15,14 +15,13 @@ const FindServices = ({
   //==================== Handle Button Clicks ======================
   const handleCategoryCard = (cardData) => {
     setChooseCategory(true);
-    // setServiceInfo(cardData);
   };
 
   //==================== BACKEND FETCHING ======================
   //=============== Fetch services by category ===============
   const filterServices = async () => {
     const res = await fetch(
-      `http://127.0.0.1:8001/category/${servicesCategorySelection}`,
+      `http://127.0.0.1:8001/services/category/${servicesCategorySelection}`,
       {
         headers: {
           Accept: "application/json",
@@ -38,7 +37,7 @@ const FindServices = ({
   useEffect(() => {
     setBackButtonVisibility(true);
     filterServices();
-  });
+  }, []);
 
   return (
     <>
@@ -64,7 +63,6 @@ const FindServices = ({
               last_name={hmService.last_name}
               category={hmService.category}
               hm_id={hmService.hm_id}
-              // service_image={hmService.service_image}
               price_from={hmService.price_from}
               type_of_work={hmService.type_of_work}
               description={hmService.description}

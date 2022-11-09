@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
@@ -16,12 +16,11 @@ const CategoryCards = ({
   handleCategoryCard,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
-  const [averageRating, setAverageRating] = useState(0);
 
   //====================== BACKEND FETCHING =======================
   const getHmRatings = async () => {
     const res = await fetch(
-      `http://127.0.0.1:8001/${hm_id}/averageratingandjobs`,
+      `http://127.0.0.1:8001/handyman/${hm_id}/averageratingandjobs`,
       {
         headers: {
           Accept: "application/json",
@@ -33,14 +32,18 @@ const CategoryCards = ({
     const ratingData = await res.json();
     setHmRatings(ratingData);
   };
-
+  console.log(hm_id);
+  console.log(hmRatings);
+  console.log(hmRatings.total_jobs);
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {
-    if (hmRatings.averageRating_rating >= index) {
-      return starFilled;
+    if (hmRatings.length > 0) {
+      if (hmRatings[0].average_rating >= index) {
+        return starFilled;
+      }
+      return starUnFilled;
     }
-    return starUnFilled;
   };
   const starRating = useMemo(() => {
     return Array(count)
@@ -50,6 +53,11 @@ const CategoryCards = ({
         <img src={starColour(idx)} key={idx} className="review--stars" />
       ));
   });
+  //===================================================================
+
+  useEffect(() => {
+    getHmRatings();
+  }, []);
 
   return (
     <div
@@ -87,9 +95,13 @@ const CategoryCards = ({
               <img src={starFilled} alt="images"></img>
             </div>
           </div>
-          <p className="m0 fw700 fs8 white">
-            {hmRatings.total_jobs} jobs completed
-          </p>
+          {hmRatings.length > 0 ? (
+            <p className="m0 fw700 fs8 white">
+              {hmRatings[0].total_jobs} jobs completed
+            </p>
+          ) : (
+            <p className="m0 fw700 fs8 white">0 jobs completed</p>
+          )}
         </div>
         <div className="individual--category--price ml12">
           <p className="starting--from m0 white fw700">starting from</p>

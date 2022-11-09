@@ -8,7 +8,11 @@ import categoryData from "../../DummyDataSets/Category";
 import yearsData from "../../DummyDataSets/Years";
 import crossbutton from "../../Assets/services/crossbutton.svg";
 
-const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
+const CreateAccount2Handyman = ({
+  setCharSelect,
+  setAccountCreated,
+  username,
+}) => {
   const [specialities, setSpecialities] = useState(false);
   const [yearsClick, setYearsClick] = useState(false);
   const [yearsSelection, setYearsSelection] = useState(
@@ -97,6 +101,29 @@ const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
     setBusinessName(businessNameInput.toLowerCase());
     setAboutBusiness(aboutBusinessInput);
     setAccountCreated(true);
+    createHmProfile();
+  };
+
+  //==================== BACKEND FETCHING ======================
+  const createHmProfile = async () => {
+    const res = await fetch("http://127.0.0.1:8001/handyman/", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        business_name: businessName,
+        number_of_years: numberOfYears,
+        profile_image: null,
+        specialities: specialities,
+      }),
+    });
+    console.log(res);
   };
 
   return (
@@ -257,14 +284,14 @@ const CreateAccount2Handyman = ({ setCharSelect, setAccountCreated }) => {
           </div>
         </div>
         <div className="buttons--align--center--box">
-          <Link className="navlinks" to="/home">
+          <NavLink className="navlinks" to="/home">
             <button
               className="user--create--account--button"
               onClick={() => handleSubmitButtonClick()}
             >
               Submit
             </button>
-          </Link>
+          </NavLink>
         </div>
       </div>
     </div>

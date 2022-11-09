@@ -7,6 +7,7 @@ import downArrow from "../../Assets/universal/downarrow.svg";
 import categoryData from "../../DummyDataSets/Category";
 import yearsData from "../../DummyDataSets/Years";
 import crossbutton from "../../Assets/services/crossbutton.svg";
+import CreateAccountEmailErrorModal from "../../Components/Modals/CreateAccountEmailErrorModal";
 
 const CreateAccount2Handyman = ({
   setCharSelect,
@@ -26,6 +27,7 @@ const CreateAccount2Handyman = ({
   const [businessName, setBusinessName] = useState("");
   const [specialitiesArray, setSpecialitiesArray] = useState([]);
   const [aboutBusiness, setAboutBusiness] = useState("");
+  const [errorEmailModal, setErrorEmailModal] = useState(false);
 
   //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
@@ -57,6 +59,25 @@ const CreateAccount2Handyman = ({
     setMessage(event.target.value);
   };
   console.log(message);
+
+  const validateEmail = async (email) => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/validate/email/${email}`
+      );
+
+      const data = await res.json();
+
+      if (data === "Email already exists") {
+        setErrorEmailModal(true);
+      } else {
+        setErrorEmailModal(false);
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   //==================== Specialities Array  ======================
   function addIntoArray(details) {
@@ -114,177 +135,190 @@ const CreateAccount2Handyman = ({
     console.log(res);
   };
 
+  useEffect(() => {
+    validateEmail(email);
+  }, [email]);
+
   return (
-    <div className="mb36">
-      <img
-        src={backButton}
-        className="back--button"
-        onClick={() => handleBackButtonClick()}
-      />
-      <div className="create--profile--header--container mb24 mt60">
-        <p className="fs24 fw700 mb8 white create--profile--header--font">
-          Let's create your profile.
-        </p>
-        <span className="fs14 fw400 white">
-          HandyMandy uses this information to help ensure trust and safety for
-          HandyMany users.
-        </span>
-      </div>
-      <div className="create--profile--middle--container mb36">
-        <span className="fs16 fw700 white">Legal name</span>
-        <div className="legal--name--container mt8 mb24">
-          <div className="universal--input--forms--half">
-            <input
-              type="text"
-              placeholder="First name"
-              className="create--account--input ml12"
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
-            />
-          </div>
-          <div className="universal--input--forms--half">
-            <input
-              type="text"
-              placeholder="Last name"
-              className="create--account--input ml12"
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-        </div>
-        <span className="fs16 fw700 white">Email address</span>
-        <div className="legal--name--container mt8 mb16">
-          <div className="email--box--with--error">
-            <div className="universal--input--forms--full">
-              <input
-                type="text"
-                placeholder="Email address"
-                value={message}
-                className="create--account--input ml12"
-                onChange={handleEmailChange}
-              />
-            </div>
-            {error && (
-              <h2 className="email--alert--font fs12 fw300">{error}</h2>
-            )}
-          </div>
-        </div>
-        <div className="">
-          <p className="fs16 fw700 mb8 white create--profile--header--font">
-            Business name.
+    <>
+      {errorEmailModal && (
+        <CreateAccountEmailErrorModal errorEmailModal={errorEmailModal} />
+      )}
+      <div className="mb36">
+        <img
+          src={backButton}
+          className="back--button"
+          onClick={() => handleBackButtonClick()}
+        />
+        <div className="create--profile--header--container mb24 mt60">
+          <p className="fs24 fw700 mb8 white create--profile--header--font">
+            Let's create your profile.
           </p>
-          <span className="fs12 fw400 white">
-            If your business name is your name, please enter your name instead.
+          <span className="fs14 fw400 white">
+            HandyMandy uses this information to help ensure trust and safety for
+            HandyMany users.
           </span>
         </div>
+        <div className="create--profile--middle--container mb36">
+          <span className="fs16 fw700 white">Legal name</span>
+          <div className="legal--name--container mt8 mb24">
+            <div className="universal--input--forms--half">
+              <input
+                type="text"
+                placeholder="First name"
+                className="create--account--input ml12"
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }}
+              />
+            </div>
+            <div className="universal--input--forms--half">
+              <input
+                type="text"
+                placeholder="Last name"
+                className="create--account--input ml12"
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+          </div>
+          <span className="fs16 fw700 white">Email address</span>
+          <div className="legal--name--container mt8 mb16">
+            <div className="email--box--with--error">
+              <div className="universal--input--forms--full">
+                <input
+                  type="text"
+                  placeholder="Email address"
+                  value={message}
+                  className="create--account--input ml12"
+                  onChange={handleEmailChange}
+                />
+              </div>
+              {error && (
+                <h2 className="email--alert--font fs12 fw300">{error}</h2>
+              )}
+            </div>
+          </div>
+          <div className="">
+            <p className="fs16 fw700 mb8 white create--profile--header--font">
+              Business name.
+            </p>
+            <span className="fs12 fw400 white">
+              If your business name is your name, please enter your name
+              instead.
+            </span>
+          </div>
 
-        <div className="home--address--container mt8">
-          <div className="universal--input--forms--full mb8">
-            <input
-              type="text"
-              placeholder="e.g. Handyman services"
-              className="create--account--input ml12"
-              onChange={(e) => setBusinessName(e.target.value)}
-            />
-          </div>
-          <span className="fs16 fw700 white">What are your specialities? </span>
-          <div className="mb8">
-            {specialitiesArray.length !== 0 &&
-              specialitiesArray.map((item) => {
-                return (
-                  <>
-                    <div
-                      className={
-                        "specialities--box--selected fw700 mt8 relative"
-                      }
-                    >
-                      {item}
-                      <img
-                        src={crossbutton}
-                        className="absolute create--account--crossbutton"
-                        onClick={() => handleDeleteSpecialities(item)}
-                      ></img>
-                    </div>
-                  </>
-                );
-              })}
-            <div
-              className="specialities--box--selection  mt8 relative"
-              onClick={() => handleClickSpecialities()}
-            >
-              Select your specialities
-              <img
-                src={downArrow}
-                className="absolute create--account--downarrow"
-              ></img>
+          <div className="home--address--container mt8">
+            <div className="universal--input--forms--full mb8">
+              <input
+                type="text"
+                placeholder="e.g. Handyman services"
+                className="create--account--input ml12"
+                onChange={(e) => setBusinessName(e.target.value)}
+              />
             </div>
-            {specialities && (
-              <div className="dropdown--menu--specialities absolute">
-                {categoryData.map((items) => {
+            <span className="fs16 fw700 white">
+              What are your specialities?{" "}
+            </span>
+            <div className="mb8">
+              {specialitiesArray.length !== 0 &&
+                specialitiesArray.map((item) => {
                   return (
-                    <div
-                      className="specialities--selection  fs14 fw300"
-                      onClick={() =>
-                        handleClickSpecialitiesSelection(items.category)
-                      }
-                      key={items.category}
-                    >
-                      {items.category}
-                    </div>
+                    <>
+                      <div
+                        className={
+                          "specialities--box--selected fw700 mt8 relative"
+                        }
+                      >
+                        {item}
+                        <img
+                          src={crossbutton}
+                          className="absolute create--account--crossbutton"
+                          onClick={() => handleDeleteSpecialities(item)}
+                        ></img>
+                      </div>
+                    </>
                   );
                 })}
+              <div
+                className="specialities--box--selection  mt8 relative"
+                onClick={() => handleClickSpecialities()}
+              >
+                Select your specialities
+                <img
+                  src={downArrow}
+                  className="absolute create--account--downarrow"
+                ></img>
               </div>
-            )}
-          </div>
-          <span className="fs16 fw700 white">Years in business </span>
-          <div className="mb8">
-            <div
-              className="specialities--box--selection mt8  relative"
-              onClick={() => handleClickYears()}
-            >
-              {yearsSelection}
-              <img
-                src={downArrow}
-                className="absolute create--account--downarrow"
-              ></img>
+              {specialities && (
+                <div className="dropdown--menu--specialities absolute">
+                  {categoryData.map((items) => {
+                    return (
+                      <div
+                        className="specialities--selection  fs14 fw300"
+                        onClick={() =>
+                          handleClickSpecialitiesSelection(items.category)
+                        }
+                        key={items.category}
+                      >
+                        {items.category}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-            {yearsClick && (
-              <div className="dropdown--menu--specialities absolute">
-                {yearsData.map((items) => {
-                  return (
-                    <div
-                      className="specialities--selection  fs14 fw300"
-                      onClick={() => handleClickYearsSelection(items.years)}
-                    >
-                      {items.years}
-                    </div>
-                  );
-                })}
+            <span className="fs16 fw700 white">Years in business </span>
+            <div className="mb8">
+              <div
+                className="specialities--box--selection mt8  relative"
+                onClick={() => handleClickYears()}
+              >
+                {yearsSelection}
+                <img
+                  src={downArrow}
+                  className="absolute create--account--downarrow"
+                ></img>
               </div>
-            )}
+              {yearsClick && (
+                <div className="dropdown--menu--specialities absolute">
+                  {yearsData.map((items) => {
+                    return (
+                      <div
+                        className="specialities--selection  fs14 fw300"
+                        onClick={() => handleClickYearsSelection(items.years)}
+                      >
+                        {items.years}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+            <span className="fs16 fw700 white">About your business</span>
+            <div className="about--business--input--forms--full mt8">
+              <textarea
+                type="text"
+                placeholder="Let others know more about your business (200 characters)"
+                className="create--account--input ml12 mt12"
+                onChange={(e) => setAboutBusiness(e.target.value)}
+              />
+            </div>
           </div>
-          <span className="fs16 fw700 white">About your business</span>
-          <div className="about--business--input--forms--full mt8">
-            <textarea
-              type="text"
-              placeholder="Let others know more about your business (200 characters)"
-              className="create--account--input ml12 mt12"
-              onChange={(e) => setAboutBusiness(e.target.value)}
-            />
+          <div className="buttons--align--center--box">
+            <NavLink className="navlinks" to={"/home"}>
+              <button
+                className="user--create--account--button"
+                onClick={() => handleSubmitButtonClick()}
+                disabled={errorEmailModal}
+              >
+                Submit
+              </button>
+            </NavLink>
           </div>
-        </div>
-        <div className="buttons--align--center--box">
-          <NavLink className="navlinks" to="/home">
-            <button
-              className="user--create--account--button"
-              onClick={() => handleSubmitButtonClick()}
-            >
-              Submit
-            </button>
-          </NavLink>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

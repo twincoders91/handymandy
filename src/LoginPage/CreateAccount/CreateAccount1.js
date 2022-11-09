@@ -23,9 +23,18 @@ const CreateAccount1 = ({
       const res = await fetch(
         `http://127.0.0.1:8001/user/validate/${usernameInput}`
       );
+
+      const res2 = await fetch(
+        `http://127.0.0.1:8001/handyman/validate/${usernameInput}`
+      );
+
       const data = await res.json();
-      console.log(data);
-      if (data === "Username already exists") {
+      const data2 = await res2.json();
+
+      if (
+        data === "Username already exists" ||
+        data2 === "Username already exists"
+      ) {
         setCharSelect("");
         setErrorModal(true);
       } else {

@@ -73,6 +73,7 @@
 }
 
 .individual--category--description--container {
+  position: relative;
   display: flex;
   align-items: center;
   width: 250px;
@@ -93,6 +94,8 @@
 }
 
 .individual--category--price {
+  position: absolute;
+  right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

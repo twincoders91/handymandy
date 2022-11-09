@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import starFilled from "../Assets/homepage/starfilled.svg";
-import starUnFilled from "../Assets/homepage/starfilled.svg";
+import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 
@@ -42,6 +42,8 @@ const CategoryCards = ({
       if (hmRatings[0].average_rating >= index) {
         return starFilled;
       }
+      return starUnFilled;
+    } else {
       return starUnFilled;
     }
   };
@@ -87,13 +89,7 @@ const CategoryCards = ({
           </p>
           <div className="individual--category--profile--stars mb4">
             <img src={recommendedprofile} alt="images"></img>
-            <div className="individual--category--stars">
-              <img src={starFilled} alt="images"></img>
-              <img src={starFilled} alt="images"></img>
-              <img src={starFilled} alt="images"></img>
-              <img src={starFilled} alt="images"></img>
-              <img src={starFilled} alt="images"></img>
-            </div>
+            <div className="individual--category--stars">{starRating}</div>
           </div>
           {hmRatings.length > 0 ? (
             <p className="m0 fw700 fs8 white">

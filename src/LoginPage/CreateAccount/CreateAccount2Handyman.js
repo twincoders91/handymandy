@@ -90,7 +90,7 @@ const CreateAccount2Handyman = ({
   const handleSubmitButtonClick = async () => {
     await createHmProfile();
   };
-
+  console.log(yearsSelection);
   //==================== BACKEND FETCHING ======================
   const createHmProfile = async () => {
     const res = await fetch("http://127.0.0.1:8001/handyman/", {

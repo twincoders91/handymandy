@@ -7,6 +7,7 @@ import categoryData from "../DummyDataSets/Category";
 const CreateServicesHandyman = ({
   setBackButtonVisibility,
   backButtonVisibility,
+  hm_id,
 }) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
@@ -46,7 +47,7 @@ const CreateServicesHandyman = ({
       },
       method: "POST",
       body: JSON.stringify({
-        hm_id: "",
+        hm_id: hm_id,
         description: description,
         category: categorySelection,
         types_of_work: tOWArray,
@@ -66,8 +67,7 @@ const CreateServicesHandyman = ({
     setCategorySelection(e.toLowerCase());
     console.log(categorySelection);
   };
-  const handleSubmitCreateServices = (event) => {
-    event.preventDefault();
+  const handleSubmitCreateServices = () => {
     setBackButtonVisibility(false);
     setTitle(titleInput);
     setDescription(descriptionInput);
@@ -204,7 +204,7 @@ const CreateServicesHandyman = ({
               <NavLink to="/home">
                 <button
                   className="user--create--account--button"
-                  onClick={(e) => handleSubmitCreateServices(e)}
+                  onClick={() => handleSubmitCreateServices()}
                 >
                   Submit
                 </button>

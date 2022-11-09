@@ -4,7 +4,6 @@ import HomePage2HandyMan from "./HomePage2HandyMan";
 import HomePage3HandyMan from "./HomePage3HandyMan";
 
 const HomePageHandyman = ({
-  HMindividualServices,
   setCreateService,
   setUpdateService,
   setUpdateServiceDetails,

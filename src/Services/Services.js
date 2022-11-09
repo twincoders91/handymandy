@@ -9,7 +9,6 @@ import AcceptedServiceInfo from "./AcceptedServiceInfo";
 import HamburgerModal from "../Components/Modals/HamburgerModal";
 
 const Services = ({
-  // averageRating,
   totalReviews,
   totalJobs,
   handymanServicesData,

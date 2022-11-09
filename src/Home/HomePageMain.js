@@ -19,11 +19,6 @@ const HomePageMain = ({
   const [updateService, setUpdateService] = useState(false);
 
   //============================Filtering HM data down to HM's username===========================
-  const HMindividualServices = handymanServicesData.filter(
-    (filteredServices) => {
-      return filteredServices.username === username;
-    }
-  );
 
   //======================================================================
 
@@ -32,7 +27,7 @@ const HomePageMain = ({
       const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`);
       const data = await res.json();
       console.log(data);
-      setHm_id(data[0].id);
+      setHm_id(data.id);
       return data;
     } catch (e) {
       console.log(e);
@@ -59,7 +54,6 @@ const HomePageMain = ({
       )}
       {charSelect == "handyman" && updateService == false && (
         <HomePageHandyman
-          HMindividualServices={HMindividualServices}
           setUpdateService={setUpdateService}
           setUpdateServiceDetails={setUpdateServiceDetails}
           setBackButtonVisibility={setBackButtonVisibility}

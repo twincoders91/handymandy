@@ -15,7 +15,6 @@ import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 
 export default function App() {
-  // const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
   const [totalJobs, setTotalJobs] = useState(0);
 
@@ -26,7 +25,7 @@ export default function App() {
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
   const [username, setUsername] = useState("");
   const [accountCreated, setAccountCreated] = useState(false);
-  const [hm_id, setHm_id] = useState(14);
+  const [hm_id, setHm_id] = useState("");
 
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
@@ -63,6 +62,9 @@ export default function App() {
     setTotalReviews(handymanData[0].number_of_reviews.reviews);
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
+
+  console.log(hm_id);
+  console.log(username);
 
   return (
     <div>
@@ -106,6 +108,7 @@ export default function App() {
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
               setUpdateServiceDetails={setUpdateServiceDetails}
+              setHm_id={setHm_id}
             />
           }
         />

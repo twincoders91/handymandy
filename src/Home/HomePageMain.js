@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "../Profile/ProfileHandyman";
 import HomePage from "./HomePage";
@@ -13,6 +13,7 @@ const HomePageMain = ({
   setBackButtonVisibility,
   backButtonVisibility,
   setUpdateServiceDetails,
+  setHm_id,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
@@ -26,7 +27,21 @@ const HomePageMain = ({
 
   //======================================================================
 
-  console.log(charSelect);
+  const getHandymanID = async () => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`);
+      const data = await res.json();
+      console.log(data);
+      setHm_id(data[0].id);
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getHandymanID();
+  }, []);
 
   return (
     <div>

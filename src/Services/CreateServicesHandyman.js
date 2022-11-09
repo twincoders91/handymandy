@@ -20,6 +20,9 @@ const CreateServicesHandyman = ({
   const [finalTow, setFinalTow] = useState();
   const [priceInput, setPriceInput] = useState("");
   const [price, setPrice] = useState("");
+  const [currentCategorySelection, setCurrentCategorySelection] = useState(
+    "Select your category"
+  );
 
   //==================== Type Of Work Array  ======================
   const handleAddTOW = (details) => {
@@ -34,7 +37,6 @@ const CreateServicesHandyman = ({
     console.log("clicked");
   };
 
-  console.log(tOWArray);
   //==================== BACKEND FETCHING ======================
   const createServicesDB = async () => {
     const res = await fetch("http://127.0.0.1:8001/services/", {
@@ -48,7 +50,8 @@ const CreateServicesHandyman = ({
         description: description,
         category: categorySelection,
         types_of_work: tOWArray,
-        price_from: finalTow,
+        price_from: price,
+        title: title,
       }),
     });
     console.log(res);
@@ -58,8 +61,10 @@ const CreateServicesHandyman = ({
     setSpecialities((current) => !current);
   };
   const handleClickSpecialitiesSelection = (e) => {
+    setCurrentCategorySelection(e);
     setSpecialities((current) => !current);
-    setCategorySelection(e);
+    setCategorySelection(e.toLowerCase());
+    console.log(categorySelection);
   };
   const handleSubmitCreateServices = (event) => {
     event.preventDefault();
@@ -70,13 +75,11 @@ const CreateServicesHandyman = ({
     setPrice(parseInt(priceInput));
     createServicesDB();
   };
-  console.log(finalTow);
 
   //======================= Use Effect =========================
   useEffect(() => {
     // setBackButtonVisibility(true);
   });
-  console.log(backButtonVisibility);
 
   return (
     <>
@@ -99,7 +102,7 @@ const CreateServicesHandyman = ({
                 className="specialities--box--selection  mt8 relative"
                 onClick={() => handleClickSpecialities()}
               >
-                Select your category
+                {currentCategorySelection}
                 <img
                   src={downArrow}
                   className="absolute create--account--downarrow"

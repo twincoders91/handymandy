@@ -37,7 +37,7 @@ const CreateServicesHandyman = ({
   console.log(tOWArray);
   //==================== BACKEND FETCHING ======================
   const createServicesDB = async () => {
-    const res = await fetch("htt://127.0.0.1:8001/services/", {
+    const res = await fetch("http://127.0.0.1:8001/services/", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

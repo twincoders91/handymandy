@@ -33,12 +33,14 @@ const CreateAccountMain = ({
         <CreateAccount2User
           setCharSelect={setCharSelect}
           setAccountCreated={setAccountCreated}
+          username={username}
         />
       )}
       {charSelect === "handyman" && usercredentialscreated && (
         <CreateAccount2Handyman
           setCharSelect={setCharSelect}
           setAccountCreated={setAccountCreated}
+          username={username}
         />
       )}
     </div>

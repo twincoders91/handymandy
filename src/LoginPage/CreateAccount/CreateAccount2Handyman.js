@@ -18,19 +18,13 @@ const CreateAccount2Handyman = ({
   const [yearsSelection, setYearsSelection] = useState(
     "Select number of years"
   );
-  const [firstNameInput, setFirstNameInput] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastNameInput, setLastNameInput] = useState("");
   const [lastName, setLastName] = useState("");
-  const [emailInput, setEmailInput] = useState("");
   const [error, setError] = useState(null);
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
-  const [businessNameInput, setBusinessNameInput] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [specialitiesArray, setSpecialitiesArray] = useState([]);
-  const [numberOfYears, setNumberOfYears] = useState("");
-  const [aboutBusinessInput, setAboutBusinessInput] = useState("");
   const [aboutBusiness, setAboutBusiness] = useState("");
 
   //================= Handle Button Clicks ===================
@@ -58,7 +52,7 @@ const CreateAccount2Handyman = ({
       setError("Email is invalid");
     } else {
       setError(null);
-      setEmailInput(event.target.value);
+      setEmail(event.target.value);
     }
     setMessage(event.target.value);
   };
@@ -93,15 +87,8 @@ const CreateAccount2Handyman = ({
     setCharSelect("step1");
   };
   //================= Confirm account created ===================
-  const handleSubmitButtonClick = () => {
-    setFirstName(firstNameInput.toLowerCase());
-    setLastName(lastNameInput.toLowerCase());
-    setNumberOfYears(yearsSelection.toLowerCase());
-    setEmail(emailInput.toLowerCase());
-    setBusinessName(businessNameInput.toLowerCase());
-    setAboutBusiness(aboutBusinessInput);
-    setAccountCreated(true);
-    createHmProfile();
+  const handleSubmitButtonClick = async () => {
+    await createHmProfile();
   };
 
   //==================== BACKEND FETCHING ======================
@@ -113,14 +100,15 @@ const CreateAccount2Handyman = ({
       },
       method: "POST",
       body: JSON.stringify({
-        username: username,
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        business_name: businessName,
-        number_of_years: numberOfYears,
+        username: username.toLowerCase(),
+        first_name: firstName.toLowerCase(),
+        last_name: lastName.toLowerCase(),
+        email: email.toLowerCase(),
+        business_name: businessName.toLowerCase(),
+        number_of_years: yearsSelection.toLowerCase(),
         profile_image: null,
-        specialities: specialities,
+        specialities: specialitiesArray,
+        about: aboutBusiness.toLowerCase(),
       }),
     });
     console.log(res);
@@ -150,7 +138,9 @@ const CreateAccount2Handyman = ({
               type="text"
               placeholder="First name"
               className="create--account--input ml12"
-              onChange={(e) => setFirstNameInput(e.target.value)}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
             />
           </div>
           <div className="universal--input--forms--half">
@@ -158,7 +148,7 @@ const CreateAccount2Handyman = ({
               type="text"
               placeholder="Last name"
               className="create--account--input ml12"
-              onChange={(e) => setLastNameInput(e.target.value)}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
         </div>
@@ -194,7 +184,7 @@ const CreateAccount2Handyman = ({
               type="text"
               placeholder="e.g. Handyman services"
               className="create--account--input ml12"
-              onChange={(e) => setBusinessNameInput(e.target.value)}
+              onChange={(e) => setBusinessName(e.target.value)}
             />
           </div>
           <span className="fs16 fw700 white">What are your specialities? </span>
@@ -279,7 +269,7 @@ const CreateAccount2Handyman = ({
               type="text"
               placeholder="Let others know more about your business (200 characters)"
               className="create--account--input ml12 mt12"
-              onChange={(e) => setAboutBusinessInput(e.target.value)}
+              onChange={(e) => setAboutBusiness(e.target.value)}
             />
           </div>
         </div>

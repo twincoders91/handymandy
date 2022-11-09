@@ -17,35 +17,12 @@ const HomePage = ({
   // handymanServicesData,
   // setServicesCategory,
   setBackButtonVisibility,
+  setServicesCategorySelection,
 }) => {
-  const [categorySelection, setCategorySelection] = useState("");
-
   //================= Confirm Filtered Services selection ===================
   const handleCategoryClick = (item) => {
-    setCategorySelection(item);
-    filterServices();
+    setServicesCategorySelection(item);
   };
-  //==================== BACKEND FETCHING ======================
-  const filterServices = async () => {
-    const res = await fetch(
-      `http://127.0.0.1:8001/category/${categorySelection}`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      }
-    );
-    console.log(res);
-  };
-
-  // const handleCategoryClick = () => {
-  //   const categoryFilter = handymanServicesData.filter((filteredServices) => {
-  //     return filteredServices.category === "Lighting";
-  //   });
-  //   setServicesCategory(categoryFilter);
-  // };
 
   useEffect(() => {
     setBackButtonVisibility(false);

@@ -8,6 +8,7 @@ const HomePageMain = ({
   charSelect,
   handymanServicesData,
   setServicesCategory,
+  setServicesCategorySelection,
   username,
   setBackButtonVisibility,
   backButtonVisibility,
@@ -37,6 +38,7 @@ const HomePageMain = ({
         <HomePage
           handymanServicesData={handymanServicesData}
           setServicesCategory={setServicesCategory}
+          setServicesCategorySelection={setServicesCategorySelection}
           setBackButtonVisibility={setBackButtonVisibility}
         />
       )}

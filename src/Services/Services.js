@@ -9,11 +9,12 @@ import AcceptedServiceInfo from "./AcceptedServiceInfo";
 import HamburgerModal from "../Components/Modals/HamburgerModal";
 
 const Services = ({
-  averageRating,
+  // averageRating,
   totalReviews,
   totalJobs,
   handymanServicesData,
   servicesCategory,
+  servicesCategorySelection,
   setBackButtonVisibility,
   backButtonVisibility,
   currentPage,
@@ -21,12 +22,13 @@ const Services = ({
   serviceInfo,
   setServiceInfo,
 }) => {
-  //===========================================States for Service Info Page================================
+  //====================== States for Services ======================
+  const [filteredServicesData, setFilteredServicesData] = useState([]);
   const [chooseCategory, setChooseCategory] = useState(false);
 
   //=================================================================================================================
 
-  console.log(servicesCategory);
+  console.log(servicesCategorySelection);
 
   return (
     <>
@@ -39,18 +41,26 @@ const Services = ({
       <div className="category--page--container">
         {!chooseCategory && (
           <FindServices
-            averageRating={averageRating}
+            // averageRating={averageRating}
+            setFilteredServicesData={setFilteredServicesData}
+            filteredServicesData={filteredServicesData}
             totalJobs={totalJobs}
             totalReviews={totalReviews}
             handymanServicesData={handymanServicesData}
             servicesCategory={servicesCategory}
+            servicesCategorySelection={servicesCategorySelection}
             setChooseCategory={setChooseCategory}
             setServiceInfo={setServiceInfo}
             setBackButtonVisibility={setBackButtonVisibility}
             setCurrentPage={setCurrentPage}
           />
         )}
-        {chooseCategory && <ServiceInfo serviceInfo={serviceInfo} />}
+        {chooseCategory && (
+          <ServiceInfo
+            serviceInfo={serviceInfo}
+            filteredServicesData={filteredServicesData}
+          />
+        )}
         {/* <AcceptedServices /> */}
         {/* <AcceptedServiceInfo /> */}
       </div>

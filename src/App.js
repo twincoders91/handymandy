@@ -15,7 +15,7 @@ import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 
 export default function App() {
-  const [averageRating, setAverageRating] = useState(0);
+  // const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
   const [totalJobs, setTotalJobs] = useState(0);
 
@@ -31,6 +31,8 @@ export default function App() {
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
   const [serviceInfo, setServiceInfo] = useState("");
+  const [servicesCategorySelection, setServicesCategorySelection] =
+    useState("");
 
   //============================State that hold services data=====================================
   const [createService, setCreateService] = useState(false);
@@ -58,7 +60,6 @@ export default function App() {
   //======================= Back button settings ===========================
 
   useEffect(() => {
-    setAverageRating(reviews_average);
     setTotalReviews(handymanData[0].number_of_reviews.reviews);
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
@@ -94,12 +95,13 @@ export default function App() {
           path="/home"
           element={
             <HomePageMain
-              averageRating={averageRating}
+              // averageRating={averageRating}
               totalReviews={totalReviews}
               totalJobs={totalJobs}
               charSelect={charSelect}
               handymanServicesData={handymanServicesData}
               setServicesCategory={setServicesCategory}
+              setServicesCategorySelection={setServicesCategorySelection}
               username={username}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
@@ -111,11 +113,12 @@ export default function App() {
           path="/services"
           element={
             <Services
-              averageRating={averageRating}
+              // averageRating={averageRating}
               totalReviews={totalReviews}
               totalJobs={totalJobs}
               handymanServicesData={handymanServicesData}
               servicesCategory={servicesCategory}
+              servicesCategorySelection={servicesCategorySelection}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
               serviceInfo={serviceInfo}
@@ -162,7 +165,7 @@ export default function App() {
           element={
             <Profiles
               charSelect={charSelect}
-              averageRating={averageRating}
+              // averageRating={averageRating}
               totalJobs={totalJobs}
               totalReviews={totalReviews}
               setBackButtonVisibility={setBackButtonVisibility}

@@ -1,27 +1,66 @@
-import React from "react";
-import starfilled from "../Assets/homepage/starfilled.svg";
+import React, { useState, useMemo } from "react";
+import starFilled from "../Assets/homepage/starfilled.svg";
+import starUnFilled from "../Assets/homepage/starfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 
 const CategoryCards = ({
   first_name,
+  last_name,
+  hm_id,
   category,
-  service_image,
+  // service_image,
   price_from,
   type_of_work,
-  handleCategoryCard,
   description,
+  handleCategoryCard,
 }) => {
+  const [hmRatings, setHmRatings] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
+
+  //====================== BACKEND FETCHING =======================
+  const getHmRatings = async () => {
+    const res = await fetch(
+      `http://127.0.0.1:8001/${hm_id}/averageratingandjobs`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      }
+    );
+    const ratingData = await res.json();
+    setHmRatings(ratingData);
+  };
+
+  //======================Creating Star Ratings=======================
+  let count = 5;
+  const starColour = (index) => {
+    if (hmRatings.averageRating_rating >= index) {
+      return starFilled;
+    }
+    return starUnFilled;
+  };
+  const starRating = useMemo(() => {
+    return Array(count)
+      .fill(0)
+      .map((_, i) => i + 1)
+      .map((idx) => (
+        <img src={starColour(idx)} key={idx} className="review--stars" />
+      ));
+  });
+
   return (
     <div
       className="individual--category--card mt24"
       onClick={() => {
         handleCategoryCard({
-          first_name,
-          category,
-          price_from,
-          description,
-          type_of_work,
+          // first_name,
+          // category,
+          // price_from,
+          // description,
+          // type_of_work,
         });
       }}
     >
@@ -41,14 +80,16 @@ const CategoryCards = ({
           <div className="individual--category--profile--stars mb4">
             <img src={recommendedprofile} alt="images"></img>
             <div className="individual--category--stars">
-              <img src={starfilled} alt="images"></img>
-              <img src={starfilled} alt="images"></img>
-              <img src={starfilled} alt="images"></img>
-              <img src={starfilled} alt="images"></img>
-              <img src={starfilled} alt="images"></img>
+              <img src={starFilled} alt="images"></img>
+              <img src={starFilled} alt="images"></img>
+              <img src={starFilled} alt="images"></img>
+              <img src={starFilled} alt="images"></img>
+              <img src={starFilled} alt="images"></img>
             </div>
           </div>
-          <p className="m0 fw700 fs8 white">34 reviews | 82 jobs completed</p>
+          <p className="m0 fw700 fs8 white">
+            {hmRatings.total_jobs} jobs completed
+          </p>
         </div>
         <div className="individual--category--price ml12">
           <p className="starting--from m0 white fw700">starting from</p>

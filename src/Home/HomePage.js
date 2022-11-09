@@ -11,18 +11,41 @@ import recommendedprofile from "../Assets/homepage/randomman.svg";
 import starfilled from "../Assets/homepage/starfilled.svg";
 import starunfilled from "../Assets/homepage/starunfilled.svg";
 import "./homepage.css";
+import categoryData from "../DummyDataSets/Category";
 
 const HomePage = ({
-  handymanServicesData,
-  setServicesCategory,
+  // handymanServicesData,
+  // setServicesCategory,
   setBackButtonVisibility,
 }) => {
-  const handleCategoryClick = () => {
-    const categoryFilter = handymanServicesData.filter((filteredServices) => {
-      return filteredServices.category === "Lighting";
-    });
-    setServicesCategory(categoryFilter);
+  const [categorySelection, setCategorySelection] = useState("");
+
+  //================= Confirm Filtered Services selection ===================
+  const handleCategoryClick = (item) => {
+    setCategorySelection(item);
+    filterServices();
   };
+  //==================== BACKEND FETCHING ======================
+  const filterServices = async () => {
+    const res = await fetch(
+      `http://127.0.0.1:8001/category/${categorySelection}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      }
+    );
+    console.log(res);
+  };
+
+  // const handleCategoryClick = () => {
+  //   const categoryFilter = handymanServicesData.filter((filteredServices) => {
+  //     return filteredServices.category === "Lighting";
+  //   });
+  //   setServicesCategory(categoryFilter);
+  // };
 
   useEffect(() => {
     setBackButtonVisibility(false);
@@ -39,60 +62,26 @@ const HomePage = ({
         </div>
         <div className="home--page--middle--section">
           <div className="category--cards">
-            <NavLink
-              className="navlinks"
-              to="/services"
-              onClick={handleCategoryClick}
-            >
-              <div className="category--cards--box">
-                <img
-                  src={lighting}
-                  className="category--cards--icon"
-                  alt="images"
-                ></img>
-                <div className="category--cards--text">Lighting</div>
-              </div>
-            </NavLink>
-            <div className="category--cards--box">
-              <img
-                src={plumber}
-                className="category--cards--icon"
-                alt="images"
-              ></img>
-              <div className="category--cards--text">Plumbing</div>
-            </div>
-            <div className="category--cards--box">
-              <img
-                src={airconditioner}
-                className="category--cards--icon"
-                alt="images"
-              ></img>
-              <div className="category--cards--text">Aircon</div>
-            </div>
-            <div className="category--cards--box">
-              <img
-                src={painting}
-                className="category--cards--icon"
-                alt="images"
-              ></img>
-              <div className="category--cards--text">Painting</div>
-            </div>
-            <div className="category--cards--box">
-              <img
-                src={waterheater}
-                className="category--cards--icon"
-                alt="images"
-              ></img>
-              <div className="category--cards--text">Heaters</div>
-            </div>
-            <div className="category--cards--box">
-              <img
-                src={cabinets}
-                className="category--cards--icon"
-                alt="images"
-              ></img>
-              <div className="category--cards--text">Cabinets</div>
-            </div>
+            {categoryData.map((items) => {
+              return (
+                <NavLink
+                  className="navlinks"
+                  to="/services"
+                  onClick={() => handleCategoryClick(items.category)}
+                >
+                  <div className="category--cards--box">
+                    <img
+                      src={require(`../Assets/homepage/${items.icon}.svg`)}
+                      className="category--cards--icon"
+                      alt="images"
+                    ></img>
+                    <div className="category--cards--text">
+                      {items.category}
+                    </div>
+                  </div>
+                </NavLink>
+              );
+            })}
           </div>
         </div>
         <div className="home--page--bottom--section mb36">

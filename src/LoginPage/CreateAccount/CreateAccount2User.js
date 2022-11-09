@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 
-const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
+const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [blockNumber, setBlockNumber] = useState("");
+  const [postCode, setPostCode] = useState("");
+
+  //================= Valid Email Check ===================
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+  const handleEmailChange = (event) => {
+    if (!isValidEmail(event.target.value)) {
+      setError("Email is invalid");
+    } else {
+      setError(null);
+      setEmail(event.target.value);
+    }
+    setMessage(event.target.value);
+  };
+  console.log(message);
+
   //================= Back button function ===================
   const handleBackButtonClick = () => {
     setCharSelect("step1");
@@ -11,6 +35,29 @@ const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
   //================= Confirm account created ===================
   const handleSubmitButtonClick = () => {
     setAccountCreated(true);
+    createUserProfile();
+  };
+
+  //==================== BACKEND FETCHING ======================
+  const createUserProfile = async () => {
+    const res = await fetch("http://127.0.0.1:8001/user/", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        username: username.toLowerCase(),
+        first_name: firstName.toLowerCase(),
+        last_name: lastName.toLowerCase(),
+        email: email.toLowerCase(),
+        street_address: streetAddress.toLowerCase(),
+        block_number: blockNumber,
+        postal_code: postCode,
+        profile_image: null,
+      }),
+    });
+    console.log(res);
   };
 
   return (
@@ -37,6 +84,7 @@ const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
               type="text"
               placeholder="First name"
               className="create--account--input ml12"
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
           <div className="universal--input--forms--half">
@@ -44,17 +92,26 @@ const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
               type="text"
               placeholder="Last name"
               className="create--account--input ml12"
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
         </div>
         <span className="fs16 fw700 white">Email address</span>
         <div className="legal--name--container mt8 mb24">
-          <div className="universal--input--forms--full">
-            <input
-              type="text"
-              placeholder="Email address"
-              className="create--account--input ml12"
-            />
+          <div className="email--box--with--error">
+            <div className="universal--input--forms--full">
+              <input
+                type="text"
+                maxLength={50}
+                placeholder="Email address"
+                value={message}
+                className="create--account--input ml12"
+                onChange={handleEmailChange}
+              />
+            </div>
+            {error && (
+              <h2 className="email--alert--font fs12 fw300">{error}</h2>
+            )}
           </div>
         </div>
         <span className="fs16 fw700 white">Home address</span>
@@ -64,20 +121,28 @@ const CreateAccount2User = ({ setCharSelect, setAccountCreated }) => {
               type="text"
               placeholder="Street address"
               className="create--account--input ml12"
+              onChange={(e) => {
+                setStreetAddress(e.target.value);
+              }}
             />
           </div>
           <div className="universal--input--forms--full mb8">
             <input
-              type="text"
+              type="number"
               placeholder="Block number #"
               className="create--account--input ml12"
+              onChange={(e) => setBlockNumber(e.target.value)}
             />
           </div>
           <div className="universal--input--forms--full">
             <input
-              type="text"
+              type="number"
+              max="100"
               placeholder="Postal code"
               className="create--account--input ml12"
+              onChange={(e) => {
+                setPostCode(e.target.value);
+              }}
             />
           </div>
         </div>

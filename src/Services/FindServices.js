@@ -4,17 +4,17 @@ import searchIcon from "../Assets/categorypage/searchicon.svg";
 import CategoryCards from "./CategoryCards";
 
 const FindServices = ({
-  servicesCategory,
   servicesCategorySelection,
+  filteredServicesData,
   setChooseCategory,
-  setServiceInfo,
   setBackButtonVisibility,
   setFilteredServicesData,
-  filteredServicesData,
+  setSelectedServiceId,
 }) => {
   //==================== Handle Button Clicks ======================
-  const handleCategoryCard = (cardData) => {
+  const handleCategoryCard = (id) => {
     setChooseCategory(true);
+    setSelectedServiceId(id);
   };
 
   //==================== BACKEND FETCHING ======================
@@ -67,6 +67,7 @@ const FindServices = ({
                 price_from={hmService.price_from}
                 type_of_work={hmService.type_of_work}
                 description={hmService.description}
+                id={hmService.id}
                 handleCategoryCard={handleCategoryCard}
               />
             );

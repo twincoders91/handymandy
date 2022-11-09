@@ -13,6 +13,7 @@ const CategoryCards = ({
   price_from,
   type_of_work,
   description,
+  id,
   handleCategoryCard,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
@@ -65,13 +66,7 @@ const CategoryCards = ({
     <div
       className="individual--category--card mt24"
       onClick={() => {
-        handleCategoryCard({
-          // first_name,
-          // category,
-          // price_from,
-          // description,
-          // type_of_work,
-        });
+        handleCategoryCard(id);
       }}
     >
       <img

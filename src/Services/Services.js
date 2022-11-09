@@ -25,6 +25,7 @@ const Services = ({
   //====================== States for Services ======================
   const [filteredServicesData, setFilteredServicesData] = useState([]);
   const [chooseCategory, setChooseCategory] = useState(false);
+  const [selectedServiceId, setSelectedServiceId] = useState("");
 
   //=================================================================================================================
 
@@ -41,24 +42,18 @@ const Services = ({
       <div className="category--page--container">
         {!chooseCategory && (
           <FindServices
-            // averageRating={averageRating}
             setFilteredServicesData={setFilteredServicesData}
             filteredServicesData={filteredServicesData}
-            totalJobs={totalJobs}
-            totalReviews={totalReviews}
-            handymanServicesData={handymanServicesData}
-            servicesCategory={servicesCategory}
             servicesCategorySelection={servicesCategorySelection}
             setChooseCategory={setChooseCategory}
-            setServiceInfo={setServiceInfo}
             setBackButtonVisibility={setBackButtonVisibility}
-            setCurrentPage={setCurrentPage}
+            setSelectedServiceId={setSelectedServiceId}
           />
         )}
         {chooseCategory && (
           <ServiceInfo
-            serviceInfo={serviceInfo}
             filteredServicesData={filteredServicesData}
+            selectedServiceId={selectedServiceId}
           />
         )}
         {/* <AcceptedServices /> */}

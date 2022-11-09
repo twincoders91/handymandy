@@ -29,7 +29,6 @@ export default function App() {
 
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
-  const [serviceInfo, setServiceInfo] = useState("");
   const [servicesCategorySelection, setServicesCategorySelection] =
     useState("");
 
@@ -124,8 +123,6 @@ export default function App() {
               servicesCategorySelection={servicesCategorySelection}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
-              serviceInfo={serviceInfo}
-              setServiceInfo={setServiceInfo}
             />
           }
         />
@@ -173,7 +170,6 @@ export default function App() {
               totalReviews={totalReviews}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
-              serviceInfo={serviceInfo}
               hm_id={hm_id}
             />
           }

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
+import CreateAccountEmailErrorModal from "../../Components/Modals/CreateAccountEmailErrorModal";
 
 const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +13,7 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
   const [streetAddress, setStreetAddress] = useState("");
   const [blockNumber, setBlockNumber] = useState("");
   const [postCode, setPostCode] = useState("");
+  const [errorEmailModal, setErrorEmailModal] = useState(false);
 
   //================= Valid Email Check ===================
   function isValidEmail(email) {
@@ -27,6 +29,25 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
     setMessage(event.target.value);
   };
   console.log(message);
+
+  const validateEmail = async (email) => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/user/validate/email/${email}`
+      );
+
+      const data = await res.json();
+
+      if (data === "Email already exists") {
+        setErrorEmailModal(true);
+      } else {
+        setErrorEmailModal(false);
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   //================= Back button function ===================
   const handleBackButtonClick = () => {
@@ -60,8 +81,15 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
     console.log(res);
   };
 
+  useEffect(() => {
+    validateEmail(email);
+  }, [email]);
+
   return (
     <>
+      {errorEmailModal && (
+        <CreateAccountEmailErrorModal errorEmailModal={errorEmailModal} />
+      )}
       <img
         src={backButton}
         className="back--button"
@@ -151,6 +179,7 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
         <button
           className="user--create--account--button"
           onClick={() => handleSubmitButtonClick()}
+          disabled={errorEmailModal}
         >
           Create Account
         </button>

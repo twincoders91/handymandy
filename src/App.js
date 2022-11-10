@@ -53,8 +53,7 @@ export default function App() {
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
 
-  // console.log(hm_id);
-  // console.log(username);
+  console.log(hm_id);
 
   return (
     <div>

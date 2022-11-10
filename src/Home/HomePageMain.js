@@ -32,7 +32,7 @@ const HomePageMain = ({
       const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`);
       const data = await res.json();
       console.log(data);
-      setHm_id(data[0].id);
+      setHm_id(data.id);
       return data;
     } catch (e) {
       console.log(e);

@@ -21,9 +21,9 @@ const Services = ({
   serviceInfo,
   setServiceInfo,
   setHm_id,
+  filteredServicesData,
 }) => {
   //====================== States for Services ======================
-  const [filteredServicesData, setFilteredServicesData] = useState([]);
   const [chooseCategory, setChooseCategory] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState("");
 
@@ -42,7 +42,6 @@ const Services = ({
       <div className="category--page--container">
         {!chooseCategory && (
           <FindServices
-            setFilteredServicesData={setFilteredServicesData}
             filteredServicesData={filteredServicesData}
             servicesCategorySelection={servicesCategorySelection}
             setChooseCategory={setChooseCategory}

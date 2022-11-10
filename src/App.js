@@ -145,6 +145,7 @@ export default function App() {
               setServiceDescription={setServiceDescription}
               setServiceTOW={setServiceTOW}
               setServicePriceFrom={setServicePriceFrom}
+              setIndividualHMServices={setIndividualHMServices}
             />
           }
         />

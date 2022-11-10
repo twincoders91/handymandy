@@ -312,7 +312,6 @@ const CreateAccount2Handyman = ({
             </div>
           </div>
           <div className="buttons--align--center--box">
-            {/* <NavLink className="navlinks" to={"/home"}> */}
             <button
               className="user--create--account--button"
               onClick={createHmProfile}
@@ -320,7 +319,6 @@ const CreateAccount2Handyman = ({
             >
               Submit
             </button>
-            {/* </NavLink> */}
           </div>
         </div>
       </div>

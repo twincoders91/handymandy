@@ -48,6 +48,7 @@ const HomePage3HandyMan = ({
       ));
   });
 
+  console.log(individualHMServices);
   return (
     <>
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>

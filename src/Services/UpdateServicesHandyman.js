@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UpdateServicesHandyman = ({
   updateServiceDetails,
@@ -6,22 +7,82 @@ const UpdateServicesHandyman = ({
   setServiceDescription,
   setServiceTOW,
   setServicePriceFrom,
+  setIndividualHMServices,
 }) => {
   const [categoryInput, setCategoryInput] = useState(
     updateServiceDetails.services.category
   );
+  const [titleInput, setTitleInput] = useState(
+    updateServiceDetails.services.title
+  );
   const [descriptionInput, setDescriptionInput] = useState(
     updateServiceDetails.services.description
   );
-
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState(
-    updateServiceDetails.services.type_of_work
+    updateServiceDetails.services.types_of_work
   );
 
   const [priceFromInput, setPriceFromInput] = useState(
     updateServiceDetails.services.price_from
   );
+
+  console.log(updateServiceDetails);
+
+  const updatedServiceObj = {
+    categoryInput,
+    descriptionInput,
+    tOWArray,
+    priceFromInput,
+    titleInput,
+  };
+
+  console.log(updatedServiceObj);
+  console.log(updateServiceDetails.services.services_id);
+
+  const navigate = useNavigate();
+
+  //==================== BACKEND FETCHING ======================
+
+  const fetchIndividualHMServices = async (id) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/services/handyman/${id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const data = await res.json();
+      setIndividualHMServices(data);
+      navigate("/home");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const updateServiceDB = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:8001/services/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify({
+          id: updateServiceDetails.services.services_id,
+          description: descriptionInput,
+          category: categoryInput,
+          types_of_work: tOWArray,
+          price_from: priceFromInput,
+          title: titleInput,
+        }),
+      });
+      fetchIndividualHMServices(updateServiceDetails.services.id);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const handleAddTOW = (details) => {
     const array = [...tOWArray, details];
@@ -31,7 +92,7 @@ const UpdateServicesHandyman = ({
   const handleTOWDelete = (item) => {
     const remainingArray = tOWArray.filter((d, i) => d !== item);
     setTOWArray(remainingArray);
-    console.log("clicked");
+    console.log(tOWArray);
   };
 
   const handleUpdateServicesSubmit = () => {
@@ -69,7 +130,21 @@ const UpdateServicesHandyman = ({
                 <input
                   type="text"
                   value={categoryInput}
-                  onChange={(e) => setCategoryInput(e.target.value)}
+                  onChange={(e) =>
+                    setCategoryInput(e.target.value.toLowerCase())
+                  }
+                  placeholder="e.g. Plumbing services"
+                  className="create--account--input ml12"
+                />
+              </div>
+            </div>
+            <span className="fs16 fw700 white">Title</span>
+            <div className="legal--name--container mt8 mb24">
+              <div className="universal--input--forms--full">
+                <input
+                  type="text"
+                  value={titleInput}
+                  onChange={(e) => setTitleInput(e.target.value.toLowerCase())}
                   placeholder="e.g. Plumbing services"
                   className="create--account--input ml12"
                 />
@@ -142,7 +217,7 @@ const UpdateServicesHandyman = ({
             <div className="buttons--align--center--box">
               <button
                 className="user--create--account--button"
-                onClick={handleUpdateServicesSubmit}
+                onClick={updateServiceDB}
               >
                 Submit
               </button>

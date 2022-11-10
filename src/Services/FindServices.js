@@ -6,9 +6,9 @@ import CategoryCards from "./CategoryCards";
 const FindServices = ({
   servicesCategorySelection,
   filteredServicesData,
+  setFilteredServicesData,
   setChooseCategory,
   setBackButtonVisibility,
-  setFilteredServicesData,
   setSelectedServiceId,
 }) => {
   //==================== Handle Button Clicks ======================

@@ -26,7 +26,7 @@ export default function App() {
   const [username, setUsername] = useState("");
   const [accountCreated, setAccountCreated] = useState(false);
   const [hm_id, setHm_id] = useState("");
-
+  const [user_id, setUser_id] = useState("");
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
   const [servicesCategorySelection, setServicesCategorySelection] =
@@ -108,11 +108,12 @@ export default function App() {
               // averageRating={averageRating}
               totalReviews={totalReviews}
               totalJobs={totalJobs}
-              handymanServicesData={handymanServicesData}
+              // handymanServicesData={handymanServicesData}
               servicesCategory={servicesCategory}
               servicesCategorySelection={servicesCategorySelection}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
+              setHm_id={setHm_id}
             />
           }
         />
@@ -144,12 +145,7 @@ export default function App() {
         />
         <Route
           path="/acceptedservice"
-          element={
-            <AcceptedServices
-              handymanServicesData={handymanServicesData}
-              username={username}
-            />
-          }
+          element={<AcceptedServices username={username} user_id={user_id} />}
         />
         <Route
           path="/profile"

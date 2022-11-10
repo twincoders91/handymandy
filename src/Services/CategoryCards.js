@@ -9,9 +9,8 @@ const CategoryCards = ({
   last_name,
   hm_id,
   category,
-  // service_image,
   price_from,
-  type_of_work,
+  types_of_work,
   description,
   id,
   handleCategoryCard,
@@ -80,7 +79,7 @@ const CategoryCards = ({
             {category}
           </p>
           <p className="individual--category--name fs12 fw400 m0 white mb4">
-            {first_name}
+            {first_name} {last_name}
           </p>
           <div className="individual--category--profile--stars mb4">
             <img src={recommendedprofile} alt="images"></img>

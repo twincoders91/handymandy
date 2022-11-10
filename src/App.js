@@ -29,6 +29,7 @@ export default function App() {
   const [user_id, setUser_id] = useState("");
   //=================================Services States=====================================
   const [servicesCategory, setServicesCategory] = useState("");
+  const [filteredServicesData, setFilteredServicesData] = useState([]);
   const [servicesCategorySelection, setServicesCategorySelection] =
     useState("");
   const [individualHMServices, setIndividualHMServices] = useState([]);
@@ -92,6 +93,7 @@ export default function App() {
               handymanServicesData={handymanServicesData}
               setServicesCategory={setServicesCategory}
               setServicesCategorySelection={setServicesCategorySelection}
+              setFilteredServicesData={setFilteredServicesData}
               username={username}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
@@ -115,6 +117,7 @@ export default function App() {
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
               setHm_id={setHm_id}
+              filteredServicesData={filteredServicesData}
             />
           }
         />

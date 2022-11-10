@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import lighting from "../Assets/homepage/lightbulbs.svg";
 import plumber from "../Assets/homepage/plumber.svg";
@@ -13,15 +14,29 @@ import starunfilled from "../Assets/homepage/starunfilled.svg";
 import "./homepage.css";
 import categoryData from "../DummyDataSets/Category";
 
-const HomePage = ({
-  // handymanServicesData,
-  // setServicesCategory,
-  setBackButtonVisibility,
-  setServicesCategorySelection,
-}) => {
-  //================= Confirm Filtered Services selection ===================
-  const handleCategoryClick = (item) => {
-    setServicesCategorySelection(item.toLowerCase());
+const HomePage = ({ setBackButtonVisibility, setFilteredServicesData }) => {
+  const navigate = useNavigate();
+
+  //==================== BACKEND FETCHING ======================
+  //=============== Fetch services by category ===============
+  const filterServices = async (items) => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/services/category/${items}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const data = await res.json();
+      setFilteredServicesData(data);
+      navigate("/services");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
@@ -41,10 +56,9 @@ const HomePage = ({
           <div className="category--cards">
             {categoryData.map((items) => {
               return (
-                <NavLink
+                <div
                   className="navlinks"
-                  to="/services"
-                  onClick={() => handleCategoryClick(items.category)}
+                  onClick={() => filterServices(items.category)}
                 >
                   <div className="category--cards--box">
                     <img
@@ -56,7 +70,7 @@ const HomePage = ({
                       {items.category}
                     </div>
                   </div>
-                </NavLink>
+                </div>
               );
             })}
           </div>

@@ -6,7 +6,7 @@ import CategoryCards from "./CategoryCards";
 const FindServices = ({
   servicesCategorySelection,
   filteredServicesData,
-  setFilteredServicesData,
+  // setFilteredServicesData,
   setChooseCategory,
   setBackButtonVisibility,
   setSelectedServiceId,
@@ -17,26 +17,30 @@ const FindServices = ({
     setSelectedServiceId(id);
   };
 
-  //==================== BACKEND FETCHING ======================
-  //=============== Fetch services by category ===============
-  const filterServices = async () => {
-    const res = await fetch(
-      `http://127.0.0.1:8001/services/category/${servicesCategorySelection}`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      }
-    );
-    const data = await res.json();
-    setFilteredServicesData(data);
-  };
+  // //==================== BACKEND FETCHING ======================
+  // //=============== Fetch services by category ===============
+  // const filterServices = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       `http://127.0.0.1:8001/services/category/${servicesCategorySelection}`,
+  //       {
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //         method: "GET",
+  //       }
+  //     );
+  //     const data = await res.json();
+  //     setFilteredServicesData(data);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   useEffect(() => {
     setBackButtonVisibility(true);
-    filterServices();
+    // filterServices();
   }, []);
 
   return (
@@ -65,7 +69,7 @@ const FindServices = ({
                 category={hmService.category}
                 hm_id={hmService.hm_id}
                 price_from={hmService.price_from}
-                type_of_work={hmService.type_of_work}
+                type_of_works={hmService.type_of_works}
                 description={hmService.description}
                 id={hmService.id}
                 handleCategoryCard={handleCategoryCard}

@@ -21,7 +21,7 @@ const HomePage = ({
 }) => {
   //================= Confirm Filtered Services selection ===================
   const handleCategoryClick = (item) => {
-    setServicesCategorySelection(item);
+    setServicesCategorySelection(item.toLowerCase());
   };
 
   useEffect(() => {

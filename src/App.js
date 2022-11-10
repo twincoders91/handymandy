@@ -41,18 +41,9 @@ export default function App() {
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
 
   //=============================Profile States=====================================
-  const [viewHandyMan, setViewHandyMan] = useState("");
 
   //================total review_score and average review_score==================
-  const reviews_sum = handymanData[0].reviews_score.reduce(
-    (accumulator, value) => {
-      return accumulator + value;
-    },
-    0
-  );
-  const reviews_average =
-    Math.round((reviews_sum / handymanData[0].number_of_reviews.reviews) * 10) /
-    10;
+
   //================================APIS=============================================
 
   //======================= Back button settings ===========================
@@ -62,8 +53,8 @@ export default function App() {
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
 
-  console.log(hm_id);
-  console.log(username);
+  // console.log(hm_id);
+  // console.log(username);
 
   return (
     <div>

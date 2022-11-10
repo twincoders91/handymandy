@@ -70,9 +70,10 @@ const CreateAccount1 = ({
           <input
             type="text"
             placeholder="username"
+            value={usernameInput}
             className="create--account--input ml12"
             onChange={(e) => {
-              setUsernameInput(e.target.value.toLowerCase());
+              setUsernameInput(e.target.value.toLowerCase().replace(/\s/g, "")); //replace spacing with nothing
             }}
           />
         </div>

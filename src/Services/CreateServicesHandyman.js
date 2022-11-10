@@ -14,13 +14,10 @@ const CreateServicesHandyman = ({
   const [placeholder, setPlaceholder] = useState("e.g. Sink Repair");
   const [specialities, setSpecialities] = useState(false);
   const [categorySelection, setCategorySelection] = useState("");
-  const [titleInput, setTitleInput] = useState("");
   const [title, setTitle] = useState("");
-  const [descriptionInput, setDescriptionInput] = useState("");
   const [description, setDescription] = useState("");
   const [finalTow, setFinalTow] = useState();
-  const [priceInput, setPriceInput] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [currentCategorySelection, setCurrentCategorySelection] = useState(
     "Select your category"
   );
@@ -69,10 +66,7 @@ const CreateServicesHandyman = ({
   };
   const handleSubmitCreateServices = () => {
     setBackButtonVisibility(false);
-    setTitle(titleInput);
-    setDescription(descriptionInput);
     setFinalTow(tOWArray);
-    setPrice(parseInt(priceInput));
     createServicesDB();
   };
 
@@ -80,6 +74,8 @@ const CreateServicesHandyman = ({
   useEffect(() => {
     // setBackButtonVisibility(true);
   });
+
+  console.log(hm_id, description, categorySelection, tOWArray, price, title);
 
   return (
     <>
@@ -132,7 +128,7 @@ const CreateServicesHandyman = ({
                   type="text"
                   placeholder="e.g. Plumbing services"
                   className="create--account--input ml12"
-                  onChange={(e) => setTitleInput(e.target.value)}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
             </div>
@@ -143,7 +139,7 @@ const CreateServicesHandyman = ({
                   type="text"
                   placeholder="Let others know more about your services (200 characters)"
                   className="create--account--input ml12 mt12"
-                  onChange={(e) => setDescriptionInput(e.target.value)}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
             </div>
@@ -196,7 +192,7 @@ const CreateServicesHandyman = ({
                   type="text"
                   placeholder="e.g. $150"
                   className="create--account--input ml12"
-                  onChange={(e) => setPriceInput(e.target.value)}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
             </div>

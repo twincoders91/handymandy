@@ -55,6 +55,8 @@ const ServiceInfo = ({ filteredServicesData, selectedServiceId }) => {
     getHmRatings();
   }, []);
 
+  console.log(serviceInfo[0]);
+
   return (
     <>
       <span className="fw700 fs32 mt24 mb24 white">Service Info</span>
@@ -90,12 +92,13 @@ const ServiceInfo = ({ filteredServicesData, selectedServiceId }) => {
           </div>
         </div>
         <div className="service--info--card--bottom">
+          <p className="m0 fs12 fw700 mb8">{serviceInfo[0].title}</p>
           <span className="service--info--desc fs12 fw400 white">
             {serviceInfo[0].description}
           </span>
           <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
           <div className="type--of--work">
-            {serviceInfo[0].type_of_work.map((works) => {
+            {serviceInfo[0].types_of_work.map((works) => {
               return (
                 <div className="m0 fs12 fw700 type--of--work--content">
                   <img src={tick} />

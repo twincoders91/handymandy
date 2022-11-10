@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./createaccount.css";
@@ -29,6 +30,8 @@ const CreateAccount2Handyman = ({
   const [aboutBusiness, setAboutBusiness] = useState("");
   const [errorEmailModal, setErrorEmailModal] = useState(false);
 
+  const navigate = useNavigate();
+
   //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
     setSpecialities((current) => !current);
@@ -58,7 +61,6 @@ const CreateAccount2Handyman = ({
     }
     setMessage(event.target.value);
   };
-  console.log(message);
 
   const validateEmail = async (email) => {
     try {
@@ -86,7 +88,6 @@ const CreateAccount2Handyman = ({
   }
 
   const handleAddSpecialities = (details) => {
-    console.log(details);
     if (specialitiesArray.length === 0) {
       addIntoArray(details);
     } else if (specialitiesArray.length > 0) {
@@ -108,31 +109,36 @@ const CreateAccount2Handyman = ({
     setCharSelect("step1");
   };
   //================= Confirm account created ===================
-  const handleSubmitButtonClick = async () => {
-    await createHmProfile();
-  };
-  console.log(yearsSelection);
+  // const handleSubmitButtonClick = async () => {
+  //   await createHmProfile();
+  // };
+  // console.log(yearsSelection);
   //==================== BACKEND FETCHING ======================
+
   const createHmProfile = async () => {
-    const res = await fetch("http://127.0.0.1:8001/handyman/", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        username: username.toLowerCase(),
-        first_name: firstName.toLowerCase(),
-        last_name: lastName.toLowerCase(),
-        email: email.toLowerCase(),
-        business_name: businessName.toLowerCase(),
-        number_of_years: yearsSelection.toLowerCase(),
-        profile_image: null,
-        specialities: specialitiesArray,
-        about: aboutBusiness.toLowerCase(),
-      }),
-    });
-    console.log(res);
+    try {
+      const res = await fetch("http://127.0.0.1:8001/handyman/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          username: username.toLowerCase(),
+          first_name: firstName.toLowerCase(),
+          last_name: lastName.toLowerCase(),
+          email: email.toLowerCase(),
+          business_name: businessName.toLowerCase(),
+          number_of_years: yearsSelection.toLowerCase(),
+          profile_image: null,
+          specialities: specialitiesArray,
+          about: aboutBusiness.toLowerCase(),
+        }),
+      });
+      navigate("/home");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
@@ -306,15 +312,15 @@ const CreateAccount2Handyman = ({
             </div>
           </div>
           <div className="buttons--align--center--box">
-            <NavLink className="navlinks" to={"/home"}>
-              <button
-                className="user--create--account--button"
-                onClick={() => handleSubmitButtonClick()}
-                disabled={errorEmailModal}
-              >
-                Submit
-              </button>
-            </NavLink>
+            {/* <NavLink className="navlinks" to={"/home"}> */}
+            <button
+              className="user--create--account--button"
+              onClick={createHmProfile}
+              disabled={errorEmailModal}
+            >
+              Submit
+            </button>
+            {/* </NavLink> */}
           </div>
         </div>
       </div>

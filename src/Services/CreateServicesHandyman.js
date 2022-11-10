@@ -8,6 +8,7 @@ const CreateServicesHandyman = ({
   setBackButtonVisibility,
   backButtonVisibility,
   hm_id,
+  setIndividualHMServices,
 }) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
@@ -36,6 +37,9 @@ const CreateServicesHandyman = ({
   };
 
   //==================== BACKEND FETCHING ======================
+
+  console.log(hm_id);
+
   const createServicesDB = async () => {
     const res = await fetch("http://127.0.0.1:8001/services/", {
       headers: {
@@ -52,8 +56,22 @@ const CreateServicesHandyman = ({
         title: title,
       }),
     });
+    fetchIndividualHMServices(hm_id);
     console.log(res);
   };
+
+  const fetchIndividualHMServices = async (id) => {
+    const res = await fetch(`http://127.0.0.1:8001/services/handyman/${id}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "GET",
+    });
+    const data = await res.json();
+    setIndividualHMServices(data);
+  };
+
   //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
     setSpecialities((current) => !current);

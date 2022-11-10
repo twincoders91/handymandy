@@ -14,9 +14,13 @@ const HomePageMain = ({
   backButtonVisibility,
   setUpdateServiceDetails,
   setHm_id,
+  hm_id,
+  individualHMServices,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
+
+  const [hmRatings, setHmRatings] = useState([]);
 
   //============================Filtering HM data down to HM's username===========================
   const HMindividualServices = handymanServicesData.filter(
@@ -25,25 +29,52 @@ const HomePageMain = ({
     }
   );
 
-  //======================================================================
+  //=====================================API========================================
+  console.log(username);
 
   const getHandymanID = async () => {
+    if (!username) return;
     try {
-      const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`);
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      console.log(res);
       const data = await res.json();
-      console.log(data);
+
       setHm_id(data.id);
+      getHmRatings(data.id);
       return data;
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
+
+  const getHmRatings = async (id) => {
+    const res = await fetch(
+      `http://127.0.0.1:8001/handyman/${id}/averageratingandjobs`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      }
+    );
+    const ratingData = await res.json();
+    setHmRatings(ratingData);
+  };
+
+  //================================================================================
 
   useEffect(() => {
     getHandymanID();
   }, []);
 
-  console.log(username);
+  console.log(individualHMServices);
 
   return (
     <div>
@@ -65,6 +96,10 @@ const HomePageMain = ({
           setUpdateService={setUpdateService}
           setUpdateServiceDetails={setUpdateServiceDetails}
           setBackButtonVisibility={setBackButtonVisibility}
+          hm_id={hm_id}
+          individualHMServices={individualHMServices}
+          setHmRatings={setHmRatings}
+          hmRatings={hmRatings}
         />
       )}
       {/* <ProfileHandyman

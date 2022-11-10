@@ -31,6 +31,7 @@ export default function App() {
   const [servicesCategory, setServicesCategory] = useState("");
   const [servicesCategorySelection, setServicesCategorySelection] =
     useState("");
+  const [individualHMServices, setIndividualHMServices] = useState([]);
 
   //============================State that hold services data=====================================
   const [createService, setCreateService] = useState(false);
@@ -52,8 +53,6 @@ export default function App() {
     setTotalReviews(handymanData[0].number_of_reviews.reviews);
     setTotalJobs(handymanData[0].number_of_jobs.jobs);
   }, []);
-
-  console.log(hm_id);
 
   return (
     <div>
@@ -98,6 +97,8 @@ export default function App() {
               backButtonVisibility={backButtonVisibility}
               setUpdateServiceDetails={setUpdateServiceDetails}
               setHm_id={setHm_id}
+              hm_id={hm_id}
+              individualHMServices={individualHMServices}
             />
           }
         />
@@ -127,6 +128,7 @@ export default function App() {
               setServiceTOW={setServiceTOW}
               setServicePriceFrom={setServicePriceFrom}
               hm_id={hm_id}
+              setIndividualHMServices={setIndividualHMServices}
             />
           }
         />

@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { NavLink } from "react-router-dom";
-import starfilled from "../Assets/homepage/starfilled.svg";
+import starFilled from "../Assets/homepage/starfilled.svg";
+import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
 const HomePage3HandyMan = ({
-  HMindividualServices,
   setUpdateService,
   setUpdateServiceDetails,
   setCurrentPage,
+  individualHMServices,
+  setHmRatings,
+  hmRatings,
 }) => {
   //=======================Clicking Create Service Button============================
   const handleCreateServiceClick = () => {
@@ -24,10 +27,31 @@ const HomePage3HandyMan = ({
     console.log(services);
   };
 
+  //======================Creating Star Ratings=======================
+  let count = 5;
+  const starColour = (index) => {
+    if (hmRatings.length > 0) {
+      if (hmRatings[0].average_rating >= index) {
+        return starFilled;
+      }
+      return starUnFilled;
+    } else {
+      return starUnFilled;
+    }
+  };
+  const starRating = useMemo(() => {
+    return Array(count)
+      .fill(0)
+      .map((_, i) => i + 1)
+      .map((idx) => (
+        <img src={starColour(idx)} key={idx} className="review--stars" />
+      ));
+  });
+
   return (
     <>
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>
-      {HMindividualServices.map((services) => {
+      {individualHMServices.map((services) => {
         return (
           <div className="hm3--page--container mt24">
             <div className="hm3--info--card">
@@ -47,17 +71,17 @@ const HomePage3HandyMan = ({
                     </p>
                     <div className="hm3--info--profile--stars mb4">
                       <img src={recommendedprofile} alt="images"></img>
-                      <div className="hm3--info--stars">
-                        <img src={starfilled} alt="images"></img>
-                        <img src={starfilled} alt="images"></img>
-                        <img src={starfilled} alt="images"></img>
-                        <img src={starfilled} alt="images"></img>
-                        <img src={starfilled} alt="images"></img>
-                      </div>
+                      <div className="hm3--info--stars">{starRating}</div>
                     </div>
-                    <p className="m0 fw700 fs8 white">
-                      34 reviews | 82 jobs completed
-                    </p>
+                    <div className="m0 fw700 fs8 white">
+                      {hmRatings.length > 0 ? (
+                        <p className="m0 fw700 fs8 white">
+                          {hmRatings[0].total_jobs} job(s) completed
+                        </p>
+                      ) : (
+                        <p className="m0 fw700 fs8 white">0 job completed</p>
+                      )}
+                    </div>
                   </div>
                   <div className="hm3--info--price ml12">
                     <p className="starting--from m0 white fw700">
@@ -75,7 +99,7 @@ const HomePage3HandyMan = ({
                 </span>
                 <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
                 <div className="type--of--work">
-                  {services.type_of_work.map((types) => {
+                  {services.types_of_work.map((types) => {
                     return (
                       <div className="m0 fs12 fw700 type--of--work--content">
                         <img src={tick} />
@@ -88,9 +112,7 @@ const HomePage3HandyMan = ({
                     <button
                       className="hm3--info--view--profile--button br4 fw700 fs12"
                       onClick={() => {
-                        handleUpdateServiceClick({
-                          services,
-                        });
+                        handleUpdateServiceClick({ services });
                       }}
                     >
                       Edit

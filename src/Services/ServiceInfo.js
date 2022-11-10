@@ -6,13 +6,16 @@ import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
-const ServiceInfo = ({ filteredServicesData, selectedServiceId }) => {
+const ServiceInfo = ({ filteredServicesData, selectedServiceId, setHm_id }) => {
   const [hmRatings, setHmRatings] = useState([]);
 
   // ============== Filter Service category data by Service ID ==============
   const serviceInfo = filteredServicesData.filter(
     (item) => item.id === selectedServiceId
   );
+  // == Set HM_ID based on this service info. (to retrieve hm profile) ==
+  setHm_id(serviceInfo.hm_id); //retrieve hm_id from service info
+
   //====================== BACKEND FETCHING =======================
   const getHmRatings = async () => {
     const res = await fetch(

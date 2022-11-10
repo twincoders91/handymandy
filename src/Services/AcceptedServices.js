@@ -1,42 +1,42 @@
-import React from "react";
-import starfilled from "../Assets/homepage/starfilled.svg";
+import React, { useState, useEffect } from "react";
+
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import inProgress from "../Assets/services/inprogress.svg";
-import completedProgress from "../Assets/services/complete.svg";
+import pending from "../Assets/services/pending.svg";
+import inprogress from "../Assets/services/in progress.svg";
+import completed from "../Assets/services/complete.svg";
+import cancelled from "../Assets/services/cancelled.svg";
 import Navbar from "../Components/Navbar";
-import userData from "../DummyDataSets/UserProfile";
 import { findAllInRenderedTree } from "react-dom/test-utils";
 
 //services must have schema with progress: completed true or false
 
-const AcceptedServices = ({ handymanServicesData, username }) => {
-  const currentUser = userData.filter((userFilter) => {
-    return userFilter.username === username;
-  })[0];
+const AcceptedServices = ({ username, user_id }) => {
+  const [allJobRequestsUser, setAllJobRequestsUser] = useState([]);
 
-  let handyManMatched = [];
-
-  if (currentUser && currentUser.hired_services) {
-    const handyMenHired = currentUser.hired_services.map(
-      (hiredHandyman) => hiredHandyman.hm_username
-    );
-
-    handyManMatched = handymanServicesData.filter((handyMan) => {
-      return handyMenHired.includes(handyMan.username);
+  //==================== Fetch Jobs by user_id ======================
+  const getAllJobRequestsUser = async () => {
+    const res = await fetch(`http://127.0.0.1:8001/jobs/user/${user_id}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "GET",
     });
+    const data = await res.json();
+    setAllJobRequestsUser(data);
+  };
 
-    console.log(handyManMatched);
-  } else {
-    console.log("no user");
-  }
+  useEffect(() => {
+    getAllJobRequestsUser();
+  }, []);
 
   return (
     <>
       <Navbar />
       <div className="accepted--services--container">
-        <span className="fw700 fs32 mt24 mb24 white">Accepted Services</span>
-        {handyManMatched.map((hiredHM) => {
+        <span className="fw700 fs32 mt24 mb24 white">Your Services</span>
+        {allJobRequestsUser.map((hiredHM) => {
           return (
             <div className="accepted--services--card mt24">
               <img
@@ -53,14 +53,14 @@ const AcceptedServices = ({ handymanServicesData, username }) => {
                     {hiredHM.first_name}
                   </p>
                   <div className="progress--icon--and--progress mt12">
-                    <img src={inProgress} />
+                    <img src={hiredHM.job_status.split(" ").join("")} />
                     <p className="m0 fw700 fs12 white ml8">
-                      Project in progress
+                      {hiredHM.job_status}
                     </p>
                   </div>
                 </div>
                 <div className="accepted--services--profile--pic ml36">
-                  <img src={recommendedprofile} alt="images"></img>
+                  <img src={hiredHM.profile_image} alt="images"></img>
                 </div>
               </div>
             </div>

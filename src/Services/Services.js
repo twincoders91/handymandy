@@ -20,6 +20,7 @@ const Services = ({
   setCurrentPage,
   serviceInfo,
   setServiceInfo,
+  setHm_id,
 }) => {
   //====================== States for Services ======================
   const [filteredServicesData, setFilteredServicesData] = useState([]);
@@ -53,6 +54,7 @@ const Services = ({
           <ServiceInfo
             filteredServicesData={filteredServicesData}
             selectedServiceId={selectedServiceId}
+            setHm_id={setHm_id}
           />
         )}
         {/* <AcceptedServices /> */}

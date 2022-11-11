@@ -1,7 +1,6 @@
 import { React, useEffect, useMemo, useState } from "react";
 import "./profile.css";
 import edit from "../Assets/universal/edit.svg";
-import handymanData from "../DummyDataSets/profileHandyman";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
 import trophy from "../Assets/profile/trophy.svg";
@@ -9,14 +8,15 @@ import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
 
 const ViewProfileHandyman = ({
-  totalReviews,
-  averageRating,
-  totalJobs,
   setBackButtonVisibility,
-  hm_id,
+  hmProfile,
+  individualHmStar,
+  individualHmReviews,
 }) => {
   //=============================FETCHING APIS============================
-
+  console.log(hmProfile);
+  console.log(individualHmStar);
+  console.log(individualHmReviews);
   // const retreiveHandymanInfo = async () => {
   //   const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`);
   //   const data = await res.json();
@@ -26,10 +26,14 @@ const ViewProfileHandyman = ({
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {
-    if (averageRating >= index) {
-      return starFilled;
+    if (individualHmStar.length > 0) {
+      if (individualHmStar[0].average_rating >= index) {
+        return starFilled;
+      }
+      return starUnfilled;
+    } else {
+      return starUnfilled;
     }
-    return starUnfilled;
   };
   const starRating = useMemo(() => {
     return Array(count)
@@ -48,30 +52,30 @@ const ViewProfileHandyman = ({
     <div className="profile--info--container">
       <div className="profile--image--box">
         <img
-          src={require(`../Assets/profile/${handymanData[0].profile_image}`)}
+          src={require(`../Assets/profile/defaultavatar.jpeg`)}
           className="absolute profile--image"
         />
       </div>
       <div className="profile--info--card relative">
         <div className="profile--name--box mt60 fs16 fw700 white">
-          <span>{`${handymanData[0].first_name} ${" "} ${
-            handymanData[0].last_name
+          <span>{`${hmProfile[0].first_name} ${" "} ${
+            hmProfile[0].last_name
           } `}</span>
         </div>
         <div className="reviews--box ">
-          <div className="reviews--stars--box fw700 fs16">{averageRating}</div>
+          <div className="reviews--stars--box fw700 fs16">
+            {individualHmStar[0].average_rating}
+          </div>
           <div className="reviews--stars--box ml4 ">{starRating}</div>
         </div>
 
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt8">About</div>
-          <span className="fw400 fs12 mt12">{handymanData[0].about}</span>
+          <span className="fw400 fs12 mt12">{hmProfile[0].about}</span>
         </div>
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt16">Company</div>
-          <span className="fw400 fs12 mt12">
-            {handymanData[0].business_name}
-          </span>
+          <span className="fw400 fs12 mt12">{hmProfile[0].business_name}</span>
         </div>
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
@@ -79,7 +83,7 @@ const ViewProfileHandyman = ({
               <img src={time} className="profile--icons" alt="images"></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {handymanData[0].number_of_years.years}
+                  {hmProfile[0].number_of_years}
                 </div>
                 <div className="fw400 fs12">in business</div>
               </div>
@@ -92,7 +96,7 @@ const ViewProfileHandyman = ({
               ></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {totalJobs}
+                  {individualHmStar[0].total_jobs} jobs
                 </div>
                 <div className="fw400 fs12">completed</div>
               </div>
@@ -101,9 +105,9 @@ const ViewProfileHandyman = ({
               <img src={reviews} className="profile--icons" alt="images"></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {totalReviews}
+                  {individualHmStar[0].total_ratings}
                 </div>
-                <div className="fw400 fs12">reviews</div>
+                <div className="fw400 fs12">Rating points</div>
               </div>
             </div>
           </div>
@@ -111,22 +115,22 @@ const ViewProfileHandyman = ({
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt16">Handy Specialities</div>
         </div>
-        <div className="profile--medal--icons--box  mt16">
+        <div className="profile--medal--icons--box  mt16 mb24">
           <div className="category--profile--cards">
-            {handymanData[0].specialities.map((item) => {
+            {hmProfile[0].specialities.map((item) => {
               return (
                 <div
                   className="category--profile--cards--box"
                   key={Math.random() * 1000}
                 >
                   <img
-                    src={require(`../Assets/profile/${item.icon}`)}
+                    src={require(`../Assets/profile/${item}.svg`)}
                     className="category--cards--icon"
                     alt="images"
                   ></img>
                   <div className="profile--description--cards">
                     <div className="category--cards--text fw700 fs14">
-                      {item.speciality}
+                      {item}
                     </div>
                   </div>
                 </div>
@@ -134,33 +138,27 @@ const ViewProfileHandyman = ({
             })}
           </div>
         </div>
-        <div className="message--button--box mb24">
-          <button className="message--button fw700 fs14">
-            <img src={edit} />
-            Edit profile
-          </button>
-        </div>
       </div>
       <div className="reviews--info--container">
         <div className="reviews--header white fw700 fs16 ml24 mt24 mb4">
           Reviews
         </div>
-        {handymanData[0].reviews.map((items) => {
+        {individualHmReviews.map((items) => {
           return (
             <div className="reviews--cards--box mb8 relative">
               <img
-                src={require(`../Assets/profile/${items.icon}`)}
+                src={require(`../Assets/profile/defaultavatar.jpeg`)}
                 className="profile--image--icons ml16 mt16 mb16"
                 alt="images"
               ></img>
               <div className="reviews--description--cards ml16 mt16 mb16">
-                <div className=" fw700 fs12  mb4">{items.name}</div>
+                <div className=" fw700 fs12  mb4">{items.first_name}</div>
                 <div className="reviews--message fw400 fs12 white">
-                  {items.message}
+                  {items.reviews}
                 </div>
               </div>
               <div className="reviews--score--box absolute">
-                <span className="fs56 fw700">{items.score}</span>
+                <span className="fs56 fw700">{items.ratings}</span>
               </div>
             </div>
           );

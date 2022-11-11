@@ -8,29 +8,31 @@ const CategoryCards = ({
   first_name,
   last_name,
   hm_id,
-  category,
   price_from,
-  types_of_work,
-  description,
+  title,
   id,
   handleCategoryCard,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
 
-  //====================== BACKEND FETCHING =======================
+  //====================== RATINGS FETCHING =======================
   const getHmRatings = async () => {
-    const res = await fetch(
-      `http://127.0.0.1:8001/handyman/${hm_id}/averageratingandjobs`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      }
-    );
-    const ratingData = await res.json();
-    setHmRatings(ratingData);
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${hm_id}/averageratingandjobs`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const ratingData = await res.json();
+      setHmRatings(ratingData);
+    } catch (e) {
+      console.error(e);
+    }
   };
   console.log(hm_id);
   console.log(hmRatings);
@@ -76,10 +78,10 @@ const CategoryCards = ({
       <div className="individual--category--description--container">
         <div className="individual--category--description--section ml12">
           <p className="individual--category--title fs16 fw700 m0 white mb4">
-            {category}
+            {title}
           </p>
           <p className="individual--category--name fs12 fw400 m0 white mb4">
-            {first_name} {last_name}
+            {first_name}
           </p>
           <div className="individual--category--profile--stars mb4">
             <img src={recommendedprofile} alt="images"></img>

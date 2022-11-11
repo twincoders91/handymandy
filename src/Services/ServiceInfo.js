@@ -14,15 +14,21 @@ const ServiceInfo = ({
   setHmProfile,
   setIndividualHmStar,
   setIndividualHmReviews,
+  setHmAverageRating,
+  setJobsCompleted,
+  setTotalRatings,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const navigate = useNavigate();
 
   // ============== Filter Service category data by Service ID ==============
   const serviceInfo = filteredServicesData.filter(
-    (item) => item.id === selectedServiceId
+    (item) => item.services_id === selectedServiceId
   );
-  setHm_id(serviceInfo[0].hm_id);
+  setHm_id(serviceInfo.hm_id);
+  console.log(selectedServiceId);
+  console.log(filteredServicesData);
+  console.log(serviceInfo);
 
   //====================== Fetch HM profile by ID =======================
   const getHmProfile = async () => {
@@ -57,13 +63,29 @@ const ServiceInfo = ({
           method: "GET",
         }
       );
-
       const hmProfileData = await res.json();
       setHmProfile(hmProfileData);
       const hmStars = await res2.json();
-      setIndividualHmStar(hmStars);
+      if (hmStars.length > 0) {
+        setHmAverageRating(hmStars[0].average_rating);
+        setIndividualHmStar(hmStars);
+      } else {
+        setHmAverageRating(0);
+      }
+
       const hmReviews = await res3.json();
-      setIndividualHmReviews(hmReviews);
+      if (hmReviews.length > 0) {
+        setJobsCompleted(hmReviews[0].total_jobs);
+      } else {
+        setJobsCompleted(0);
+      }
+      if (hmReviews > 0) {
+        setTotalRatings(hmReviews[0].total_ratings);
+        setIndividualHmReviews(hmReviews);
+      } else {
+        setTotalRatings(0);
+      }
+
       navigate("/profile");
     } catch (e) {
       console.error(e);
@@ -112,8 +134,6 @@ const ServiceInfo = ({
     getHmRatings();
   }, []);
 
-  console.log(serviceInfo[0]);
-
   return (
     <>
       <span className="fw700 fs32 mt24 mb24 white">Service Info</span>
@@ -124,27 +144,29 @@ const ServiceInfo = ({
             className="service--info--image"
             alt="images"
           />
-          <div className="service--info--description--container">
-            <div className="service--info--description--section ml12">
-              <p className="service--info--title fs16 fw700 m0 white mb4">
-                {serviceInfo[0].title}
-              </p>
-              <p className="service--info--name fs12 fw400 m0 white mb4">
-                {serviceInfo[0].first_name}
-              </p>
-              <div className="service--info--profile--stars mb4">
-                <img src={recommendedprofile} alt="images"></img>
-                <div className="service--info--stars">{starRating}</div>
+          <div className="hm3--info--description--mega--container">
+            <p className="service--info--title fs16 fw700 m0 white mb4 ml12 mt8">
+              {serviceInfo[0].title}
+            </p>
+            <div className="service--info--description--container">
+              <div className="service--info--description--section ml12">
+                <p className="service--info--name fs12 fw400 m0 white mb4">
+                  {serviceInfo[0].first_name}
+                </p>
+                <div className="service--info--profile--stars mb4">
+                  <img src={recommendedprofile} alt="images"></img>
+                  <div className="service--info--stars">{starRating}</div>
+                </div>
+                <p className="m0 fw700 fs8 white">
+                  {serviceInfo[0].total_jobs} job(s) completed
+                </p>
               </div>
-              <p className="m0 fw700 fs8 white">
-                {serviceInfo[0].total_jobs} job(s) completed
-              </p>
-            </div>
-            <div className="service--info--price ml12">
-              <p className="starting--from m0 white fw700">starting from</p>
-              <p className="starting--from--price m0 fs28 fw700">
-                ${serviceInfo[0].price_from}
-              </p>
+              <div className="service--info--price ml12">
+                <p className="starting--from m0 white fw700">starting from</p>
+                <p className="starting--from--price m0 fs28 fw700">
+                  ${serviceInfo[0].price_from}
+                </p>
+              </div>
             </div>
           </div>
         </div>

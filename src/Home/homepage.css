@@ -191,6 +191,7 @@
 .hm3--info--description--mega--container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .hm3--info--description--container {
   display: flex;

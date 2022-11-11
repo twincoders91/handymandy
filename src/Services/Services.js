@@ -26,6 +26,9 @@ const Services = ({
   setIndividualHmReviews,
   filteredServicesData,
   setViewHmProfile,
+  setHmAverageRating,
+  setJobsCompleted,
+  setTotalRatings,
 }) => {
   //====================== States for Services ======================
   const [chooseCategory, setChooseCategory] = useState(false);
@@ -62,6 +65,9 @@ const Services = ({
             setHmProfile={setHmProfile}
             setIndividualHmStar={setIndividualHmStar}
             setIndividualHmReviews={setIndividualHmReviews}
+            setHmAverageRating={setHmAverageRating}
+            setJobsCompleted={setJobsCompleted}
+            setTotalRatings={setTotalRatings}
           />
         )}
         {/* <AcceptedServices /> */}

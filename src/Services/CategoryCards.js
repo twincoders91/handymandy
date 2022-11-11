@@ -12,6 +12,7 @@ const CategoryCards = ({
   title,
   id,
   handleCategoryCard,
+  services_id,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
 
@@ -67,7 +68,7 @@ const CategoryCards = ({
     <div
       className="individual--category--card mt24"
       onClick={() => {
-        handleCategoryCard(id);
+        handleCategoryCard(services_id);
       }}
     >
       <img
@@ -76,24 +77,26 @@ const CategoryCards = ({
         alt="images"
       />
       <div className="individual--category--description--container">
-        <div className="individual--category--description--section ml12">
-          <p className="individual--category--title fs16 fw700 m0 white mb4">
+        <div className="hm3--info--description--mega--container">
+          <p className="individual--category--title fs16 fw700 m0 white mb4 ml12">
             {title}
           </p>
-          <p className="individual--category--name fs12 fw400 m0 white mb4">
-            {first_name}
-          </p>
-          <div className="individual--category--profile--stars mb4">
-            <img src={recommendedprofile} alt="images"></img>
-            <div className="individual--category--stars">{starRating}</div>
-          </div>
-          {hmRatings.length > 0 ? (
-            <p className="m0 fw700 fs8 white">
-              {hmRatings[0].total_jobs} job(s) completed
+          <div className="individual--category--description--section ml12">
+            <p className="individual--category--name fs12 fw400 m0 white mb4">
+              {first_name}
             </p>
-          ) : (
-            <p className="m0 fw700 fs8 white">0 job completed</p>
-          )}
+            <div className="individual--category--profile--stars mb4">
+              <img src={recommendedprofile} alt="images"></img>
+              <div className="individual--category--stars">{starRating}</div>
+            </div>
+            {hmRatings.length > 0 ? (
+              <p className="m0 fw700 fs8 white">
+                {hmRatings[0].total_jobs} job(s) completed
+              </p>
+            ) : (
+              <p className="m0 fw700 fs8 white">0 job completed</p>
+            )}
+          </div>
         </div>
         <div className="individual--category--price ml12">
           <p className="starting--from m0 white fw700">starting from</p>

@@ -10,11 +10,13 @@ const FindServices = ({
   setChooseCategory,
   setBackButtonVisibility,
   setSelectedServiceId,
+  setViewHmProfile,
 }) => {
   //==================== Handle Button Clicks ======================
   const handleCategoryCard = (id) => {
     setChooseCategory(true);
     setSelectedServiceId(id);
+    setViewHmProfile(true);
   };
 
   useEffect(() => {
@@ -51,6 +53,7 @@ const FindServices = ({
                 id={hmService.id}
                 title={hmService.title}
                 handleCategoryCard={handleCategoryCard}
+                setViewHmProfile={setViewHmProfile}
               />
             );
           })

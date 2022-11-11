@@ -90,6 +90,7 @@ export default function App() {
               setUpdateServiceDetails={setUpdateServiceDetails}
               setHm_id={setHm_id}
               hm_id={hm_id}
+              setIndividualHMServices={setIndividualHMServices}
               individualHMServices={individualHMServices}
             />
           }

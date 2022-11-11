@@ -235,6 +235,7 @@
 }
 
 .hm3--info--view--create--button {
+  cursor: pointer;
   height: 60px;
   width: 180px;
   background-color: var(--orange);
@@ -244,14 +245,29 @@
   color: var(--black);
 }
 
+.hm3--info--delete--profile--button {
+  cursor: pointer;
+  height: 30px;
+  width: 90px;
+  position: absolute;
+  background-color: #ff4040;
+  outline: none;
+  border: none;
+  bottom: 20px;
+  right: 20px;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+}
+
 .hm3--info--view--profile--button {
+  cursor: pointer;
   height: 30px;
   width: 90px;
   position: absolute;
   background-color: var(--orange);
   outline: none;
   border: none;
-  bottom: 20px;
+  bottom: 60px;
   right: 20px;
   font-family: "Exo", sans-serif;
   color: var(--black);

@@ -15,6 +15,7 @@ const HomePageMain = ({
   setHm_id,
   hm_id,
   individualHMServices,
+  setIndividualHMServices,
   setFilteredServicesData,
 }) => {
   //============================States to make sure correct pages show============================
@@ -30,7 +31,7 @@ const HomePageMain = ({
   // );
 
   //===================================== Get HM ID ========================================
-  console.log(username);
+  //============================= Get Handyman ID ================================
   console.log(charSelect);
 
   const getHandymanID = async () => {
@@ -45,9 +46,9 @@ const HomePageMain = ({
       });
       console.log(res);
       const data = await res.json();
-
       setHm_id(data.id);
       getHmRatings(data.id);
+      fetchIndividualHMServices(data.id);
       return data;
     } catch (e) {
       console.error(e);
@@ -56,6 +57,8 @@ const HomePageMain = ({
   //===================================== Get User ID ========================================
   console.log(username);
   console.log(charSelect);
+
+  //============================= Get Handyman Ratings ================================
 
   const getUserID = async () => {
     if (!username || charSelect === "handyman") return;
@@ -79,18 +82,41 @@ const HomePageMain = ({
   };
   //===================================== STAR RATINGS ========================================
   const getHmRatings = async (id) => {
-    const res = await fetch(
-      `http://127.0.0.1:8001/handyman/${id}/averageratingandjobs`,
-      {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${id}/averageratingandjobs`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const ratingData = await res.json();
+      setHmRatings(ratingData);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  //============================= Fetch all Services ================================
+
+  const fetchIndividualHMServices = async (id) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/services/handyman/${id}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "GET",
-      }
-    );
-    const ratingData = await res.json();
-    setHmRatings(ratingData);
+      });
+      const data = await res.json();
+      setIndividualHMServices(data);
+      console.log(individualHMServices);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   //================================================================================
@@ -122,6 +148,7 @@ const HomePageMain = ({
           setBackButtonVisibility={setBackButtonVisibility}
           hm_id={hm_id}
           individualHMServices={individualHMServices}
+          setIndividualHMServices={setIndividualHMServices}
           setHmRatings={setHmRatings}
           hmRatings={hmRatings}
         />

@@ -167,7 +167,10 @@ export default function App() {
             />
           }
         />
-        <Route path="/editprofile" element={<EditProfileHandyMan />} />
+        <Route
+          path="/editprofilehm"
+          element={<EditProfileHandyMan hm_id={hm_id} />}
+        />
       </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
 import { React, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./profile.css";
 import edit from "../Assets/universal/edit.svg";
-import handymanData from "../DummyDataSets/profileHandyman";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
 import trophy from "../Assets/profile/trophy.svg";
@@ -22,6 +22,8 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
   const [last_name_hm, setlast_name_hm] = useState("");
   const [totalRatingsPoints, setTotalRatingPoints] = useState("");
   const [individualHMReviews, setIndividualHMReviews] = useState([]);
+
+  const navigate = useNavigate();
 
   const retreiveHandymanInfo = async () => {
     try {
@@ -110,7 +112,11 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
       console.log(e);
     }
   };
-  console.log(individualHMReviews);
+
+  const handleEditProfile = () => {
+    navigate("/editprofilehm");
+  };
+
   //======================Creating Star Ratings=======================
   let count = 5;
 
@@ -231,7 +237,10 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
           </div>
         </div>
         <div className="message--button--box mb24">
-          <button className="message--button fw700 fs14">
+          <button
+            className="message--button fw700 fs14"
+            onClick={handleEditProfile}
+          >
             <img src={edit} />
             Edit profile
           </button>

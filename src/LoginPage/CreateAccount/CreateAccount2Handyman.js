@@ -8,11 +8,7 @@ import yearsData from "../../DummyDataSets/Years";
 import crossbutton from "../../Assets/services/crossbutton.svg";
 import CreateAccountEmailErrorModal from "../../Components/Modals/CreateAccountEmailErrorModal";
 
-const CreateAccount2Handyman = ({
-  setCharSelect,
-  setAccountCreated,
-  username,
-}) => {
+const CreateAccount2Handyman = ({ setCharSelect, username }) => {
   const [specialities, setSpecialities] = useState(false);
   const [yearsClick, setYearsClick] = useState(false);
   const [yearsSelection, setYearsSelection] = useState(
@@ -145,9 +141,7 @@ const CreateAccount2Handyman = ({
 
   return (
     <>
-      {errorEmailModal && (
-        <CreateAccountEmailErrorModal errorEmailModal={errorEmailModal} />
-      )}
+      {errorEmailModal && <CreateAccountEmailErrorModal />}
       <div className="mb36">
         <img
           src={backButton}

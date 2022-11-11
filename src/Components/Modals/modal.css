@@ -137,16 +137,15 @@
 .username--exist--modal--container {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 50px;
-  position: absolute;
-  transform: translate(0%, -100%);
-  transition: 0.4s;
+  text-align: center;
 }
 
-.username--exist--modal--containerActive {
+/* .username--exist--modal--containerActive {
   display: flex;
   align-items: center;
   height: 50px;
   position: absolute;
   transform: translate(0%, 0%);
-}
+} */

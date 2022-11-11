@@ -1,13 +1,13 @@
 import React from "react";
 
-const CreateAccountErrorModal = () => {
+const LoginErrorModal = () => {
   return (
     <div className="username--exist--modal--container">
       <div className="username--exist--text--container">
-        <p className="m0">Username taken. Try another username.</p>
+        <p className="m0">Wrong username or password!</p>
       </div>
     </div>
   );
 };
 
-export default CreateAccountErrorModal;
+export default LoginErrorModal;

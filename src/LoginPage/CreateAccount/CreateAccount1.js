@@ -18,8 +18,6 @@ const CreateAccount1 = ({
   //================================BACKEND SIGNUP =======================================
   const signUpAccount = async () => {
     setErrorModal(false);
-    console.log(username);
-    console.log(password);
     try {
       const res = await fetch("http://127.0.0.1:8001/login/signup", {
         headers: {

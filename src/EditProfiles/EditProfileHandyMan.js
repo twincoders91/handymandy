@@ -1,51 +1,170 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import backButton from "../Assets/universal/backbutton.svg";
+import downArrow from "../Assets/universal/downarrow.svg";
+import categoryData from "../DummyDataSets/Category";
+import yearsData from "../DummyDataSets/Years";
+import crossbutton from "../Assets/services/crossbutton.svg";
+import CreateAccountEmailErrorModal from "../Components/Modals/CreateAccountEmailErrorModal";
 import "./editprofile.css";
 
-import downArrow from "../Assets/universal/downarrow.svg";
-import Navbar from "../Components/Navbar";
-import handymanData from "../DummyDataSets/profileHandyman";
-import uploadimage from "../Assets/profile/uploadimage.svg";
-
-const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
+const EditProfileHandyMan = ({ hm_id }) => {
+  const [hMDetails, setHMDetails] = useState("");
   const [specialities, setSpecialities] = useState(false);
-  const [years, setYears] = useState(false);
+  const [yearsClick, setYearsClick] = useState(false);
+  const [yearsSelection, setYearsSelection] = useState(
+    "Select number of years"
+  );
+  const [firstName, setFirstName] = useState(hMDetails.first_name);
+  const [lastName, setLastName] = useState("");
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [specialitiesArray, setSpecialitiesArray] = useState([]);
+  const [aboutBusiness, setAboutBusiness] = useState("");
+  const [errorEmailModal, setErrorEmailModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const retreiveHandymanInfo = async () => {
+    console.log(hm_id);
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const hm_details = await res.json();
+      setHMDetails(hm_details[0]);
+      console.log(hm_details);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
     setSpecialities((current) => !current);
   };
-  const handleClickSpecialitiesSelection = () => {
+  const handleClickSpecialitiesSelection = (event) => {
     setSpecialities((current) => !current);
+    handleAddSpecialities(event);
   };
   const handleClickYears = () => {
-    setYears((current) => !current);
+    setYearsClick((current) => !current);
   };
-  const handleClickYearsSelection = () => {
-    setYears((current) => !current);
+  const handleClickYearsSelection = (event) => {
+    setYearsClick((current) => !current);
+    setYearsSelection(event);
   };
 
-  //================= Confirm account created ===================
-  const handleSubmitButtonClick = () => {
-    setAccountCreated(true);
+  //================= Valid Email Check ===================
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+  const handleEmailChange = (event) => {
+    if (!isValidEmail(event.target.value)) {
+      setError("Email is invalid");
+    } else {
+      setError(null);
+      setEmail(event.target.value);
+    }
+    setMessage(event.target.value);
   };
+
+  const validateEmail = async (email) => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/validate/email/${email}`
+      );
+
+      const data = await res.json();
+
+      if (data === "Email already exists") {
+        setErrorEmailModal(true);
+      } else {
+        setErrorEmailModal(false);
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  //==================== Specialities Array  ======================
+  function addIntoArray(details) {
+    const array = [...specialitiesArray, details];
+    setSpecialitiesArray(array);
+  }
+
+  const handleAddSpecialities = (details) => {
+    if (specialitiesArray.length === 0) {
+      addIntoArray(details);
+    } else if (specialitiesArray.length > 0) {
+      if (specialitiesArray.includes(details)) {
+        return null;
+      } else {
+        addIntoArray(details);
+      }
+    }
+  };
+
+  const handleDeleteSpecialities = (item) => {
+    const remainingArray = specialitiesArray.filter((d, i) => d !== item);
+    setSpecialitiesArray(remainingArray);
+  };
+
+  //================= Back button function ===================
+  const handleBackButtonClick = () => {
+    console.log("clicked");
+  };
+
+  //==================== BACKEND FETCHING ======================
+
+  const createHmProfile = async () => {
+    // try {
+    //   const res = await fetch("http://127.0.0.1:8001/handyman/", {
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       username: username.toLowerCase(),
+    //       first_name: firstName.toLowerCase(),
+    //       last_name: lastName.toLowerCase(),
+    //       email: email.toLowerCase(),
+    //       business_name: businessName.toLowerCase(),
+    //       number_of_years: yearsSelection.toLowerCase(),
+    //       profile_image: null,
+    //       specialities: specialitiesArray,
+    //       about: aboutBusiness.toLowerCase(),
+    //     }),
+    //   });
+    //   navigate("/home");
+    // } catch (e) {
+    //   console.log(e);
+    // }
+  };
+
+  useEffect(() => {
+    retreiveHandymanInfo();
+    validateEmail(email);
+  }, [email]);
 
   return (
-    <div className="">
-      <Navbar />
-      <div className="edit-profile-image--container">
-        <div className="edit--profile--image--box relative">
-          <img
-            src={require(`../Assets/profile/${handymanData[0].profile_image}`)}
-            className=" edit--profile--image"
-          />
-          <div className="middle--content absolute">
-            <img src={uploadimage} className="middle--image"></img>
-          </div>
-        </div>
-      </div>
-      <div className="edit--profile--container relative mb36">
-        <div className="create--profile--header--container mb24">
+    <>
+      {errorEmailModal && <CreateAccountEmailErrorModal />}
+      <div className="mb36 edit--profile--page--main--container">
+        <img
+          src={backButton}
+          className="back--button"
+          onClick={() => handleBackButtonClick()}
+        />
+        <div className="create--profile--header--container mb24 mt60">
           <p className="fs24 fw700 mb8 white create--profile--header--font">
             Let's edit your profile.
           </p>
@@ -60,8 +179,12 @@ const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
             <div className="universal--input--forms--half">
               <input
                 type="text"
+                value={firstName}
                 placeholder="First name"
                 className="create--account--input ml12"
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }}
               />
             </div>
             <div className="universal--input--forms--half">
@@ -69,17 +192,25 @@ const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
                 type="text"
                 placeholder="Last name"
                 className="create--account--input ml12"
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
           </div>
           <span className="fs16 fw700 white">Email address</span>
-          <div className="legal--name--container mt8 mb24">
-            <div className="universal--input--forms--full">
-              <input
-                type="text"
-                placeholder="Email address"
-                className="create--account--input ml12"
-              />
+          <div className="legal--name--container mt8 mb16">
+            <div className="email--box--with--error">
+              <div className="universal--input--forms--full">
+                <input
+                  type="text"
+                  placeholder="Email address"
+                  value={message}
+                  className="create--account--input ml12"
+                  onChange={handleEmailChange}
+                />
+              </div>
+              {error && (
+                <h2 className="email--alert--font fs12 fw300">{error}</h2>
+              )}
             </div>
           </div>
           <div className="">
@@ -98,12 +229,32 @@ const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
                 type="text"
                 placeholder="e.g. Handyman services"
                 className="create--account--input ml12"
+                onChange={(e) => setBusinessName(e.target.value)}
               />
             </div>
             <span className="fs16 fw700 white">
               What are your specialities?{" "}
             </span>
             <div className="mb8">
+              {specialitiesArray.length !== 0 &&
+                specialitiesArray.map((item) => {
+                  return (
+                    <>
+                      <div
+                        className={
+                          "specialities--box--selected fw700 mt8 relative"
+                        }
+                      >
+                        {item}
+                        <img
+                          src={crossbutton}
+                          className="absolute create--account--crossbutton"
+                          onClick={() => handleDeleteSpecialities(item)}
+                        ></img>
+                      </div>
+                    </>
+                  );
+                })}
               <div
                 className="specialities--box--selection  mt8 relative"
                 onClick={() => handleClickSpecialities()}
@@ -116,24 +267,19 @@ const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
               </div>
               {specialities && (
                 <div className="dropdown--menu--specialities absolute">
-                  <div
-                    className="specialities--selection  fs14 fw300"
-                    onClick={() => handleClickSpecialitiesSelection()}
-                  >
-                    Lighting
-                  </div>
-                  <div
-                    className="specialities--selection  fs14 fw300"
-                    onClick={() => handleClickSpecialitiesSelection()}
-                  >
-                    Lighting
-                  </div>
-                  <div
-                    className="specialities--selection fs14 fw300"
-                    onClick={() => handleClickSpecialitiesSelection()}
-                  >
-                    Lighting
-                  </div>
+                  {categoryData.map((items) => {
+                    return (
+                      <div
+                        className="specialities--selection  fs14 fw300"
+                        onClick={() =>
+                          handleClickSpecialitiesSelection(items.category)
+                        }
+                        key={items.category}
+                      >
+                        {items.category}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -143,50 +289,24 @@ const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
                 className="specialities--box--selection mt8  relative"
                 onClick={() => handleClickYears()}
               >
-                Select number of years
+                {yearsSelection}
                 <img
                   src={downArrow}
                   className="absolute create--account--downarrow"
                 ></img>
               </div>
-              {years && (
+              {yearsClick && (
                 <div className="dropdown--menu--specialities absolute">
-                  <div
-                    className="specialities--selection  fs14 fw300"
-                    onClick={() => handleClickYearsSelection()}
-                  >
-                    0-2 years
-                  </div>
-                  <div
-                    className="specialities--selection  fs14 fw300"
-                    onClick={() => handleClickYearsSelection()}
-                  >
-                    2-4 years
-                  </div>
-                  <div
-                    className="specialities--selection fs14 fw300"
-                    onClick={() => handleClickYearsSelection()}
-                  >
-                    4-6 years
-                  </div>
-                  <div
-                    className="specialities--selection fs14 fw300"
-                    onClick={() => handleClickYearsSelection()}
-                  >
-                    6-8 years
-                  </div>
-                  <div
-                    className="specialities--selection fs14 fw300"
-                    onClick={() => handleClickYearsSelection()}
-                  >
-                    8-10 years
-                  </div>
-                  <div
-                    className="specialities--selection fs14 fw300"
-                    onClick={() => handleClickYearsSelection()}
-                  >
-                    {">"}10
-                  </div>
+                  {yearsData.map((items) => {
+                    return (
+                      <div
+                        className="specialities--selection  fs14 fw300"
+                        onClick={() => handleClickYearsSelection(items.years)}
+                      >
+                        {items.years}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -196,22 +316,22 @@ const EditProfileHandyMan = ({ setCharSelect, setAccountCreated }) => {
                 type="text"
                 placeholder="Let others know more about your business (200 characters)"
                 className="create--account--input ml12 mt12"
+                onChange={(e) => setAboutBusiness(e.target.value)}
               />
             </div>
           </div>
           <div className="buttons--align--center--box">
-            <NavLink className="navlinks" to="/home">
-              <button
-                className="user--create--account--button"
-                onClick={() => handleSubmitButtonClick()}
-              >
-                Submit
-              </button>
-            </NavLink>
+            <button
+              className="user--create--account--button"
+              onClick={createHmProfile}
+              disabled={errorEmailModal}
+            >
+              Submit
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

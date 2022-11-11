@@ -17,6 +17,9 @@ const Profiles = ({
   individualHmReviews,
   viewHmProfile,
   setViewHmProfile,
+  hmAverageRating,
+  jobsCompleted,
+  totalRatings,
 }) => {
   return (
     <div>
@@ -46,6 +49,9 @@ const Profiles = ({
           hmProfile={hmProfile}
           individualHmStar={individualHmStar}
           individualHmReviews={individualHmReviews}
+          hmAverageRating={hmAverageRating}
+          jobsCompleted={jobsCompleted}
+          totalRatings={totalRatings}
         />
       )}
     </div>

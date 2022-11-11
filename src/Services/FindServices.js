@@ -18,7 +18,6 @@ const FindServices = ({
     setSelectedServiceId(id);
     setViewHmProfile(true);
   };
-
   useEffect(() => {
     setBackButtonVisibility(true);
     // filterServices();
@@ -54,6 +53,7 @@ const FindServices = ({
                 title={hmService.title}
                 handleCategoryCard={handleCategoryCard}
                 setViewHmProfile={setViewHmProfile}
+                services_id={hmService.services_id}
               />
             );
           })

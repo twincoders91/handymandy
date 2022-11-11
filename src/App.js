@@ -44,6 +44,7 @@ export default function App() {
   const [hmProfile, setHmProfile] = useState([]);
   const [individualHmStar, setIndividualHmStar] = useState([]);
   const [individualHmReviews, setIndividualHmReviews] = useState([]);
+  const [hMDetails, setHMDetails] = useState({});
   //================total review_score and average review_score==================
 
   //================================APIS=============================================
@@ -164,12 +165,13 @@ export default function App() {
               individualHmReviews={individualHmReviews}
               setViewHmProfile={setViewHmProfile}
               viewHmProfile={viewHmProfile}
+              setHMDetails={setHMDetails}
             />
           }
         />
         <Route
           path="/editprofilehm"
-          element={<EditProfileHandyMan hm_id={hm_id} />}
+          element={<EditProfileHandyMan hm_id={hm_id} hMDetails={hMDetails} />}
         />
       </Routes>
     </div>

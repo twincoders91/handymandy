@@ -1,49 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
 import downArrow from "../Assets/universal/downarrow.svg";
 import categoryData from "../DummyDataSets/Category";
 import yearsData from "../DummyDataSets/Years";
 import crossbutton from "../Assets/services/crossbutton.svg";
-import CreateAccountEmailErrorModal from "../Components/Modals/CreateAccountEmailErrorModal";
 import "./editprofile.css";
 
-const EditProfileHandyMan = ({ hm_id }) => {
-  const [hMDetails, setHMDetails] = useState("");
+const EditProfileHandyMan = ({ hm_id, hMDetails }) => {
   const [specialities, setSpecialities] = useState(false);
   const [yearsClick, setYearsClick] = useState(false);
   const [yearsSelection, setYearsSelection] = useState(
-    "Select number of years"
+    hMDetails.number_of_years
   );
   const [firstName, setFirstName] = useState(hMDetails.first_name);
-  const [lastName, setLastName] = useState("");
-  const [error, setError] = useState(null);
-  const [message, setMessage] = useState("");
-  const [email, setEmail] = useState("");
-  const [businessName, setBusinessName] = useState("");
-  const [specialitiesArray, setSpecialitiesArray] = useState([]);
-  const [aboutBusiness, setAboutBusiness] = useState("");
-  const [errorEmailModal, setErrorEmailModal] = useState(false);
+  const [lastName, setLastName] = useState(hMDetails.last_name);
+  const [email, setEmail] = useState(hMDetails.email);
+  const [businessName, setBusinessName] = useState(hMDetails.business_name);
+  const [specialitiesArray, setSpecialitiesArray] = useState(
+    hMDetails.specialities
+  );
+  const [aboutBusiness, setAboutBusiness] = useState(hMDetails.about);
 
   const navigate = useNavigate();
-
-  const retreiveHandymanInfo = async () => {
-    console.log(hm_id);
-    try {
-      const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      });
-      const hm_details = await res.json();
-      setHMDetails(hm_details[0]);
-      console.log(hm_details);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
@@ -59,39 +38,6 @@ const EditProfileHandyMan = ({ hm_id }) => {
   const handleClickYearsSelection = (event) => {
     setYearsClick((current) => !current);
     setYearsSelection(event);
-  };
-
-  //================= Valid Email Check ===================
-  function isValidEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  }
-  const handleEmailChange = (event) => {
-    if (!isValidEmail(event.target.value)) {
-      setError("Email is invalid");
-    } else {
-      setError(null);
-      setEmail(event.target.value);
-    }
-    setMessage(event.target.value);
-  };
-
-  const validateEmail = async (email) => {
-    try {
-      const res = await fetch(
-        `http://127.0.0.1:8001/handyman/validate/email/${email}`
-      );
-
-      const data = await res.json();
-
-      if (data === "Email already exists") {
-        setErrorEmailModal(true);
-      } else {
-        setErrorEmailModal(false);
-      }
-      return data;
-    } catch (e) {
-      console.log(e);
-    }
   };
 
   //==================== Specialities Array  ======================
@@ -119,45 +65,38 @@ const EditProfileHandyMan = ({ hm_id }) => {
 
   //================= Back button function ===================
   const handleBackButtonClick = () => {
-    console.log("clicked");
+    navigate("/home");
   };
 
   //==================== BACKEND FETCHING ======================
 
-  const createHmProfile = async () => {
-    // try {
-    //   const res = await fetch("http://127.0.0.1:8001/handyman/", {
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       username: username.toLowerCase(),
-    //       first_name: firstName.toLowerCase(),
-    //       last_name: lastName.toLowerCase(),
-    //       email: email.toLowerCase(),
-    //       business_name: businessName.toLowerCase(),
-    //       number_of_years: yearsSelection.toLowerCase(),
-    //       profile_image: null,
-    //       specialities: specialitiesArray,
-    //       about: aboutBusiness.toLowerCase(),
-    //     }),
-    //   });
-    //   navigate("/home");
-    // } catch (e) {
-    //   console.log(e);
-    // }
+  const updateHmProfile = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:8001/handyman/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify({
+          id: hm_id,
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          about: aboutBusiness,
+          business_name: businessName,
+          number_of_years: yearsSelection,
+          specialities: specialitiesArray,
+        }),
+      });
+      navigate("/home");
+    } catch (e) {
+      console.log(e);
+    }
   };
-
-  useEffect(() => {
-    retreiveHandymanInfo();
-    validateEmail(email);
-  }, [email]);
 
   return (
     <>
-      {errorEmailModal && <CreateAccountEmailErrorModal />}
       <div className="mb36 edit--profile--page--main--container">
         <img
           src={backButton}
@@ -190,6 +129,7 @@ const EditProfileHandyMan = ({ hm_id }) => {
             <div className="universal--input--forms--half">
               <input
                 type="text"
+                value={lastName}
                 placeholder="Last name"
                 className="create--account--input ml12"
                 onChange={(e) => setLastName(e.target.value)}
@@ -203,14 +143,11 @@ const EditProfileHandyMan = ({ hm_id }) => {
                 <input
                   type="text"
                   placeholder="Email address"
-                  value={message}
+                  value={email}
                   className="create--account--input ml12"
-                  onChange={handleEmailChange}
+                  disabled
                 />
               </div>
-              {error && (
-                <h2 className="email--alert--font fs12 fw300">{error}</h2>
-              )}
             </div>
           </div>
           <div className="">
@@ -227,6 +164,7 @@ const EditProfileHandyMan = ({ hm_id }) => {
             <div className="universal--input--forms--full mb8">
               <input
                 type="text"
+                value={businessName}
                 placeholder="e.g. Handyman services"
                 className="create--account--input ml12"
                 onChange={(e) => setBusinessName(e.target.value)}
@@ -314,6 +252,7 @@ const EditProfileHandyMan = ({ hm_id }) => {
             <div className="about--business--input--forms--full mt8">
               <textarea
                 type="text"
+                value={aboutBusiness}
                 placeholder="Let others know more about your business (200 characters)"
                 className="create--account--input ml12 mt12"
                 onChange={(e) => setAboutBusiness(e.target.value)}
@@ -323,8 +262,7 @@ const EditProfileHandyMan = ({ hm_id }) => {
           <div className="buttons--align--center--box">
             <button
               className="user--create--account--button"
-              onClick={createHmProfile}
-              disabled={errorEmailModal}
+              onClick={updateHmProfile}
             >
               Submit
             </button>

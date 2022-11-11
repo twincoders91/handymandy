@@ -9,7 +9,7 @@ import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 
-const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
+const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
   //=============================FETCHING APIS============================
   const [averageRating, setAverageRating] = useState("");
   const [profile_image, setProfile_image] = useState("");
@@ -113,8 +113,23 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
     }
   };
 
-  const handleEditProfile = () => {
-    navigate("/editprofilehm");
+  const handleEditProfile = async () => {
+    console.log(hm_id);
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const hm_details = await res.json();
+      setHMDetails(hm_details[0]);
+      console.log(hm_details);
+      navigate("/editprofilehm");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   //======================Creating Star Ratings=======================

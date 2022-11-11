@@ -38,7 +38,6 @@ const HomePageMain = ({
         },
         method: "GET",
       });
-      console.log(res);
       const data = await res.json();
       setHm_id(data.id);
       getHmRatings(data.id);
@@ -116,8 +115,6 @@ const HomePageMain = ({
   useEffect(() => {
     getHandymanID();
   }, []);
-
-  console.log(individualHMServices);
 
   return (
     <div>

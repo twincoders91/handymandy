@@ -16,8 +16,11 @@ const HomePage3HandyMan = ({
 }) => {
   //============================= BACKEND FETCHING ================================
   //============================= DELETE Service ================================
+
   const deleteServiceDB = async (id, hm_id) => {
     try {
+      console.log(id);
+      console.log(hm_id);
       const res = await fetch("http://127.0.0.1:8001/services/", {
         headers: {
           Accept: "application/json",
@@ -168,6 +171,7 @@ const HomePage3HandyMan = ({
                       className="hm3--info--delete--profile--button br4 fw700 fs12"
                       onClick={() => {
                         handleDeleteServiceClick({ services });
+                        console.log(services);
                       }}
                     >
                       Delete

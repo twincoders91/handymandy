@@ -17,6 +17,7 @@ const Profiles = ({
   individualHmReviews,
   viewHmProfile,
   setViewHmProfile,
+  setHMDetails,
 }) => {
   return (
     <div>
@@ -33,6 +34,7 @@ const Profiles = ({
           totalReviews={totalReviews}
           setBackButtonVisibility={setBackButtonVisibility}
           hm_id={hm_id}
+          setHMDetails={setHMDetails}
         />
       )}
       {charSelect == "user" && (

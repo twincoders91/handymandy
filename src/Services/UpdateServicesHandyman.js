@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import categoryData from "../DummyDataSets/Category";
+import downArrow from "../Assets/universal/downarrow.svg";
 
 const UpdateServicesHandyman = ({
   updateServiceDetails,
@@ -27,8 +29,6 @@ const UpdateServicesHandyman = ({
     updateServiceDetails.services.price_from
   );
 
-  console.log(updateServiceDetails);
-
   const updatedServiceObj = {
     categoryInput,
     descriptionInput,
@@ -37,10 +37,12 @@ const UpdateServicesHandyman = ({
     titleInput,
   };
 
-  console.log(updatedServiceObj);
-  console.log(updateServiceDetails.services.services_id);
-
   const navigate = useNavigate();
+  const [specialities, setSpecialities] = useState(false);
+  const [currentCategorySelection, setCurrentCategorySelection] = useState(
+    "Select your category"
+  );
+  const [categorySelection, setCategorySelection] = useState("");
 
   //==================== BACKEND FETCHING ======================
 
@@ -110,6 +112,17 @@ const UpdateServicesHandyman = ({
     console.log(tOWArray);
   };
 
+  //================= Handle Button Clicks ===================
+  const handleClickSpecialities = () => {
+    setSpecialities((current) => !current);
+  };
+  const handleClickSpecialitiesSelection = (e) => {
+    setCurrentCategorySelection(e);
+    setSpecialities((current) => !current);
+    setCategoryInput(e.toLowerCase());
+    console.log(categorySelection);
+  };
+
   return (
     <>
       <div className="mb36">
@@ -126,17 +139,32 @@ const UpdateServicesHandyman = ({
           <div className="create--profile--middle--container">
             <span className="fs16 fw700 white">Category</span>
             <div className="legal--name--container mt8 mb24">
-              <div className="universal--input--forms--full">
-                <input
-                  type="text"
-                  value={categoryInput}
-                  onChange={(e) =>
-                    setCategoryInput(e.target.value.toLowerCase())
-                  }
-                  placeholder="e.g. Plumbing services"
-                  className="create--account--input ml12"
-                />
+              <div
+                className="specialities--box--selection2  relative"
+                onClick={() => handleClickSpecialities()}
+              >
+                {currentCategorySelection}
+                <img
+                  src={downArrow}
+                  className="absolute create--account--downarrow"
+                ></img>
               </div>
+              {specialities && (
+                <div className="dropdown--menu--specialities absolute">
+                  {categoryData.map((items) => {
+                    return (
+                      <div
+                        className="specialities--selection  fs14 fw300"
+                        onClick={() =>
+                          handleClickSpecialitiesSelection(items.category)
+                        }
+                      >
+                        {items.category}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
             <span className="fs16 fw700 white">Title</span>
             <div className="legal--name--container mt8 mb24">

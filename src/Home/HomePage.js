@@ -58,7 +58,7 @@ const HomePage = ({ setBackButtonVisibility, setFilteredServicesData }) => {
               return (
                 <div
                   className="navlinks"
-                  onClick={() => filterServices(items.category)}
+                  onClick={() => filterServices(items.category.toLowerCase())}
                 >
                   <div className="category--cards--box">
                     <img

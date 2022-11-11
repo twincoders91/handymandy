@@ -49,8 +49,6 @@ const HomePageMain = ({
     }
   };
   //===================================== Get User ID ========================================
-  console.log(username);
-  console.log(charSelect);
 
   //============================= Get Handyman Ratings ================================
 

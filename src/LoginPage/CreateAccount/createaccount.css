@@ -220,7 +220,25 @@
   padding-left: 12px;
   color: black;
 }
+.specialities--box--selection2 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  width: 370px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  border: 1px black solid;
+  box-shadow: var(--shadowing);
+  padding-left: 12px;
+  color: black;
+}
 .specialities--box--selection:hover {
+  cursor: pointer;
+  background-color: rgba(29, 29, 29, 0.9);
+  color: var(--orange);
+}
+.specialities--box--selection2:hover {
   cursor: pointer;
   background-color: rgba(29, 29, 29, 0.9);
   color: var(--orange);

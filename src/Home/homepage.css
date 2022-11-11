@@ -186,6 +186,12 @@
   border-right: 2px solid black;
 }
 
+.hm3--info--title {
+}
+.hm3--info--description--mega--container {
+  display: flex;
+  flex-direction: column;
+}
 .hm3--info--description--container {
   display: flex;
   align-items: center;
@@ -211,6 +217,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 5px;
 }
 
 .hm3--info--card--bottom {
@@ -219,7 +226,7 @@
 }
 
 .type--of--work {
-  width: 100%;
+  width: 60%;
 }
 
 .type--of--work--content {
@@ -248,8 +255,8 @@
 .hm3--info--delete--profile--button {
   cursor: pointer;
   height: 30px;
-  width: 90px;
-  position: absolute;
+  width: 60px;
+  /* position: absolute; */
   background-color: #ff4040;
   outline: none;
   border: none;
@@ -258,12 +265,22 @@
   font-family: "Exo", sans-serif;
   color: var(--black);
 }
+.type--of--work--with--buttons {
+  display: flex;
+  flex-direction: row;
+}
+.hm3--info--button--box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .hm3--info--view--profile--button {
   cursor: pointer;
   height: 30px;
-  width: 90px;
-  position: absolute;
+  width: 60px;
+  margin-right: 10px;
+  /* position: absolute; */
   background-color: var(--orange);
   outline: none;
   border: none;

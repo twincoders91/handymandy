@@ -32,12 +32,12 @@ const UserLoginPage = ({
 
       const data1 = await res.json();
       console.log(data1);
-
+      console.log(username);
       if (data1.loggedIn === false) {
         console.log(data1.status);
       } else if (data1.status === "ok") {
         const res2 = await fetch(
-          `http://127.0.0.1:8001/user/character/:${username}`,
+          `http://127.0.0.1:8001/user/character/${username}`,
           {
             headers: {
               Accept: "application/json",
@@ -48,7 +48,8 @@ const UserLoginPage = ({
         );
 
         const data = await res2.json();
-        if (data) {
+        console.log(res2);
+        if (data.length !== 0) {
           setCharSelect("user");
         } else {
           setCharSelect("handyman");

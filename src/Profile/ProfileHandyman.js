@@ -8,12 +8,6 @@ import trophy from "../Assets/profile/trophy.svg";
 import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
-// import aircon from "../Assets/profile/aircon.svg";
-// import cabinet from "../Assets/profile/cabinet.svg";
-// import heater from "../Assets/profile/heater.svg";
-// import lighting from "../Assets/profile/lighting.svg";
-// import painting from "../Assets/profile/painting.svg";
-// import plumbing from "../Assets/profile/painting.svg";
 
 const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
   //=============================FETCHING APIS============================
@@ -165,20 +159,25 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
             <div className="category--profile--cards--box">
-              <img src={time} className="profile--icons" alt="images"></img>
+              <div className="category--profile--cards--image--box">
+                <img src={time} className="profile--icons" alt="images"></img>
+              </div>
+
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {numberOfYears} Years
+                  {numberOfYears}
                 </div>
                 <div className="fw400 fs12">in business</div>
               </div>
             </div>
             <div className="category--profile--cards--box">
-              <img
-                src={trophy}
-                className="profile--trophy--icons"
-                alt="images"
-              ></img>
+              <div className="category--profile--cards--image--box">
+                <img
+                  src={trophy}
+                  className="profile--trophy--icons"
+                  alt="images"
+                ></img>
+              </div>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {jobsCompleted} Jobs
@@ -187,7 +186,13 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
               </div>
             </div>
             <div className="category--profile--cards--box">
-              <img src={reviews} className="profile--icons" alt="images"></img>
+              <div className="category--profile--cards--image--box">
+                <img
+                  src={reviews}
+                  className="profile--icons"
+                  alt="images"
+                ></img>
+              </div>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {totalRatingsPoints}
@@ -208,11 +213,13 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
                   className="category--profile--cards--box"
                   key={Math.random() * 1000}
                 >
-                  <img
-                    src={require(`../Assets/profile/${item}.svg`)}
-                    className="category--cards--icon"
-                    alt="images"
-                  ></img>
+                  <div className="category--profile--cards--image--box">
+                    <img
+                      src={require(`../Assets/profile/${item}.svg`)}
+                      className="category--cards--icon"
+                      alt="images"
+                    ></img>
+                  </div>
                   <div className="profile--description--cards">
                     <div className="category--cards--text fw700 fs14">
                       {item}

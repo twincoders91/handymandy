@@ -65,7 +65,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding-top: 10px; */
+  height: 100px;
   padding-top: 10px;
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.4);
@@ -75,10 +75,19 @@
   width: 85px;
 }
 
+.category--profile--cards--image--box {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .profile--description--cards {
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .profile--icons {

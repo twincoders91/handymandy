@@ -80,7 +80,10 @@ const ViewProfileHandyman = ({
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
             <div className="category--profile--cards--box">
-              <img src={time} className="profile--icons" alt="images"></img>
+              <div className="category--profile--cards--image--box">
+                <img src={time} className="profile--icons" alt="images"></img>
+              </div>
+
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {hmProfile[0].number_of_years}
@@ -89,11 +92,14 @@ const ViewProfileHandyman = ({
               </div>
             </div>
             <div className="category--profile--cards--box">
-              <img
-                src={trophy}
-                className="profile--trophy--icons"
-                alt="images"
-              ></img>
+              <div className="category--profile--cards--image--box">
+                <img
+                  src={trophy}
+                  className="profile--trophy--icons"
+                  alt="images"
+                ></img>
+              </div>
+
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {individualHmStar[0].total_jobs} jobs
@@ -102,7 +108,14 @@ const ViewProfileHandyman = ({
               </div>
             </div>
             <div className="category--profile--cards--box">
-              <img src={reviews} className="profile--icons" alt="images"></img>
+              <div className="category--profile--cards--image--box">
+                <img
+                  src={reviews}
+                  className="profile--icons"
+                  alt="images"
+                ></img>
+              </div>
+
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
                   {individualHmStar[0].total_ratings}
@@ -123,11 +136,14 @@ const ViewProfileHandyman = ({
                   className="category--profile--cards--box"
                   key={Math.random() * 1000}
                 >
-                  <img
-                    src={require(`../Assets/profile/${item}.svg`)}
-                    className="category--cards--icon"
-                    alt="images"
-                  ></img>
+                  {" "}
+                  <div className="category--profile--cards--image--box">
+                    <img
+                      src={require(`../Assets/profile/${item}.svg`)}
+                      className="category--cards--icon"
+                      alt="images"
+                    ></img>
+                  </div>
                   <div className="profile--description--cards">
                     <div className="category--cards--text fw700 fs14">
                       {item}

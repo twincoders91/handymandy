@@ -15,12 +15,16 @@ const Profiles = ({
   hmProfile,
   individualHmStar,
   individualHmReviews,
+  viewHmProfile,
+  setViewHmProfile,
 }) => {
   return (
     <div>
       <Navbar
         backButtonVisibility={backButtonVisibility}
         charSelect={charSelect}
+        viewHmProfile={viewHmProfile}
+        setViewHmProfile={setViewHmProfile}
       />
       {charSelect == "handyman" && (
         <ProfileHandyman

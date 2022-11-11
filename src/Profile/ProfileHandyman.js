@@ -8,14 +8,14 @@ import trophy from "../Assets/profile/trophy.svg";
 import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
-import aircon from "../Assets/profile/aircon.svg";
-import cabinet from "../Assets/profile/cabinet.svg";
-import heater from "../Assets/profile/heater.svg";
-import lighting from "../Assets/profile/lighting.svg";
-import painting from "../Assets/profile/painting.svg";
-import plumbing from "../Assets/profile/painting.svg";
+// import aircon from "../Assets/profile/aircon.svg";
+// import cabinet from "../Assets/profile/cabinet.svg";
+// import heater from "../Assets/profile/heater.svg";
+// import lighting from "../Assets/profile/lighting.svg";
+// import painting from "../Assets/profile/painting.svg";
+// import plumbing from "../Assets/profile/plumbing.svg";
 
-const ProfileHandyman = ({ totalReviews, setBackButtonVisibility, hm_id }) => {
+const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
   //=============================FETCHING APIS============================
   const [averageRating, setAverageRating] = useState("");
   const [profile_image, setProfile_image] = useState("");
@@ -26,38 +26,97 @@ const ProfileHandyman = ({ totalReviews, setBackButtonVisibility, hm_id }) => {
   const [specialitiesHM, setSpecialitiesHM] = useState([]);
   const [first_name_hm, setfirst_name_hm] = useState("");
   const [last_name_hm, setlast_name_hm] = useState("");
-  const [hm_Profile, setHm_Profile] = useState([]);
+  const [totalRatingsPoints, setTotalRatingPoints] = useState("");
+  const [individualHMReviews, setIndividualHMReviews] = useState([]);
 
   const retreiveHandymanInfo = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`);
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
       const hm_details = await res.json();
       const res2 = await fetch(
-        `http://127.0.0.1:8001/handyman/${hm_id}/ratingssummary`
+        `http://127.0.0.1:8001/handyman/${hm_id}/ratingssummary`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
       );
       const hm_ratings_summary = await res2.json();
-      const overallData = { hm_details, hm_ratings_summary };
+
+      const res3 = await fetch(
+        `http://127.0.0.1:8001/handyman/${hm_id}/averageratingandjobs`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const ratingData = await res3.json();
+
+      const overallData = { hm_details, hm_ratings_summary, ratingData };
       console.log(overallData);
       if (overallData.hm_details[0].profile_image) {
         setProfile_image(overallData.hm_details[0].profile_image);
       } else {
         setProfile_image(defaultavatar);
       }
-
-      setAverageRating(overallData.hm_ratings_summary[0].average_rating);
-      setAboutHM(overallData.hm_details[0].about);
-      setCompanyHM(overallData.hm_details[0].business_name);
-      setNumberOfYears(overallData.hm_details[0].number_of_years);
-      setJobsCompleted(overallData.hm_ratings_summary[0].total_jobs);
-      setSpecialitiesHM(overallData.hm_details[0].specialities);
+      if (overallData.ratingData[0]) {
+        setAverageRating(overallData.ratingData[0].average_rating);
+      } else {
+        setAverageRating(0);
+      }
+      if (overallData.ratingData[0]) {
+        setJobsCompleted(overallData.ratingData[0].total_jobs);
+      } else {
+        setJobsCompleted(0);
+      }
+      if (overallData.hm_details[0].about) {
+        setAboutHM(overallData.hm_details[0].about);
+      } else {
+        setAboutHM("No Description");
+      }
+      if (overallData.hm_details[0].business_name) {
+        setCompanyHM(overallData.hm_details[0].business_name);
+      } else {
+        setCompanyHM("No Company");
+      }
+      if (overallData.hm_details[0].number_of_years) {
+        setNumberOfYears(overallData.hm_details[0].number_of_years);
+      } else {
+        setNumberOfYears(0);
+      }
+      if (overallData.hm_details[0].specialities) {
+        setSpecialitiesHM(overallData.hm_details[0].specialities);
+      } else {
+        setSpecialitiesHM([]);
+      }
+      if (overallData.ratingData[0]) {
+        setTotalRatingPoints(overallData.ratingData[0].total_ratings);
+      } else {
+        setTotalRatingPoints(0);
+      }
+      if (overallData.hm_ratings_summary.length > 0) {
+        setIndividualHMReviews(overallData.hm_ratings_summary);
+      } else {
+        setIndividualHMReviews([]);
+      }
       setfirst_name_hm(overallData.hm_details[0].first_name);
       setlast_name_hm(overallData.hm_details[0].last_name);
-      console.log(specialitiesHM);
     } catch (e) {
       console.log(e);
     }
   };
-
+  console.log(individualHMReviews);
   //======================Creating Star Ratings=======================
   let count = 5;
 
@@ -131,9 +190,9 @@ const ProfileHandyman = ({ totalReviews, setBackButtonVisibility, hm_id }) => {
               <img src={reviews} className="profile--icons" alt="images"></img>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {totalReviews}
+                  {totalRatingsPoints}
                 </div>
-                <div className="fw400 fs12">Reviews</div>
+                <div className="fw400 fs12">Rating Points</div>
               </div>
             </div>
           </div>
@@ -175,22 +234,22 @@ const ProfileHandyman = ({ totalReviews, setBackButtonVisibility, hm_id }) => {
         <div className="reviews--header white fw700 fs16 ml24 mt24 mb4">
           Reviews
         </div>
-        {handymanData[0].reviews.map((items) => {
+        {individualHMReviews.map((items) => {
           return (
             <div className="reviews--cards--box mb8 relative">
               <img
-                src={require(`../Assets/profile/${items.icon}`)}
+                src={defaultavatar}
                 className="profile--image--icons ml16 mt16 mb16"
                 alt="images"
               ></img>
               <div className="reviews--description--cards ml16 mt16 mb16">
-                <div className=" fw700 fs12  mb4">{items.name}</div>
+                <div className=" fw700 fs12  mb4">{items.first_name}</div>
                 <div className="reviews--message fw400 fs12 white">
-                  {items.message}
+                  {items.reviews}
                 </div>
               </div>
               <div className="reviews--score--box absolute">
-                <span className="fs56 fw700">{items.score}</span>
+                <span className="fs56 fw700">{items.ratings}</span>
               </div>
             </div>
           );

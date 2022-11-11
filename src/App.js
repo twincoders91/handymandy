@@ -6,6 +6,7 @@ import UserLoginPage from "./LoginPage/UserLoginPage";
 import "./style.css";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
+import handymanData from "./DummyDataSets/profileHandyman";
 import handymanServicesData from "./DummyDataSets/HandymanServices";
 import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
@@ -39,14 +40,14 @@ export default function App() {
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
 
   //=============================Profile States=====================================
-
+  const [hmProfile, setHmProfile] = useState([]);
+  const [individualHmStar, setIndividualHmStar] = useState([]);
+  const [individualHmReviews, setIndividualHmReviews] = useState([]);
   //================total review_score and average review_score==================
 
   //================================APIS=============================================
 
   //======================= Back button settings ===========================
-
-  useEffect(() => {}, []);
 
   return (
     <div>
@@ -80,10 +81,7 @@ export default function App() {
           element={
             <HomePageMain
               // averageRating={averageRating}
-              // totalReviews={totalReviews}
-              // totalJobs={totalJobs}
               charSelect={charSelect}
-              handymanServicesData={handymanServicesData}
               setServicesCategory={setServicesCategory}
               setServicesCategorySelection={setServicesCategorySelection}
               setFilteredServicesData={setFilteredServicesData}
@@ -103,14 +101,15 @@ export default function App() {
           element={
             <Services
               // averageRating={averageRating}
-              // totalReviews={totalReviews}
-              // totalJobs={totalJobs}
               // handymanServicesData={handymanServicesData}
               servicesCategory={servicesCategory}
               servicesCategorySelection={servicesCategorySelection}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
               setHm_id={setHm_id}
+              setHmProfile={setHmProfile}
+              setIndividualHmStar={setIndividualHmStar}
+              setIndividualHmReviews={setIndividualHmReviews}
               filteredServicesData={filteredServicesData}
             />
           }
@@ -155,6 +154,9 @@ export default function App() {
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
               hm_id={hm_id}
+              hmProfile={hmProfile}
+              individualHmStar={individualHmStar}
+              individualHmReviews={individualHmReviews}
             />
           }
         />

@@ -21,6 +21,9 @@ const Services = ({
   serviceInfo,
   setServiceInfo,
   setHm_id,
+  setHmProfile,
+  setIndividualHmStar,
+  setIndividualHmReviews,
   filteredServicesData,
 }) => {
   //====================== States for Services ======================
@@ -54,6 +57,9 @@ const Services = ({
             filteredServicesData={filteredServicesData}
             selectedServiceId={selectedServiceId}
             setHm_id={setHm_id}
+            setHmProfile={setHmProfile}
+            setIndividualHmStar={setIndividualHmStar}
+            setIndividualHmReviews={setIndividualHmReviews}
           />
         )}
         {/* <AcceptedServices /> */}

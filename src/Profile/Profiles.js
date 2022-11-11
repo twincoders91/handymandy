@@ -12,6 +12,9 @@ const Profiles = ({
   backButtonVisibility,
   serviceInfo,
   hm_id,
+  hmProfile,
+  individualHmStar,
+  individualHmReviews,
 }) => {
   return (
     <div>
@@ -19,7 +22,6 @@ const Profiles = ({
         backButtonVisibility={backButtonVisibility}
         charSelect={charSelect}
       />
-      {charSelect == "user" && <Profiles />}
       {charSelect == "handyman" && (
         <ProfileHandyman
           averageRating={averageRating}
@@ -37,6 +39,9 @@ const Profiles = ({
           setBackButtonVisibility={setBackButtonVisibility}
           serviceInfo={serviceInfo}
           hm_id={hm_id}
+          hmProfile={hmProfile}
+          individualHmStar={individualHmStar}
+          individualHmReviews={individualHmReviews}
         />
       )}
     </div>

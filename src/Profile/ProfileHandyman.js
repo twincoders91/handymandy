@@ -13,7 +13,7 @@ import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 // import heater from "../Assets/profile/heater.svg";
 // import lighting from "../Assets/profile/lighting.svg";
 // import painting from "../Assets/profile/painting.svg";
-// import plumbing from "../Assets/profile/plumbing.svg";
+// import plumbing from "../Assets/profile/painting.svg";
 
 const ProfileHandyman = ({ setBackButtonVisibility, hm_id }) => {
   //=============================FETCHING APIS============================

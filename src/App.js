@@ -7,6 +7,7 @@ import "./style.css";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
 import handymanData from "./DummyDataSets/profileHandyman";
+import handymanServicesData from "./DummyDataSets/HandymanServices";
 import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
 import Profiles from "./Profile/Profiles";

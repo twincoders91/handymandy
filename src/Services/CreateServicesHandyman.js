@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import downArrow from "../Assets/universal/downarrow.svg";
 import categoryData from "../DummyDataSets/Category";
@@ -22,6 +23,8 @@ const CreateServicesHandyman = ({
   const [currentCategorySelection, setCurrentCategorySelection] = useState(
     "Select your category"
   );
+
+  const navigate = useNavigate();
 
   //==================== Type Of Work Array  ======================
   const handleAddTOW = (details) => {
@@ -58,6 +61,7 @@ const CreateServicesHandyman = ({
           title: title,
         }),
       });
+      navigate("/home");
     } catch (e) {
       console.log(e);
     }
@@ -206,14 +210,12 @@ const CreateServicesHandyman = ({
               </div>
             </div>
             <div className="buttons--align--center--box">
-              <NavLink to="/home">
-                <button
-                  className="user--create--account--button"
-                  onClick={() => handleSubmitCreateServices()}
-                >
-                  Submit
-                </button>
-              </NavLink>
+              <button
+                className="user--create--account--button"
+                onClick={() => handleSubmitCreateServices()}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>

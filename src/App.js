@@ -17,6 +17,7 @@ import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 export default function App() {
   //================================== Navbar States===========================================
   const [backButtonVisibility, setBackButtonVisibility] = useState(true);
+  const [viewHmProfile, setViewHmProfile] = useState(false);
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
@@ -111,6 +112,7 @@ export default function App() {
               setIndividualHmStar={setIndividualHmStar}
               setIndividualHmReviews={setIndividualHmReviews}
               filteredServicesData={filteredServicesData}
+              setViewHmProfile={setViewHmProfile}
             />
           }
         />
@@ -157,6 +159,8 @@ export default function App() {
               hmProfile={hmProfile}
               individualHmStar={individualHmStar}
               individualHmReviews={individualHmReviews}
+              setViewHmProfile={setViewHmProfile}
+              viewHmProfile={viewHmProfile}
             />
           }
         />

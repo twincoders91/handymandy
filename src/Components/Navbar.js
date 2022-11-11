@@ -9,6 +9,9 @@ const Navbar = ({
   charSelect,
   chooseCategory,
   setChooseCategory,
+  hmProfile,
+  setViewHmProfile,
+  viewHmProfile,
 }) => {
   //===============================STATES=======================================
   //============================NavBar states===================================
@@ -16,6 +19,9 @@ const Navbar = ({
   const [hamburgerModal, setHamburgerModal] = useState(false); //modal animation states
   const handleBackButtonClick = () => {
     setChooseCategory(false);
+  };
+  const handleBackButtonClick2 = () => {
+    setViewHmProfile(false);
   };
 
   return (
@@ -38,9 +44,18 @@ const Navbar = ({
               />
             </NavLink>
           )}
-          {backButtonVisibility && !chooseCategory && (
+          {backButtonVisibility && !chooseCategory && !viewHmProfile && (
             <NavLink to="/home">
               <img src={backButton} className="back--button" />
+            </NavLink>
+          )}
+          {backButtonVisibility && !chooseCategory && viewHmProfile && (
+            <NavLink to="/services">
+              <img
+                src={backButton}
+                className="back--button"
+                onClick={handleBackButtonClick2}
+              />
             </NavLink>
           )}
           <p className="navbar--header">HandyMandy</p>

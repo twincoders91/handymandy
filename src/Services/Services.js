@@ -25,6 +25,7 @@ const Services = ({
   setIndividualHmStar,
   setIndividualHmReviews,
   filteredServicesData,
+  setViewHmProfile,
 }) => {
   //====================== States for Services ======================
   const [chooseCategory, setChooseCategory] = useState(false);
@@ -50,6 +51,7 @@ const Services = ({
             setChooseCategory={setChooseCategory}
             setBackButtonVisibility={setBackButtonVisibility}
             setSelectedServiceId={setSelectedServiceId}
+            setViewHmProfile={setViewHmProfile}
           />
         )}
         {chooseCategory && (

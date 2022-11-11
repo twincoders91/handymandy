@@ -102,35 +102,37 @@ const HomePage3HandyMan = ({
                   className="hm3--info--image"
                   alt="images"
                 />
-                <div className="hm3--info--description--container">
-                  <div className="hm3--info--description--section ml12">
-                    <p className="hm3--info--title fs16 fw700 m0 white mb4">
-                      {services.title}
-                    </p>
-                    <p className="hm3--info--name fs12 fw400 m0 white mb4">
-                      {services.first_name}
-                    </p>
-                    <div className="hm3--info--profile--stars mb4">
-                      <img src={recommendedprofile} alt="images"></img>
-                      <div className="hm3--info--stars">{starRating}</div>
+                <div className="hm3--info--description--mega--container">
+                  <p className="hm3--info--title fs16 fw700 m0 ml12 mt8 white mb4">
+                    {services.title}
+                  </p>
+                  <div className="hm3--info--description--container">
+                    <div className="hm3--info--description--section ml12">
+                      <p className="hm3--info--name fs12 fw400 m0 white mb4">
+                        {services.first_name}
+                      </p>
+                      <div className="hm3--info--profile--stars mb4">
+                        <img src={recommendedprofile} alt="images"></img>
+                        <div className="hm3--info--stars">{starRating}</div>
+                      </div>
+                      <div className="m0 fw700 fs8 white">
+                        {hmRatings.length > 0 ? (
+                          <p className="m0 fw700 fs8 white">
+                            {hmRatings[0].total_jobs} job(s) completed
+                          </p>
+                        ) : (
+                          <p className="m0 fw700 fs8 white">0 job completed</p>
+                        )}
+                      </div>
                     </div>
-                    <div className="m0 fw700 fs8 white">
-                      {hmRatings.length > 0 ? (
-                        <p className="m0 fw700 fs8 white">
-                          {hmRatings[0].total_jobs} job(s) completed
-                        </p>
-                      ) : (
-                        <p className="m0 fw700 fs8 white">0 job completed</p>
-                      )}
+                    <div className="hm3--info--price ml12">
+                      <p className="starting--from m0 white fw700">
+                        starting from
+                      </p>
+                      <p className="starting--from--price m0 fs28 fw700">
+                        ${services.price_from}
+                      </p>
                     </div>
-                  </div>
-                  <div className="hm3--info--price ml12">
-                    <p className="starting--from m0 white fw700">
-                      starting from
-                    </p>
-                    <p className="starting--from--price m0 fs28 fw700">
-                      ${services.price_from}
-                    </p>
                   </div>
                 </div>
               </div>
@@ -139,35 +141,38 @@ const HomePage3HandyMan = ({
                   {services.description}
                 </span>
                 <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
-                <div className="type--of--work">
-                  {services.types_of_work.map((types) => {
-                    return (
-                      <div className="m0 fs12 fw700 type--of--work--content">
-                        <img src={tick} />
-                        <p className="m0 fs12 fw400 white ml8">{types}</p>
-                      </div>
-                    );
-                  })}
-
-                  <NavLink to="/updateservice">
-                    {" "}
+                <div className="type--of--work--with--buttons">
+                  <div className="type--of--work">
+                    {services.types_of_work.map((types) => {
+                      return (
+                        <div className="m0 fs12 fw700 type--of--work--content">
+                          <img src={tick} />
+                          <p className="m0 fs12 fw400 white ml8">{types}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="hm3--info--button--box">
+                    <NavLink to="/updateservice">
+                      {" "}
+                      <button
+                        className="hm3--info--view--profile--button br4 fw700 fs12"
+                        onClick={() => {
+                          handleUpdateServiceClick({ services });
+                        }}
+                      >
+                        Edit
+                      </button>
+                    </NavLink>
                     <button
-                      className="hm3--info--view--profile--button br4 fw700 fs12"
+                      className="hm3--info--delete--profile--button br4 fw700 fs12"
                       onClick={() => {
-                        handleUpdateServiceClick({ services });
+                        handleDeleteServiceClick({ services });
                       }}
                     >
-                      Edit
+                      Delete
                     </button>
-                  </NavLink>
-                  <button
-                    className="hm3--info--delete--profile--button br4 fw700 fs12"
-                    onClick={() => {
-                      handleDeleteServiceClick({ services });
-                    }}
-                  >
-                    Delete
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>

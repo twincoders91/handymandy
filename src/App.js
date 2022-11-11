@@ -7,7 +7,6 @@ import "./style.css";
 import Services from "./Services/Services";
 import HomePageMain from "./Home/HomePageMain";
 import handymanData from "./DummyDataSets/profileHandyman";
-import handymanServicesData from "./DummyDataSets/HandymanServices";
 import CreateServicesHandyman from "./Services/CreateServicesHandyman";
 import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
 import Profiles from "./Profile/Profiles";
@@ -15,9 +14,6 @@ import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 
 export default function App() {
-  const [totalReviews, setTotalReviews] = useState(0);
-  const [totalJobs, setTotalJobs] = useState(0);
-
   //================================== Navbar States===========================================
   const [backButtonVisibility, setBackButtonVisibility] = useState(true);
   //==================================Account States===========================================
@@ -43,17 +39,14 @@ export default function App() {
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
 
   //=============================Profile States=====================================
-
+  const [hmProfile, setHmProfile] = useState([]);
+  const [individualHmStar, setIndividualHmStar] = useState([]);
+  const [individualHmReviews, setIndividualHmReviews] = useState([]);
   //================total review_score and average review_score==================
 
   //================================APIS=============================================
 
   //======================= Back button settings ===========================
-
-  useEffect(() => {
-    setTotalReviews(handymanData[0].number_of_reviews.reviews);
-    setTotalJobs(handymanData[0].number_of_jobs.jobs);
-  }, []);
 
   return (
     <div>
@@ -87,10 +80,7 @@ export default function App() {
           element={
             <HomePageMain
               // averageRating={averageRating}
-              totalReviews={totalReviews}
-              totalJobs={totalJobs}
               charSelect={charSelect}
-              handymanServicesData={handymanServicesData}
               setServicesCategory={setServicesCategory}
               setServicesCategorySelection={setServicesCategorySelection}
               setFilteredServicesData={setFilteredServicesData}
@@ -109,14 +99,15 @@ export default function App() {
           element={
             <Services
               // averageRating={averageRating}
-              totalReviews={totalReviews}
-              totalJobs={totalJobs}
               // handymanServicesData={handymanServicesData}
               servicesCategory={servicesCategory}
               servicesCategorySelection={servicesCategorySelection}
               backButtonVisibility={backButtonVisibility}
               setBackButtonVisibility={setBackButtonVisibility}
               setHm_id={setHm_id}
+              setHmProfile={setHmProfile}
+              setIndividualHmStar={setIndividualHmStar}
+              setIndividualHmReviews={setIndividualHmReviews}
               filteredServicesData={filteredServicesData}
             />
           }
@@ -158,12 +149,12 @@ export default function App() {
           element={
             <Profiles
               charSelect={charSelect}
-              // averageRating={averageRating}
-              totalJobs={totalJobs}
-              totalReviews={totalReviews}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
               hm_id={hm_id}
+              hmProfile={hmProfile}
+              individualHmStar={individualHmStar}
+              individualHmReviews={individualHmReviews}
             />
           }
         />

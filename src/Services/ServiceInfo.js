@@ -1,22 +1,76 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
 
-const ServiceInfo = ({ filteredServicesData, selectedServiceId, setHm_id }) => {
+const ServiceInfo = ({
+  filteredServicesData,
+  selectedServiceId,
+  setHm_id,
+  setHmProfile,
+  setIndividualHmStar,
+  setIndividualHmReviews,
+}) => {
   const [hmRatings, setHmRatings] = useState([]);
+  const navigate = useNavigate();
 
   // ============== Filter Service category data by Service ID ==============
   const serviceInfo = filteredServicesData.filter(
     (item) => item.id === selectedServiceId
   );
-  // == Set HM_ID based on this service info. (to retrieve hm profile) ==
-  setHm_id(serviceInfo.hm_id); //retrieve hm_id from service info
+  setHm_id(serviceInfo[0].hm_id);
 
-  //====================== BACKEND FETCHING =======================
+  //====================== Fetch HM profile by ID =======================
+  const getHmProfile = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const res2 = await fetch(
+        `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}/averageratingandjobs`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const res3 = await fetch(
+        `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}/ratingssummary`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+
+      const hmProfileData = await res.json();
+      setHmProfile(hmProfileData);
+      const hmStars = await res2.json();
+      setIndividualHmStar(hmStars);
+      const hmReviews = await res3.json();
+      setIndividualHmReviews(hmReviews);
+      navigate("/profile");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //====================== Fetch avg ratings =======================
   const getHmRatings = async () => {
     const res = await fetch(
       `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}/averageratingandjobs`,
@@ -73,7 +127,7 @@ const ServiceInfo = ({ filteredServicesData, selectedServiceId, setHm_id }) => {
           <div className="service--info--description--container">
             <div className="service--info--description--section ml12">
               <p className="service--info--title fs16 fw700 m0 white mb4">
-                {serviceInfo[0].category}
+                {serviceInfo[0].title}
               </p>
               <p className="service--info--name fs12 fw400 m0 white mb4">
                 {serviceInfo[0].first_name}
@@ -109,11 +163,12 @@ const ServiceInfo = ({ filteredServicesData, selectedServiceId, setHm_id }) => {
                 </div>
               );
             })}
-            <NavLink className="navlinks" to="/profile">
-              <button className="service--info--view--profile--button br4 fw700 fs12">
-                View profile
-              </button>
-            </NavLink>
+            <button
+              className="service--info--view--profile--button br4 fw700 fs12"
+              onClick={getHmProfile}
+            >
+              View profile
+            </button>
           </div>
         </div>
       </div>

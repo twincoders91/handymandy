@@ -19,6 +19,7 @@ const CreateAccount1 = ({
 
   //================================BACKEND FETCHING=======================================
   const validateUsername = async (usernameInput) => {
+    if (!usernameInput) return;
     try {
       const res = await fetch(
         `http://127.0.0.1:8001/user/validate/${usernameInput}`

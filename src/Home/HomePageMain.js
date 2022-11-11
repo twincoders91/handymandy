@@ -6,7 +6,6 @@ import HomePageHandyman from "./HomePageHandyman";
 
 const HomePageMain = ({
   charSelect,
-  handymanServicesData,
   setServicesCategory,
   setServicesCategorySelection,
   username,
@@ -16,24 +15,26 @@ const HomePageMain = ({
   setHm_id,
   hm_id,
   individualHMServices,
+  setFilteredServicesData,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
-
+  //============================ STAR states ============================
   const [hmRatings, setHmRatings] = useState([]);
 
-  //============================Filtering HM data down to HM's username===========================
-  const HMindividualServices = handymanServicesData.filter(
-    (filteredServices) => {
-      return filteredServices.username === username;
-    }
-  );
+  //============================[OLD HARDCODE] Filtering HM data down to HM's username===========================
+  // const HMindividualServices = handymanServicesData.filter(
+  //   (filteredServices) => {
+  //     return filteredServices.username === username;
+  //   }
+  // );
 
-  //=====================================API========================================
+  //===================================== Get HM ID ========================================
   console.log(username);
+  console.log(charSelect);
 
   const getHandymanID = async () => {
-    if (!username) return;
+    if (!username || charSelect === "user") return;
     try {
       const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`, {
         headers: {
@@ -52,7 +53,31 @@ const HomePageMain = ({
       console.error(e);
     }
   };
+  //===================================== Get User ID ========================================
+  console.log(username);
+  console.log(charSelect);
 
+  const getUserID = async () => {
+    if (!username || charSelect === "handyman") return;
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      console.log(res);
+      const data = await res.json();
+
+      setHm_id(data.id);
+      getHmRatings(data.id);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  //===================================== STAR RATINGS ========================================
   const getHmRatings = async (id) => {
     const res = await fetch(
       `http://127.0.0.1:8001/handyman/${id}/averageratingandjobs`,
@@ -84,15 +109,14 @@ const HomePageMain = ({
       />
       {charSelect == "user" && (
         <HomePage
-          handymanServicesData={handymanServicesData}
           setServicesCategory={setServicesCategory}
           setServicesCategorySelection={setServicesCategorySelection}
           setBackButtonVisibility={setBackButtonVisibility}
+          setFilteredServicesData={setFilteredServicesData}
         />
       )}
       {charSelect == "handyman" && updateService == false && (
         <HomePageHandyman
-          HMindividualServices={HMindividualServices}
           setUpdateService={setUpdateService}
           setUpdateServiceDetails={setUpdateServiceDetails}
           setBackButtonVisibility={setBackButtonVisibility}

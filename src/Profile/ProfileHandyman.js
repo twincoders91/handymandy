@@ -8,12 +8,12 @@ import trophy from "../Assets/profile/trophy.svg";
 import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
-import aircon from "../Assets/profile/aircon.svg";
-import cabinet from "../Assets/profile/cabinet.svg";
-import heater from "../Assets/profile/heater.svg";
-import lighting from "../Assets/profile/lighting.svg";
-import painting from "../Assets/profile/painting.svg";
-import plumbing from "../Assets/profile/painting.svg";
+// import aircon from "../Assets/profile/aircon.svg";
+// import cabinet from "../Assets/profile/cabinet.svg";
+// import heater from "../Assets/profile/heater.svg";
+// import lighting from "../Assets/profile/lighting.svg";
+// import painting from "../Assets/profile/painting.svg";
+// import plumbing from "../Assets/profile/painting.svg";
 
 const ProfileHandyman = ({ totalReviews, setBackButtonVisibility, hm_id }) => {
   //=============================FETCHING APIS============================

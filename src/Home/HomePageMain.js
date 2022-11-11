@@ -23,16 +23,10 @@ const HomePageMain = ({
   //============================ STAR states ============================
   const [hmRatings, setHmRatings] = useState([]);
 
-  //============================[OLD HARDCODE] Filtering HM data down to HM's username===========================
-  // const HMindividualServices = handymanServicesData.filter(
-  //   (filteredServices) => {
-  //     return filteredServices.username === username;
-  //   }
-  // );
-
   //===================================== Get HM ID ========================================
   //============================= Get Handyman ID ================================
   console.log(charSelect);
+  console.log(username);
 
   const getHandymanID = async () => {
     if (!username || charSelect === "user") return;

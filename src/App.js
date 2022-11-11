@@ -59,7 +59,10 @@ export default function App() {
           element={
             <UserLoginPage
               charSelect={charSelect}
+              username={username}
+              setUsername={setUsername}
               accountCreated={accountCreated}
+              setCharSelect={setCharSelect}
             />
           }
         />

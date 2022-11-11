@@ -3,9 +3,7 @@ import "./createaccount.css";
 import { NavLink } from "react-router-dom";
 import backButton from "../../Assets/universal/backbutton.svg";
 import usernameImage from "../../Assets/createaccount/username.svg";
-import email from "../../Assets/createaccount/email.svg";
-import password from "../../Assets/createaccount/password.svg";
-import CharacterSelect from "../CharacterSelect";
+import passwordImage from "../../Assets/createaccount/password.svg";
 import CreateAccountErrorModal from "../../Components/Modals/CreateAccountErrorModal";
 
 const CreateAccount1 = ({
@@ -14,19 +12,44 @@ const CreateAccount1 = ({
   username,
   setUsername,
 }) => {
-  const [usernameInput, setUsernameInput] = useState("");
+  const [password, setPassword] = useState("");
   const [errorModal, setErrorModal] = useState(false);
 
+  //================================BACKEND SIGNUP =======================================
+  const signUpAccount = async () => {
+    setErrorModal(false);
+    console.log(username);
+    console.log(password);
+    try {
+      const res = await fetch("http://127.0.0.1:8001/login/signup", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      validateUsername(username);
+      setUsercredentialscreated(true);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   //================================BACKEND FETCHING=======================================
-  const validateUsername = async (usernameInput) => {
-    if (!usernameInput) return;
+  const validateUsername = async (username) => {
+    if (!username) return;
     try {
       const res = await fetch(
-        `http://127.0.0.1:8001/user/validate/${usernameInput}`
+        `http://127.0.0.1:8001/user/validate/${username}`
       );
 
       const res2 = await fetch(
-        `http://127.0.0.1:8001/handyman/validate/${usernameInput}`
+        `http://127.0.0.1:8001/handyman/validate/${username}`
       );
 
       const data = await res.json();
@@ -47,12 +70,12 @@ const CreateAccount1 = ({
     }
   };
 
-  const handleCreateAccount = async (event) => {
-    event.preventDefault();
-    setUsername(usernameInput);
-    validateUsername(usernameInput);
-    setErrorModal(false);
-  };
+  // const handleCreateAccount = async (event) => {
+  //   event.preventDefault();
+  //   setUsername(usernameInput);
+  //   validateUsername(usernameInput);
+  //   setErrorModal(false);
+  // };
 
   console.log(username);
   return (
@@ -71,10 +94,10 @@ const CreateAccount1 = ({
           <input
             type="text"
             placeholder="username"
-            value={usernameInput}
+            // value={username}
             className="create--account--input ml12"
             onChange={(e) => {
-              setUsernameInput(e.target.value.toLowerCase().replace(/\s/g, "")); //replace spacing with nothing
+              setUsername(e.target.value.toLowerCase().replace(/\s/g, "")); //replace spacing with nothing
             }}
           />
         </div>
@@ -82,7 +105,7 @@ const CreateAccount1 = ({
           Create password
         </span>
         <div className="universal--input--forms mb24">
-          <img src={password} className="user--login--input--icon ml12" />
+          <img src={passwordImage} className="user--login--input--icon ml12" />
           <input
             type="text"
             placeholder="password"
@@ -90,18 +113,22 @@ const CreateAccount1 = ({
           />
         </div>
         <div className="universal--input--forms mb36">
-          <img src={password} className="user--login--input--icon ml12" />
+          <img src={passwordImage} className="user--login--input--icon ml12" />
           <input
             type="text"
             placeholder="password"
             className="create--account--input ml12"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
         </div>
         <button
           className="user--create--account--button"
           onClick={(e) => {
-            setUsercredentialscreated(true);
-            handleCreateAccount(e);
+            // setUsercredentialscreated(true);
+            // handleCreateAccount(e);
+            signUpAccount();
           }}
         >
           Create Account

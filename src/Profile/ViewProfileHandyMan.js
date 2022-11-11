@@ -12,22 +12,23 @@ const ViewProfileHandyman = ({
   hmProfile,
   individualHmStar,
   individualHmReviews,
+  hmAverageRating,
+  jobsCompleted,
+  totalRatings,
 }) => {
   //=============================FETCHING APIS============================
   console.log(hmProfile);
   console.log(individualHmStar);
   console.log(individualHmReviews);
-  // const retreiveHandymanInfo = async () => {
-  //   const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`);
-  //   const data = await res.json();
-  //   console.log(data);
-  // };
+  console.log(hmAverageRating);
+  console.log(jobsCompleted);
+  console.log(totalRatings);
 
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {
     if (individualHmStar.length > 0) {
-      if (individualHmStar[0].average_rating >= index) {
+      if (hmAverageRating >= index) {
         return starFilled;
       }
       return starUnfilled;
@@ -43,6 +44,47 @@ const ViewProfileHandyman = ({
         <img src={starColour(idx)} key={idx} className="review--stars" />
       ));
   });
+
+  // if (individualHmStar.length > 0) {
+  //   setAverageRating(individualHmStar[0].average_rating);
+  // } else {
+  //   setAverageRating(0);
+  // }
+  // if (hmProfile[0].about) {
+  //   setAboutHM(hmProfile[0].about);
+  // } else {
+  //   setAboutHM("No Description");
+  // }
+  // if (hmProfile[0].business_name) {
+  //   setCompanyHM(hmProfile[0].business_name);
+  // } else {
+  //   setCompanyHM("No Company");
+  // }
+  // if (hmProfile[0].number_of_years) {
+  //   setNumberOfYears(hmProfile[0].number_of_years);
+  // } else {
+  //   setNumberOfYears(0);
+  // }
+  // if (individualHmStar.length > 0) {
+  //   setJobsCompleted(individualHmStar[0].total_jobs);
+  // } else {
+  //   setJobsCompleted(0);
+  // }
+  // if (individualHmStar.length > 0) {
+  //   setTotalRatingPoints(individualHmStar[0].total_ratings);
+  // } else {
+  //   setTotalRatingPoints(0);
+  // }
+  // if (hmProfile[0].specialities) {
+  //   setSpecialitiesHM(hmProfile[0].specialities);
+  // } else {
+  //   setSpecialitiesHM([]);
+  // }
+  // if (individualHmReviews.length > 0) {
+  //   setIndividualHMReviews(individualHmReviews);
+  // } else {
+  //   setIndividualHMReviews([]);
+  // }
 
   useEffect(() => {
     setBackButtonVisibility(true);
@@ -64,7 +106,7 @@ const ViewProfileHandyman = ({
         </div>
         <div className="reviews--box ">
           <div className="reviews--stars--box fw700 fs16">
-            {individualHmStar[0].average_rating}
+            {hmAverageRating}
           </div>
           <div className="reviews--stars--box ml4 ">{starRating}</div>
         </div>
@@ -102,7 +144,7 @@ const ViewProfileHandyman = ({
 
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {individualHmStar[0].total_jobs} jobs
+                  {jobsCompleted} jobs
                 </div>
                 <div className="fw400 fs12">completed</div>
               </div>
@@ -118,7 +160,7 @@ const ViewProfileHandyman = ({
 
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {individualHmStar[0].total_ratings}
+                  {totalRatings}
                 </div>
                 <div className="fw400 fs12">Rating points</div>
               </div>

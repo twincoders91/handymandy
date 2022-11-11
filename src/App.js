@@ -44,6 +44,9 @@ export default function App() {
   const [hmProfile, setHmProfile] = useState([]);
   const [individualHmStar, setIndividualHmStar] = useState([]);
   const [individualHmReviews, setIndividualHmReviews] = useState([]);
+  const [hmAverageRating, setHmAverageRating] = useState(0);
+  const [jobsCompleted, setJobsCompleted] = useState(0);
+  const [totalRatings, setTotalRatings] = useState(0);
   const [hMDetails, setHMDetails] = useState({});
   //================total review_score and average review_score==================
 
@@ -117,6 +120,9 @@ export default function App() {
               setIndividualHmReviews={setIndividualHmReviews}
               filteredServicesData={filteredServicesData}
               setViewHmProfile={setViewHmProfile}
+              setHmAverageRating={setHmAverageRating}
+              setJobsCompleted={setJobsCompleted}
+              setTotalRatings={setTotalRatings}
             />
           }
         />
@@ -165,6 +171,9 @@ export default function App() {
               individualHmReviews={individualHmReviews}
               setViewHmProfile={setViewHmProfile}
               viewHmProfile={viewHmProfile}
+              hmAverageRating={hmAverageRating}
+              jobsCompleted={jobsCompleted}
+              totalRatings={totalRatings}
               setHMDetails={setHMDetails}
             />
           }

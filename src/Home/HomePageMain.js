@@ -57,18 +57,22 @@ const HomePageMain = ({
   //============================= Get Handyman Ratings ================================
 
   const getHmRatings = async (id) => {
-    const res = await fetch(
-      `http://127.0.0.1:8001/handyman/${id}/averageratingandjobs`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      }
-    );
-    const ratingData = await res.json();
-    setHmRatings(ratingData);
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${id}/averageratingandjobs`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const ratingData = await res.json();
+      setHmRatings(ratingData);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   //============================= Fetch all Services ================================

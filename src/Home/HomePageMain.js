@@ -16,6 +16,7 @@ const HomePageMain = ({
   setHm_id,
   hm_id,
   individualHMServices,
+  setIndividualHMServices,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
@@ -30,7 +31,7 @@ const HomePageMain = ({
   );
 
   //=====================================API========================================
-  console.log(username);
+  //============================= Get Handyman ID ================================
 
   const getHandymanID = async () => {
     if (!username) return;
@@ -44,14 +45,16 @@ const HomePageMain = ({
       });
       console.log(res);
       const data = await res.json();
-
       setHm_id(data.id);
       getHmRatings(data.id);
+      fetchIndividualHMServices(data.id);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
+
+  //============================= Get Handyman Ratings ================================
 
   const getHmRatings = async (id) => {
     const res = await fetch(
@@ -66,6 +69,25 @@ const HomePageMain = ({
     );
     const ratingData = await res.json();
     setHmRatings(ratingData);
+  };
+
+  //============================= Fetch all Services ================================
+
+  const fetchIndividualHMServices = async (id) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/services/handyman/${id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const data = await res.json();
+      setIndividualHMServices(data);
+      console.log(individualHMServices);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   //================================================================================
@@ -98,6 +120,7 @@ const HomePageMain = ({
           setBackButtonVisibility={setBackButtonVisibility}
           hm_id={hm_id}
           individualHMServices={individualHMServices}
+          setIndividualHMServices={setIndividualHMServices}
           setHmRatings={setHmRatings}
           hmRatings={hmRatings}
         />

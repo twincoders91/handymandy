@@ -11,12 +11,48 @@ const HomePage3HandyMan = ({
   setUpdateServiceDetails,
   setCurrentPage,
   individualHMServices,
-  setHmRatings,
+  setIndividualHMServices,
   hmRatings,
 }) => {
+  //============================= BACKEND FETCHING ================================
+  //============================= DELETE Service ================================
+  const deleteServiceDB = async (id, hm_id) => {
+    try {
+      const res = await fetch("http://127.0.0.1:8001/services/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
+        body: JSON.stringify({
+          id: id,
+        }),
+      });
+      fetchIndividualHMServices(hm_id);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  //============================= Fetch all Services ================================
+  const fetchIndividualHMServices = async (id) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/services/handyman/${id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const data = await res.json();
+      setIndividualHMServices(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   //=======================Clicking Create Service Button============================
   const handleCreateServiceClick = () => {
-    // setCreateService(true);
     setCurrentPage("CreateServicesHandyman");
   };
 
@@ -25,6 +61,11 @@ const HomePage3HandyMan = ({
     setUpdateService(true);
     setUpdateServiceDetails(services);
     console.log(services);
+  };
+
+  //=========================Clicking Delete Service Button============================
+  const handleDeleteServiceClick = (services) => {
+    deleteServiceDB(services.services.services_id, services.services.hm_id);
   };
 
   //======================Creating Star Ratings=======================
@@ -48,7 +89,6 @@ const HomePage3HandyMan = ({
       ));
   });
 
-  console.log(individualHMServices);
   return (
     <>
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>
@@ -65,7 +105,7 @@ const HomePage3HandyMan = ({
                 <div className="hm3--info--description--container">
                   <div className="hm3--info--description--section ml12">
                     <p className="hm3--info--title fs16 fw700 m0 white mb4">
-                      {services.category}
+                      {services.title}
                     </p>
                     <p className="hm3--info--name fs12 fw400 m0 white mb4">
                       {services.first_name}
@@ -108,6 +148,7 @@ const HomePage3HandyMan = ({
                       </div>
                     );
                   })}
+
                   <NavLink to="/updateservice">
                     {" "}
                     <button
@@ -119,6 +160,14 @@ const HomePage3HandyMan = ({
                       Edit
                     </button>
                   </NavLink>
+                  <button
+                    className="hm3--info--delete--profile--button br4 fw700 fs12"
+                    onClick={() => {
+                      handleDeleteServiceClick({ services });
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
@@ -126,12 +175,14 @@ const HomePage3HandyMan = ({
         );
       })}
       <div className="hm3--info--view--create--button--container mb48">
-        <button
-          className="hm3--info--view--create--button br4 fw700 fs24 mt60"
-          onClick={handleCreateServiceClick}
-        >
-          Create
-        </button>
+        <NavLink className="navlinks" to="/createservice">
+          <button
+            className="hm3--info--view--create--button br4 fw700 fs24 mt60"
+            onClick={handleCreateServiceClick}
+          >
+            Create
+          </button>
+        </NavLink>
       </div>
     </>
   );

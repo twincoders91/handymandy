@@ -9,6 +9,7 @@ const HomePageHandyman = ({
   setUpdateServiceDetails,
   setBackButtonVisibility,
   setCurrentPage,
+  setIndividualHMServices,
   individualHMServices,
   setHmRatings,
   hmRatings,
@@ -28,6 +29,7 @@ const HomePageHandyman = ({
       )}
       {individualHMServices.length !== 0 && (
         <HomePage3HandyMan
+          setIndividualHMServices={setIndividualHMServices}
           individualHMServices={individualHMServices}
           setCreateService={setCreateService}
           setCurrentPage={setCurrentPage}

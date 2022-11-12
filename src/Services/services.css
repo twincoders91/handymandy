@@ -339,3 +339,20 @@
   font-family: "Exo", sans-serif;
   color: var(--black);
 }
+
+/* ===============================My Services============================= */
+
+.my--services--main--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userservices--card--job--status--box {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+}

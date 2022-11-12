@@ -51,13 +51,13 @@ export default function App() {
   const [totalRatings, setTotalRatings] = useState(0);
   const [userDetails, setUserDetails] = useState({});
   const [hMDetails, setHMDetails] = useState({});
-  //================total review_score and average review_score==================
-
+  //==============================Loading===========================================
+  const [loading, setLoading] = useState(false);
   //================================APIS=============================================
 
   //======================= Back button settings ===========================
   console.log(charSelect);
-
+  console.log(user_id);
   return (
     <div>
       <Routes>
@@ -197,7 +197,15 @@ export default function App() {
         />
         <Route
           path="/myservices"
-          element={<MyServices charSelect={charSelect} user_id={user_id} />}
+          element={
+            <MyServices
+              charSelect={charSelect}
+              hm_id={hm_id}
+              user_id={user_id}
+              loading={loading}
+              setLoading={setLoading}
+            />
+          }
         />
       </Routes>
     </div>

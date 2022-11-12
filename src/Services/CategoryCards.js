@@ -35,9 +35,7 @@ const CategoryCards = ({
       console.error(e);
     }
   };
-  console.log(hm_id);
-  console.log(hmRatings);
-  console.log(hmRatings.total_jobs);
+
   //======================Creating Star Ratings=======================
   let count = 5;
   const starColour = (index) => {

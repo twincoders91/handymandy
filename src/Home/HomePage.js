@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import lighting from "../Assets/homepage/lightbulbs.svg";
-import plumber from "../Assets/homepage/plumber.svg";
-import airconditioner from "../Assets/homepage/airconditioner.svg";
-import painting from "../Assets/homepage/painting.svg";
-import waterheater from "../Assets/homepage/waterheater.svg";
-import cabinets from "../Assets/homepage/cabinets.svg";
+
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import starfilled from "../Assets/homepage/starfilled.svg";
@@ -62,7 +57,7 @@ const HomePage = ({ setBackButtonVisibility, setFilteredServicesData }) => {
                 >
                   <div className="category--cards--box">
                     <img
-                      src={require(`../Assets/homepage/${items.icon}.svg`)}
+                      src={require(`../Assets/homepage/new/${items.icon}.svg`)}
                       className="category--cards--icon"
                       alt="images"
                     ></img>

@@ -72,19 +72,20 @@ const ServiceInfo = ({
       } else {
         setHmAverageRating(0);
       }
-      const hmReviews = await res3.json();
       if (hmStars.length > 0) {
         setJobsCompleted(hmStars[0].total_jobs);
       } else {
         setJobsCompleted(0);
       }
-      if (hmStars.length > 0) {
+      const hmReviews = await res3.json();
+      if (hmStars.length > 0 && hmReviews.length > 0) {
         setTotalRatings(hmStars[0].total_ratings);
         setIndividualHmReviews(hmReviews);
       } else {
         setTotalRatings(0);
+        setIndividualHmReviews([]);
       }
-
+      console.log(hmReviews);
       navigate("/profile");
     } catch (e) {
       console.error(e);

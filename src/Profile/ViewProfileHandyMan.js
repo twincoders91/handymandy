@@ -6,6 +6,7 @@ import starFilled from "../Assets/universal/starFilled.svg";
 import trophy from "../Assets/profile/trophy.svg";
 import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
+import noreviews from "../Assets/profile/new/rating.svg";
 
 const ViewProfileHandyman = ({
   setBackButtonVisibility,
@@ -48,6 +49,7 @@ const ViewProfileHandyman = ({
   useEffect(() => {
     setBackButtonVisibility(true);
   });
+  console.log(hmProfile[0]);
 
   return (
     <div className="profile--info--container">
@@ -140,7 +142,7 @@ const ViewProfileHandyman = ({
                   {" "}
                   <div className="category--profile--cards--image--box">
                     <img
-                      src={require(`../Assets/profile/${item}.svg`)}
+                      src={require(`../Assets/profile/new/${item}.svg`)}
                       className="category--cards--icon"
                       alt="images"
                     ></img>
@@ -160,26 +162,47 @@ const ViewProfileHandyman = ({
         <div className="reviews--header white fw700 fs16 ml24 mt24 mb4">
           Reviews
         </div>
-        {individualHmReviews.map((items) => {
-          return (
-            <div className="reviews--cards--box mb8 relative">
-              <img
-                src={require(`../Assets/profile/defaultavatar.jpeg`)}
-                className="profile--image--icons ml16 mt16 mb16"
-                alt="images"
-              ></img>
-              <div className="reviews--description--cards ml16 mt16 mb16">
-                <div className=" fw700 fs12  mb4">{items.first_name}</div>
-                <div className="reviews--message fw400 fs12 white">
-                  {items.reviews}
+        {individualHmReviews.length > 0 ? (
+          <div>
+            {individualHmReviews.map((items) => {
+              return (
+                <div className="reviews--cards--box mb8 relative">
+                  <img
+                    src={require(`../Assets/profile/defaultavatar.jpeg`)}
+                    className="profile--image--icons ml16 mt16 mb16"
+                    alt="images"
+                  ></img>
+                  <div className="reviews--description--cards ml16 mt16 mb16">
+                    <div className=" fw700 fs12  mb4">{items.first_name}</div>
+                    <div className="reviews--message fw400 fs12 white">
+                      {items.reviews}
+                    </div>
+                  </div>
+                  <div className="reviews--score--box absolute">
+                    <span className="fs56 fw700">{items.ratings}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="reviews--score--box absolute">
-                <span className="fs56 fw700">{items.ratings}</span>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="reviews--cards--box mb8 relative">
+            <div className="reviews--description--cards ml16 mt16 mb16">
+              <div className="no--reviews--font fw700 fs16">
+                No reviews yet!
               </div>
             </div>
-          );
-        })}
+            <div className="reviews--score--box">
+              <div className="no--reviews--score--box absolute">
+                <img
+                  src={noreviews}
+                  className="profile--image--icons ml16 mt16 mb16"
+                  alt="images"
+                ></img>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

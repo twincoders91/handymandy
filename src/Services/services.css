@@ -234,6 +234,11 @@
   box-shadow: var(--shadowing);
   color: var(--white);
   font-size: 12px;
+  cursor: pointer;
+}
+.services--type--of--work--delete--button:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
 }
 
 .services--type--of--work--container {

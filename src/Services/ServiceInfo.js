@@ -19,6 +19,7 @@ const ServiceInfo = ({
   setJobsCompleted,
   setTotalRatings,
   setCurrentPage,
+  user_id,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const navigate = useNavigate();
@@ -149,6 +150,7 @@ const ServiceInfo = ({
         <ConfirmBookingModal
           setAcceptedServicesModal={setAcceptedServicesModal}
           serviceInfo={serviceInfo}
+          user_id={user_id}
         />
       )}
       <span className="fw700 fs32 mt24 mb24 white">Service Info</span>

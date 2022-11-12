@@ -54,6 +54,7 @@ const CreateServicesHandyman = ({
   console.log(hm_id);
 
   const createServicesDB = async () => {
+    if (!hm_id) return;
     try {
       const res = await fetch("http://127.0.0.1:8001/services/", {
         headers: {

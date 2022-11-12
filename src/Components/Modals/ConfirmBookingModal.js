@@ -1,10 +1,37 @@
 import React, { useMemo, useState } from "react";
 import ReactDom from "react-dom";
+import { useNavigate } from "react-router-dom";
 import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
 
-const ConfirmBookingModal = ({ setAcceptedServicesModal, serviceInfo }) => {
+const ConfirmBookingModal = ({
+  setAcceptedServicesModal,
+  serviceInfo,
+  user_id,
+}) => {
+  const navigate = useNavigate();
+
+  const createJob = async () => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/jobs/`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          user_id: user_id,
+          services_id: serviceInfo[0].services_id,
+          status_id: "pending",
+        }),
+      });
+      navigate("/myservices");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <>
@@ -42,7 +69,10 @@ const ConfirmBookingModal = ({ setAcceptedServicesModal, serviceInfo }) => {
                 </div>
               </div>
               <div className="confirmbooking--request--box relative">
-                <button className="review--submit--button--confirmbooking mt24 fs16 fw700">
+                <button
+                  className="review--submit--button--confirmbooking mt24 fs16 fw700"
+                  onClick={createJob}
+                >
                   Confirm booking request?
                 </button>
               </div>

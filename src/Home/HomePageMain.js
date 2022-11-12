@@ -163,6 +163,7 @@ const HomePageMain = ({
           setIndividualHMServices={setIndividualHMServices}
           setHmRatings={setHmRatings}
           hmRatings={hmRatings}
+          setCurrentPage={setCurrentPage}
         />
       )}
       {/* <ProfileHandyman

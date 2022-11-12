@@ -14,6 +14,7 @@ import Profiles from "./Profile/Profiles";
 import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 import EditProfileUser from "./EditProfiles/EditProfileMain";
+import MyServices from "./Services/MyServices";
 
 export default function App() {
   //================================== Navbar States===========================================
@@ -193,6 +194,7 @@ export default function App() {
             <EditProfileUser user_id={user_id} userDetails={userDetails} />
           }
         />
+        <Route path="/myservices" element={<MyServices />} />
       </Routes>
     </div>
   );

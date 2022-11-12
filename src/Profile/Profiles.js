@@ -53,7 +53,7 @@ const Profiles = ({
           setUserDetails={setUserDetails}
         />
       )}
-      {/* {charSelect == "user" && (
+      {charSelect == "user" && (
         <ViewProfileHandyman
           averageRating={averageRating}
           totalJobs={totalJobs}
@@ -68,7 +68,7 @@ const Profiles = ({
           jobsCompleted={jobsCompleted}
           totalRatings={totalRatings}
         />
-      )} */}
+      )}
     </div>
   );
 };

@@ -33,8 +33,7 @@ const UserLoginPage = ({
       });
 
       const data1 = await res.json();
-      console.log(data1);
-      console.log(username);
+
       if (data1.loggedIn === false) {
         console.log(data1.status);
         setErrorLoginModal(true);

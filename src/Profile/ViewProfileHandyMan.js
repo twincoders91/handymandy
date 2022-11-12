@@ -16,6 +16,7 @@ const ViewProfileHandyman = ({
   hmAverageRating,
   jobsCompleted,
   totalRatings,
+  setCurrentPage,
 }) => {
   //=============================FETCHING APIS============================
   console.log(hmProfile);

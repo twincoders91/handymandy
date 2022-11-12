@@ -7,6 +7,23 @@
   z-index: 99;
 }
 
+.modal--container--confirmbooking {
+  position: relative;
+  width: 350px;
+  min-height: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--orange);
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: var(--orange);
+  box-shadow: 0px 0px 20px 0px rgba(255, 0, 0, 0.8);
+}
 .modal--container {
   position: relative;
   width: 350px;
@@ -25,16 +42,75 @@
   box-shadow: 0px 0px 20px 0px rgba(255, 0, 0, 0.8);
 }
 
+.modal--header--confirmbooking {
+  text-align: left;
+  color: black;
+}
 .modal--header {
   text-align: center;
 }
 
+.modal--text--confirmbooking {
+  color: black;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .modal--text {
   width: 320px;
   margin-left: auto;
   margin-right: auto;
 }
-
+.modal--text--confirmbooking--description {
+  width: 100%;
+  color: black;
+}
+.modal--text--confirmbooking--items {
+  color: black;
+}
+.confirm--booking--hm--profile--box {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100%;
+  justify-content: left;
+}
+.confirm--booking--profileimage--box {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+.confirm--booking--hm--profile--image {
+  height: 100px;
+  border-radius: 50%;
+}
+.confirm--booking--description--box {
+  display: flex;
+  flex-direction: column;
+  /* width: 90%; */
+}
+.review--submit--button--confirmbooking {
+  background-color: transparent;
+  color: var(--orange);
+  outline: none;
+  cursor: pointer;
+  border-style: none;
+  border-radius: 4px;
+  box-shadow: var(--shadowing);
+  padding: 10px;
+  color: black;
+  border: black 1px solid;
+}
+.review--submit--button--confirmbooking:hover {
+  background-color: var(--black);
+  color: var(--orange);
+}
+.modal--text--confirmbooking--terms {
+  color: black;
+  text-align: center;
+}
 .about--input--forms--full {
   width: 320px;
   height: 160px;
@@ -69,9 +145,9 @@
 
 .review--submit--button {
   cursor: pointer;
-  margin-top: 15px;
-  width: 150px;
-  height: 40px;
+  /* width: 150px; */
+  /* height: 40px; */
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,6 +164,10 @@
   position: absolute;
   top: 15px;
   right: 20px;
+}
+.modal--cross--button:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
 }
 
 /* ====================================HAMBURGER MODAL====================================== */

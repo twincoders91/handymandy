@@ -3,9 +3,9 @@ import "./profile.css";
 import edit from "../Assets/universal/edit.svg";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
-import trophy from "../Assets/profile/trophy.svg";
-import time from "../Assets/profile/time.svg";
-import reviews from "../Assets/profile/reviews.svg";
+import trophy from "../Assets/profile/new/trophy.svg";
+import time from "../Assets/profile/new/time.svg";
+import reviews from "../Assets/profile/new/reviews.svg";
 import noreviews from "../Assets/profile/new/rating.svg";
 
 const ViewProfileHandyman = ({

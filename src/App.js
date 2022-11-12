@@ -56,6 +56,7 @@ export default function App() {
   //================================APIS=============================================
 
   //======================= Back button settings ===========================
+  console.log(charSelect);
 
   return (
     <div>
@@ -194,7 +195,10 @@ export default function App() {
             <EditProfileUser user_id={user_id} userDetails={userDetails} />
           }
         />
-        <Route path="/myservices" element={<MyServices />} />
+        <Route
+          path="/myservices"
+          element={<MyServices charSelect={charSelect} user_id={user_id} />}
+        />
       </Routes>
     </div>
   );

@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import ReactDom from "react-dom";
 import crossButton from "../../Assets/services/crossbutton.svg";
 import facebookIcon from "../../Assets/universal/facebook.svg";
 import instagramIcon from "../../Assets/universal/instagram.svg";
 import twitterIcon from "../../Assets/universal/twitter.svg";
 
-const HamburgerModal = ({
-  setHamburgerModal,
-  setIsActive,
-  // setCurrentPage,
-  charSelect,
-}) => {
+const HamburgerModal = ({ setHamburgerModal, setIsActive, charSelect }) => {
+  const navigate = useNavigate();
+
   const handleHomeButtonClick = () => {
     if (charSelect === "handyman") {
       // setCurrentPage("HomePageHandyman");
@@ -22,9 +19,14 @@ const HamburgerModal = ({
     setHamburgerModal((current) => !current);
     setIsActive((current) => !current);
   };
+
   const handleProfileButtonClick = () => {
     setHamburgerModal((current) => !current);
     setIsActive((current) => !current);
+  };
+
+  const handleServicesClick = () => {
+    navigate("/myservices");
   };
 
   return (
@@ -44,8 +46,11 @@ const HamburgerModal = ({
             <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
               About
             </p>
-            <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
-              Inbox
+            <p
+              className="modal--hamburger--text white fs16 fw700 m0 mt24"
+              onClick={handleServicesClick}
+            >
+              Services
             </p>
             <NavLink
               className="navlinks"

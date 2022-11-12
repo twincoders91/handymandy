@@ -5,12 +5,26 @@ import tick from "../Assets/services/tick.svg";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import ClipLoader from "react-spinners/RiseLoader";
-import ClipLoader2 from "react-spinners/PulseLoader";
 import MyUserServicesCard from "./MyUserServicesCard";
+import CancelJobsModal from "../Components/Modals/CancelJobsModal";
+import ApproveJobsModal from "../Components/Modals/ApproveJobsModal";
 
-const MyUserServices = ({ user_id, hm_id, setLoading, loading }) => {
+const MyUserServices = ({
+  user_id,
+  setLoading,
+  loading,
+  setCurrentPage,
+  setHmProfile,
+  setHmAverageRating,
+  setIndividualHmStar,
+  setJobsCompleted,
+  setTotalRatings,
+  setIndividualHmReviews,
+}) => {
   const [allJobs, setAllJobs] = useState("");
-  const [hmRatings, setHmRatings] = useState("");
+  const [cancelJobsModalValue, setCancelJobsModalValue] = useState(false);
+  const [approveJobsModalValue, setApproveJobsModalValue] = useState(false);
+  const [cardClicked, setCardClicked] = useState("");
 
   const fetchJobsByUser = async () => {
     setLoading(true);
@@ -30,27 +44,57 @@ const MyUserServices = ({ user_id, hm_id, setLoading, loading }) => {
     }
   };
 
+  console.log(cancelJobsModalValue);
   //===================================================================
 
   useEffect(() => {
     fetchJobsByUser();
-  }, []);
+  }, [cancelJobsModalValue, approveJobsModalValue]);
 
-  console.log(allJobs);
-  console.log(loading);
   return (
-    <div className="my--services--main--container">
-      <span className="fw700 fs32 mt24 mb24 white">Service Info</span>
-      {loading ? (
-        <ClipLoader size={100} color={"#ffffff"} loading={loading} />
-      ) : allJobs ? (
-        allJobs.map((item) => {
-          return <MyUserServicesCard item={item} />;
-        })
-      ) : (
-        <>No Services yet</>
+    <>
+      {cancelJobsModalValue && (
+        <CancelJobsModal
+          setCancelJobsModalValue={setCancelJobsModalValue}
+          cardClicked={cardClicked}
+        />
       )}
-    </div>
+      {approveJobsModalValue && (
+        <ApproveJobsModal
+          setApproveJobsModalValue={setApproveJobsModalValue}
+          cardClicked={cardClicked}
+        />
+      )}
+      <div className="my--services--main--container">
+        <span className="fw700 fs32 mt24 mb24 white">My Services</span>
+        {loading ? (
+          <ClipLoader size={100} color={"#ffffff"} loading={loading} />
+        ) : allJobs.length > 0 ? (
+          allJobs.map((item) => {
+            return (
+              <MyUserServicesCard
+                loading={loading}
+                setLoading={setLoading}
+                item={item}
+                setHmProfile={setHmProfile}
+                setCurrentPage={setCurrentPage}
+                setHmAverageRating={setHmAverageRating}
+                setIndividualHmStar={setIndividualHmStar}
+                setJobsCompleted={setJobsCompleted}
+                setTotalRatings={setTotalRatings}
+                setIndividualHmReviews={setIndividualHmReviews}
+                setCancelJobsModalValue={setCancelJobsModalValue}
+                cancelJobsModalValue={cancelJobsModalValue}
+                setApproveJobsModalValue={setApproveJobsModalValue}
+                setCardClicked={setCardClicked}
+              />
+            );
+          })
+        ) : (
+          <div className="fs32 fw700 mt24">No Services yet</div>
+        )}
+      </div>
+    </>
   );
 };
 

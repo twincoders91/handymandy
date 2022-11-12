@@ -175,7 +175,7 @@
   padding: 12px;
 }
 
-.type--of--work {
+.type--of--work--servicescard {
   width: 100%;
 }
 
@@ -356,4 +356,115 @@
   align-items: center;
   top: 10px;
   right: 10px;
+}
+
+.starting--from {
+  font-size: 10px;
+  text-align: center;
+}
+
+.myuserservice--card {
+  width: 370px;
+  height: fit-content;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.myuserservice--card--top {
+  display: flex;
+  border-bottom: 2px solid black;
+}
+
+.myuserservice--image {
+  width: 120px;
+  height: 100%;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: 2px solid black;
+}
+.myuserservice--title {
+  max-width: 200px;
+}
+.myuserservice--description--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.myuserservice--description--section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.myuserservice--profile--stars {
+  display: flex;
+  align-items: center;
+}
+
+.myuserservice--stars {
+  margin-left: 10px;
+}
+
+.myuserservice--price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.myuserservice--card--bottom {
+  position: relative;
+  padding: 12px;
+}
+
+.type--of--work--content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.myuserservice--buttons--container {
+  margin-top: 15px;
+  display: flex;
+  width: 100%;
+}
+
+.myuserservice--view--cancel--button {
+  height: 30px;
+  width: 90px;
+  background-color: #ff4040;
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+  margin-left: 20px;
+  border-radius: 4px;
+}
+
+.myuserservice--view--profile--button {
+  height: 30px;
+  width: 90px;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+  border-radius: 4px;
+}
+
+.myuserservice--view--approve--button {
+  height: 30px;
+  width: 90px;
+  background-color: #68ffc0;
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+  margin-left: 20px;
+  border-radius: 4px;
 }

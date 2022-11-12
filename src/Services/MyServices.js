@@ -4,7 +4,19 @@ import CharacterSelect from "../LoginPage/CharacterSelect";
 import MyHandymanServices from "./MyHandymanServices";
 import MyUserServices from "./MyUserServices";
 
-const MyServices = ({ charSelect, user_id, hm_id, setLoading, loading }) => {
+const MyServices = ({
+  charSelect,
+  user_id,
+  setLoading,
+  loading,
+  setHmProfile,
+  setCurrentPage,
+  setHmAverageRating,
+  setIndividualHmStar,
+  setJobsCompleted,
+  setTotalRatings,
+  setIndividualHmReviews,
+}) => {
   return (
     <div>
       <Navbar />
@@ -14,7 +26,13 @@ const MyServices = ({ charSelect, user_id, hm_id, setLoading, loading }) => {
           user_id={user_id}
           setLoading={setLoading}
           loading={loading}
-          hm_id={hm_id}
+          setHmProfile={setHmProfile}
+          setCurrentPage={setCurrentPage}
+          setHmAverageRating={setHmAverageRating}
+          setIndividualHmStar={setIndividualHmStar}
+          setJobsCompleted={setJobsCompleted}
+          setTotalRatings={setTotalRatings}
+          setIndividualHmReviews={setIndividualHmReviews}
         />
       )}
     </div>

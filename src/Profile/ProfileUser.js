@@ -103,7 +103,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
 
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {userRatings.total_jobs}
+                  {userRatings ? userRatings.total_jobs : <>0</>}
                 </div>
                 <div className="fw400 fs12">total jobs</div>
               </div>
@@ -118,7 +118,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
               </div>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {userRatings.average_rating}
+                  {userRatings ? userRatings.average_rating : <>0</>}
                 </div>
                 <div className="fw400 fs12">average rating</div>
               </div>
@@ -133,7 +133,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
               </div>
               <div className="profile--description--cards">
                 <div className="category--cards--text fw700 fs14">
-                  {userRatings.total_ratings}
+                  {userRatings ? userRatings.total_ratings : <>0</>}
                 </div>
                 <div className="fw400 fs12">Rating Points</div>
               </div>

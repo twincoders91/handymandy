@@ -20,8 +20,6 @@ const HomePage3HandyMan = ({
 
   const deleteServiceDB = async (id, hm_id) => {
     try {
-      console.log(id);
-      console.log(hm_id);
       const res = await fetch("http://127.0.0.1:8001/services/", {
         headers: {
           Accept: "application/json",

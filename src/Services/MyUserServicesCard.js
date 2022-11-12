@@ -1,13 +1,28 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useDebugValue } from "react";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
+import { useNavigate } from "react-router-dom";
 
-const MyUserServicesCard = ({ item }) => {
+const MyUserServicesCard = ({
+  item,
+  setCurrentPage,
+  setHmProfile,
+  setHmAverageRating,
+  setIndividualHmStar,
+  setJobsCompleted,
+  setTotalRatings,
+  setIndividualHmReviews,
+  setCancelJobsModalValue,
+  setApproveJobsModalValue,
+  setCardClicked,
+}) => {
   const [hmRatings, setHmRatings] = useState([]);
 
+  const navigate = useNavigate();
+  console.log(item);
   //====================== RATINGS FETCHING =======================
   const getHmRatings = async () => {
     try {
@@ -49,90 +64,190 @@ const MyUserServicesCard = ({ item }) => {
       ));
   });
   //===================================================================
+  const getHmProfile = async (item) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${item.hm_id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const res2 = await fetch(
+        `http://127.0.0.1:8001/handyman/${item.hm_id}/averageratingandjobs`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const res3 = await fetch(
+        `http://127.0.0.1:8001/handyman/${item.hm_id}/ratingssummary`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+
+      setCurrentPage("Service Info");
+      const hmProfileData = await res.json();
+      setHmProfile(hmProfileData);
+      const hmStars = await res2.json();
+      if (hmStars.length > 0) {
+        setHmAverageRating(hmStars[0].average_rating);
+        setIndividualHmStar(hmStars);
+      } else {
+        setHmAverageRating(0);
+      }
+      if (hmStars.length > 0) {
+        setJobsCompleted(hmStars[0].total_jobs);
+      } else {
+        setJobsCompleted(0);
+      }
+      const hmReviews = await res3.json();
+      if (hmStars.length > 0 && hmReviews.length > 0) {
+        setTotalRatings(hmStars[0].total_ratings);
+        setIndividualHmReviews(hmReviews);
+      } else {
+        setTotalRatings(0);
+        setIndividualHmReviews([]);
+      }
+      console.log(hmReviews);
+      navigate("/profile");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //===================================================================
+  const handleDeleteMyService = () => {
+    setCancelJobsModalValue(true);
+    setCardClicked(item);
+  };
+
+  const handleApproveMyService = () => {
+    setApproveJobsModalValue(true);
+    setCardClicked(item);
+  };
+
+  //===================================================================
 
   useEffect(() => {
     getHmRatings();
+    getHmProfile();
   }, []);
 
-  console.log(item);
-  console.log(item.job_status);
-
   return (
-    <div className="service--info--card mb24">
-      <div className="service--info--card--top">
-        <img
-          src={recommended4usampleimage}
-          className="service--info--image"
-          alt="images"
-        />
-        <div className="hm3--info--description--mega--container">
-          <p
-            className="service--info--title fs16 fw700 m0 white mb4 ml12 mt8"
-            style={{
-              whiteSpace: "pre-wrap",
-              overflowWrap: "break-word",
-            }}
-          >
-            {item.title}
-          </p>
-          <div className="service--info--description--container">
-            <div className="service--info--description--section ml12">
-              <p className="service--info--name fs12 fw400 m0 white mb4">
-                {item.first_name}
-              </p>
-              <div className="service--info--profile--stars mb4">
-                <img src={recommendedprofile} alt="images"></img>
-                <div className="service--info--stars">{starRating}</div>
-              </div>
-              {hmRatings.length > 0 ? (
-                <p className="m0 fw700 fs8 white">
-                  {hmRatings[0].total_jobs} job(s) completed
+    <>
+      <div className="myuserservice--card mb24">
+        <div className="myuserservice--card--top">
+          <img
+            src={recommended4usampleimage}
+            className="myuserservice--image"
+            alt="images"
+          />
+          <div className="hm3--info--description--mega--container">
+            <p
+              className="myuserservice--title fs16 fw700 m0 white mb4 ml12 mt8"
+              style={{
+                whiteSpace: "pre-wrap",
+                overflowWrap: "break-word",
+              }}
+            >
+              {item.title}
+            </p>
+            <div className="myuserservice--description--container">
+              <div className="myuserservice--description--section ml12">
+                <p className="myuserservice--name fs12 fw400 m0 white mb4">
+                  {item.first_name}
                 </p>
+                <div className="myuserservice--profile--stars mb4">
+                  <img src={recommendedprofile} alt="images"></img>
+                  <div className="myuserservice--stars">{starRating}</div>
+                </div>
+                {hmRatings.length > 0 ? (
+                  <p className="m0 fw700 fs8 white">
+                    {hmRatings[0].total_jobs} job(s) completed
+                  </p>
+                ) : (
+                  <p className="m0 fw700 fs8 white">0 job completed</p>
+                )}
+              </div>
+              <div className="myuserservice--price m0">
+                <p className="starting--from m0 white fw700">starting from</p>
+                <p className="starting--from--price m0 fs28 fw700">
+                  ${item.price_from}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="myuserservice--card--bottom">
+          <p className="m0 fs14 fw700 mb8">{item.category}</p>
+          <span className="myuserservice--desc fs12 fw400 white">
+            {item.description}
+          </span>
+          <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
+          <div className="type--of--work--servicescard">
+            {item.types_of_work.map((works) => {
+              return (
+                <div className="m0 fs12 fw700 type--of--work--content">
+                  <img src={tick} />
+                  <p className="m0 fs12 fw400 white ml8">{works}</p>
+                </div>
+              );
+            })}
+            <div className="userservices--card--job--status--box">
+              <p className="m0 fw700 fs14">{item.job_status}</p>
+              <img
+                src={require(`../Assets/services/${item.job_status}.svg`)}
+                className="ml12"
+              />
+            </div>
+            <div className="myuserservice--buttons--container">
+              <button
+                className="myuserservice--view--profile--button fw700 fs12"
+                onClick={() => {
+                  getHmProfile(item);
+                }}
+              >
+                View profile
+              </button>
+              {item.job_status === "inprogress" && (
+                <button
+                  className="myuserservice--view--approve--button fw700 fs12"
+                  onClick={() => {
+                    handleApproveMyService();
+                  }}
+                >
+                  Approve
+                </button>
+              )}
+              {item.job_status === "inprogress" ||
+              item.job_status === "pending" ? (
+                <>
+                  <button
+                    className="myuserservice--view--cancel--button fw700 fs12"
+                    onClick={() => {
+                      handleDeleteMyService();
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </>
               ) : (
-                <p className="m0 fw700 fs8 white">0 job completed</p>
+                <></>
               )}
             </div>
-            <div className="service--info--price ml12">
-              <p className="starting--from m0 white fw700">starting from</p>
-              <p className="starting--from--price m0 fs28 fw700">
-                ${item.price_from}
-              </p>
-            </div>
           </div>
         </div>
       </div>
-      <div className="service--info--card--bottom">
-        <p className="m0 fs14 fw700 mb8">{item.category}</p>
-        <span className="service--info--desc fs12 fw400 white">
-          {item.description}
-        </span>
-        <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
-        <div className="type--of--work">
-          {item.types_of_work.map((works) => {
-            return (
-              <div className="m0 fs12 fw700 type--of--work--content">
-                <img src={tick} />
-                <p className="m0 fs12 fw400 white ml8">{works}</p>
-              </div>
-            );
-          })}
-          <div className="userservices--card--job--status--box">
-            <p className="m0 fw700 fs14">{item.job_status}</p>
-            <img
-              src={require(`../Assets/services/${item.job_status}.svg`)}
-              className="ml12"
-            />
-          </div>
-
-          <button
-            className="service--info--view--profile--button br4 fw700 fs12"
-            // onClick={getHmProfile}
-          >
-            View profile
-          </button>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

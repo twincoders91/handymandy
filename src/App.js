@@ -52,6 +52,7 @@ export default function App() {
   const [totalRatings, setTotalRatings] = useState(0);
   const [userDetails, setUserDetails] = useState({});
   const [hMDetails, setHMDetails] = useState({});
+
   //==============================Loading===========================================
   const [loading, setLoading] = useState(false);
   //================================APIS=============================================
@@ -211,6 +212,13 @@ export default function App() {
               user_id={user_id}
               loading={loading}
               setLoading={setLoading}
+              setHmProfile={setHmProfile}
+              setCurrentPage={setCurrentPage}
+              setHmAverageRating={setHmAverageRating}
+              setIndividualHmStar={setIndividualHmStar}
+              setJobsCompleted={setJobsCompleted}
+              setTotalRatings={setTotalRatings}
+              setIndividualHmReviews={setIndividualHmReviews}
             />
           }
         />

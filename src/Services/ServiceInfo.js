@@ -6,6 +6,7 @@ import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
+import ConfirmBookingModal from "../Components/Modals/ConfirmBookingModal";
 
 const ServiceInfo = ({
   filteredServicesData,
@@ -21,6 +22,8 @@ const ServiceInfo = ({
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const navigate = useNavigate();
+  //============================modal states====================================
+  const [acceptedServicesModal, setAcceptedServicesModal] = useState(false);
 
   // ============== Filter Service category data by Service ID ==============
   const serviceInfo = filteredServicesData.filter(
@@ -131,7 +134,10 @@ const ServiceInfo = ({
         <img src={starColour(idx)} key={idx} className="review--stars" />
       ));
   });
-  //===================================================================
+  //========================== Handle Confirm Booking =============================
+  const handleBookButton = () => {
+    setAcceptedServicesModal(true);
+  };
 
   useEffect(() => {
     getHmRatings();
@@ -139,6 +145,12 @@ const ServiceInfo = ({
 
   return (
     <>
+      {acceptedServicesModal && (
+        <ConfirmBookingModal
+          setAcceptedServicesModal={setAcceptedServicesModal}
+          serviceInfo={serviceInfo}
+        />
+      )}
       <span className="fw700 fs32 mt24 mb24 white">Service Info</span>
       <div className="service--info--card">
         <div className="service--info--card--top">
@@ -204,7 +216,10 @@ const ServiceInfo = ({
           </div>
         </div>
       </div>
-      <button className="service--info--view--booknow--button br4 fw700 fs24 mt60">
+      <button
+        className="service--info--view--booknow--button br4 fw700 fs24 mt60"
+        onClick={() => handleBookButton()}
+      >
         Book now
       </button>
     </>

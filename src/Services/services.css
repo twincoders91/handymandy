@@ -193,6 +193,7 @@
   border: none;
   font-family: "Exo", sans-serif;
   color: var(--black);
+  cursor: pointer;
 }
 
 .service--info--view--profile--button {

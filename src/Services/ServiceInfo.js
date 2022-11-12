@@ -146,7 +146,10 @@ const ServiceInfo = ({
             alt="images"
           />
           <div className="hm3--info--description--mega--container">
-            <p className="service--info--title fs16 fw700 m0 white mb4 ml12 mt8">
+            <p
+              className="service--info--title fs16 fw700 m0 white mb4 ml12 mt8"
+              style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
+            >
               {serviceInfo[0].title}
             </p>
             <div className="service--info--description--container">

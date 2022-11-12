@@ -21,6 +21,7 @@
 
 .category--search--bar {
   margin: auto 20px;
+  height: 30px;
   width: 80%;
   border-radius: 4px;
   border: none;
@@ -31,9 +32,8 @@
 }
 
 .category--search--icon {
-  position: absolute;
-  top: 7px;
-  right: 15px;
+  transform: scale(0.6);
+  margin-right: 8px;
 }
 
 .category--header {
@@ -56,6 +56,7 @@
   border-radius: 6px;
   box-shadow: var(--shadowing);
   background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
 }
 .individual--category--card:hover {
   cursor: pointer;
@@ -64,12 +65,20 @@
   filter: sepia(22%);
 }
 
-.individual--category--image {
+.individual--category--image--box {
   width: 120px;
   height: 100%;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-right: 2px solid black;
+}
+.individual--category--image {
+  top: 0px;
+  left: 0px;
+  width: 120px;
+  height: 100%;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 .individual--category--description--container {
@@ -130,7 +139,9 @@
   border-bottom-left-radius: 6px;
   border-right: 2px solid black;
 }
-
+.service--info--title {
+  max-width: 200px;
+}
 .service--info--description--container {
   display: flex;
   align-items: center;

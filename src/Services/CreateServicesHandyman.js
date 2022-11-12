@@ -148,9 +148,10 @@ const CreateServicesHandyman = ({
               <div className="universal--input--forms--full">
                 <input
                   type="text"
-                  placeholder="e.g. Plumbing services"
+                  placeholder="e.g. Plumbing services (30 characters)"
                   className="create--account--input ml12"
                   onChange={(e) => setTitle(e.target.value)}
+                  maxLength={30}
                 />
               </div>
             </div>
@@ -162,6 +163,7 @@ const CreateServicesHandyman = ({
                   placeholder="Let others know more about your services (200 characters)"
                   className="create--account--input ml12 mt12"
                   onChange={(e) => setDescription(e.target.value)}
+                  maxLength={200}
                 />
               </div>
             </div>

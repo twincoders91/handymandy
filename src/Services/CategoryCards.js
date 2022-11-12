@@ -66,19 +66,24 @@ const CategoryCards = ({
 
   return (
     <div
-      className="individual--category--card mt24"
+      className="individual--category--card relative mt24"
       onClick={() => {
         handleCategoryCard(services_id);
       }}
     >
-      <img
-        src={recommended4usampleimage}
-        className="individual--category--image"
-        alt="images"
-      />
+      <div className="individual--category--image--box">
+        <img
+          src={recommended4usampleimage}
+          className="individual--category--image absolute"
+          alt="images"
+        />
+      </div>
       <div className="individual--category--description--container">
         <div className="hm3--info--description--mega--container">
-          <p className="individual--category--title fs16 fw700 m0 white mb4 ml12">
+          <p
+            className="individual--category--title fs16 fw700 m0 white mb4 ml12"
+            style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
+          >
             {title}
           </p>
           <div className="individual--category--description--section ml12">

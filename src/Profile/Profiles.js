@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import ProfileHandyman from "./ProfileHandyman";
+import ProfileUser from "./ProfileUser";
 import ViewProfileHandyman from "./ViewProfileHandyMan";
 
 const Profiles = ({
@@ -11,6 +12,7 @@ const Profiles = ({
   setBackButtonVisibility,
   backButtonVisibility,
   serviceInfo,
+  user_id,
   hm_id,
   hmProfile,
   individualHmStar,
@@ -21,6 +23,7 @@ const Profiles = ({
   jobsCompleted,
   totalRatings,
   setHMDetails,
+  setUserDetails,
 }) => {
   return (
     <div>
@@ -41,6 +44,16 @@ const Profiles = ({
         />
       )}
       {charSelect == "user" && (
+        <ProfileUser
+          averageRating={averageRating}
+          totalJobs={totalJobs}
+          totalReviews={totalReviews}
+          setBackButtonVisibility={setBackButtonVisibility}
+          user_id={user_id}
+          setUserDetails={setUserDetails}
+        />
+      )}
+      {/* {charSelect == "user" && (
         <ViewProfileHandyman
           averageRating={averageRating}
           totalJobs={totalJobs}
@@ -55,7 +68,7 @@ const Profiles = ({
           jobsCompleted={jobsCompleted}
           totalRatings={totalRatings}
         />
-      )}
+      )} */}
     </div>
   );
 };

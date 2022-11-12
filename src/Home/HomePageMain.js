@@ -12,6 +12,7 @@ const HomePageMain = ({
   setBackButtonVisibility,
   backButtonVisibility,
   setUpdateServiceDetails,
+  setUser_id,
   setHm_id,
   hm_id,
   individualHMServices,
@@ -47,30 +48,49 @@ const HomePageMain = ({
       console.error(e);
     }
   };
-  //===================================== Get User ID ========================================
 
-  //============================= Get Handyman Ratings ================================
+  //===================================== Get User ID ========================================
 
   const getUserID = async () => {
     if (!username || charSelect === "handyman") return;
     try {
-      const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`, {
+      const res = await fetch(`http://127.0.0.1:8001/user/${username}/id`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "GET",
       });
-      console.log(res);
       const data = await res.json();
-
-      setHm_id(data.id);
-      getHmRatings(data.id);
+      setUser_id(data.id);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
+
+  //============================= Get Handyman Ratings ================================
+
+  // const getUserID = async () => {
+  //   if (!username || charSelect === "handyman") return;
+  //   try {
+  //     const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`, {
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "GET",
+  //     });
+  //     console.log(res);
+  //     const data = await res.json();
+
+  //     setHm_id(data.id);
+  //     getHmRatings(data.id);
+  //     return data;
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
   //===================================== STAR RATINGS ========================================
   const getHmRatings = async (id) => {
     try {
@@ -114,6 +134,7 @@ const HomePageMain = ({
 
   useEffect(() => {
     getHandymanID();
+    getUserID();
   }, []);
 
   return (

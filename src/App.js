@@ -13,6 +13,7 @@ import UpdateServicesHandyman from "./Services/UpdateServicesHandyman";
 import Profiles from "./Profile/Profiles";
 import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
+import EditProfileUser from "./EditProfiles/EditProfileMain";
 
 export default function App() {
   //================================== Navbar States===========================================
@@ -47,6 +48,7 @@ export default function App() {
   const [hmAverageRating, setHmAverageRating] = useState(0);
   const [jobsCompleted, setJobsCompleted] = useState(0);
   const [totalRatings, setTotalRatings] = useState(0);
+  const [userDetails, setUserDetails] = useState({});
   const [hMDetails, setHMDetails] = useState({});
   //================total review_score and average review_score==================
 
@@ -97,6 +99,7 @@ export default function App() {
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
               setUpdateServiceDetails={setUpdateServiceDetails}
+              setUser_id={setUser_id}
               setHm_id={setHm_id}
               hm_id={hm_id}
               setIndividualHMServices={setIndividualHMServices}
@@ -165,6 +168,7 @@ export default function App() {
               charSelect={charSelect}
               setBackButtonVisibility={setBackButtonVisibility}
               backButtonVisibility={backButtonVisibility}
+              user_id={user_id}
               hm_id={hm_id}
               hmProfile={hmProfile}
               individualHmStar={individualHmStar}
@@ -175,12 +179,19 @@ export default function App() {
               jobsCompleted={jobsCompleted}
               totalRatings={totalRatings}
               setHMDetails={setHMDetails}
+              setUserDetails={setUserDetails}
             />
           }
         />
         <Route
           path="/editprofilehm"
           element={<EditProfileHandyMan hm_id={hm_id} hMDetails={hMDetails} />}
+        />
+        <Route
+          path="/editprofileuser"
+          element={
+            <EditProfileUser user_id={user_id} userDetails={userDetails} />
+          }
         />
       </Routes>
     </div>

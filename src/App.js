@@ -20,6 +20,7 @@ export default function App() {
   //================================== Navbar States===========================================
   const [backButtonVisibility, setBackButtonVisibility] = useState(true);
   const [viewHmProfile, setViewHmProfile] = useState(false);
+  const [currentPage, setCurrentPage] = useState("General User Page");
   //==================================Account States===========================================
   const [charSelect, setCharSelect] = useState("");
   const [usercredentialscreated, setUsercredentialscreated] = useState(false);
@@ -57,6 +58,7 @@ export default function App() {
 
   //======================= Back button settings ===========================
   console.log(charSelect);
+  console.log(currentPage);
 
   return (
     <div>
@@ -106,6 +108,7 @@ export default function App() {
               hm_id={hm_id}
               setIndividualHMServices={setIndividualHMServices}
               individualHMServices={individualHMServices}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -128,6 +131,7 @@ export default function App() {
               setHmAverageRating={setHmAverageRating}
               setJobsCompleted={setJobsCompleted}
               setTotalRatings={setTotalRatings}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -182,6 +186,8 @@ export default function App() {
               totalRatings={totalRatings}
               setHMDetails={setHMDetails}
               setUserDetails={setUserDetails}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
             />
           }
         />

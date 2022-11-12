@@ -17,6 +17,7 @@ const ServiceInfo = ({
   setHmAverageRating,
   setJobsCompleted,
   setTotalRatings,
+  setCurrentPage,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const ServiceInfo = ({
           method: "GET",
         }
       );
+      setCurrentPage("Service Info");
       const hmProfileData = await res.json();
       setHmProfile(hmProfileData);
       const hmStars = await res2.json();

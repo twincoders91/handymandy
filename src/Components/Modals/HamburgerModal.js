@@ -7,15 +7,15 @@ import facebookIcon from "../../Assets/universal/facebook.svg";
 import instagramIcon from "../../Assets/universal/instagram.svg";
 import twitterIcon from "../../Assets/universal/twitter.svg";
 
-const HamburgerModal = ({ setHamburgerModal, setIsActive, charSelect }) => {
+const HamburgerModal = ({
+  setHamburgerModal,
+  setIsActive,
+  charSelect,
+  setCurrentPage,
+}) => {
   const navigate = useNavigate();
 
   const handleHomeButtonClick = () => {
-    if (charSelect === "handyman") {
-      // setCurrentPage("HomePageHandyman");
-    } else if (charSelect === "user") {
-      // setCurrentPage("HomePageUser");
-    }
     setHamburgerModal((current) => !current);
     setIsActive((current) => !current);
   };
@@ -23,6 +23,8 @@ const HamburgerModal = ({ setHamburgerModal, setIsActive, charSelect }) => {
   const handleProfileButtonClick = () => {
     setHamburgerModal((current) => !current);
     setIsActive((current) => !current);
+    setCurrentPage("General User Page");
+    console.log("clicked");
   };
 
   const handleServicesClick = () => {

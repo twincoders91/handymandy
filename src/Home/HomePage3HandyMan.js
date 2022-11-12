@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
@@ -13,6 +13,7 @@ const HomePage3HandyMan = ({
   individualHMServices,
   setIndividualHMServices,
   hmRatings,
+  setBackButtonVisibility,
 }) => {
   //============================= BACKEND FETCHING ================================
   //============================= DELETE Service ================================
@@ -90,6 +91,10 @@ const HomePage3HandyMan = ({
       .map((idx) => (
         <img src={starColour(idx)} key={idx} className="review--stars" />
       ));
+  });
+
+  useEffect(() => {
+    setBackButtonVisibility(false);
   });
 
   return (

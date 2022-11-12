@@ -175,6 +175,7 @@ const UpdateServicesHandyman = ({
                   onChange={(e) => setTitleInput(e.target.value.toLowerCase())}
                   placeholder="e.g. Plumbing services"
                   className="create--account--input ml12"
+                  maxLength={30}
                 />
               </div>
             </div>
@@ -187,6 +188,7 @@ const UpdateServicesHandyman = ({
                   onChange={(e) => setDescriptionInput(e.target.value)}
                   placeholder="Let others know more about your services (200 characters)"
                   className="create--account--input ml12 mt12"
+                  maxLength={200}
                 />
               </div>
             </div>

@@ -153,10 +153,10 @@
 .reviews--description--cards {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 .reviews--message {
   word-wrap: break-word;
-  width: 75%;
 }
 .reviews--score--box {
   right: 32px;

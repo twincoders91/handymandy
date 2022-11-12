@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
 import HamburgerModal from "./Modals/HamburgerModal";
 import "./navbar.css";
@@ -12,7 +13,9 @@ const Navbar = ({
   hmProfile,
   setViewHmProfile,
   viewHmProfile,
+  setCurrentPage,
 }) => {
+  const navigate = useNavigate();
   //===============================STATES=======================================
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
@@ -22,6 +25,16 @@ const Navbar = ({
   };
   const handleBackButtonClick2 = () => {
     setViewHmProfile(false);
+    setCurrentPage("General User Page");
+  };
+  const handleCurrentPage = async () => {
+    console.log("clicked");
+    try {
+      await setCurrentPage("General User Page");
+      navigate("/profile");
+    } catch (e) {
+      console.log("easter egg!");
+    }
   };
 
   return (
@@ -31,6 +44,7 @@ const Navbar = ({
           setHamburgerModal={setHamburgerModal}
           setIsActive={setIsActive}
           charSelect={charSelect}
+          setCurrentPage={setCurrentPage}
         />
       )}
       <div className="navbar--wrapper">
@@ -64,9 +78,10 @@ const Navbar = ({
             <button>Jobs</button>
             <button>Services</button>
             <button>Home</button>
-            <NavLink className="navlinks" to="/profile">
-              <button>Profile</button>
-            </NavLink>
+
+            <button className="navlinks" onClick={handleCurrentPage}>
+              Profilew
+            </button>
           </div>
 
           <button

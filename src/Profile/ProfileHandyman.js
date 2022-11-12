@@ -236,7 +236,7 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
                 >
                   <div className="category--profile--cards--image--box">
                     <img
-                      src={require(`../Assets/profile/${item}.svg`)}
+                      src={require(`../Assets/profile/new/${item}.svg`)}
                       className="category--cards--icon"
                       alt="images"
                     ></img>

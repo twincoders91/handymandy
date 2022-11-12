@@ -24,6 +24,8 @@ const Profiles = ({
   totalRatings,
   setHMDetails,
   setUserDetails,
+  setCurrentPage,
+  currentPage,
 }) => {
   return (
     <div>
@@ -32,6 +34,7 @@ const Profiles = ({
         charSelect={charSelect}
         viewHmProfile={viewHmProfile}
         setViewHmProfile={setViewHmProfile}
+        setCurrentPage={setCurrentPage}
       />
       {charSelect == "handyman" && (
         <ProfileHandyman
@@ -43,7 +46,7 @@ const Profiles = ({
           setHMDetails={setHMDetails}
         />
       )}
-      {charSelect == "user" && (
+      {charSelect == "user" && currentPage === "General User Page" && (
         <ProfileUser
           averageRating={averageRating}
           totalJobs={totalJobs}
@@ -53,7 +56,7 @@ const Profiles = ({
           setUserDetails={setUserDetails}
         />
       )}
-      {/* {charSelect == "user" && (
+      {charSelect == "user" && currentPage === "Service Info" && (
         <ViewProfileHandyman
           averageRating={averageRating}
           totalJobs={totalJobs}
@@ -67,8 +70,9 @@ const Profiles = ({
           hmAverageRating={hmAverageRating}
           jobsCompleted={jobsCompleted}
           totalRatings={totalRatings}
+          setCurrentPage={setCurrentPage}
         />
-      )} */}
+      )}
     </div>
   );
 };

@@ -18,6 +18,7 @@ const HomePageMain = ({
   individualHMServices,
   setIndividualHMServices,
   setFilteredServicesData,
+  setCurrentPage,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
@@ -142,6 +143,7 @@ const HomePageMain = ({
       <Navbar
         backButtonVisibility={backButtonVisibility}
         charSelect={charSelect}
+        setCurrentPage={setCurrentPage}
       />
       {charSelect == "user" && (
         <HomePage

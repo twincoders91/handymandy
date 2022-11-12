@@ -37,6 +37,7 @@ const HomePageHandyman = ({
           setUpdateServiceDetails={setUpdateServiceDetails}
           setHmRatings={setHmRatings}
           hmRatings={hmRatings}
+          setBackButtonVisibility={setBackButtonVisibility}
         />
       )}
     </>

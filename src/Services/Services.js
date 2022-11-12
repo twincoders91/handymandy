@@ -36,8 +36,6 @@ const Services = ({
 
   //=================================================================================================================
 
-  console.log(servicesCategorySelection);
-
   return (
     <>
       <Navbar
@@ -45,6 +43,7 @@ const Services = ({
         currentPage={currentPage}
         chooseCategory={chooseCategory}
         setChooseCategory={setChooseCategory}
+        setCurrentPage={setCurrentPage}
       />
       <div className="category--page--container">
         {!chooseCategory && (
@@ -68,6 +67,7 @@ const Services = ({
             setHmAverageRating={setHmAverageRating}
             setJobsCompleted={setJobsCompleted}
             setTotalRatings={setTotalRatings}
+            setCurrentPage={setCurrentPage}
           />
         )}
         {/* <AcceptedServices /> */}

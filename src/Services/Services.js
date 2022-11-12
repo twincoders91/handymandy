@@ -26,6 +26,7 @@ const Services = ({
   setHmAverageRating,
   setJobsCompleted,
   setTotalRatings,
+  user_id,
 }) => {
   //====================== States for Services ======================
   const [chooseCategory, setChooseCategory] = useState(false);
@@ -65,6 +66,7 @@ const Services = ({
             setJobsCompleted={setJobsCompleted}
             setTotalRatings={setTotalRatings}
             setCurrentPage={setCurrentPage}
+            user_id={user_id}
           />
         )}
       </div>

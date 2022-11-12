@@ -161,3 +161,7 @@
 .reviews--score--box {
   right: 32px;
 }
+.no--reviews--score--box {
+  top: 0px;
+  right: 32px;
+}

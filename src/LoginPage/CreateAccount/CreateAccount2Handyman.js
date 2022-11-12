@@ -83,12 +83,12 @@ const CreateAccount2Handyman = ({ setCharSelect, username }) => {
 
   const handleAddSpecialities = (details) => {
     if (specialitiesArray.length === 0) {
-      addIntoArray(details);
+      addIntoArray(details.toLowerCase());
     } else if (specialitiesArray.length > 0) {
-      if (specialitiesArray.includes(details)) {
+      if (specialitiesArray.includes(details.toLowerCase())) {
         return null;
       } else {
-        addIntoArray(details);
+        addIntoArray(details.toLowerCase());
       }
     }
   };
@@ -215,8 +215,10 @@ const CreateAccount2Handyman = ({ setCharSelect, username }) => {
                 onChange={(e) => setBusinessName(e.target.value)}
               />
             </div>
-            <span className="fs16 fw700 white">
-              What are your specialities?{" "}
+            <p className="fs16 fw700 mb8 white">What are your specialities? </p>
+            <span className="fs12 fw400 white">
+              Specialities will be displayed on your profile. You can select
+              more than one speciality, time to show off your skills!
             </span>
             <div className="mb8">
               {specialitiesArray.length !== 0 &&

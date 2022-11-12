@@ -30,14 +30,23 @@ const CreateServicesHandyman = ({
   const handleAddTOW = (details) => {
     const array = [...tOWArray, details];
     setTOWArray(array);
+    clearInput();
   };
 
   const handleTOWDelete = (item) => {
     console.log(item);
     const remainingArray = tOWArray.filter((d, i) => d !== item);
     setTOWArray(remainingArray);
+    setPlaceholder("Add another?");
     console.log("clicked");
   };
+  //--------------------clear input field---------------------
+  function clearInput() {
+    var getValue = document.getElementById("TOWinput");
+    if (getValue.value != "") {
+      getValue.value = "";
+    }
+  }
 
   //============================= BACKEND FETCHING ================================
   //============================= Create Services ================================
@@ -156,7 +165,7 @@ const CreateServicesHandyman = ({
                 />
               </div>
             </div>
-            <p className="fs16 fw700 white m0 mb16">Type of work</p>
+            <p className="fs16 fw700 white m0">Type of work</p>
             <div className="services--type--of--work--added--container mt0">
               {tOWArray.map((items) => {
                 return (
@@ -185,13 +194,14 @@ const CreateServicesHandyman = ({
                   onChange={(e) => {
                     setTOWInput(e.target.value);
                   }}
+                  id="TOWinput"
                 />
               </div>
               <button
                 className="services--type--of--work--button mt8 fs24 fw300"
+                value="clear"
                 onClick={() => {
                   handleAddTOW(tOWInput);
-                  setPlaceholder("Add another?");
                   setTOWInput(null);
                 }}
               >

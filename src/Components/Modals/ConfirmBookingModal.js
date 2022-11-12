@@ -15,10 +15,7 @@ const ConfirmBookingModal = ({ setAcceptedServicesModal, serviceInfo }) => {
                 Almost there!
               </p>
               <p className="m0 white fw700 fs16 mb8 modal--text--confirmbooking">
-                Let {serviceInfo[0].first_name} know you are interested.
-              </p>
-              <p className="m0 white fw400 fs12 mb24 modal--text--confirmbooking">
-                Send a job request to {serviceInfo[0].first_name}
+                Let {serviceInfo[0].first_name} know you are interested
               </p>
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
@@ -27,26 +24,28 @@ const ConfirmBookingModal = ({ setAcceptedServicesModal, serviceInfo }) => {
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>
-                <div className="confirm--booking--description--box ml12">
-                  <p className="m0 fw700 fs14 mt8 modal--text--confirmbooking--items">
+                <div className="confirm--booking--description--box mt8">
+                  <span className="m0 fw700 fs14 mt8 modal--text--confirmbooking--items">
                     Title
-                  </p>
-                  <p className="m0 white fw400 fs12 mt8 ml16 modal--text--confirmbooking--description">
+                  </span>
+                  <p className="m0 white fw400 fs12 mt8 modal--text--confirmbooking--description">
                     {serviceInfo[0].title}
                   </p>
                 </div>
-                <div className="confirm--booking--description--box ml12">
+                <div className="confirm--booking--description--box">
                   <p className="m0 fw700 fs14 mt8 modal--text--confirmbooking--items">
                     Description
                   </p>
-                  <p className="m0 white fw400 fs12 mt8 ml16 modal--text--confirmbooking--description">
+                  <p className="m0 white fw400 fs12 mt8  modal--text--confirmbooking--description">
                     {serviceInfo[0].description}
                   </p>
                 </div>
               </div>
-              <button className="review--submit--button--confirmbooking mt24 fs16 fw700">
-                Confirm booking request?
-              </button>
+              <div className="confirmbooking--request--box relative">
+                <button className="review--submit--button--confirmbooking mt24 fs16 fw700">
+                  Confirm booking request?
+                </button>
+              </div>
               <p className="m0 white fw400 fs8 mb24 modal--text--confirmbooking--terms mt24">
                 By clicking on "Confirm booking request?", you confirm that you
                 have read and agreed to HandyMandy's terms and conditions.

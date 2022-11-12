@@ -45,47 +45,6 @@ const ViewProfileHandyman = ({
       ));
   });
 
-  // if (individualHmStar.length > 0) {
-  //   setAverageRating(individualHmStar[0].average_rating);
-  // } else {
-  //   setAverageRating(0);
-  // }
-  // if (hmProfile[0].about) {
-  //   setAboutHM(hmProfile[0].about);
-  // } else {
-  //   setAboutHM("No Description");
-  // }
-  // if (hmProfile[0].business_name) {
-  //   setCompanyHM(hmProfile[0].business_name);
-  // } else {
-  //   setCompanyHM("No Company");
-  // }
-  // if (hmProfile[0].number_of_years) {
-  //   setNumberOfYears(hmProfile[0].number_of_years);
-  // } else {
-  //   setNumberOfYears(0);
-  // }
-  // if (individualHmStar.length > 0) {
-  //   setJobsCompleted(individualHmStar[0].total_jobs);
-  // } else {
-  //   setJobsCompleted(0);
-  // }
-  // if (individualHmStar.length > 0) {
-  //   setTotalRatingPoints(individualHmStar[0].total_ratings);
-  // } else {
-  //   setTotalRatingPoints(0);
-  // }
-  // if (hmProfile[0].specialities) {
-  //   setSpecialitiesHM(hmProfile[0].specialities);
-  // } else {
-  //   setSpecialitiesHM([]);
-  // }
-  // if (individualHmReviews.length > 0) {
-  //   setIndividualHMReviews(individualHmReviews);
-  // } else {
-  //   setIndividualHMReviews([]);
-  // }
-
   useEffect(() => {
     setBackButtonVisibility(true);
   });

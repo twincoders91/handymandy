@@ -72,15 +72,14 @@ const ServiceInfo = ({
       } else {
         setHmAverageRating(0);
       }
-
       const hmReviews = await res3.json();
-      if (hmReviews.length > 0) {
-        setJobsCompleted(hmReviews[0].total_jobs);
+      if (hmStars.length > 0) {
+        setJobsCompleted(hmStars[0].total_jobs);
       } else {
         setJobsCompleted(0);
       }
-      if (hmReviews > 0) {
-        setTotalRatings(hmReviews[0].total_ratings);
+      if (hmStars.length > 0) {
+        setTotalRatings(hmStars[0].total_ratings);
         setIndividualHmReviews(hmReviews);
       } else {
         setTotalRatings(0);
@@ -105,6 +104,7 @@ const ServiceInfo = ({
       }
     );
     const ratingData = await res.json();
+    console.log(ratingData);
     setHmRatings(ratingData);
   };
 
@@ -157,9 +157,13 @@ const ServiceInfo = ({
                   <img src={recommendedprofile} alt="images"></img>
                   <div className="service--info--stars">{starRating}</div>
                 </div>
-                <p className="m0 fw700 fs8 white">
-                  {serviceInfo[0].total_jobs} job(s) completed
-                </p>
+                {hmRatings.length > 0 ? (
+                  <p className="m0 fw700 fs8 white">
+                    {hmRatings[0].total_jobs} job(s) completed
+                  </p>
+                ) : (
+                  <p className="m0 fw700 fs8 white">0 job completed</p>
+                )}
               </div>
               <div className="service--info--price ml12">
                 <p className="starting--from m0 white fw700">starting from</p>

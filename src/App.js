@@ -43,6 +43,8 @@ export default function App() {
   const [servicePriceFrom, setServicePriceFrom] = useState("");
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
 
+  //============================Jobs States=====================================
+
   //=============================Profile States=====================================
   const [hmProfile, setHmProfile] = useState([]);
   const [individualHmStar, setIndividualHmStar] = useState([]);
@@ -133,6 +135,7 @@ export default function App() {
               setJobsCompleted={setJobsCompleted}
               setTotalRatings={setTotalRatings}
               setCurrentPage={setCurrentPage}
+              user_id={user_id}
             />
           }
         />

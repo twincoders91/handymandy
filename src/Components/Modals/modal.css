@@ -89,7 +89,7 @@
 .confirm--booking--description--box {
   display: flex;
   flex-direction: column;
-  /* width: 90%; */
+  width: 90%;
 }
 .review--submit--button--confirmbooking {
   background-color: transparent;

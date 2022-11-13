@@ -80,28 +80,52 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
   // };
 
   const updateProfileImage = async (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
-    // console.log(file);
-    // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
-    const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
-      res.json()
-    );
-    console.log(url);
+    try {
+      // event.preventDefault();
+      const file = event.target.files[0];
+      // console.log(file);
+      // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
+      const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
+        res.json()
+      );
+      console.log(url);
 
-    // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
-    await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      body: file,
-    });
+      // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      });
 
-    const imageUrl = url.split("?")[0];
-    console.log(imageUrl);
-    setProfile_image(imageUrl);
-    // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
+      const imageUrl = url.split("?")[0];
+      setProfile_image(imageUrl);
+      // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
+
+      try {
+        const res = await fetch("http://127.0.0.1:8001/profileimage/", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            image_url: imageUrl,
+            user_id: user_id,
+          }),
+        });
+        console.log(res);
+      } catch (e) {
+        console.error(e);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+
+    console.log(profile_image);
+
+    console.log(user_id);
   };
 
   //=========================================================

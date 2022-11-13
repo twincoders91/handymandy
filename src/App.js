@@ -165,10 +165,10 @@ export default function App() {
             />
           }
         />
-        <Route
+        {/* <Route
           path="/acceptedservice"
           element={<AcceptedServices username={username} user_id={user_id} />}
-        />
+        /> */}
         <Route
           path="/profile"
           element={
@@ -213,6 +213,7 @@ export default function App() {
               loading={loading}
               setLoading={setLoading}
               setHmProfile={setHmProfile}
+              userDetails={userDetails}
               setCurrentPage={setCurrentPage}
               setHmAverageRating={setHmAverageRating}
               setIndividualHmStar={setIndividualHmStar}

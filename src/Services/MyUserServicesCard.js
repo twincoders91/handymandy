@@ -187,10 +187,15 @@ const MyUserServicesCard = ({
           </div>
         </div>
         <div className="myuserservice--card--bottom">
-          <p className="m0 fs14 fw700 mb8">{item.category}</p>
+          <p className="m0 fs14 fw700 mb8 mt8">Job Requirement</p>
+          <span className="myuserservice--desc fs12 fw400 white">
+            {item.job_requirement}
+          </span>
+          <p className="m0 fs14 fw700 mb8 mt12">{item.category}</p>
           <span className="myuserservice--desc fs12 fw400 white">
             {item.description}
           </span>
+
           <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
           <div className="type--of--work--servicescard">
             {item.types_of_work.map((works) => {

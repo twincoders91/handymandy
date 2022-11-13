@@ -6,10 +6,12 @@ import MyUserServices from "./MyUserServices";
 
 const MyServices = ({
   charSelect,
+  hm_id,
   user_id,
   setLoading,
   loading,
   setHmProfile,
+  userDetails,
   setCurrentPage,
   setHmAverageRating,
   setIndividualHmStar,
@@ -20,7 +22,15 @@ const MyServices = ({
   return (
     <div>
       <Navbar />
-      {charSelect == "handyman" && <MyHandymanServices />}
+      {charSelect == "handyman" && (
+        <MyHandymanServices
+          hm_id={hm_id}
+          setLoading={setLoading}
+          loading={loading}
+          userDetails={userDetails}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
       {charSelect == "user" && (
         <MyUserServices
           user_id={user_id}

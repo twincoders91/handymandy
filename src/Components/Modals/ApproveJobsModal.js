@@ -1,11 +1,20 @@
-import React from "react";
+import { React, useMemo, useState } from "react";
 import ReactDom from "react-dom";
 import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
+import starUnfilled from "../../Assets/services/starunfilled.svg";
+import starFilled from "../../Assets/services/starfilled.svg";
 
 const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
-  const deleteService = async () => {
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [reviews, setReviews] = useState("");
+
+  //=============================BACKEND API===================================
+  //====================Change status to delete===================================
+  console.log(reviews);
+  const approveService = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8001/jobs/", {
         headers: {
@@ -19,28 +28,83 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
         }),
       });
 
+      try {
+        const res2 = await fetch("http://127.0.0.1:8001/user/ratings", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            jobs_id: cardClicked.jobs_id,
+            ratings: rating,
+            reviews: reviews,
+          }),
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
       setApproveJobsModalValue(false);
     } catch (e) {
       console.error(e);
     }
   };
 
+  let count = 5;
+
+  //=============================Creating Star Ratings=============================
+
+  const starColour = (index) => {
+    if (hoverRating >= index) {
+      return starFilled;
+    } else if (!hoverRating && rating >= index) {
+      return starFilled;
+    }
+    return starUnfilled;
+  };
+
+  const starRating = useMemo(
+    () => {
+      return Array(count)
+        .fill(0)
+        .map((_, i) => i + 1)
+        .map((idx) => (
+          <img
+            src={starColour(idx)}
+            key={idx}
+            onClick={() => {
+              setRating(idx);
+            }}
+            onMouseEnter={() => setHoverRating(idx)}
+            onMouseLeave={() => setHoverRating(0)}
+            className="review--stars"
+          />
+        ));
+    },
+    [rating],
+    [hoverRating]
+  );
+
+  console.log(hoverRating);
+  console.log(rating);
+
   return (
     <div>
       <>
         {ReactDom.createPortal(
           <div className="modal--overlay">
-            <div className="modal--container--confirmbooking relative">
-              <p className="fw700 fs28 white modal--header--confirmbooking m0 mt24 mb24">
+            <div className="modal--container--approvebooking relative">
+              <p className="fw700 fs28 white modal--header--approvebooking m0 mt24 mb24">
                 Approval
               </p>
-              <p className="m0 white fw700 fs16 mb8 modal--text--confirmbooking">
+              <p className="m0 white fw700 fs16 mb8 modal--text--approvebooking">
                 You are about to complete a service by {cardClicked.first_name}!
               </p>
-              <p className="m0 white fw400 fs12 mb24 modal--text--confirmbooking">
+              {/* <p className="m0 white fw400 fs12 mb24 modal--text--confirmbooking">
                 {cardClicked.first_name} will be notified! Thank you for
                 trusting in our handyman!
-              </p>
+              </p> */}
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
@@ -65,9 +129,23 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
                   </p>
                 </div>
               </div>
+              <p className="fw700 fs16 white m0 modal--approval--text">
+                Leave a Review
+              </p>
+              <div className="about--review--forms--full mt8">
+                <textarea
+                  type="text"
+                  placeholder="Let others know how your experience went (200 characters)"
+                  className="review--input"
+                  maxlength="200"
+                  onChange={(e) => setReviews(e.target.value)}
+                />
+              </div>
+              <div className="review--star--box mt8">{starRating}</div>
               <button
                 className="review--submit--button--confirmbooking mt24 fs16 fw700"
-                onClick={deleteService}
+                onClick={approveService}
+                disabled={rating == 0}
               >
                 Confirm completion?
               </button>

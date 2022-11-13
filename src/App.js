@@ -60,10 +60,7 @@ export default function App() {
   //================================APIS=============================================
 
   //======================= Back button settings ===========================
-  console.log(charSelect);
-  console.log(currentPage);
 
-  console.log(user_id);
   return (
     <div>
       <Routes>

@@ -343,11 +343,23 @@
 
 /* ===============================My Services============================= */
 
+.my--services--loading--container {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: +99;
+}
+
 .my--services--main--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .userservices--card--job--status--box {

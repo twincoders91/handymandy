@@ -67,12 +67,16 @@ const MyUserServices = ({
       )}
       <div className="my--services--main--container">
         <span className="fw700 fs32 mt24 mb24 white">My Services</span>
+
         {loading ? (
-          <ClipLoader size={100} color={"#ffffff"} loading={loading} />
+          <div className="my--services--loading--container">
+            <ClipLoader size={50} color={"#FFBA0A"} loading={loading} />
+          </div>
         ) : allJobs.length > 0 ? (
           allJobs.map((item) => {
             return (
               <MyUserServicesCard
+                key={item.jobs_id}
                 loading={loading}
                 setLoading={setLoading}
                 item={item}

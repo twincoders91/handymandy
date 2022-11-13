@@ -139,7 +139,6 @@ const MyUserServicesCard = ({
 
   useEffect(() => {
     getHmRatings();
-    getHmProfile();
   }, []);
 
   return (
@@ -196,7 +195,10 @@ const MyUserServicesCard = ({
           <div className="type--of--work--servicescard">
             {item.types_of_work.map((works) => {
               return (
-                <div className="m0 fs12 fw700 type--of--work--content">
+                <div
+                  className="m0 fs12 fw700 type--of--work--content"
+                  key={Math.random() * 1000}
+                >
                   <img src={tick} />
                   <p className="m0 fs12 fw400 white ml8">{works}</p>
                 </div>

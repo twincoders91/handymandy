@@ -27,6 +27,7 @@ const ViewProfileHandyman = ({
   console.log(totalRatings);
 
   //======================Creating Star Ratings=======================
+  console.log(individualHmStar);
   let count = 5;
   const starColour = (index) => {
     if (individualHmStar.length > 0) {

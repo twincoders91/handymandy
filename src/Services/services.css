@@ -47,6 +47,11 @@
 .category--header span {
   color: var(--orange);
 }
+.sorting--buttons--box {
+  width: 370px;
+  display: flex;
+  justify-content: right;
+}
 
 .individual--category--card {
   display: flex;

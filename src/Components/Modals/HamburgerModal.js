@@ -23,7 +23,9 @@ const HamburgerModal = ({
   const handleProfileButtonClick = () => {
     setHamburgerModal((current) => !current);
     setIsActive((current) => !current);
-    setCurrentPage("General User Page");
+    if (charSelect === "user") {
+      setCurrentPage("General User Page");
+    }
     console.log("clicked");
   };
 

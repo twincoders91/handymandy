@@ -4,6 +4,7 @@ import ClipLoader from "react-spinners/RiseLoader";
 import ApproveJobsModal from "../Components/Modals/ApproveJobsModal";
 import ApproveJobsModalHm from "../Components/Modals/ApproveJobsModalHm";
 import DeclineJobsModalHm from "../Components/Modals/DeclineJobsModalHm";
+import CharacterSelect from "../LoginPage/CharacterSelect";
 
 const MyHandymanServices = ({
   hm_id,
@@ -11,11 +12,14 @@ const MyHandymanServices = ({
   loading,
   userDetails,
   setCurrentPage,
+  charSelect,
 }) => {
   const [allJobs, setAllJobs] = useState("");
   const [approveJobsModalValue, setApproveJobsModalValue] = useState(false);
   const [declineJobsModalValue, setDeclineJobsModalValue] = useState(false);
   const [cardClicked, setCardClicked] = useState("");
+
+  console.log(charSelect);
 
   const fetchJobsByHm = async () => {
     setLoading(true);
@@ -60,7 +64,7 @@ const MyHandymanServices = ({
         />
       )}
       <div className="my--services--main--container">
-        <span className="fw700 fs32 mt24 mb24 white">My Services</span>
+        <span className="fw700 fs32 mt24 mb24 white">Your Jobs</span>
 
         {loading ? (
           <div className="my--services--loading--container">
@@ -77,9 +81,6 @@ const MyHandymanServices = ({
                 setDeclineJobsModalValue={setDeclineJobsModalValue}
                 setApproveJobsModalValue={setApproveJobsModalValue}
                 setCardClicked={setCardClicked}
-                // setJobsCompleted={setJobsCompleted}
-                // setTotalRatings={setTotalRatings}
-                // setIndividualHmReviews={setIndividualHmReviews}
               />
             );
           })

@@ -186,17 +186,20 @@
   border-right: 2px solid black;
 }
 
-.hm3--info--title {
-}
 .hm3--info--description--mega--container {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+.hm3--info--description--easter--container {
+  width: 240px;
+  overflow: hidden;
+}
 .hm3--info--description--container {
   display: flex;
   align-items: center;
   width: 250px;
+  justify-content: space-between;
 }
 .hm3--info--description--section {
   display: flex;
@@ -218,7 +221,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 5px;
+  margin-right: 12px;
 }
 
 .hm3--info--card--bottom {

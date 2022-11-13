@@ -76,7 +76,7 @@ const CategoryCards = ({
           alt="images"
         />
       </div>
-      <div className="individual--category--description--container">
+      <div className="individual--category--description--container--findservices">
         <div className="hm3--info--description--mega--container">
           <p
             className="individual--category--title fs16 fw700 m0 white mb4 ml12"

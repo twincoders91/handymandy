@@ -100,7 +100,7 @@ const HomePage3HandyMan = ({
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>
       {individualHMServices.map((services) => {
         return (
-          <div className="hm3--page--container mt24">
+          <div className="hm3--page--container mt24" key={Math.random() * 1000}>
             <div className="hm3--info--card">
               <div className="hm3--info--card--top">
                 <img
@@ -109,9 +109,11 @@ const HomePage3HandyMan = ({
                   alt="images"
                 />
                 <div className="hm3--info--description--mega--container">
-                  <p className="hm3--info--title fs16 fw700 m0 ml12 mt8 white mb4">
-                    {services.title}
-                  </p>
+                  <div className="hm3--info--description--easter--container">
+                    <p className="hm3--info--title fs16 fw700 m0 ml12 mt8 white mb4">
+                      {services.title}
+                    </p>
+                  </div>
                   <div className="hm3--info--description--container">
                     <div className="hm3--info--description--section ml12">
                       <p className="hm3--info--name fs12 fw400 m0 white mb4">
@@ -131,7 +133,7 @@ const HomePage3HandyMan = ({
                         )}
                       </div>
                     </div>
-                    <div className="hm3--info--price ml12">
+                    <div className="hm3--info--price">
                       <p className="starting--from m0 white fw700">
                         starting from
                       </p>
@@ -151,7 +153,10 @@ const HomePage3HandyMan = ({
                   <div className="type--of--work">
                     {services.types_of_work.map((types) => {
                       return (
-                        <div className="m0 fs12 fw700 type--of--work--content">
+                        <div
+                          className="m0 fs12 fw700 type--of--work--content"
+                          key={Math.random() * 1000}
+                        >
                           <img src={tick} />
                           <p className="m0 fs12 fw400 white ml8">{types}</p>
                         </div>

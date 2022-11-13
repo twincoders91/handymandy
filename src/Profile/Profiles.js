@@ -35,6 +35,7 @@ const Profiles = ({
         viewHmProfile={viewHmProfile}
         setViewHmProfile={setViewHmProfile}
         setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
       />
       {charSelect == "handyman" && (
         <ProfileHandyman
@@ -44,6 +45,7 @@ const Profiles = ({
           setBackButtonVisibility={setBackButtonVisibility}
           hm_id={hm_id}
           setHMDetails={setHMDetails}
+          currentPage={currentPage}
         />
       )}
       {charSelect == "user" && currentPage === "General User Page" && (

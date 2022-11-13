@@ -162,7 +162,12 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
       </div>
       <div className="profile--info--card relative">
         <div className="profile--name--box mt60 fs16 fw700 white">
-          <span>{`${first_name_hm} ${" "} ${last_name_hm} `}</span>
+          <span>
+            {" "}
+            {first_name_hm.charAt(0).toUpperCase() +
+              first_name_hm.slice(1)}{" "}
+            {last_name_hm.charAt(0).toUpperCase() + last_name_hm.slice(1)}
+          </span>
         </div>
         <div className="reviews--box ">
           <div className="reviews--stars--box fw700 fs16">{averageRating}</div>

@@ -14,8 +14,11 @@ const MyHandymanServicesCard = ({
   setCardClicked,
 }) => {
   const [userRatings, setUserRatings] = useState([]);
-  console.log(eachJobData);
 
+  //=================== Truncate String =======================
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
   //====================== RATINGS FETCHING =======================
   const getUserRatings = async () => {
     // if (eachJobData.length <= 0) return;
@@ -63,12 +66,17 @@ const MyHandymanServicesCard = ({
           />
           <div className="hm3--info--description--mega--container">
             <p className="myhmservice--title fs16 fw700 m0 white mb4 ml12 mt8">
-              {eachJobData.title}
+              {truncate(
+                eachJobData.title.charAt(0).toUpperCase() +
+                  eachJobData.title.slice(1),
+                25
+              )}
             </p>
             <div className="myuserservice--description--container">
               <div className="myuserservice--description--section ml12">
                 <p className="myuserservice--name fs12 fw400 m0 white mb4">
-                  {eachJobData.user_first_name}
+                  {eachJobData.user_first_name.charAt(0).toUpperCase() +
+                    eachJobData.user_first_name.slice(1)}
                 </p>
                 <div className="myuserservice--profile--stars mb4">
                   <img src={recommendedprofile} alt="images"></img>

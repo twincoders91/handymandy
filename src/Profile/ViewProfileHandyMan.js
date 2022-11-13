@@ -62,9 +62,12 @@ const ViewProfileHandyman = ({
       </div>
       <div className="profile--info--card relative">
         <div className="profile--name--box mt60 fs16 fw700 white">
-          <span>{`${hmProfile[0].first_name} ${" "} ${
-            hmProfile[0].last_name
-          } `}</span>
+          <span>
+            {hmProfile[0].first_name.charAt(0).toUpperCase() +
+              hmProfile[0].first_name.slice(1)}{" "}
+            {hmProfile[0].last_name.charAt(0).toUpperCase() +
+              hmProfile[0].last_name.slice(1)}
+          </span>
         </div>
         <div className="reviews--box ">
           <div className="reviews--stars--box fw700 fs16">
@@ -75,11 +78,17 @@ const ViewProfileHandyman = ({
 
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt8">About</div>
-          <span className="fw400 fs12 mt12">{hmProfile[0].about}</span>
+          <span className="fw400 fs12 mt12">
+            {hmProfile[0].about.charAt(0).toUpperCase() +
+              hmProfile[0].about.slice(1)}
+          </span>
         </div>
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt16">Company</div>
-          <span className="fw400 fs12 mt12">{hmProfile[0].business_name}</span>
+          <span className="fw400 fs12 mt12">
+            {hmProfile[0].business_name.charAt(0).toUpperCase() +
+              hmProfile[0].business_name.slice(1)}
+          </span>
         </div>
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
@@ -150,7 +159,7 @@ const ViewProfileHandyman = ({
                   </div>
                   <div className="profile--description--cards">
                     <div className="category--cards--text fw700 fs14">
-                      {item}
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
                     </div>
                   </div>
                 </div>
@@ -174,7 +183,10 @@ const ViewProfileHandyman = ({
                     alt="images"
                   ></img>
                   <div className="reviews--description--cards ml16 mt16 mb16">
-                    <div className=" fw700 fs12  mb4">{items.first_name}</div>
+                    <div className=" fw700 fs12  mb4">
+                      {items.first_name.charAt(0).toUpperCase() +
+                        items.first_name.slice(1)}
+                    </div>
                     <div className="reviews--message fw400 fs12 white">
                       {items.reviews}
                     </div>

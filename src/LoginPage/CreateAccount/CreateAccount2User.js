@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./createaccount.css";
 import backButton from "../../Assets/universal/backbutton.svg";
 import CreateAccountEmailErrorModal from "../../Components/Modals/CreateAccountEmailErrorModal";
 
-const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
+const CreateAccount2User = ({
+  username,
+  setCharSelect,
+  setAccountCreated,
+  setUser_id,
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [error, setError] = useState(null);
@@ -14,6 +20,7 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
   const [blockNumber, setBlockNumber] = useState("");
   const [postCode, setPostCode] = useState("");
   const [errorEmailModal, setErrorEmailModal] = useState(false);
+  const navigate = useNavigate();
 
   //================= Valid Email Check ===================
   function isValidEmail(email) {
@@ -53,32 +60,50 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
   const handleBackButtonClick = () => {
     setCharSelect("step1");
   };
-  //================= Confirm account created ===================
-  const handleSubmitButtonClick = () => {
-    setAccountCreated(true);
-    createUserProfile();
-  };
 
   //==================== BACKEND FETCHING ======================
+  //================= Confirm account created ===================
   const createUserProfile = async () => {
-    const res = await fetch("http://127.0.0.1:8001/user/", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        username: username.toLowerCase(),
-        first_name: firstName.toLowerCase(),
-        last_name: lastName.toLowerCase(),
-        email: email.toLowerCase(),
-        street_address: streetAddress.toLowerCase(),
-        block_number: blockNumber,
-        postal_code: postCode,
-        profile_image: null,
-      }),
-    });
-    console.log(res);
+    try {
+      const res = await fetch("http://127.0.0.1:8001/user/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          username: username.toLowerCase(),
+          first_name: firstName.toLowerCase(),
+          last_name: lastName.toLowerCase(),
+          email: email.toLowerCase(),
+          street_address: streetAddress.toLowerCase(),
+          block_number: blockNumber,
+          postal_code: postCode,
+          profile_image: null,
+        }),
+      });
+      setAccountCreated(true);
+
+      const res2 = await fetch(
+        `http://127.0.0.1:8001/user/character/${username}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const data = await res2.json();
+      if (data.length !== 0) {
+        setCharSelect("user");
+      } else {
+        setCharSelect("handyman");
+      }
+      navigate("/home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -175,15 +200,14 @@ const CreateAccount2User = ({ username, setCharSelect, setAccountCreated }) => {
           </div>
         </div>
       </div>
-      <NavLink className="navlinks" to="/home">
-        <button
-          className="user--create--account--button"
-          onClick={() => handleSubmitButtonClick()}
-          disabled={errorEmailModal}
-        >
-          Create Account
-        </button>
-      </NavLink>
+
+      <button
+        className="user--create--account--button"
+        onClick={createUserProfile}
+        disabled={errorEmailModal}
+      >
+        Create Account
+      </button>
     </>
   );
 };

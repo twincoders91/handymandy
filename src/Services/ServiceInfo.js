@@ -6,6 +6,7 @@ import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
+import wrench from "../Assets/services/wrench.svg";
 import ConfirmBookingModal from "../Components/Modals/ConfirmBookingModal";
 
 const ServiceInfo = ({
@@ -23,6 +24,11 @@ const ServiceInfo = ({
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const navigate = useNavigate();
+
+  //=================== Truncate String =======================
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
   //============================modal states====================================
   const [acceptedServicesModal, setAcceptedServicesModal] = useState(false);
 
@@ -162,16 +168,18 @@ const ServiceInfo = ({
             alt="images"
           />
           <div className="hm3--info--description--mega--container">
-            <p
-              className="service--info--title fs16 fw700 m0 white mb4 ml12 mt8"
-              style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
-            >
-              {serviceInfo[0].title}
+            <p className="service--info--title2 fs16 fw700 m0 white mb4 ml12 mt8">
+              {truncate(
+                serviceInfo[0].title.charAt(0).toUpperCase() +
+                  serviceInfo[0].title.slice(1),
+                25
+              )}
             </p>
             <div className="service--info--description--container">
               <div className="service--info--description--section ml12">
                 <p className="service--info--name fs12 fw400 m0 white mb4">
-                  {serviceInfo[0].first_name}
+                  {serviceInfo[0].first_name.charAt(0).toUpperCase() +
+                    serviceInfo[0].first_name.slice(1)}
                 </p>
                 <div className="service--info--profile--stars mb4">
                   <img src={recommendedprofile} alt="images"></img>
@@ -201,10 +209,13 @@ const ServiceInfo = ({
           </span>
           <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
           <div className="type--of--work">
+            {serviceInfo[0].types_of_work.length <= 0 && (
+              <p className="m0 fs12 fw400 white ml8">-nil-</p>
+            )}
             {serviceInfo[0].types_of_work.map((works) => {
               return (
                 <div className="m0 fs12 fw700 type--of--work--content">
-                  <img src={tick} />
+                  <img src={wrench} />
                   <p className="m0 fs12 fw400 white ml8">{works}</p>
                 </div>
               );

@@ -112,13 +112,15 @@ const HomePage3HandyMan = ({
                 <div className="hm3--info--description--mega--container">
                   <div className="hm3--info--description--easter--container">
                     <p className="hm3--info--title fs16 fw700 m0 ml12 mt8 white mb4">
-                      {services.title}
+                      {services.title.charAt(0).toUpperCase() +
+                        services.title.slice(1)}
                     </p>
                   </div>
                   <div className="hm3--info--description--container">
                     <div className="hm3--info--description--section ml12">
                       <p className="hm3--info--name fs12 fw400 m0 white mb4">
-                        {services.first_name}
+                        {services.first_name.charAt(0).toUpperCase() +
+                          services.first_name.slice(1)}
                       </p>
                       <div className="hm3--info--profile--stars mb4">
                         <img src={recommendedprofile} alt="images"></img>

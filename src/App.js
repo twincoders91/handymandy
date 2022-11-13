@@ -88,6 +88,7 @@ export default function App() {
               username={username}
               setUsername={setUsername}
               setAccountCreated={setAccountCreated}
+              setUser_id={setUser_id}
             />
           }
         />
@@ -105,6 +106,7 @@ export default function App() {
               backButtonVisibility={backButtonVisibility}
               setUpdateServiceDetails={setUpdateServiceDetails}
               setUser_id={setUser_id}
+              user_id={user_id}
               setHm_id={setHm_id}
               hm_id={hm_id}
               setIndividualHMServices={setIndividualHMServices}

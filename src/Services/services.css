@@ -147,6 +147,9 @@
 .service--info--title {
   max-width: 200px;
 }
+.service--info--title2 {
+  max-width: 250px;
+}
 .service--info--description--container {
   display: flex;
   align-items: center;
@@ -404,7 +407,8 @@
   border-right: 2px solid black;
 }
 .myuserservice--title {
-  max-width: 200px;
+  max-width: 235px;
+  overflow: hidden;
 }
 .myhmservice--title {
   max-width: 235px;

@@ -60,19 +60,6 @@ const FindServices = ({
         ) : (
           <div className="fs32 fw700 mt24">No Services</div>
         )}
-        {/* {servicesCategory.map((hmService) => {
-          return (
-            <CategoryCards
-              first_name={hmService.first_name}
-              category={hmService.category}
-              service_image={hmService.service_image}
-              price_from={hmService.price_from}
-              type_of_work={hmService.type_of_work}
-              description={hmService.description}
-              handleCategoryCard={handleCategoryCard}
-            />
-          );
-        })} */}
       </div>
     </>
   );

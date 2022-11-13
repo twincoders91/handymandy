@@ -16,6 +16,11 @@ const CategoryCards = ({
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
 
+  //=================== Truncate String =======================
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
+
   //====================== RATINGS FETCHING =======================
   const getHmRatings = async () => {
     try {
@@ -82,11 +87,11 @@ const CategoryCards = ({
             className="individual--category--title fs16 fw700 m0 white mb4 ml12"
             style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
           >
-            {title}
+            {truncate(title.charAt(0).toUpperCase() + title.slice(1), 25)}
           </p>
           <div className="individual--category--description--section ml12">
             <p className="individual--category--name fs12 fw400 m0 white mb4">
-              {first_name}
+              {first_name.charAt(0).toUpperCase() + first_name.slice(1)}
             </p>
             <div className="individual--category--profile--stars mb4">
               <img src={recommendedprofile} alt="images"></img>

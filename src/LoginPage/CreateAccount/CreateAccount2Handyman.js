@@ -102,13 +102,9 @@ const CreateAccount2Handyman = ({ setCharSelect, username }) => {
   const handleBackButtonClick = () => {
     setCharSelect("step1");
   };
-  //================= Confirm account created ===================
-  // const handleSubmitButtonClick = async () => {
-  //   await createHmProfile();
-  // };
-  // console.log(yearsSelection);
-  //==================== BACKEND FETCHING ======================
 
+  //==================== BACKEND FETCHING ======================
+  //================= Confirm account created ===================
   const createHmProfile = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8001/handyman/", {
@@ -129,6 +125,24 @@ const CreateAccount2Handyman = ({ setCharSelect, username }) => {
           about: aboutBusiness.toLowerCase(),
         }),
       });
+      navigate("/home");
+
+      const res2 = await fetch(
+        `http://127.0.0.1:8001/handyman/character/${username}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const data = await res2.json();
+      if (data.length !== 0) {
+        setCharSelect("handyman");
+      } else {
+        setCharSelect("user");
+      }
       navigate("/home");
     } catch (e) {
       console.log(e);

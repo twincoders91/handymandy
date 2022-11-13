@@ -4,6 +4,7 @@ import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
+import wrench from "../Assets/services/wrench.svg";
 import { useNavigate } from "react-router-dom";
 
 const MyUserServicesCard = ({
@@ -20,6 +21,10 @@ const MyUserServicesCard = ({
   setCardClicked,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
+  //=================== Truncate String =======================
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
 
   const navigate = useNavigate();
   console.log(item);
@@ -151,19 +156,17 @@ const MyUserServicesCard = ({
             alt="images"
           />
           <div className="hm3--info--description--mega--container">
-            <p
-              className="myuserservice--title fs16 fw700 m0 white mb4 ml12 mt8"
-              style={{
-                whiteSpace: "pre-wrap",
-                overflowWrap: "break-word",
-              }}
-            >
-              {item.title}
+            <p className="myuserservice--title fs16 fw700 m0 white mb4 ml12 mt8">
+              {truncate(
+                item.title.charAt(0).toUpperCase() + item.title.slice(1),
+                25
+              )}
             </p>
             <div className="myuserservice--description--container">
               <div className="myuserservice--description--section ml12">
                 <p className="myuserservice--name fs12 fw400 m0 white mb4">
-                  {item.first_name}
+                  {item.first_name.charAt(0).toUpperCase() +
+                    item.first_name.slice(1)}
                 </p>
                 <div className="myuserservice--profile--stars mb4">
                   <img src={recommendedprofile} alt="images"></img>
@@ -207,7 +210,7 @@ const MyUserServicesCard = ({
                   className="m0 fs12 fw700 type--of--work--content"
                   key={Math.random() * 1000}
                 >
-                  <img src={tick} />
+                  <img src={wrench} />
                   <p className="m0 fs12 fw400 white ml8">{works}</p>
                 </div>
               );

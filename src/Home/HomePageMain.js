@@ -51,7 +51,6 @@ const HomePageMain = ({
   };
 
   //===================================== Get User ID ========================================
-
   const getUserID = async () => {
     if (!username || charSelect === "handyman") return;
     try {

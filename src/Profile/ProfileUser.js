@@ -83,12 +83,18 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       </div>
       <div className="profile--info--card relative">
         <div className="profile--name--box mt60 fs16 fw700 white">
-          <span>{userUsername}</span>
+          <span>
+            {userUsername.charAt(0).toUpperCase() + userUsername.slice(1)}
+          </span>
         </div>
 
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt8">Name</div>
-          <span className="fw400 fs12 mt12">{`${firstName} ${" "} ${lastName} `}</span>
+          <span className="fw400 fs12 mt12">{`${
+            firstName.charAt(0).toUpperCase() + firstName.slice(1)
+          } ${" "} ${
+            lastName.charAt(0).toUpperCase() + lastName.slice(1)
+          } `}</span>
         </div>
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt16">Email</div>

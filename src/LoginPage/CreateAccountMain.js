@@ -13,6 +13,7 @@ const CreateAccountMain = ({
   setUsername,
   setPreviousPage,
   setAccountCreated,
+  setUser_id,
 }) => {
   return (
     <div className="create--account--container">
@@ -34,6 +35,7 @@ const CreateAccountMain = ({
           setCharSelect={setCharSelect}
           setAccountCreated={setAccountCreated}
           username={username}
+          setUser_id={setUser_id}
         />
       )}
       {charSelect === "handyman" && usercredentialscreated && (
@@ -41,6 +43,7 @@ const CreateAccountMain = ({
           setCharSelect={setCharSelect}
           setAccountCreated={setAccountCreated}
           username={username}
+          setUser_id={setUser_id}
         />
       )}
     </div>

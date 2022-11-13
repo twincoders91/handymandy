@@ -28,6 +28,7 @@ const MyUserServices = ({
 
   const fetchJobsByUser = async () => {
     setLoading(true);
+    console.log(user_id);
     try {
       const res = await fetch(`http://127.0.0.1:8001/jobs/user/${user_id}`, {
         headers: {

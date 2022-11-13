@@ -77,8 +77,6 @@ const MyUserServices = ({
             return (
               <MyUserServicesCard
                 key={item.jobs_id}
-                loading={loading}
-                setLoading={setLoading}
                 item={item}
                 setHmProfile={setHmProfile}
                 setCurrentPage={setCurrentPage}

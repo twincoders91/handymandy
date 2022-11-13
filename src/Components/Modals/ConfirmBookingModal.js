@@ -11,6 +11,7 @@ const ConfirmBookingModal = ({
   user_id,
 }) => {
   const navigate = useNavigate();
+  const [job_requirement, setjob_requirement] = useState("");
 
   const createJob = async () => {
     try {
@@ -24,6 +25,7 @@ const ConfirmBookingModal = ({
           user_id: user_id,
           services_id: serviceInfo[0].services_id,
           status_id: "pending",
+          job_requirement: job_requirement,
         }),
       });
       navigate("/myservices");
@@ -61,11 +63,20 @@ const ConfirmBookingModal = ({
                 </div>
                 <div className="confirm--booking--description--box">
                   <p className="m0 fw700 fs14 mt8 modal--text--confirmbooking--items">
-                    Description
+                    Job Description
                   </p>
-                  <p className="m0 white fw400 fs12 mt8  modal--text--confirmbooking--description">
-                    {serviceInfo[0].description}
+                  <p className="m0 white fw300 fs12 mt8  modal--text--confirmbooking--description">
+                    What do you need from {serviceInfo[0].first_name}?
                   </p>
+                </div>
+                <div className="about--business--input--forms--full mt12">
+                  <textarea
+                    type="text"
+                    placeholder="e.g. My sink is clogged and I need help unclogging the pipes... (200 characters)"
+                    className="create--account--input ml12 mt12 fs12"
+                    onChange={(e) => setjob_requirement(e.target.value)}
+                    maxLength={200}
+                  ></textarea>
                 </div>
               </div>
               <div className="confirmbooking--request--box relative">

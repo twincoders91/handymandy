@@ -65,12 +65,12 @@
 .modal--text--confirmbooking--description {
   width: 100%;
   color: black;
-  text-align: center;
+  text-align: left;
 }
 
 .modal--text--confirmbooking--items {
   color: black;
-  text-align: center;
+  text-align: left;
 }
 .confirm--booking--hm--profile--box {
   height: fit-content;
@@ -94,6 +94,7 @@
   display: flex;
   flex-direction: column;
   width: 90%;
+  /* text-align: left; */
 }
 .review--submit--button--confirmbooking {
   background-color: transparent;
@@ -159,6 +160,14 @@
 .modal--cross--button:hover {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
+}
+.about--business--input--forms--full {
+  width: 90%;
+  height: 160px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  border: 1px black solid;
+  box-shadow: var(--shadowing);
 }
 
 /* ====================================HAMBURGER MODAL====================================== */

@@ -282,14 +282,37 @@
 .hm3--info--view--profile--button {
   cursor: pointer;
   height: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  /* position: absolute; */
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  bottom: 60px;
+  right: 20px;
+  font-family: "Exo", sans-serif;
+}
+.hm3--info--view--profile--button--active {
+  cursor: pointer;
+  height: 30px;
   width: 60px;
   margin-right: 10px;
   /* position: absolute; */
   background-color: var(--orange);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   outline: none;
   border: none;
   bottom: 60px;
   right: 20px;
   font-family: "Exo", sans-serif;
   color: var(--black);
+}
+.navlink--class {
+  text-decoration: none;
 }

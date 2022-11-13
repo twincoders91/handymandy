@@ -198,7 +198,7 @@
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
-.about--business--input--forms--full {
+.about--business--input--forms--full--modal {
   width: 90%;
   height: 160px;
   background-color: rgb(255, 186, 10, 0.9);
@@ -231,7 +231,7 @@
   border: 1px solid var(--orange);
   border-top: 0px;
   box-shadow: var(--shadowing);
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 20px 0px rgba(255, 0, 0, 0.8);
   margin: auto;
 }

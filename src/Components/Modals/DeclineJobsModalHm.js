@@ -30,10 +30,10 @@ const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
           <div className="modal--overlay">
             <div className="modal--container--approvebooking relative">
               <p className="fw700 fs28 white modal--header--approvebooking m0 mt24 mb24">
-                Approve Job?
+                Decline Job?
               </p>
               <p className="m0 white fw700 fs16 mb8 modal--text--approvebooking">
-                You are about to accept a job request by{" "}
+                You are about to decline a job request from{" "}
                 {cardClicked.user_first_name}!
               </p>
               <div className="confirm--booking--hm--profile--box">

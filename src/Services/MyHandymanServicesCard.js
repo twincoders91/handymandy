@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
 import tick from "../Assets/services/tick.svg";
+import wrench from "../Assets/services/wrench.svg";
 
 const MyHandymanServicesCard = ({
   userDetails,
@@ -14,6 +15,7 @@ const MyHandymanServicesCard = ({
 }) => {
   const [userRatings, setUserRatings] = useState([]);
   console.log(eachJobData);
+
   //====================== RATINGS FETCHING =======================
   const getUserRatings = async () => {
     // if (eachJobData.length <= 0) return;
@@ -60,7 +62,7 @@ const MyHandymanServicesCard = ({
             alt="images"
           />
           <div className="hm3--info--description--mega--container">
-            <p className="myuserservice--title fs16 fw700 m0 white mb4 ml12 mt8">
+            <p className="myhmservice--title fs16 fw700 m0 white mb4 ml12 mt8">
               {eachJobData.title}
             </p>
             <div className="myuserservice--description--container">
@@ -99,13 +101,16 @@ const MyHandymanServicesCard = ({
           </span>
           <p className="fs12 fw700 m0 mt12 mb8">Type of work:</p>
           <div className="type--of--work--servicescard">
+            {eachJobData.types_of_work.length === 0 && (
+              <div className="fs12 fw300 white">- nil -</div>
+            )}
             {eachJobData.types_of_work.map((works) => {
               return (
                 <div
                   className="m0 fs12 fw700 type--of--work--content"
                   key={Math.random() * 1000}
                 >
-                  <img src={tick} />
+                  <img src={wrench} />
                   <p className="m0 fs12 fw400 white ml8">{works}</p>
                 </div>
               );

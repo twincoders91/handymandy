@@ -406,6 +406,10 @@
 .myuserservice--title {
   max-width: 200px;
 }
+.myhmservice--title {
+  max-width: 235px;
+  overflow: hidden;
+}
 .myuserservice--description--container {
   display: flex;
   align-items: center;
@@ -446,7 +450,7 @@
 }
 
 .myuserservice--buttons--container {
-  margin-top: 15px;
+  margin-top: 36px;
   display: flex;
   width: 100%;
 }

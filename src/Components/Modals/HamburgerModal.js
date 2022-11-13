@@ -52,7 +52,7 @@ const HamburgerModal = ({
               className="modal--hamburger--text white fs16 fw700 m0 mt24"
               onClick={handleServicesClick}
             >
-              Services
+              Your Jobs
             </p>
             <NavLink
               className="navlinks"

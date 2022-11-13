@@ -456,6 +456,7 @@
   color: var(--black);
   margin-left: 20px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .myuserservice--view--profile--button {
@@ -467,6 +468,7 @@
   font-family: "Exo", sans-serif;
   color: var(--black);
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .myuserservice--view--approve--button {
@@ -479,4 +481,5 @@
   color: var(--black);
   margin-left: 20px;
   border-radius: 4px;
+  cursor: pointer;
 }

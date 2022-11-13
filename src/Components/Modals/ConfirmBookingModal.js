@@ -69,7 +69,7 @@ const ConfirmBookingModal = ({
                     What do you need from {serviceInfo[0].first_name}?
                   </p>
                 </div>
-                <div className="about--business--input--forms--full mt12">
+                <div className="about--business--input--forms--full--modal mt12">
                   <textarea
                     type="text"
                     placeholder="e.g. My sink is clogged and I need help unclogging the pipes... (200 characters)"

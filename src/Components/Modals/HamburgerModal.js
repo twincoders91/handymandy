@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactDom from "react-dom";
 import crossButton from "../../Assets/services/crossbutton.svg";
-import facebookIcon from "../../Assets/universal/facebook.svg";
-import instagramIcon from "../../Assets/universal/instagram.svg";
-import twitterIcon from "../../Assets/universal/twitter.svg";
+import facebookIcon from "../../Assets/universal/facebook2.svg";
+import instagramIcon from "../../Assets/universal/instagram2.svg";
+import twitterIcon from "../../Assets/universal/twitter2.svg";
 
 const HamburgerModal = ({
   setHamburgerModal,

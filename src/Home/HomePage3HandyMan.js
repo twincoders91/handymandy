@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import tick from "../Assets/services/tick.svg";
+
+import wrench from "../Assets/services/wrench.svg";
 
 const HomePage3HandyMan = ({
   setUpdateService,
@@ -20,12 +21,12 @@ const HomePage3HandyMan = ({
 
   const deleteServiceDB = async (id, hm_id) => {
     try {
-      const res = await fetch("http://127.0.0.1:8001/services/", {
+      const res = await fetch("http://127.0.0.1:8001/services/inactive", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        method: "DELETE",
+        method: "PUT",
         body: JSON.stringify({
           id: id,
         }),
@@ -157,17 +158,16 @@ const HomePage3HandyMan = ({
                           className="m0 fs12 fw700 type--of--work--content"
                           key={Math.random() * 1000}
                         >
-                          <img src={tick} />
+                          <img src={wrench} />
                           <p className="m0 fs12 fw400 white ml8">{types}</p>
                         </div>
                       );
                     })}
                   </div>
                   <div className="hm3--info--button--box">
-                    <NavLink to="/updateservice">
-                      {" "}
+                    <NavLink className="navlink--class" to="/updateservice">
                       <button
-                        className="hm3--info--view--profile--button br4 fw700 fs12"
+                        className="hm3--info--view--profile--button--active br4 fw700 fs12"
                         onClick={() => {
                           handleUpdateServiceClick({ services });
                         }}
@@ -175,6 +175,7 @@ const HomePage3HandyMan = ({
                         Edit
                       </button>
                     </NavLink>
+
                     <button
                       className="hm3--info--delete--profile--button br4 fw700 fs12"
                       onClick={() => {

@@ -129,6 +129,7 @@ export default function App() {
               setHmProfile={setHmProfile}
               setIndividualHmStar={setIndividualHmStar}
               setIndividualHmReviews={setIndividualHmReviews}
+              setFilteredServicesData={setFilteredServicesData}
               filteredServicesData={filteredServicesData}
               setViewHmProfile={setViewHmProfile}
               setHmAverageRating={setHmAverageRating}

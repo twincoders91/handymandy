@@ -22,6 +22,7 @@ const Services = ({
   setIndividualHmStar,
   setIndividualHmReviews,
   filteredServicesData,
+  setFilteredServicesData,
   setViewHmProfile,
   setHmAverageRating,
   setJobsCompleted,
@@ -47,6 +48,7 @@ const Services = ({
         {!chooseCategory && (
           <FindServices
             filteredServicesData={filteredServicesData}
+            setFilteredServicesData={setFilteredServicesData}
             servicesCategorySelection={servicesCategorySelection}
             setChooseCategory={setChooseCategory}
             setBackButtonVisibility={setBackButtonVisibility}

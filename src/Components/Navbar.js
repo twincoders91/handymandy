@@ -14,6 +14,7 @@ const Navbar = ({
   setViewHmProfile,
   viewHmProfile,
   setCurrentPage,
+  currentPage,
 }) => {
   const navigate = useNavigate();
   //===============================STATES=======================================
@@ -63,6 +64,14 @@ const Navbar = ({
               <img src={backButton} className="back--button" />
             </NavLink>
           )}
+          {backButtonVisibility &&
+            !chooseCategory &&
+            !viewHmProfile &&
+            currentPage === "Service Info" && (
+              <NavLink to="/myservices">
+                <img src={backButton} className="back--button" />
+              </NavLink>
+            )}
           {backButtonVisibility && !chooseCategory && viewHmProfile && (
             <NavLink to="/services">
               <img

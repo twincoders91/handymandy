@@ -137,7 +137,7 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
                   type="text"
                   placeholder="Let others know how your experience went (200 characters)"
                   className="review--input"
-                  maxlength="200"
+                  maxlength="50"
                   onChange={(e) => setReviews(e.target.value)}
                 />
               </div>

@@ -12,15 +12,14 @@ const MyHandymanServicesCard = ({
   setApproveJobsModalValue,
   setCardClicked,
 }) => {
-  console.log(eachJobData);
   const [userRatings, setUserRatings] = useState([]);
-  const navigate = useNavigate();
-
+  console.log(eachJobData);
   //====================== RATINGS FETCHING =======================
   const getUserRatings = async () => {
+    // if (eachJobData.length <= 0) return;
     try {
       const res = await fetch(
-        `http://127.0.0.1:8001/user/${eachJobData.user_id}/averageratingandjobs`,
+        `http://127.0.0.1:8001/user/${eachJobData.user_id}/ratingssummary`,
         {
           headers: {
             Accept: "application/json",
@@ -61,13 +60,7 @@ const MyHandymanServicesCard = ({
             alt="images"
           />
           <div className="hm3--info--description--mega--container">
-            <p
-              className="myuserservice--title fs16 fw700 m0 white mb4 ml12 mt8"
-              style={{
-                whiteSpace: "pre-wrap",
-                overflowWrap: "break-word",
-              }}
-            >
+            <p className="myuserservice--title fs16 fw700 m0 white mb4 ml12 mt8">
               {eachJobData.title}
             </p>
             <div className="myuserservice--description--container">
@@ -97,10 +90,7 @@ const MyHandymanServicesCard = ({
         </div>
         <div className="myuserservice--card--bottom">
           <p className="m0 fs14 fw700 mb8 mt8">Job Requirement</p>
-          <span
-            className="myuserservice--desc fs12 fw400 white"
-            style={{ "white-space": "pre-wrap", "overflow-wrap": "break-word" }}
-          >
+          <span className="myuserservice--desc fs12 fw400 white">
             {eachJobData.job_requirement}
           </span>
           <p className="m0 fs14 fw700 mb8 mt12">{eachJobData.category}</p>

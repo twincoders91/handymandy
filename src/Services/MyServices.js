@@ -29,6 +29,7 @@ const MyServices = ({
           loading={loading}
           userDetails={userDetails}
           setCurrentPage={setCurrentPage}
+          charSelect={charSelect}
         />
       )}
       {charSelect == "user" && (

@@ -3,6 +3,7 @@ import MyHandymanServicesCard from "./MyHandymanServicesCard";
 import ClipLoader from "react-spinners/RiseLoader";
 import ApproveJobsModal from "../Components/Modals/ApproveJobsModal";
 import ApproveJobsModalHm from "../Components/Modals/ApproveJobsModalHm";
+import DeclineJobsModalHm from "../Components/Modals/DeclineJobsModalHm";
 
 const MyHandymanServices = ({
   hm_id,
@@ -49,6 +50,12 @@ const MyHandymanServices = ({
       {approveJobsModalValue && (
         <ApproveJobsModalHm
           setApproveJobsModalValue={setApproveJobsModalValue}
+          cardClicked={cardClicked}
+        />
+      )}
+      {declineJobsModalValue && (
+        <DeclineJobsModalHm
+          setDeclineJobsModalValue={setDeclineJobsModalValue}
           cardClicked={cardClicked}
         />
       )}

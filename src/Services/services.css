@@ -524,3 +524,39 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.universal--create--service--image--forms--full {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 370px;
+  height: 56px;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 4px;
+  border: 1px black solid;
+  box-shadow: var(--shadowing);
+}
+
+.services--image--upload--input {
+  z-index: +99;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.services--image--upload--button {
+  position: absolute;
+  display: flex;
+  width: 370px;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: rgb(255, 186, 10, 0.9);
+  border-radius: 2px;
+}
+.services--image--upload--button:hover {
+  color: var(--orange);
+  background-color: var(--hoverblack);
+}

@@ -20,6 +20,7 @@ const CreateServicesHandyman = ({
   const [description, setDescription] = useState("");
   const [finalTow, setFinalTow] = useState();
   const [price, setPrice] = useState(0);
+  const [serviceImage, setServiceImage] = useState("");
   const [currentCategorySelection, setCurrentCategorySelection] = useState(
     "Select your category"
   );
@@ -49,33 +50,68 @@ const CreateServicesHandyman = ({
   }
 
   //============================= BACKEND FETCHING ================================
+
+  //============================UPLOAD SERVICE IMAGE=============================
+
+  const uploadServicesImage = (event) => {
+    setServiceImage(event.target.files[0]);
+  };
+
   //============================= Create Services ================================
 
   console.log(hm_id);
 
   const createServicesDB = async () => {
     if (!hm_id) return;
+
     try {
-      const res = await fetch("http://127.0.0.1:8001/services/", {
+      const file = serviceImage;
+
+      // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
+      const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
+        res.json()
+      );
+      console.log(url);
+
+      // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
+      await fetch(url, {
+        method: "PUT",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
-        method: "POST",
-        body: JSON.stringify({
-          hm_id: hm_id,
-          description: description,
-          category: categorySelection,
-          types_of_work: tOWArray,
-          price_from: price,
-          title: title,
-        }),
+        body: file,
       });
+
+      const imageUrl = url.split("?")[0];
+
+      try {
+        const res = await fetch("http://127.0.0.1:8001/services/", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            hm_id: hm_id,
+            description: description,
+            category: categorySelection,
+            types_of_work: tOWArray,
+            price_from: price,
+            title: title,
+            image_url: imageUrl,
+          }),
+        });
+      } catch (e) {
+        console.log(e);
+      }
       navigate("/home");
+      // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
+
+  //=========================================================
 
   //================= Handle Button Clicks ===================
   const handleClickSpecialities = () => {
@@ -94,9 +130,9 @@ const CreateServicesHandyman = ({
   };
 
   //======================= Use Effect =========================
-  useEffect(() => {
-    // setBackButtonVisibility(true);
-  });
+  // useEffect(() => {
+  //   // setBackButtonVisibility(true);
+  // });
 
   console.log(hm_id, description, categorySelection, tOWArray, price, title);
 
@@ -211,6 +247,31 @@ const CreateServicesHandyman = ({
                 +
               </button>
             </div>
+
+            <span className="fs16 fw700 white">Image</span>
+            <div className="legal--name--container mt8 mb24">
+              <form className="universal--create--service--image--forms--full">
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="services--image--upload--input"
+                  onChange={(e) => {
+                    uploadServicesImage(e);
+                  }}
+                ></input>
+                {serviceImage && (
+                  <p className="services--image--upload--button fs16 fw300">
+                    {serviceImage.name}
+                  </p>
+                )}
+                {!serviceImage && (
+                  <p className="services--image--upload--button fs16 fw300">
+                    Upload Image
+                  </p>
+                )}
+              </form>
+            </div>
+
             <span className="fs16 fw700 white">Price from</span>
             <div className="legal--name--container mt8">
               <div className="universal--input--forms--full">

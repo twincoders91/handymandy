@@ -159,6 +159,17 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
     <div className="profile--info--container">
       <div className="profile--image--box">
         <img src={profile_image} className="absolute profile--image" />
+        <form className="absolute update--profile--image--form">
+          <input
+            // onChange={(e) => {
+            //   updateProfileImage(e);
+            // }}
+            type="file"
+            accept="image/*"
+            className="absolute update--profile--image--button"
+            s
+          ></input>
+        </form>
       </div>
       <div className="profile--info--card relative">
         <div className="profile--name--box mt60 fs16 fw700 white">

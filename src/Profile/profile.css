@@ -20,6 +20,38 @@
   object-fit: cover;
 }
 
+.update--profile--image--form {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 70px;
+  z-index: +99;
+}
+
+.update--profile--image--button {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.update--profile--image--button:hover {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--orange);
+}
+
+input[type="file"] {
+  opacity: 0;
+  filter: alpha(opacity=10);
+}
+
 .reviews--box {
   display: flex;
   justify-content: center;

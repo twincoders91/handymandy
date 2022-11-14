@@ -127,6 +127,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       const imageUrl = url.split("?")[0];
       setProfile_image(imageUrl);
       // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
+      console.log(imageUrl);
 
       try {
         const res = await fetch("http://127.0.0.1:8001/profileimage/", {
@@ -170,13 +171,14 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
     <div className="profile--info--container">
       <div className="profile--image--box">
         <img src={profile_image} className="absolute profile--image" />
-        <form>
+        <form className="absolute update--profile--image--form">
           <input
             onChange={(e) => {
               updateProfileImage(e);
             }}
             type="file"
             accept="image/*"
+            className="absolute update--profile--image--button"
           ></input>
         </form>
       </div>

@@ -60,7 +60,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       setLastName(user_details[0].last_name);
       setEmail(user_details[0].email);
 
-      if ((user_details[0].profile_image = null)) {
+      if (user_details[0].image_url === null || !user_details[0].image_url) {
         setProfile_image(defaultavatar);
       } else {
         setProfile_image(user_details[0].image_url);

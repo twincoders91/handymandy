@@ -52,38 +52,17 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
         }
       );
       const user_details = await res.json();
-      if ((user_details.length = 0)) {
-        try {
-          const res = await fetch(`http://127.0.0.1:8001/user/${user_id}`, {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            method: "GET",
-          });
-          const user_details = await res.json();
-          setUserDetails(user_details[0]);
-          console.log(user_details);
+      console.log(user_details);
+      setUserDetails(user_details[0]);
+      console.log(user_details);
+      setUserUsername(user_details[0].username);
+      setFirstName(user_details[0].first_name);
+      setLastName(user_details[0].last_name);
+      setEmail(user_details[0].email);
 
-          if (user_details[0].profile_image) {
-            setProfile_image(user_details[0].profile_image);
-          } else {
-            setProfile_image(defaultavatar);
-          }
-          setUserUsername(user_details[0].username);
-          setFirstName(user_details[0].first_name);
-          setLastName(user_details[0].last_name);
-          setEmail(user_details[0].email);
-        } catch (e) {
-          console.log(e);
-        }
+      if ((user_details[0].profile_image = null)) {
+        setProfile_image(defaultavatar);
       } else {
-        setUserDetails(user_details[0]);
-        console.log(user_details);
-        setUserUsername(user_details[0].username);
-        setFirstName(user_details[0].first_name);
-        setLastName(user_details[0].last_name);
-        setEmail(user_details[0].email);
         setProfile_image(user_details[0].image_url);
       }
     } catch (e) {
@@ -91,6 +70,30 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
     }
   };
 
+  // try {
+  //   const res = await fetch(`http://127.0.0.1:8001/user/${user_id}`, {
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     method: "GET",
+  //   });
+  //   const user_details = await res.json();
+  //   setUserDetails(user_details[0]);
+  //   console.log(user_details);
+
+  //   if (user_details[0].profile_image) {
+  //     setProfile_image(user_details[0].profile_image);
+  //   } else {
+  //     setProfile_image(defaultavatar);
+  //   }
+  //   setUserUsername(user_details[0].username);
+  //   setFirstName(user_details[0].first_name);
+  //   setLastName(user_details[0].last_name);
+  //   setEmail(user_details[0].email);
+  // } catch (e) {
+  //   console.log(e);
+  // }
   //=========================================================
 
   // const updateProfileImage = async (event) => {
@@ -125,7 +128,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       });
 
       const imageUrl = url.split("?")[0];
-      setProfile_image(imageUrl);
+      // setProfile_image(imageUrl);
       // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
       console.log(imageUrl);
 
@@ -149,10 +152,6 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
     } catch (e) {
       console.error(e);
     }
-
-    console.log(profile_image);
-
-    console.log(user_id);
   };
 
   //=========================================================

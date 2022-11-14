@@ -64,26 +64,52 @@ const CreateServicesHandyman = ({
   const createServicesDB = async () => {
     if (!hm_id) return;
 
-    try {
-      const file = serviceImage;
+    if (serviceImage) {
+      try {
+        const file = serviceImage;
 
-      // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
-      const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
-        res.json()
-      );
-      console.log(url);
+        // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
+        const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
+          res.json()
+        );
+        console.log(url);
 
-      // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
-      await fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: file,
-      });
+        // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
+        await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: file,
+        });
 
-      const imageUrl = url.split("?")[0];
+        const imageUrl = url.split("?")[0];
 
+        try {
+          const res = await fetch("http://127.0.0.1:8001/services/", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+              hm_id: hm_id,
+              description: description,
+              category: categorySelection,
+              types_of_work: tOWArray,
+              price_from: price,
+              title: title,
+              image_url: imageUrl,
+            }),
+          });
+        } catch (e) {
+          console.log(e);
+        }
+        navigate("/home");
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
       try {
         const res = await fetch("http://127.0.0.1:8001/services/", {
           headers: {
@@ -98,16 +124,12 @@ const CreateServicesHandyman = ({
             types_of_work: tOWArray,
             price_from: price,
             title: title,
-            image_url: imageUrl,
           }),
         });
       } catch (e) {
         console.log(e);
       }
       navigate("/home");
-      // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
-    } catch (e) {
-      console.error(e);
     }
   };
 

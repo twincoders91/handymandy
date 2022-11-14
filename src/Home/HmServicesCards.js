@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
-import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import default_image from "../Assets/homepage/recommended4usampleimage.svg";
 import wrench from "../Assets/services/wrench.svg";
 import { NavLink } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const HmServicesCards = ({
         <div className="hm3--info--card">
           <div className="hm3--info--card--top">
             <img
-              src={recommended4usampleimage}
+              src={services.image_url ? services.image_url : default_image}
               className="hm3--info--image"
               alt="images"
             />

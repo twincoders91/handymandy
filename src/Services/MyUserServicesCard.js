@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo, useDebugValue } from "react";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import tick from "../Assets/services/tick.svg";
 import wrench from "../Assets/services/wrench.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +21,7 @@ const MyUserServicesCard = ({
   setCardClicked,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
+  const [hmProfile_image, setHmProfile_image] = useState("");
   //=================== Truncate String =======================
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -43,6 +44,27 @@ const MyUserServicesCard = ({
       );
       const ratingData = await res.json();
       setHmRatings(ratingData);
+    } catch (e) {
+      console.error(e);
+    }
+
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${item.hm_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const hmProfileImage = await res.json();
+      if (hmProfileImage.length === 0) {
+        setHmProfile_image(defaultavatar);
+      } else {
+        setHmProfile_image(hmProfileImage[0].image_url);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -169,7 +191,11 @@ const MyUserServicesCard = ({
                     item.first_name.slice(1)}
                 </p>
                 <div className="myuserservice--profile--stars mb4">
-                  <img src={recommendedprofile} alt="images"></img>
+                  <img
+                    src={hmProfile_image}
+                    alt="images"
+                    className="profile--image--small"
+                  ></img>
                   <div className="myuserservice--stars">{starRating}</div>
                 </div>
                 {hmRatings.length > 0 ? (

@@ -74,6 +74,7 @@
   background-color: rgba(49, 49, 49, 0.5);
   /* color: var(--orange); */
   filter: sepia(22%);
+  transform: scale(1.005);
 }
 
 .individual--category--image--box {
@@ -297,6 +298,15 @@
 .services--type--of--work--button:hover {
   color: var(--orange);
   background-color: var(--hoverblack);
+}
+
+.sorting--price--icon {
+  cursor: pointer;
+}
+.sorting--price--icon:hover {
+  cursor: pointer;
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
 }
 
 /* =============================================== */

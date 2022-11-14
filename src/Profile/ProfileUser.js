@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./profile.css";
 import edit from "../Assets/universal/edit.svg";
-import trophy from "../Assets/profile/trophy.svg";
-import time from "../Assets/profile/time.svg";
-import reviews from "../Assets/profile/reviews.svg";
+import trophy from "../Assets/profile/new/trophy.svg";
+import time from "../Assets/profile/new/time.svg";
+import reviews from "../Assets/profile/new/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 
 const ProfileUser = ({

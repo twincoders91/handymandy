@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 
 import wrench from "../Assets/services/wrench.svg";
 import ConfirmBookingModal from "../Components/Modals/ConfirmBookingModal";

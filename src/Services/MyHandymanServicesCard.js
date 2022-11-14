@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
-import tick from "../Assets/services/tick.svg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import wrench from "../Assets/services/wrench.svg";
 
 const MyHandymanServicesCard = ({

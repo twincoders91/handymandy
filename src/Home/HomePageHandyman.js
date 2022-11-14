@@ -13,6 +13,7 @@ const HomePageHandyman = ({
   individualHMServices,
   setHmRatings,
   hmRatings,
+  hm_id,
 }) => {
   //========================================API============================
 
@@ -38,6 +39,7 @@ const HomePageHandyman = ({
           setHmRatings={setHmRatings}
           hmRatings={hmRatings}
           setBackButtonVisibility={setBackButtonVisibility}
+          hm_id={hm_id}
         />
       )}
     </>

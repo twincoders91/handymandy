@@ -41,28 +41,53 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
 
   const retreiveUserInfo = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8001/user/${user_id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      });
+      const res = await fetch(
+        `http://127.0.0.1:8001/user/${user_id}/profileimage`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
       const user_details = await res.json();
-      setUserDetails(user_details[0]);
-      console.log(user_details);
+      if ((user_details.length = 0)) {
+        try {
+          const res = await fetch(`http://127.0.0.1:8001/user/${user_id}`, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          });
+          const user_details = await res.json();
+          setUserDetails(user_details[0]);
+          console.log(user_details);
 
-      if (user_details[0].profile_image) {
-        setProfile_image(user_details[0].profile_image);
+          if (user_details[0].profile_image) {
+            setProfile_image(user_details[0].profile_image);
+          } else {
+            setProfile_image(defaultavatar);
+          }
+          setUserUsername(user_details[0].username);
+          setFirstName(user_details[0].first_name);
+          setLastName(user_details[0].last_name);
+          setEmail(user_details[0].email);
+        } catch (e) {
+          console.log(e);
+        }
       } else {
-        setProfile_image(defaultavatar);
+        setUserDetails(user_details[0]);
+        console.log(user_details);
+        setUserUsername(user_details[0].username);
+        setFirstName(user_details[0].first_name);
+        setLastName(user_details[0].last_name);
+        setEmail(user_details[0].email);
+        setProfile_image(user_details[0].image_url);
       }
-      setUserUsername(user_details[0].username);
-      setFirstName(user_details[0].first_name);
-      setLastName(user_details[0].last_name);
-      setEmail(user_details[0].email);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -119,6 +144,7 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       } catch (e) {
         console.error(e);
       }
+      retreiveUserInfo();
     } catch (e) {
       console.error(e);
     }

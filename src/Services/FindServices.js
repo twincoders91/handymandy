@@ -41,11 +41,13 @@ const FindServices = ({
     const searchBarFilteredServices = await filteredServicesData.filter(
       (services) => {
         console.log(
-          services.description.toLowerCase().includes(searchVal.toLowerCase())
+          services.description
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase())
         );
         return services.description
           .toLowerCase()
-          .includes(searchVal.toLowerCase());
+          .includes(e.target.value.toLowerCase());
       }
     );
     setSearchBarArray(searchBarFilteredServices);
@@ -53,26 +55,10 @@ const FindServices = ({
     console.log(searchBarArray);
   };
 
-  // const clickSearch = () => {
-  //   const searchBarFilteredServices = filteredServicesData.filter(
-  //     (services) => {
-  //       console.log(
-  //         services.description.toLowerCase().includes(searchVal.toLowerCase())
-  //       );
-  //       return services.description
-  //         .toLowerCase()
-  //         .includes(searchVal.toLowerCase());
-  //     }
-  //   );
-  //   setSearchBarArray(searchBarFilteredServices);
-  // };
-  // console.log(searchBarArray);
-
   //====================================================
 
   useEffect(() => {
     setBackButtonVisibility(true);
-    // filterServices();
   }, [searchBarInput]);
 
   return (
@@ -93,11 +79,13 @@ const FindServices = ({
           />
         </div>
         <div className="category--header">
-          {filteredServicesData.length >= 0 && searchBarArray.length === 0 ? (
-            <span>{filteredServicesData.length}</span>
-          ) : (
-            <span>{searchBarArray.length}</span>
-          )}{" "}
+          {filteredServicesData.length > 0 &&
+            searchBarArray.length === 0 &&
+            searchVal === "" && <span>{filteredServicesData.length} </span>}
+          {searchBarArray.length > 0 && <span>{searchBarArray.length} </span>}
+          {searchBarArray.length === 0 && !(searchVal === "") && (
+            <span>{searchBarArray.length} </span>
+          )}
           service(s) for you
         </div>
         <div className="sorting--buttons--box">

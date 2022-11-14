@@ -79,7 +79,7 @@ const FindServices = ({
           />
         </div>
         <div className="category--header">
-          {filteredServicesData.length > 0 &&
+          {filteredServicesData.length >= 0 &&
             searchBarArray.length === 0 &&
             searchVal === "" && <span>{filteredServicesData.length} </span>}
           {searchBarArray.length > 0 && <span>{searchBarArray.length} </span>}

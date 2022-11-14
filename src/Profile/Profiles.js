@@ -29,6 +29,7 @@ const Profiles = ({
   setCurrentPage,
   currentPage,
 }) => {
+  console.log(currentPage);
   return (
     <div>
       <Navbar

@@ -18,6 +18,7 @@
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
+  border: var(--orange) 2px solid;
 }
 
 .update--profile--image--form {

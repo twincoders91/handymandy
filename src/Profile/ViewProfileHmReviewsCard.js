@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 
 const ViewProfileHmReviewsCard = (items) => {
   const [userProfile_image, setUserProfile_image] = useState("");
@@ -35,7 +35,7 @@ const ViewProfileHmReviewsCard = (items) => {
       <div className="reviews--cards--box mb8 relative">
         <img
           src={userProfile_image}
-          className="profile--image--icons ml16 mt16 mb16"
+          className="profile--image--small ml16 mt16 mb16"
           alt="images"
         ></img>
         <div className="reviews--description--cards ml16 mt16 mb16">

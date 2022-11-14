@@ -3,7 +3,7 @@ import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 
 const CategoryCards = ({
   first_name,

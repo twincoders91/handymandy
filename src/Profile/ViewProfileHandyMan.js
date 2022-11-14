@@ -1,6 +1,6 @@
 import { React, useEffect, useMemo, useState } from "react";
 import "./profile.css";
-import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
 import trophy from "../Assets/profile/new/trophy.svg";

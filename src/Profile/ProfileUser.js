@@ -6,7 +6,7 @@ import edit from "../Assets/universal/edit.svg";
 import trophy from "../Assets/profile/new/trophy.svg";
 import time from "../Assets/profile/new/time.svg";
 import reviews from "../Assets/profile/new/reviews.svg";
-import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
+import defaultavatar from "../Assets/profile/defaultavatar.svg";
 
 const ProfileUser = ({
   setBackButtonVisibility,

@@ -45,9 +45,12 @@ const FindServices = ({
             .toLowerCase()
             .includes(e.target.value.toLowerCase())
         );
-        return services.description
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase());
+        return (
+          services.description
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          services.title.toLowerCase().includes(e.target.value.toLowerCase())
+        );
       }
     );
     setSearchBarArray(searchBarFilteredServices);

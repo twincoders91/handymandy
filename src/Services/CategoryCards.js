@@ -3,6 +3,7 @@ import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
 
 const CategoryCards = ({
   first_name,
@@ -15,6 +16,7 @@ const CategoryCards = ({
   services_id,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
+  const [hmProfileImage, setHMProfileImage] = useState("");
 
   //=================== Truncate String =======================
   const truncate = (str, n) => {
@@ -36,6 +38,29 @@ const CategoryCards = ({
       );
       const ratingData = await res.json();
       setHmRatings(ratingData);
+    } catch (e) {
+      console.error(e);
+    }
+
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${hm_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+
+      const hmProfileImage = await res.json();
+
+      if (hmProfileImage.length === 0) {
+        setHMProfileImage(defaultavatar);
+      } else {
+        setHMProfileImage(hmProfileImage[0].image_url);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -94,7 +119,11 @@ const CategoryCards = ({
               {first_name.charAt(0).toUpperCase() + first_name.slice(1)}
             </p>
             <div className="individual--category--profile--stars mb4">
-              <img src={recommendedprofile} alt="images"></img>
+              <img
+                src={hmProfileImage}
+                alt="images"
+                className="profile--image--small"
+              ></img>
               <div className="individual--category--stars">{starRating}</div>
             </div>
             {hmRatings.length > 0 ? (

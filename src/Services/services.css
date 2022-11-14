@@ -3,6 +3,8 @@
 .profile--image--small {
   border-radius: 50%;
   height: 40px;
+  width: 40px;
+  object-fit: cover;
 }
 .category--page--container {
   height: 100vh;
@@ -113,6 +115,8 @@
 }
 
 .individual--category--stars {
+  display: flex;
+  align-items: center;
   margin-left: 10px;
 }
 

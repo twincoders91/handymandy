@@ -1,6 +1,6 @@
 import { React, useEffect, useMemo, useState } from "react";
 import "./profile.css";
-import edit from "../Assets/universal/edit.svg";
+import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
 import starUnfilled from "../Assets/universal/starUnfilled.svg";
 import starFilled from "../Assets/universal/starFilled.svg";
 import trophy from "../Assets/profile/new/trophy.svg";
@@ -18,6 +18,7 @@ const ViewProfileHandyman = ({
   totalRatings,
   setCurrentPage,
 }) => {
+  const [hMProfileImage, sethMProfileImage] = useState("");
   //=============================FETCHING APIS============================
   console.log(hmProfile);
   console.log(individualHmStar);
@@ -25,6 +26,29 @@ const ViewProfileHandyman = ({
   console.log(hmAverageRating);
   console.log(jobsCompleted);
   console.log(totalRatings);
+
+  const getHMProfileImage = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${hmProfile[0].id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const hmProfileImage = await res.json();
+      if (hmProfileImage.length === 0) {
+        sethMProfileImage(defaultavatar);
+      } else {
+        sethMProfileImage(hmProfileImage[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   //======================Creating Star Ratings=======================
   console.log(individualHmStar);
@@ -50,16 +74,14 @@ const ViewProfileHandyman = ({
 
   useEffect(() => {
     setBackButtonVisibility(true);
-  });
-  console.log(hmProfile[0]);
+
+    getHMProfileImage();
+  }, []);
 
   return (
     <div className="profile--info--container">
       <div className="profile--image--box">
-        <img
-          src={require(`../Assets/profile/defaultavatar.jpeg`)}
-          className="absolute profile--image"
-        />
+        <img src={hMProfileImage} className="absolute profile--image" />
       </div>
       <div className="profile--info--card relative">
         <div className="profile--name--box mt60 fs16 fw700 white">

@@ -123,8 +123,11 @@
   width: 100%;
 }
 .confirm--booking--hm--profile--image {
-  height: 100px;
+  border: 1px solid var(--orange);
   border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }
 .confirm--booking--description--box {
   display: flex;

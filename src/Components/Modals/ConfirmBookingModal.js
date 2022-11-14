@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ReactDom from "react-dom";
 import { useNavigate } from "react-router-dom";
 import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
-import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
+import defaultavatar from "../../Assets/profile/defaultavatar.svg";
 
 const ConfirmBookingModal = ({
   setAcceptedServicesModal,
@@ -12,6 +12,31 @@ const ConfirmBookingModal = ({
 }) => {
   const navigate = useNavigate();
   const [job_requirement, setjob_requirement] = useState("");
+  const [hmProfile_image, setHmProfile_image] = useState("");
+
+  //=============================Fetch Profile Image ===================================
+  const fetchHmProfileImage = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const hmProfileImage = await res.json();
+      if (hmProfileImage.length === 0) {
+        setHmProfile_image(defaultavatar);
+      } else {
+        setHmProfile_image(hmProfileImage[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const createJob = async () => {
     try {
@@ -34,6 +59,10 @@ const ConfirmBookingModal = ({
     }
   };
 
+  useEffect(() => {
+    fetchHmProfileImage();
+  }, []);
+
   return (
     <div>
       <>
@@ -49,7 +78,7 @@ const ConfirmBookingModal = ({
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
-                    src={defaultavatar}
+                    src={hmProfile_image}
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>

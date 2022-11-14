@@ -8,6 +8,7 @@ import trophy from "../Assets/profile/new/trophy.svg";
 import time from "../Assets/profile/new/time.svg";
 import reviews from "../Assets/profile/new/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
+import ProfileHmReviewCards from "./ProfileHmReviewCards";
 
 const ProfileHandyman = ({
   setBackButtonVisibility,
@@ -323,11 +324,15 @@ const ProfileHandyman = ({
 
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt8">About</div>
-          <span className="fw400 fs12 mt12">{aboutHM}</span>
+          <span className="fw400 fs12 mt12">
+            {aboutHM.charAt(0).toUpperCase() + aboutHM.slice(1)}
+          </span>
         </div>
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt16">Company</div>
-          <span className="fw400 fs12 mt12">{companyHM}</span>
+          <span className="fw400 fs12 mt12">
+            {companyHM.charAt(0).toUpperCase() + companyHM.slice(1)}
+          </span>
         </div>
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
@@ -419,22 +424,12 @@ const ProfileHandyman = ({
         </div>
         {individualHMReviews.map((items) => {
           return (
-            <div className="reviews--cards--box mb8 relative">
-              <img
-                src={defaultavatar}
-                className="profile--image--icons ml16 mt16 mb16"
-                alt="images"
-              ></img>
-              <div className="reviews--description--cards ml16 mt16 mb16">
-                <div className=" fw700 fs12  mb4">{items.first_name}</div>
-                <div className="reviews--message fw400 fs12 white">
-                  {items.reviews}
-                </div>
-              </div>
-              <div className="reviews--score--box absolute">
-                <span className="fs56 fw700">{items.ratings}</span>
-              </div>
-            </div>
+            <ProfileHmReviewCards
+              user_id={items.user_id}
+              first_name={items.first_name}
+              ratings={items.ratings}
+              reviews={items.reviews}
+            />
           );
         })}
       </div>

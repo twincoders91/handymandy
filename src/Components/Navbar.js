@@ -59,11 +59,14 @@ const Navbar = ({
               />
             </NavLink>
           )}
-          {backButtonVisibility && !chooseCategory && !viewHmProfile && (
-            <NavLink to="/home">
-              <img src={backButton} className="back--button" />
-            </NavLink>
-          )}
+          {backButtonVisibility &&
+            !chooseCategory &&
+            !viewHmProfile &&
+            currentPage !== "Service Info" && (
+              <NavLink to="/home">
+                <img src={backButton} className="back--button" />
+              </NavLink>
+            )}
           {backButtonVisibility &&
             !chooseCategory &&
             !viewHmProfile &&

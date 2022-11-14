@@ -7,6 +7,7 @@ import trophy from "../Assets/profile/new/trophy.svg";
 import time from "../Assets/profile/new/time.svg";
 import reviews from "../Assets/profile/new/reviews.svg";
 import noreviews from "../Assets/profile/new/rating.svg";
+import ViewProfileHmReviewsCard from "./ViewProfileHmReviewsCard";
 
 const ViewProfileHandyman = ({
   setBackButtonVisibility,
@@ -199,25 +200,12 @@ const ViewProfileHandyman = ({
           <div>
             {individualHmReviews.map((items) => {
               return (
-                <div className="reviews--cards--box mb8 relative">
-                  <img
-                    src={require(`../Assets/profile/defaultavatar.jpeg`)}
-                    className="profile--image--icons ml16 mt16 mb16"
-                    alt="images"
-                  ></img>
-                  <div className="reviews--description--cards ml16 mt16 mb16">
-                    <div className=" fw700 fs12  mb4">
-                      {items.first_name.charAt(0).toUpperCase() +
-                        items.first_name.slice(1)}
-                    </div>
-                    <div className="reviews--message fw400 fs12 white">
-                      {items.reviews}
-                    </div>
-                  </div>
-                  <div className="reviews--score--box absolute">
-                    <span className="fs56 fw700">{items.ratings}</span>
-                  </div>
-                </div>
+                <ViewProfileHmReviewsCard
+                  user_id={items.user_id}
+                  first_name={items.first_name}
+                  ratings={items.ratings}
+                  reviews={items.reviews}
+                />
               );
             })}
           </div>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 
-const ProfileHmReviewCards = (items) => {
+const ViewProfileHmReviewsCard = (items) => {
   const [userProfile_image, setUserProfile_image] = useState("");
 
-  //====================== User Profile Image fetching =======================
   const fetchUserProfileImage = async () => {
     try {
       const res = await fetch(
@@ -20,9 +19,8 @@ const ProfileHmReviewCards = (items) => {
       const userProfileImage = await res.json();
       if (userProfileImage.length === 0) {
         setUserProfile_image(defaultavatar);
-      } else {
-        setUserProfile_image(userProfileImage[0].image_url);
       }
+      setUserProfile_image(userProfileImage[0].image_url);
     } catch (e) {
       console.error(e);
     }
@@ -41,7 +39,10 @@ const ProfileHmReviewCards = (items) => {
           alt="images"
         ></img>
         <div className="reviews--description--cards ml16 mt16 mb16">
-          <div className=" fw700 fs12  mb4">{items.first_name}</div>
+          <div className=" fw700 fs12  mb4">
+            {items.first_name.charAt(0).toUpperCase() +
+              items.first_name.slice(1)}
+          </div>
           <div className="reviews--message fw400 fs12 white">
             {items.reviews}
           </div>
@@ -54,4 +55,4 @@ const ProfileHmReviewCards = (items) => {
   );
 };
 
-export default ProfileHmReviewCards;
+export default ViewProfileHmReviewsCard;

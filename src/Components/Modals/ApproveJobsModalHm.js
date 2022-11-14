@@ -1,10 +1,36 @@
-import { React, useMemo, useState } from "react";
+import { React, useEffect, useMemo, useState } from "react";
 import ReactDom from "react-dom";
 import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
-import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
+import defaultavatar from "../../Assets/profile/defaultavatar.svg";
 
 const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
+  const [userProfile_image, setUserProfile_image] = useState("");
+
+  //=============================Fetch Profile Image ===================================
+  const fetchUserProfileImage = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${cardClicked.user_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const userProfileImage = await res.json();
+      if (userProfileImage.length === 0) {
+        setUserProfile_image(defaultavatar);
+      } else {
+        setUserProfile_image(userProfileImage[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   //====================Change status to inprogress===================================
   console.log(cardClicked);
   const approveService = async () => {
@@ -26,6 +52,10 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
     }
   };
 
+  useEffect(() => {
+    fetchUserProfileImage();
+  }, []);
+
   return (
     <div>
       <>
@@ -42,7 +72,7 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
-                    src={defaultavatar}
+                    src={userProfile_image}
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>

@@ -1,8 +1,8 @@
-import { React, useMemo, useState } from "react";
+import { React, useEffect, useMemo, useState } from "react";
 import ReactDom from "react-dom";
 import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
-import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
+import defaultavatar from "../../Assets/profile/defaultavatar.svg";
 import starUnfilled from "../../Assets/services/starunfilled.svg";
 import starFilled from "../../Assets/services/starfilled.svg";
 
@@ -10,9 +10,34 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [reviews, setReviews] = useState("");
+  const [hmProfile_image, setHmProfile_image] = useState("");
+
+  //=============================Fetch Profile Image ===================================
+  const fetchHmProfileImage = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${cardClicked.hm_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const hmProfileImage = await res.json();
+      if (hmProfileImage.length === 0) {
+        setHmProfile_image(defaultavatar);
+      } else {
+        setHmProfile_image(hmProfileImage[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   //=============================BACKEND API===================================
-  //====================Change status to delete===================================
+  //====================Change status to completed===================================
   console.log(reviews);
   const approveService = async () => {
     try {
@@ -86,6 +111,9 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
     [hoverRating]
   );
 
+  useEffect(() => {
+    fetchHmProfileImage();
+  });
   console.log(hoverRating);
   console.log(rating);
 
@@ -108,7 +136,7 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
-                    src={defaultavatar}
+                    src={hmProfile_image}
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>

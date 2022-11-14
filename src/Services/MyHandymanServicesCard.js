@@ -40,6 +40,7 @@ const MyHandymanServicesCard = ({
     } catch (e) {
       console.error(e);
     }
+    //====================== User Profile Image fetching =======================
     try {
       const res = await fetch(
         `http://127.0.0.1:8001/user/${eachJobData.user_id}/profileimage/any`,
@@ -65,7 +66,6 @@ const MyHandymanServicesCard = ({
   useEffect(() => {
     getUserRatings();
   }, []);
-  //====================== User Profile Image fetching =======================
 
   //===================================================================
   const handleApproveMyService = () => {

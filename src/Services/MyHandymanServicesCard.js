@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
 import tick from "../Assets/services/tick.svg";
 import wrench from "../Assets/services/wrench.svg";
 
@@ -14,6 +14,8 @@ const MyHandymanServicesCard = ({
   setCardClicked,
 }) => {
   const [userRatings, setUserRatings] = useState([]);
+  const [userProfile_image, setUserProfile_image] = useState("");
+  console.log(eachJobData);
 
   //=================== Truncate String =======================
   const truncate = (str, n) => {
@@ -38,11 +40,33 @@ const MyHandymanServicesCard = ({
     } catch (e) {
       console.error(e);
     }
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/user/${eachJobData.user_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const userProfileImage = await res.json();
+      if (userProfileImage.length === 0) {
+        setUserProfile_image(defaultavatar);
+      } else {
+        setUserProfile_image(userProfileImage[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
     getUserRatings();
   }, []);
+  //====================== User Profile Image fetching =======================
+
   //===================================================================
   const handleApproveMyService = () => {
     setApproveJobsModalValue(true);
@@ -79,7 +103,11 @@ const MyHandymanServicesCard = ({
                     eachJobData.user_first_name.slice(1)}
                 </p>
                 <div className="myuserservice--profile--stars mb4">
-                  <img src={recommendedprofile} alt="images"></img>
+                  <img
+                    src={userProfile_image}
+                    alt="images"
+                    className="profile--image--small"
+                  ></img>
                 </div>
                 {userRatings.length > 0 ? (
                   <p className="m0 fw700 fs8 white">

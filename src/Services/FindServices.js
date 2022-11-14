@@ -54,7 +54,7 @@ const FindServices = ({
           />
         </div>
         <div className="category--header">
-          <span>{filteredServicesData.length}</span> services for you
+          <span>{filteredServicesData.length}</span> service(s) for you
         </div>
         <div className="sorting--buttons--box">
           <img src={priceup} onClick={handleSortDown} />

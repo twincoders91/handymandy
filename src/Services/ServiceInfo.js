@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
-import recommendedprofile from "../Assets/homepage/randomman.svg";
 import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
-import tick from "../Assets/services/tick.svg";
+import defaultavatar from "../Assets/profile/defaultavatar_small.svg";
+
 import wrench from "../Assets/services/wrench.svg";
 import ConfirmBookingModal from "../Components/Modals/ConfirmBookingModal";
 
@@ -23,6 +22,7 @@ const ServiceInfo = ({
   user_id,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
+  const [hmProfileImage, setHMProfileImage] = useState("");
   const navigate = useNavigate();
 
   //=================== Truncate String =======================
@@ -36,9 +36,8 @@ const ServiceInfo = ({
   const serviceInfo = filteredServicesData.filter(
     (item) => item.services_id === selectedServiceId
   );
-  setHm_id(serviceInfo.hm_id);
-  console.log(selectedServiceId);
-  console.log(filteredServicesData);
+
+  // setHm_id(serviceInfo[0].hm_id);
   console.log(serviceInfo);
 
   //====================== Fetch HM profile by ID =======================
@@ -104,6 +103,33 @@ const ServiceInfo = ({
     }
   };
 
+  //====================== Fetch HM Profile Image =======================
+  const retreiveHandymanProfileImage = async () => {
+    try {
+      console.log("trying");
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}/profileimage/any`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const hmProfileImage = await res.json();
+      console.log(hmProfileImage);
+
+      if (hmProfileImage.length === 0) {
+        setHMProfileImage(defaultavatar);
+      } else {
+        setHMProfileImage(hmProfileImage[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   //====================== Fetch avg ratings =======================
   const getHmRatings = async () => {
     const res = await fetch(
@@ -117,7 +143,6 @@ const ServiceInfo = ({
       }
     );
     const ratingData = await res.json();
-    console.log(ratingData);
     setHmRatings(ratingData);
   };
 
@@ -148,6 +173,7 @@ const ServiceInfo = ({
 
   useEffect(() => {
     getHmRatings();
+    retreiveHandymanProfileImage();
   }, []);
 
   return (
@@ -182,7 +208,11 @@ const ServiceInfo = ({
                     serviceInfo[0].first_name.slice(1)}
                 </p>
                 <div className="service--info--profile--stars mb4">
-                  <img src={recommendedprofile} alt="images"></img>
+                  <img
+                    src={hmProfileImage}
+                    alt="images"
+                    className="profile--image--small"
+                  ></img>
                   <div className="service--info--stars">{starRating}</div>
                 </div>
                 {hmRatings.length > 0 ? (

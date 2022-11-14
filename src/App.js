@@ -189,6 +189,7 @@ export default function App() {
               hmAverageRating={hmAverageRating}
               jobsCompleted={jobsCompleted}
               totalRatings={totalRatings}
+              hMDetails={hMDetails}
               setHMDetails={setHMDetails}
               userDetails={userDetails}
               setUserDetails={setUserDetails}

@@ -9,7 +9,12 @@ import time from "../Assets/profile/new/time.svg";
 import reviews from "../Assets/profile/new/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 
-const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
+const ProfileHandyman = ({
+  setBackButtonVisibility,
+  hm_id,
+  hMDetails,
+  setHMDetails,
+}) => {
   //=============================FETCHING APIS============================
   const [averageRating, setAverageRating] = useState("");
   const [profile_image, setProfile_image] = useState("");
@@ -25,16 +30,8 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
 
   const navigate = useNavigate();
 
-  const retreiveHandymanInfo = async () => {
+  const retreiveHandymanRatingsSummary = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      });
-      const hm_details = await res.json();
       const res2 = await fetch(
         `http://127.0.0.1:8001/handyman/${hm_id}/ratingssummary`,
         {
@@ -59,13 +56,8 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
       );
       const ratingData = await res3.json();
 
-      const overallData = { hm_details, hm_ratings_summary, ratingData };
-      console.log(overallData);
-      if (overallData.hm_details[0].profile_image) {
-        setProfile_image(overallData.hm_details[0].profile_image);
-      } else {
-        setProfile_image(defaultavatar);
-      }
+      const overallData = { hm_ratings_summary, ratingData };
+
       if (overallData.ratingData[0]) {
         setAverageRating(overallData.ratingData[0].average_rating);
       } else {
@@ -75,26 +67,6 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
         setJobsCompleted(overallData.ratingData[0].total_jobs);
       } else {
         setJobsCompleted(0);
-      }
-      if (overallData.hm_details[0].about) {
-        setAboutHM(overallData.hm_details[0].about);
-      } else {
-        setAboutHM("No Description");
-      }
-      if (overallData.hm_details[0].business_name) {
-        setCompanyHM(overallData.hm_details[0].business_name);
-      } else {
-        setCompanyHM("No Company");
-      }
-      if (overallData.hm_details[0].number_of_years) {
-        setNumberOfYears(overallData.hm_details[0].number_of_years);
-      } else {
-        setNumberOfYears(0);
-      }
-      if (overallData.hm_details[0].specialities) {
-        setSpecialitiesHM(overallData.hm_details[0].specialities);
-      } else {
-        setSpecialitiesHM([]);
       }
       if (overallData.ratingData[0]) {
         setTotalRatingPoints(overallData.ratingData[0].total_ratings);
@@ -106,12 +78,175 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
       } else {
         setIndividualHMReviews([]);
       }
-      setfirst_name_hm(overallData.hm_details[0].first_name);
-      setlast_name_hm(overallData.hm_details[0].last_name);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
+
+  const retreiveHandymanInfo = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/handyman/${hm_id}/profileimage`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const hm_details = await res.json();
+      console.log(hm_details);
+
+      if (hm_details.length === 0) {
+        try {
+          const res = await fetch(`http://127.0.0.1:8001/handyman/${hm_id}`, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          });
+          const hm_details = await res.json();
+
+          setHMDetails(hm_details[0]);
+          if (hm_details[0].profile_image) {
+            setProfile_image(hm_details[0].profile_image);
+          } else {
+            setProfile_image(defaultavatar);
+          }
+
+          if (hm_details[0].about) {
+            setAboutHM(hm_details[0].about);
+          } else {
+            setAboutHM("No Description");
+          }
+          if (hm_details[0].business_name) {
+            setCompanyHM(hm_details[0].business_name);
+          } else {
+            setCompanyHM("No Company");
+          }
+          if (hm_details[0].number_of_years) {
+            setNumberOfYears(hm_details[0].number_of_years);
+          } else {
+            setNumberOfYears(0);
+          }
+          if (hm_details[0].specialities) {
+            setSpecialitiesHM(hm_details[0].specialities);
+          } else {
+            setSpecialitiesHM([]);
+          }
+
+          setfirst_name_hm(hm_details[0].first_name);
+          setlast_name_hm(hm_details[0].last_name);
+        } catch (e) {
+          console.log(e);
+        }
+      } else {
+        setHMDetails(hm_details[0]);
+        if (hm_details[0].about) {
+          setAboutHM(hm_details[0].about);
+        } else {
+          setAboutHM("No Description");
+        }
+
+        if (hm_details[0].business_name) {
+          setCompanyHM(hm_details[0].business_name);
+        } else {
+          setCompanyHM("No Company");
+        }
+
+        if (hm_details[0].number_of_years) {
+          setNumberOfYears(hm_details[0].number_of_years);
+        } else {
+          setNumberOfYears(0);
+        }
+
+        if (hm_details[0].specialities) {
+          setSpecialitiesHM(hm_details[0].specialities);
+        } else {
+          setSpecialitiesHM([]);
+        }
+
+        setfirst_name_hm(hm_details[0].first_name);
+        setlast_name_hm(hm_details[0].last_name);
+        setProfile_image(hm_details[0].image_url);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //=========================================================
+
+  const updateProfileImage = async (event) => {
+    try {
+      const file = event.target.files[0];
+
+      // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
+      const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
+        res.json()
+      );
+      console.log(url);
+
+      // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      });
+
+      const imageUrl = url.split("?")[0];
+
+      // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
+      console.log(imageUrl);
+      console.log(hMDetails);
+
+      if (hMDetails.image_url === null || !hMDetails.image_url) {
+        try {
+          const res = await fetch("http://127.0.0.1:8001/profileimage/", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+              image_url: imageUrl,
+              hm_id: hm_id,
+            }),
+          });
+          console.log(res);
+          retreiveHandymanInfo();
+        } catch (e) {
+          console.error(e);
+        }
+      } else {
+        try {
+          const res = await fetch("http://127.0.0.1:8001/profileimage/hm", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify({
+              hm_id: hm_id,
+              image_url: imageUrl,
+            }),
+          });
+          console.log(res);
+          retreiveHandymanInfo();
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //=========================================================
 
   const handleEditProfile = async () => {
     console.log(hm_id);
@@ -152,6 +287,7 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
 
   useEffect(() => {
     setBackButtonVisibility(true);
+    retreiveHandymanRatingsSummary();
     retreiveHandymanInfo();
   }, []);
 
@@ -161,9 +297,9 @@ const ProfileHandyman = ({ setBackButtonVisibility, hm_id, setHMDetails }) => {
         <img src={profile_image} className="absolute profile--image" />
         <form className="absolute update--profile--image--form">
           <input
-            // onChange={(e) => {
-            //   updateProfileImage(e);
-            // }}
+            onChange={(e) => {
+              updateProfileImage(e);
+            }}
             type="file"
             accept="image/*"
             className="absolute update--profile--image--button"

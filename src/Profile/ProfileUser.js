@@ -101,17 +101,6 @@ const ProfileUser = ({
 
   //=========================================================
 
-  // const updateProfileImage = async (event) => {
-  //   const formData = new FormData();
-  //   formData.append("image", event.target.files[0]);
-  //   await axios.post("http://127.0.0.1:8001/user/profileimage", formData, {
-  //     headers: { "Content-Type": "multipart/form-data" },
-  //   });
-
-  //   setProfile_image(event.target.files[0]);
-  //   console.log(event.target.files[0]);
-  // };
-
   const updateProfileImage = async (event) => {
     try {
       // event.preventDefault();

@@ -68,7 +68,6 @@
   border-radius: 6px;
   box-shadow: var(--shadowing);
   background: rgba(0, 0, 0, 0.4);
-  padding: 8px;
 }
 .individual--category--card:hover {
   cursor: pointer;

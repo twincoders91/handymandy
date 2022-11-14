@@ -22,6 +22,7 @@ const ProfileUser = ({
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [userRatings, setUserRatings] = useState("");
+  const [date, setDate] = useState("");
 
   const navigate = useNavigate();
 
@@ -81,6 +82,7 @@ const ProfileUser = ({
           setFirstName(user_details[0].first_name);
           setLastName(user_details[0].last_name);
           setEmail(user_details[0].email);
+          setDate(user_details[0].date_joined);
           // setProfile_image(user_details[0].image_url);
         } catch (e) {
           console.log(e);
@@ -93,6 +95,7 @@ const ProfileUser = ({
         setLastName(user_details[0].last_name);
         setEmail(user_details[0].email);
         setProfile_image(user_details[0].image_url);
+        setDate(user_details[0].date_joined);
       }
     } catch (e) {
       console.error(e);
@@ -215,6 +218,7 @@ const ProfileUser = ({
           <div className="fw700 fs16 white mt16">Email</div>
           <span className="fw400 fs12 mt12">{email}</span>
         </div>
+
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards">
             <div className="category--profile--cards--box">
@@ -260,6 +264,10 @@ const ProfileUser = ({
               </div>
             </div>
           </div>
+        </div>
+        <div className="profile--about--box ml24">
+          <div className="fw700 fs16 white mt16">Date Joined</div>
+          <span className="fw400 fs12 mt12">{date.slice(0, 10)}</span>
         </div>
 
         <div className="profile--medal--icons--box  mt16">

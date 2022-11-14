@@ -191,6 +191,25 @@ const ViewProfileHandyman = ({
             })}
           </div>
         </div>
+        <div className="profile--about--box ml24">
+          <div className="fw700 fs16 white mt16">Date Joined</div>
+        </div>
+        <div className="profile--medal--icons--box  mt16 mb16">
+          <div className="category--profile--cards">
+            <div className="category--profile--cards--box">
+              <div className="category--profile--cards--image--box">
+                <img src={time} className="profile--icons" alt="images"></img>
+              </div>
+
+              <div className="profile--description--cards">
+                <div className="category--cards--text fw700 fs14">
+                  {hmProfile[0].date_joined.slice(0, 10)}
+                </div>
+                <div className="fw400 fs12">since</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="reviews--info--container">
         <div className="reviews--header white fw700 fs16 ml24 mt24 mb4">

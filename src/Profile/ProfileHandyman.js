@@ -28,6 +28,7 @@ const ProfileHandyman = ({
   const [last_name_hm, setlast_name_hm] = useState("");
   const [totalRatingsPoints, setTotalRatingPoints] = useState("");
   const [individualHMReviews, setIndividualHMReviews] = useState([]);
+  const [date, setDate] = useState("");
 
   const navigate = useNavigate();
 
@@ -140,6 +141,7 @@ const ProfileHandyman = ({
 
           setfirst_name_hm(hm_details[0].first_name);
           setlast_name_hm(hm_details[0].last_name);
+          setDate(hm_details[0].date_joined);
         } catch (e) {
           console.log(e);
         }
@@ -172,6 +174,7 @@ const ProfileHandyman = ({
         setfirst_name_hm(hm_details[0].first_name);
         setlast_name_hm(hm_details[0].last_name);
         setProfile_image(hm_details[0].image_url);
+        setDate(hm_details[0].date_joined);
       }
     } catch (e) {
       console.error(e);
@@ -406,6 +409,25 @@ const ProfileHandyman = ({
                 </div>
               );
             })}
+          </div>
+        </div>
+        <div className="profile--about--box ml24">
+          <div className="fw700 fs16 white mt16">Date Joined</div>
+        </div>
+        <div className="profile--medal--icons--box  mt16">
+          <div className="category--profile--cards">
+            <div className="category--profile--cards--box">
+              <div className="category--profile--cards--image--box">
+                <img src={time} className="profile--icons" alt="images"></img>
+              </div>
+
+              <div className="profile--description--cards">
+                <div className="category--cards--text fw700 fs14">
+                  {date.slice(0, 10)}
+                </div>
+                <div className="fw400 fs12">since</div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="message--button--box mb24">

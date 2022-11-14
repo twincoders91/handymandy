@@ -90,7 +90,7 @@ const CategoryCards = ({
 
   useEffect(() => {
     getHmRatings();
-  }, []);
+  }, [first_name]);
 
   return (
     <div

@@ -267,9 +267,23 @@ const ProfileUser = ({
         </div>
         <div className="profile--about--box ml24">
           <div className="fw700 fs16 white mt16">Date Joined</div>
-          <span className="fw400 fs12 mt12">{date.slice(0, 10)}</span>
         </div>
+        <div className="profile--medal--icons--box  mt16">
+          <div className="category--profile--cards">
+            <div className="category--profile--cards--box">
+              <div className="category--profile--cards--image--box">
+                <img src={time} className="profile--icons" alt="images"></img>
+              </div>
 
+              <div className="profile--description--cards">
+                <div className="category--cards--text fw700 fs14">
+                  {date.slice(0, 10)}
+                </div>
+                <div className="fw400 fs12">since</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="profile--medal--icons--box  mt16">
           <div className="category--profile--cards"></div>
         </div>

@@ -14,7 +14,8 @@ const FindServices = ({
   setSelectedServiceId,
   setViewHmProfile,
 }) => {
-  console.log(filteredServicesData);
+  const [searchVal, setSearchVal] = useState("");
+  const [searchBarArray, setSearchBarArray] = useState([]);
 
   //==================== Handle Button Clicks ======================
   const handleCategoryCard = (id) => {
@@ -33,11 +34,46 @@ const FindServices = ({
       [...filteredServicesData].sort((a, b) => b.price_from - a.price_from)
     );
   };
-  console.log(filteredServicesData);
+
+  //==================== Search Bar ======================
+  const searchBarInput = async (e) => {
+    setSearchVal(e.target.value);
+    const searchBarFilteredServices = await filteredServicesData.filter(
+      (services) => {
+        console.log(
+          services.description.toLowerCase().includes(searchVal.toLowerCase())
+        );
+        return services.description
+          .toLowerCase()
+          .includes(searchVal.toLowerCase());
+      }
+    );
+    setSearchBarArray(searchBarFilteredServices);
+    console.log(e.target.value);
+    console.log(searchBarArray);
+  };
+
+  // const clickSearch = () => {
+  //   const searchBarFilteredServices = filteredServicesData.filter(
+  //     (services) => {
+  //       console.log(
+  //         services.description.toLowerCase().includes(searchVal.toLowerCase())
+  //       );
+  //       return services.description
+  //         .toLowerCase()
+  //         .includes(searchVal.toLowerCase());
+  //     }
+  //   );
+  //   setSearchBarArray(searchBarFilteredServices);
+  // };
+  // console.log(searchBarArray);
+
+  //====================================================
+
   useEffect(() => {
     setBackButtonVisibility(true);
     // filterServices();
-  }, []);
+  }, [searchBarInput]);
 
   return (
     <>
@@ -46,6 +82,9 @@ const FindServices = ({
           <input
             className="category--search--bar"
             placeholder="I need help with..."
+            onChange={searchBarInput}
+            value={searchVal}
+            type="text"
           ></input>
           <img
             src={searchIcon}
@@ -54,13 +93,20 @@ const FindServices = ({
           />
         </div>
         <div className="category--header">
-          <span>{filteredServicesData.length}</span> service(s) for you
+          {filteredServicesData.length >= 0 && searchBarArray.length === 0 ? (
+            <span>{filteredServicesData.length}</span>
+          ) : (
+            <span>{searchBarArray.length}</span>
+          )}{" "}
+          service(s) for you
         </div>
         <div className="sorting--buttons--box">
           <img src={priceup} onClick={handleSortDown} />
           <img src={pricedown} onClick={handleSortUp} className="ml4" />
         </div>
-        {filteredServicesData.length > 0 ? (
+        {filteredServicesData.length > 0 &&
+          searchBarArray.length === 0 &&
+          searchVal === "" &&
           filteredServicesData.map((hmService) => {
             return (
               <CategoryCards
@@ -76,8 +122,25 @@ const FindServices = ({
                 services_id={hmService.services_id}
               />
             );
-          })
-        ) : (
+          })}
+        {searchBarArray.length > 0 &&
+          searchBarArray.map((hmService) => {
+            return (
+              <CategoryCards
+                first_name={hmService.first_name}
+                last_name={hmService.last_name}
+                hm_id={hmService.hm_id}
+                price_from={hmService.price_from}
+                description={hmService.description}
+                id={hmService.id}
+                title={hmService.title}
+                handleCategoryCard={handleCategoryCard}
+                setViewHmProfile={setViewHmProfile}
+                services_id={hmService.services_id}
+              />
+            );
+          })}
+        {searchBarArray.length === 0 && !(searchVal === "") && (
           <div className="fs32 fw700 mt24">No Services</div>
         )}
       </div>

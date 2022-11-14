@@ -8,7 +8,12 @@ import time from "../Assets/profile/time.svg";
 import reviews from "../Assets/profile/reviews.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.jpeg";
 
-const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
+const ProfileUser = ({
+  setBackButtonVisibility,
+  user_id,
+  userDetails,
+  setUserDetails,
+}) => {
   //=============================FETCHING APIS============================
   const [averageRating, setAverageRating] = useState("");
   const [profile_image, setProfile_image] = useState("");
@@ -53,16 +58,40 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       );
       const user_details = await res.json();
       console.log(user_details);
-      setUserDetails(user_details[0]);
-      console.log(user_details);
-      setUserUsername(user_details[0].username);
-      setFirstName(user_details[0].first_name);
-      setLastName(user_details[0].last_name);
-      setEmail(user_details[0].email);
 
-      if (user_details[0].image_url === null || !user_details[0].image_url) {
-        setProfile_image(defaultavatar);
+      if (user_details.length === 0) {
+        try {
+          const res = await fetch(`http://127.0.0.1:8001/user/${user_id}`, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          });
+          const user_details = await res.json();
+          setUserDetails(user_details[0]);
+          setProfile_image(defaultavatar);
+          // if (user_details[0].profile_image) {
+          //   setProfile_image(user_details[0].profile_image);
+          // } else {
+          //   setProfile_image(defaultavatar);
+          // }
+          console.log(user_details);
+          setUserUsername(user_details[0].username);
+          setFirstName(user_details[0].first_name);
+          setLastName(user_details[0].last_name);
+          setEmail(user_details[0].email);
+          // setProfile_image(user_details[0].image_url);
+        } catch (e) {
+          console.log(e);
+        }
       } else {
+        setUserDetails(user_details[0]);
+        console.log(user_details);
+        setUserUsername(user_details[0].username);
+        setFirstName(user_details[0].first_name);
+        setLastName(user_details[0].last_name);
+        setEmail(user_details[0].email);
         setProfile_image(user_details[0].image_url);
       }
     } catch (e) {
@@ -70,30 +99,6 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
     }
   };
 
-  // try {
-  //   const res = await fetch(`http://127.0.0.1:8001/user/${user_id}`, {
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     method: "GET",
-  //   });
-  //   const user_details = await res.json();
-  //   setUserDetails(user_details[0]);
-  //   console.log(user_details);
-
-  //   if (user_details[0].profile_image) {
-  //     setProfile_image(user_details[0].profile_image);
-  //   } else {
-  //     setProfile_image(defaultavatar);
-  //   }
-  //   setUserUsername(user_details[0].username);
-  //   setFirstName(user_details[0].first_name);
-  //   setLastName(user_details[0].last_name);
-  //   setEmail(user_details[0].email);
-  // } catch (e) {
-  //   console.log(e);
-  // }
   //=========================================================
 
   // const updateProfileImage = async (event) => {
@@ -131,24 +136,45 @@ const ProfileUser = ({ setBackButtonVisibility, user_id, setUserDetails }) => {
       // setProfile_image(imageUrl);
       // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
       console.log(imageUrl);
+      console.log(userDetails);
 
-      try {
-        const res = await fetch("http://127.0.0.1:8001/profileimage/", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify({
-            image_url: imageUrl,
-            user_id: user_id,
-          }),
-        });
-        console.log(res);
-      } catch (e) {
-        console.error(e);
+      if (userDetails.image_url === null || !userDetails.image_url) {
+        try {
+          const res = await fetch("http://127.0.0.1:8001/profileimage/", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+              image_url: imageUrl,
+              user_id: user_id,
+            }),
+          });
+          console.log(res);
+          retreiveUserInfo();
+        } catch (e) {
+          console.error(e);
+        }
+      } else {
+        try {
+          const res = await fetch("http://127.0.0.1:8001/profileimage/", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify({
+              user_id: user_id,
+              image_url: imageUrl,
+            }),
+          });
+          console.log(res);
+          retreiveUserInfo();
+        } catch (e) {
+          console.error(e);
+        }
       }
-      retreiveUserInfo();
     } catch (e) {
       console.error(e);
     }

@@ -190,6 +190,7 @@ export default function App() {
               jobsCompleted={jobsCompleted}
               totalRatings={totalRatings}
               setHMDetails={setHMDetails}
+              userDetails={userDetails}
               setUserDetails={setUserDetails}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}

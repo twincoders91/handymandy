@@ -23,6 +23,7 @@ const Profiles = ({
   jobsCompleted,
   totalRatings,
   setHMDetails,
+  userDetails,
   setUserDetails,
   setCurrentPage,
   currentPage,
@@ -55,6 +56,7 @@ const Profiles = ({
           totalReviews={totalReviews}
           setBackButtonVisibility={setBackButtonVisibility}
           user_id={user_id}
+          userDetails={userDetails}
           setUserDetails={setUserDetails}
         />
       )}

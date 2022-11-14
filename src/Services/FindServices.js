@@ -28,10 +28,16 @@ const FindServices = ({
     setFilteredServicesData(
       [...filteredServicesData].sort((a, b) => a.price_from - b.price_from)
     );
+    setSearchBarArray(
+      [...searchBarArray].sort((a, b) => a.price_from - b.price_from)
+    );
   };
   const handleSortUp = () => {
     setFilteredServicesData(
       [...filteredServicesData].sort((a, b) => b.price_from - a.price_from)
+    );
+    setSearchBarArray(
+      [...searchBarArray].sort((a, b) => b.price_from - a.price_from)
     );
   };
 
@@ -40,11 +46,6 @@ const FindServices = ({
     setSearchVal(e.target.value);
     const searchBarFilteredServices = await filteredServicesData.filter(
       (services) => {
-        console.log(
-          services.description
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase())
-        );
         return (
           services.description
             .toLowerCase()
@@ -92,8 +93,16 @@ const FindServices = ({
           service(s) for you
         </div>
         <div className="sorting--buttons--box">
-          <img src={priceup} onClick={handleSortDown} />
-          <img src={pricedown} onClick={handleSortUp} className="ml4" />
+          <img
+            src={priceup}
+            onClick={handleSortDown}
+            className="sorting--price--icon"
+          />
+          <img
+            src={pricedown}
+            onClick={handleSortUp}
+            className="ml4 sorting--price--icon"
+          />
         </div>
         {filteredServicesData.length > 0 &&
           searchBarArray.length === 0 &&

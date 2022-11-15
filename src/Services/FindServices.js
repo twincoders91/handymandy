@@ -139,6 +139,7 @@ const FindServices = ({
                 handleCategoryCard={handleCategoryCard}
                 setViewHmProfile={setViewHmProfile}
                 services_id={hmService.services_id}
+                image_url={hmService.image_url}
               />
             );
           })}

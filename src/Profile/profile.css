@@ -107,7 +107,7 @@ input[type="file"] {
   border: 1px solid black;
   border-radius: 4px;
   box-shadow: var(--shadowing);
-  width: 85px;
+  width: 95px;
 }
 
 .category--profile--cards--image--box {

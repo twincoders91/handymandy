@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import default_image from "../Assets/homepage/recommended4usampleimage.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import wrench from "../Assets/services/wrench.svg";
+import { useNavigate } from "react-router-dom";
 
 const MyHandymanServicesCard = ({
   userDetails,
@@ -10,9 +11,11 @@ const MyHandymanServicesCard = ({
   setDeclineJobsModalValue,
   setApproveJobsModalValue,
   setCardClicked,
+  setInboxData,
 }) => {
   const [userRatings, setUserRatings] = useState([]);
   const [userProfile_image, setUserProfile_image] = useState("");
+  const navigate = useNavigate();
   console.log(eachJobData);
 
   //=================== Truncate String =======================
@@ -65,7 +68,7 @@ const MyHandymanServicesCard = ({
     getUserRatings();
   }, []);
 
-  //===================================================================
+  //=======================Handle button clicks ============================
   const handleApproveMyService = () => {
     setApproveJobsModalValue(true);
     setCardClicked({ eachJobData, userProfile_image });
@@ -74,6 +77,24 @@ const MyHandymanServicesCard = ({
   const handleDeclineMyService = () => {
     setDeclineJobsModalValue(true);
     setCardClicked({ eachJobData, userProfile_image });
+  };
+
+  const handleMessageMyService = async (id) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/inbox/${id}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+
+      const getInboxData = await res.json();
+      setInboxData(getInboxData);
+    } catch (error) {
+      console.error(error);
+    }
+    navigate("/inbox");
   };
   //===================================================================
 
@@ -180,6 +201,20 @@ const MyHandymanServicesCard = ({
                     }}
                   >
                     Decline
+                  </button>
+                </>
+              ) : (
+                <></>
+              )}
+              {eachJobData.job_status === "pending" ? (
+                <>
+                  <button
+                    className="myuserservice--view--message--button fw700 fs12"
+                    onClick={() => {
+                      handleMessageMyService(eachJobData.jobs_id);
+                    }}
+                  >
+                    Message
                   </button>
                 </>
               ) : (

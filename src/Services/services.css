@@ -503,6 +503,18 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.myuserservice--view--message--button {
+  height: 30px;
+  width: 90px;
+  background-color: var(--orange);
+  outline: none;
+  border: none;
+  font-family: "Exo", sans-serif;
+  color: var(--black);
+  margin-left: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 .myuserservice--view--profile--button {
   height: 30px;

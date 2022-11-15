@@ -19,6 +19,7 @@ const MyServices = ({
   setTotalRatings,
   setIndividualHmReviews,
   userNotifications,
+  setInboxData,
 }) => {
   return (
     <div>
@@ -31,6 +32,7 @@ const MyServices = ({
           userDetails={userDetails}
           setCurrentPage={setCurrentPage}
           charSelect={charSelect}
+          setInboxData={setInboxData}
         />
       )}
       {charSelect == "user" && (

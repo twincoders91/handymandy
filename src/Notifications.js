@@ -74,7 +74,7 @@ const Notifications = ({ userNotifications, user_id }) => {
                         items.first_name.slice(1)}{" "}
                       {items.status_id === "inprogress"
                         ? "has accepted this job request."
-                        : items.status_id}
+                        : `has ${items.status_id} this job request.`}
                     </p>
                   </div>
                 </div>

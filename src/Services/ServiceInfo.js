@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
-import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import default_image from "../Assets/homepage/recommended4usampleimage.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 
 import wrench from "../Assets/services/wrench.svg";
@@ -106,7 +106,6 @@ const ServiceInfo = ({
   //====================== Fetch HM Profile Image =======================
   const retreiveHandymanProfileImage = async () => {
     try {
-      console.log("trying");
       const res = await fetch(
         `http://127.0.0.1:8001/handyman/${serviceInfo[0].hm_id}/profileimage/any`,
         {
@@ -189,7 +188,11 @@ const ServiceInfo = ({
       <div className="service--info--card">
         <div className="service--info--card--top">
           <img
-            src={recommended4usampleimage}
+            src={
+              serviceInfo[0].image_url
+                ? serviceInfo[0].image_url
+                : default_image
+            }
             className="service--info--image"
             alt="images"
           />

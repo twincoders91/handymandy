@@ -3,7 +3,7 @@ import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
-import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import default_image from "../Assets/homepage/recommended4usampleimage.svg";
 import wrench from "../Assets/services/wrench.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -154,7 +154,7 @@ const MyUserServicesCard = ({
   //===================================================================
   const handleDeleteMyService = () => {
     setCancelJobsModalValue(true);
-    setCardClicked(item);
+    setCardClicked({ item, hmProfile_image });
   };
 
   const handleApproveMyService = () => {
@@ -173,7 +173,7 @@ const MyUserServicesCard = ({
       <div className="myuserservice--card mb24">
         <div className="myuserservice--card--top">
           <img
-            src={recommended4usampleimage}
+            src={item.image_url ? item.image_url : default_image}
             className="myuserservice--image"
             alt="images"
           />

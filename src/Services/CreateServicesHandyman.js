@@ -298,7 +298,7 @@ const CreateServicesHandyman = ({
             <div className="legal--name--container mt8">
               <div className="universal--input--forms--full">
                 <input
-                  type="text"
+                  type="number"
                   placeholder="e.g. $150"
                   className="create--account--input ml12"
                   onChange={(e) => setPrice(e.target.value)}

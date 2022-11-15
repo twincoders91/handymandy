@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import recommendedprofile from "../Assets/homepage/randomman.svg";
-import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import default_image from "../Assets/homepage/recommended4usampleimage.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 
 const CategoryCards = ({
@@ -14,6 +14,7 @@ const CategoryCards = ({
   id,
   handleCategoryCard,
   services_id,
+  image_url,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const [hmProfileImage, setHMProfileImage] = useState("");
@@ -101,7 +102,7 @@ const CategoryCards = ({
     >
       <div className="individual--category--image--box">
         <img
-          src={recommended4usampleimage}
+          src={image_url ? image_url : default_image}
           className="individual--category--image absolute"
           alt="images"
         />

@@ -16,6 +16,7 @@ const FindServices = ({
 }) => {
   const [searchVal, setSearchVal] = useState("");
   const [searchBarArray, setSearchBarArray] = useState([]);
+  console.log(filteredServicesData);
 
   //==================== Handle Button Clicks ======================
   const handleCategoryCard = (id) => {
@@ -120,6 +121,7 @@ const FindServices = ({
                 handleCategoryCard={handleCategoryCard}
                 setViewHmProfile={setViewHmProfile}
                 services_id={hmService.services_id}
+                image_url={hmService.image_url}
               />
             );
           })}

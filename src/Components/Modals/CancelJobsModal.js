@@ -5,6 +5,7 @@ import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
 
 const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
+  console.log(cardClicked);
   const deleteService = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8001/jobs/", {
@@ -35,15 +36,20 @@ const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
                 Cancellation
               </p>
               <p className="m0 white fw700 fs16 mb8 modal--text--confirmbooking">
-                You are about to cancel a service by {cardClicked.first_name}!
+                You are about to cancel a service by{" "}
+                {cardClicked.item.first_name}!
               </p>
               <p className="m0 white fw400 fs12 mb24 modal--text--confirmbooking">
-                {cardClicked.first_name} will be notified!
+                {cardClicked.item.first_name} will be notified!
               </p>
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
-                    src={defaultavatar}
+                    src={
+                      cardClicked.hmProfile_image
+                        ? cardClicked.hmProfile_image
+                        : defaultavatar
+                    }
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>
@@ -52,7 +58,7 @@ const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
                     Title
                   </p>
                   <p className="m0 white fw400 fs12 mt8 modal--text--confirmbooking--description">
-                    {cardClicked.title}
+                    {cardClicked.item.title}
                   </p>
                 </div>
                 <div className="confirm--booking--description--box">
@@ -60,7 +66,7 @@ const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
                     Description
                   </p>
                   <p className="m0 white fw400 fs12 mt8 modal--text--confirmbooking--description">
-                    {cardClicked.description}
+                    {cardClicked.item.description}
                   </p>
                 </div>
               </div>

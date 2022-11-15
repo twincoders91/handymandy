@@ -65,23 +65,24 @@ const Profiles = ({
           setUserDetails={setUserDetails}
         />
       )}
-      {charSelect == "user" && currentPage === "Service Info" && (
-        <ViewProfileHandyman
-          averageRating={averageRating}
-          totalJobs={totalJobs}
-          totalReviews={totalReviews}
-          setBackButtonVisibility={setBackButtonVisibility}
-          serviceInfo={serviceInfo}
-          hm_id={hm_id}
-          hmProfile={hmProfile}
-          individualHmStar={individualHmStar}
-          individualHmReviews={individualHmReviews}
-          hmAverageRating={hmAverageRating}
-          jobsCompleted={jobsCompleted}
-          totalRatings={totalRatings}
-          setCurrentPage={setCurrentPage}
-        />
-      )}
+      {charSelect == "user" &&
+        (currentPage === "Service Info" || currentPage === "From Featured") && (
+          <ViewProfileHandyman
+            averageRating={averageRating}
+            totalJobs={totalJobs}
+            totalReviews={totalReviews}
+            setBackButtonVisibility={setBackButtonVisibility}
+            serviceInfo={serviceInfo}
+            hm_id={hm_id}
+            hmProfile={hmProfile}
+            individualHmStar={individualHmStar}
+            individualHmReviews={individualHmReviews}
+            hmAverageRating={hmAverageRating}
+            jobsCompleted={jobsCompleted}
+            totalRatings={totalRatings}
+            setCurrentPage={setCurrentPage}
+          />
+        )}
     </div>
   );
 };

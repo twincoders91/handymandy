@@ -36,7 +36,7 @@ const ServiceInfo = ({
   const serviceInfo = filteredServicesData.filter(
     (item) => item.services_id === selectedServiceId
   );
-
+  console.log(filteredServicesData);
   // setHm_id(serviceInfo[0].hm_id);
   console.log(serviceInfo);
 

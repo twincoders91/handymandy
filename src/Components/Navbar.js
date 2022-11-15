@@ -10,11 +10,11 @@ const Navbar = ({
   charSelect,
   chooseCategory,
   setChooseCategory,
-  hmProfile,
   setViewHmProfile,
   viewHmProfile,
   setCurrentPage,
   currentPage,
+  userNotifications,
 }) => {
   const navigate = useNavigate();
   //===============================STATES=======================================
@@ -46,6 +46,7 @@ const Navbar = ({
           setIsActive={setIsActive}
           charSelect={charSelect}
           setCurrentPage={setCurrentPage}
+          userNotifications={userNotifications}
         />
       )}
       <div className="navbar--wrapper">
@@ -92,7 +93,7 @@ const Navbar = ({
             <button>Home</button>
 
             <button className="navlinks" onClick={handleCurrentPage}>
-              Profilew
+              Profile
             </button>
           </div>
 
@@ -108,6 +109,13 @@ const Navbar = ({
             <span></span>
             <span></span>
             <span></span>
+            {(userNotifications || userNotifications.length > 0) && (
+              <div className="notifications--cirle">
+                <p className="notifications--number m0">
+                  {userNotifications.length}
+                </p>
+              </div>
+            )}
           </button>
         </div>
       </div>

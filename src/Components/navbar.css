@@ -101,3 +101,36 @@
     margin: 0px -16px;
   }
 }
+
+.notifications--cirle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  bottom: 0px;
+  right: 0px;
+  z-index: +99;
+}
+
+.notifications--number {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.notifications--hamburgermodal--circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  top: -5px;
+  right: -15px;
+  z-index: +99;
+}

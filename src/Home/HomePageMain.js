@@ -12,6 +12,7 @@ const HomePageMain = ({
   setBackButtonVisibility,
   backButtonVisibility,
   setUpdateServiceDetails,
+  user_id,
   setUser_id,
   setHm_id,
   hm_id,
@@ -19,6 +20,8 @@ const HomePageMain = ({
   setIndividualHMServices,
   setFilteredServicesData,
   setCurrentPage,
+  userNotifications,
+  setUserNotifications,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
@@ -63,12 +66,32 @@ const HomePageMain = ({
       });
       const data = await res.json();
       setUser_id(data.id);
-      return data;
+
+      //=============== Fetch notifications by User ID ===============
+
+      try {
+        const res = await fetch(
+          `http://127.0.0.1:8001/user/notifications/${data.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        );
+
+        const notiData = await res.json();
+        setUserNotifications(notiData);
+      } catch (e) {
+        console.error(e);
+      }
     } catch (e) {
       console.error(e);
     }
   };
 
+  const retrieveUserNotifications = async () => {};
   //============================= Get Handyman Ratings ================================
 
   // const getUserID = async () => {
@@ -91,6 +114,7 @@ const HomePageMain = ({
   //     console.error(e);
   //   }
   // };
+
   //===================================== STAR RATINGS ========================================
   const getHmRatings = async (id) => {
     try {
@@ -135,6 +159,7 @@ const HomePageMain = ({
   useEffect(() => {
     getHandymanID();
     getUserID();
+    retrieveUserNotifications();
   }, []);
 
   return (
@@ -143,13 +168,13 @@ const HomePageMain = ({
         backButtonVisibility={backButtonVisibility}
         charSelect={charSelect}
         setCurrentPage={setCurrentPage}
+        userNotifications={userNotifications}
       />
       {charSelect == "user" && (
         <HomePage
-          setServicesCategory={setServicesCategory}
-          setServicesCategorySelection={setServicesCategorySelection}
           setBackButtonVisibility={setBackButtonVisibility}
           setFilteredServicesData={setFilteredServicesData}
+          userNotifications={userNotifications}
         />
       )}
       {charSelect == "handyman" && updateService == false && (

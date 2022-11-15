@@ -28,6 +28,7 @@ const Services = ({
   setJobsCompleted,
   setTotalRatings,
   user_id,
+  userNotifications,
 }) => {
   //====================== States for Services ======================
   const [chooseCategory, setChooseCategory] = useState(false);
@@ -43,6 +44,7 @@ const Services = ({
         chooseCategory={chooseCategory}
         setChooseCategory={setChooseCategory}
         setCurrentPage={setCurrentPage}
+        userNotifications={userNotifications}
       />
       <div className="category--page--container">
         {!chooseCategory && (

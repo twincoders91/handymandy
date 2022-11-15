@@ -9,7 +9,11 @@ import starunfilled from "../Assets/homepage/starunfilled.svg";
 import "./homepage.css";
 import categoryData from "../DummyDataSets/Category";
 
-const HomePage = ({ setBackButtonVisibility, setFilteredServicesData }) => {
+const HomePage = ({
+  setBackButtonVisibility,
+  setFilteredServicesData,
+  userNotifications,
+}) => {
   const navigate = useNavigate();
 
   //==================== BACKEND FETCHING ======================
@@ -36,7 +40,7 @@ const HomePage = ({ setBackButtonVisibility, setFilteredServicesData }) => {
 
   useEffect(() => {
     setBackButtonVisibility(false);
-  });
+  }, []);
 
   return (
     <>

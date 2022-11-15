@@ -15,6 +15,7 @@ import AcceptedServices from "./Services/AcceptedServices";
 import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 import EditProfileUser from "./EditProfiles/EditProfileMain";
 import MyServices from "./Services/MyServices";
+import Notifications from "./Notifications";
 
 export default function App() {
   //================================== Navbar States===========================================
@@ -43,7 +44,7 @@ export default function App() {
   const [servicePriceFrom, setServicePriceFrom] = useState("");
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
 
-  //============================Jobs States=====================================
+  //============================Notifications States=====================================
 
   //=============================Profile States=====================================
   const [hmProfile, setHmProfile] = useState([]);
@@ -57,7 +58,9 @@ export default function App() {
 
   //==============================Loading===========================================
   const [loading, setLoading] = useState(false);
-  //================================APIS=============================================
+
+  //============================Notifications States=====================================
+  const [userNotifications, setUserNotifications] = useState("");
 
   //======================= Back button settings ===========================
 
@@ -112,6 +115,8 @@ export default function App() {
               setIndividualHMServices={setIndividualHMServices}
               individualHMServices={individualHMServices}
               setCurrentPage={setCurrentPage}
+              userNotifications={userNotifications}
+              setUserNotifications={setUserNotifications}
             />
           }
         />
@@ -137,6 +142,7 @@ export default function App() {
               setTotalRatings={setTotalRatings}
               setCurrentPage={setCurrentPage}
               user_id={user_id}
+              userNotifications={userNotifications}
             />
           }
         />
@@ -195,6 +201,7 @@ export default function App() {
               setUserDetails={setUserDetails}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              userNotifications={userNotifications}
             />
           }
         />
@@ -225,8 +232,13 @@ export default function App() {
               setJobsCompleted={setJobsCompleted}
               setTotalRatings={setTotalRatings}
               setIndividualHmReviews={setIndividualHmReviews}
+              userNotifications={userNotifications}
             />
           }
+        />
+        <Route
+          path="/notifications"
+          element={<Notifications userNotifications={userNotifications} />}
         />
       </Routes>
     </div>

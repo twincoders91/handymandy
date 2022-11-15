@@ -253,6 +253,7 @@
   width: 30px;
 }
 .modal--hamburger--text {
+  position: relative;
   cursor: pointer;
 }
 .modal--hamburger--text:hover {

@@ -12,6 +12,7 @@ const HamburgerModal = ({
   setIsActive,
   charSelect,
   setCurrentPage,
+  userNotifications,
 }) => {
   const navigate = useNavigate();
 
@@ -47,9 +48,22 @@ const HamburgerModal = ({
                 Home
               </p>
             </NavLink>
-            <p className="modal--hamburger--text white fs16 fw700 m0 mt24">
-              About
-            </p>
+            <NavLink
+              className="navlinks"
+              to="/notifications"
+              onClick={() => handleHomeButtonClick()}
+            >
+              <div className="modal--hamburger--text white fs16 fw700 m0 mt24">
+                Notifications
+                {(userNotifications || userNotifications.length > 0) && (
+                  <div className="notifications--hamburgermodal--circle">
+                    <p className="notifications--number m0">
+                      {userNotifications.length}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </NavLink>
             <p
               className="modal--hamburger--text white fs16 fw700 m0 mt24"
               onClick={handleServicesClick}

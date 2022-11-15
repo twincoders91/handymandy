@@ -38,6 +38,7 @@ const Navbar = ({
     }
   };
 
+  console.log(backButtonVisibility);
   return (
     <>
       {hamburgerModal && (
@@ -51,6 +52,15 @@ const Navbar = ({
       )}
       <div className="navbar--wrapper">
         <div className="container">
+          {backButtonVisibility && currentPage === "From Home's Featured" && (
+            <NavLink to="/home">
+              <img
+                src={backButton}
+                className="back--button"
+                onClick={() => handleBackButtonClick2()}
+              />
+            </NavLink>
+          )}
           {backButtonVisibility && chooseCategory && (
             <NavLink to="/services">
               <img
@@ -63,6 +73,7 @@ const Navbar = ({
           {backButtonVisibility &&
             !chooseCategory &&
             !viewHmProfile &&
+            currentPage !== "From Home's Featured" &&
             currentPage !== "Service Info" && (
               <NavLink to="/home">
                 <img src={backButton} className="back--button" />

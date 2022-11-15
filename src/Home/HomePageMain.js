@@ -20,6 +20,7 @@ const HomePageMain = ({
   setIndividualHMServices,
   setFilteredServicesData,
   setCurrentPage,
+  setFeaturedData,
   userNotifications,
   setUserNotifications,
 }) => {
@@ -54,6 +55,7 @@ const HomePageMain = ({
   };
 
   //===================================== Get User ID ========================================
+
   const getUserID = async () => {
     if (!username || charSelect === "handyman") return;
     try {

@@ -16,6 +16,7 @@ import EditProfileHandyMan from "./EditProfiles/EditProfileHandyMan";
 import EditProfileUser from "./EditProfiles/EditProfileMain";
 import MyServices from "./Services/MyServices";
 import Notifications from "./Notifications";
+import FeaturedServiceInfo from "./Home/FeaturedServiceInfo";
 
 export default function App() {
   //================================== Navbar States===========================================
@@ -43,6 +44,7 @@ export default function App() {
   const [serviceTOW, setServiceTOW] = useState([]);
   const [servicePriceFrom, setServicePriceFrom] = useState("");
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
+  const [featuredData, setFeaturedData] = useState();
 
   //============================Notifications States=====================================
 
@@ -63,7 +65,8 @@ export default function App() {
   const [userNotifications, setUserNotifications] = useState("");
 
   //======================= Back button settings ===========================
-
+  console.log(currentPage);
+  console.log(backButtonVisibility);
   return (
     <div>
       <Routes>
@@ -115,6 +118,7 @@ export default function App() {
               setIndividualHMServices={setIndividualHMServices}
               individualHMServices={individualHMServices}
               setCurrentPage={setCurrentPage}
+              setFeaturedData={setFeaturedData}
               userNotifications={userNotifications}
               setUserNotifications={setUserNotifications}
             />
@@ -237,8 +241,24 @@ export default function App() {
           }
         />
         <Route
-          path="/notifications"
-          element={<Notifications userNotifications={userNotifications} />}
+          path="/featuredinfo"
+          element={
+            <FeaturedServiceInfo
+              featuredData={featuredData}
+              setHmProfile={setHmProfile}
+              setIndividualHmStar={setIndividualHmStar}
+              setIndividualHmReviews={setIndividualHmReviews}
+              setHmAverageRating={setHmAverageRating}
+              setJobsCompleted={setJobsCompleted}
+              setTotalRatings={setTotalRatings}
+              setCurrentPage={setCurrentPage}
+              backButtonVisibility={backButtonVisibility}
+              setBackButtonVisibility={setBackButtonVisibility}
+              currentPage={currentPage}
+              setViewHmProfile={setViewHmProfile}
+              user_id={user_id}
+            />
+          }
         />
       </Routes>
     </div>

@@ -68,7 +68,7 @@ export default function App() {
 
   //======================= Back button settings ===========================
   console.log(currentPage);
-  console.log(backButtonVisibility);
+  console.log(inboxData);
   return (
     <div>
       <Routes>
@@ -271,6 +271,7 @@ export default function App() {
             <Inbox
               userNotifications={userNotifications}
               inboxData={inboxData}
+              charSelect={charSelect}
             />
           }
         />

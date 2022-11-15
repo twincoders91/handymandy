@@ -38,7 +38,6 @@ const Navbar = ({
     }
   };
   console.log(userNotifications);
-  console.log(backButtonVisibility);
   return (
     <>
       {hamburgerModal && (

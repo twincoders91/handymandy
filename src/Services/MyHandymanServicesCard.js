@@ -79,21 +79,23 @@ const MyHandymanServicesCard = ({
     setCardClicked({ eachJobData, userProfile_image });
   };
 
-  const handleMessageMyService = async (id) => {
-    try {
-      const res = await fetch(`http://127.0.0.1:8001/inbox/${id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      });
+  const handleMessageMyService = () => {
+    // try {
+    //   const res = await fetch(`http://127.0.0.1:8001/inbox/${id}`, {
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     method: "GET",
+    //   });
 
-      const getInboxData = await res.json();
-      setInboxData(getInboxData);
-    } catch (error) {
-      console.error(error);
-    }
+    //   const getInboxData = await res.json();
+    //   const overallData = { eachJobData, getInboxData };
+    //   setInboxData(overallData);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    setInboxData(eachJobData);
     navigate("/inbox");
   };
   //===================================================================
@@ -206,7 +208,7 @@ const MyHandymanServicesCard = ({
               ) : (
                 <></>
               )}
-              {eachJobData.job_status === "pending" ? (
+              {eachJobData.job_status === "inprogress" ? (
                 <>
                   <button
                     className="myuserservice--view--message--button fw700 fs12"

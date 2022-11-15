@@ -164,6 +164,7 @@ export default function App() {
               setServicePriceFrom={setServicePriceFrom}
               hm_id={hm_id}
               setIndividualHMServices={setIndividualHMServices}
+              userNotifications={userNotifications}
             />
           }
         />

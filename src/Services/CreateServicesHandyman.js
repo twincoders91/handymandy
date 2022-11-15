@@ -10,6 +10,7 @@ const CreateServicesHandyman = ({
   backButtonVisibility,
   hm_id,
   setIndividualHMServices,
+  userNotifications,
 }) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
@@ -160,7 +161,10 @@ const CreateServicesHandyman = ({
 
   return (
     <>
-      <Navbar backButtonVisibility={backButtonVisibility} />
+      <Navbar
+        backButtonVisibility={backButtonVisibility}
+        userNotifications={userNotifications}
+      />
       <div className="mb36">
         <div className="create--services--container">
           <div className="create--profile--header--container mb24 mt36">

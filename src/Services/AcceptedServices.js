@@ -11,7 +11,7 @@ import { findAllInRenderedTree } from "react-dom/test-utils";
 
 //services must have schema with progress: completed true or false
 
-const AcceptedServices = ({ username, user_id }) => {
+const AcceptedServices = ({ username, user_id, userNotifications }) => {
   const [allJobRequestsUser, setAllJobRequestsUser] = useState([]);
 
   //==================== Fetch Jobs by user_id ======================
@@ -33,7 +33,7 @@ const AcceptedServices = ({ username, user_id }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar userNotifications={userNotifications} />
       <div className="accepted--services--container">
         <span className="fw700 fs32 mt24 mb24 white">Your Services</span>
         {allJobRequestsUser.map((hiredHM) => {

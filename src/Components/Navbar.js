@@ -37,7 +37,7 @@ const Navbar = ({
       console.log("easter egg!");
     }
   };
-
+  console.log(userNotifications);
   console.log(backButtonVisibility);
   return (
     <>

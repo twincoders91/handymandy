@@ -595,14 +595,26 @@
   color: var(--white);
 }
 
-.individual--notification--card {
+.individual--notification--card--inprogress {
   display: flex;
   width: 370px;
   height: 60px;
   border: 2px solid black;
   border-radius: 6px;
   box-shadow: var(--shadowing);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(1, 95, 6, 0.4);
+  margin-top: 5px;
+}
+
+.individual--notification--card--cancelled {
+  display: flex;
+  width: 370px;
+  height: 60px;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(189, 5, 5, 0.4);
+  margin-top: 5px;
 }
 
 .individual--notification--image--box {
@@ -632,6 +644,7 @@
 }
 
 .individual--notifications--title {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -653,4 +666,10 @@
 }
 .individual--notification--name {
   margin-left: 10px;
+}
+
+.noti--category--icon {
+  position: absolute;
+  right: 0px;
+  top: 10px;
 }

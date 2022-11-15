@@ -12,6 +12,7 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
   const [reviews, setReviews] = useState("");
   const [hmProfile_image, setHmProfile_image] = useState("");
 
+  console.log(cardClicked);
   //=============================Fetch Profile Image ===================================
   const fetchHmProfileImage = async () => {
     try {

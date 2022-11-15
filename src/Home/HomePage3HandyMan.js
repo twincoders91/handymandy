@@ -4,6 +4,7 @@ import starFilled from "../Assets/homepage/starfilled.svg";
 import starUnFilled from "../Assets/homepage/starunfilled.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import HmServicesCards from "./HmServicesCards";
+import categoryData from "../DummyDataSets/Category";
 
 const HomePage3HandyMan = ({
   setUpdateService,
@@ -18,6 +19,9 @@ const HomePage3HandyMan = ({
   console.log(individualHMServices);
   console.log(hm_id);
   const [hmProfile_image, setHmProfile_image] = useState("");
+  const [filteredArray, setFilteredArray] = useState([]);
+  const [filteredClicked, setFilteredClicked] = useState(false);
+  const [currentFilteredCategory, setCurrentFilteredCategory] = useState("");
   //============================= BACKEND FETCHING ================================
   //============================= DELETE Service ================================
 
@@ -95,22 +99,91 @@ const HomePage3HandyMan = ({
     fetchHmProfileImage();
   }, []);
 
+  //=========================Filter by Category Button============================
+
+  //=========================Filter by Category Button============================
+
+  const handleFilterByCategory = (categories) => {
+    console.log(categories.category.toLowerCase());
+
+    setFilteredArray(
+      individualHMServices.filter(
+        (services) => services.category === categories.category.toLowerCase()
+      )
+    );
+    if (categories.category === currentFilteredCategory) {
+      setFilteredClicked(false);
+      setCurrentFilteredCategory("");
+      setFilteredArray([]);
+    } else {
+      setFilteredClicked(true);
+      setCurrentFilteredCategory(categories.category);
+    }
+  };
+  console.log(filteredArray);
+  console.log(filteredClicked);
+
   return (
     <>
       <p className="m0 fw700 fs32 mt24 white hm3--header">Your Services</p>
-      {individualHMServices.map((services) => {
-        return (
-          <HmServicesCards
-            setUpdateService={setUpdateService}
-            setUpdateServiceDetails={setUpdateServiceDetails}
-            handleDeleteServiceClick={handleDeleteServiceClick}
-            handleUpdateServiceClick={handleUpdateServiceClick}
-            services={services}
-            hmRatings={hmRatings}
-            hmProfile_image={hmProfile_image}
-          />
-        );
-      })}
+      <div className="hm3--filter--by--category--container">
+        {categoryData.map((categories) => {
+          return (
+            <div
+              className="hm--category--buttons"
+              onClick={() => {
+                handleFilterByCategory(categories);
+              }}
+            >
+              {currentFilteredCategory !== categories.category ? (
+                <img
+                  src={require(`../Assets/homepage/new/${categories.icon}.svg`)}
+                  className={"hm3--category--cards--icon"}
+                  alt="images"
+                ></img>
+              ) : (
+                <div className="hm--category--buttons--text">
+                  <p className="m0">{categories.category}</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      {filteredArray.length === 0 &&
+        filteredClicked === false &&
+        individualHMServices.map((services) => {
+          return (
+            <HmServicesCards
+              setUpdateService={setUpdateService}
+              setUpdateServiceDetails={setUpdateServiceDetails}
+              handleDeleteServiceClick={handleDeleteServiceClick}
+              handleUpdateServiceClick={handleUpdateServiceClick}
+              services={services}
+              hmRatings={hmRatings}
+              hmProfile_image={hmProfile_image}
+            />
+          );
+        })}
+      {filteredArray.length > 0 &&
+        filteredClicked === true &&
+        filteredArray.map((services) => {
+          return (
+            <HmServicesCards
+              setUpdateService={setUpdateService}
+              setUpdateServiceDetails={setUpdateServiceDetails}
+              handleDeleteServiceClick={handleDeleteServiceClick}
+              handleUpdateServiceClick={handleUpdateServiceClick}
+              services={services}
+              hmRatings={hmRatings}
+              hmProfile_image={hmProfile_image}
+            />
+          );
+        })}
+      {filteredArray.length === 0 && filteredClicked === true && (
+        <div className="hm3--noservices--text--box">No Services</div>
+      )}
+
       <div className="hm3--info--view--create--button--container mb48">
         <NavLink className="navlinks" to="/createservice">
           <button

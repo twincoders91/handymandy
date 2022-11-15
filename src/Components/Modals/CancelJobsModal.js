@@ -15,7 +15,7 @@ const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
         },
         method: "PUT",
         body: JSON.stringify({
-          id: cardClicked.jobs_id,
+          id: cardClicked.item.jobs_id,
           status_id: "cancelled",
         }),
       });

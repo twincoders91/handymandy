@@ -174,6 +174,8 @@ const HomePageMain = ({
         <HomePage
           setBackButtonVisibility={setBackButtonVisibility}
           setFilteredServicesData={setFilteredServicesData}
+          setFeaturedData={setFeaturedData}
+          setCurrentPage={setCurrentPage}
         />
       )}
       {charSelect == "handyman" && updateService == false && (

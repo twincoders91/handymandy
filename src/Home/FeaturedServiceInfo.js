@@ -23,6 +23,7 @@ const FeaturedServiceInfo = ({
   user_id,
   backButtonVisibility,
   setViewHmProfile,
+  userNotifications,
 }) => {
   console.log(featuredData);
   const [hmRatings, setHmRatings] = useState([]);
@@ -178,6 +179,7 @@ const FeaturedServiceInfo = ({
         backButtonVisibility={backButtonVisibility}
         setViewHmProfile={setViewHmProfile}
         setCurrentPage={setCurrentPage}
+        userNotifications={userNotifications}
       />
       <div className="category--page--container">
         {acceptedServicesModal && (

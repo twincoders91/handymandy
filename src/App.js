@@ -17,6 +17,7 @@ import EditProfileUser from "./EditProfiles/EditProfileMain";
 import MyServices from "./Services/MyServices";
 import Notifications from "./Notifications";
 import FeaturedServiceInfo from "./Home/FeaturedServiceInfo";
+import Inbox from "./Inbox/Inbox";
 
 export default function App() {
   //================================== Navbar States===========================================
@@ -46,7 +47,8 @@ export default function App() {
   const [updateServiceDetails, setUpdateServiceDetails] = useState({});
   const [featuredData, setFeaturedData] = useState();
 
-  //============================Notifications States=====================================
+  //============================INBOX States=====================================
+  const [inboxData, setInboxData] = useState([]);
 
   //=============================Profile States=====================================
   const [hmProfile, setHmProfile] = useState([]);
@@ -237,6 +239,7 @@ export default function App() {
               setTotalRatings={setTotalRatings}
               setIndividualHmReviews={setIndividualHmReviews}
               userNotifications={userNotifications}
+              setInboxData={setInboxData}
             />
           }
         />
@@ -257,6 +260,16 @@ export default function App() {
               currentPage={currentPage}
               setViewHmProfile={setViewHmProfile}
               user_id={user_id}
+              userNotifications={userNotifications}
+            />
+          }
+        />
+        <Route
+          path="/inbox"
+          element={
+            <Inbox
+              userNotifications={userNotifications}
+              inboxData={inboxData}
             />
           }
         />

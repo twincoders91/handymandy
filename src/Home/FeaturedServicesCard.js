@@ -132,12 +132,12 @@ const FeaturedServicesCard = ({
   return (
     <div>
       {filteredServicesData.length !== 0 ? (
-        <div className="recommended--box mb24">
+        <div
+          className="recommended--box mb24"
+          onClick={() => retrieveFeaturedInfo(services_id)}
+        >
           <div className="recommended--cards">
-            <div
-              className="services--image--box2"
-              onClick={() => retrieveFeaturedInfo(services_id)}
-            >
+            <div className="services--image--box2">
               <img
                 src={
                   filteredServicesData[0].image_url

@@ -13,6 +13,7 @@ const MyHandymanServices = ({
   userDetails,
   setCurrentPage,
   charSelect,
+  setInboxData,
 }) => {
   const [allJobs, setAllJobs] = useState("");
   const [approveJobsModalValue, setApproveJobsModalValue] = useState(false);
@@ -81,6 +82,7 @@ const MyHandymanServices = ({
                 setDeclineJobsModalValue={setDeclineJobsModalValue}
                 setApproveJobsModalValue={setApproveJobsModalValue}
                 setCardClicked={setCardClicked}
+                setInboxData={setInboxData}
               />
             );
           })

@@ -105,11 +105,17 @@
   justify-content: center;
 }
 .recommended--box {
+  cursor: pointer;
+}
+.recommended--box:hover {
+  filter: sepia(22%);
+  transform: scale(1.005);
 }
 .services--image--box2 {
   width: 175px;
   height: 175px;
 }
+
 .recommended--info--image {
   width: 175px;
   height: 175px;
@@ -137,8 +143,7 @@
 
 .recommended--description--section {
   height: 110px;
-}
-.recommended--description--section--inner--box {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .recommended--title {

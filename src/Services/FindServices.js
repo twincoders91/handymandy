@@ -56,8 +56,6 @@ const FindServices = ({
       }
     );
     setSearchBarArray(searchBarFilteredServices);
-    console.log(e.target.value);
-    console.log(searchBarArray);
   };
 
   //====================================================

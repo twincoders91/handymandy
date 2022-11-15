@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
@@ -109,13 +109,15 @@ const Navbar = ({
             <span></span>
             <span></span>
             <span></span>
-            {(userNotifications || userNotifications.length > 0) && (
-              <div className="notifications--cirle">
-                <p className="notifications--number m0">
-                  {userNotifications.length}
-                </p>
-              </div>
-            )}
+            {(userNotifications || userNotifications.length > 0) &&
+              userNotifications.length !== 0 && (
+                <div className="notifications--cirle">
+                  <p className="notifications--number m0">
+                    {userNotifications.length}
+                  </p>
+                </div>
+              )}
+            {userNotifications.length === 0 && <></>}
           </button>
         </div>
       </div>

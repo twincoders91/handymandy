@@ -238,7 +238,12 @@ export default function App() {
         />
         <Route
           path="/notifications"
-          element={<Notifications userNotifications={userNotifications} />}
+          element={
+            <Notifications
+              userNotifications={userNotifications}
+              user_id={user_id}
+            />
+          }
         />
       </Routes>
     </div>

@@ -1,65 +1,88 @@
-import React from "react";
+import React, { useEffect } from "react";
+import default_image from "./Assets/homepage/recommended4usampleimage.svg";
+import defaultavatar from "./Assets/profile/defaultavatar.svg";
+import Navbar from "./Components/Navbar";
 
-const Notifications = ({ userNotifications }) => {
+const Notifications = ({ userNotifications, user_id }) => {
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
   console.log(userNotifications);
+
+  const updateUserNotifications = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8001/user/notifications/${user_id}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "PUT",
+        }
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    updateUserNotifications();
+  }, []);
+
   return (
     <>
-      {userNotifications.map(() => {
-        return (
-          <>
-            {/* <div
-            className="individual--category--card relative mt24"
-            onClick={() => {
-              handleCategoryCard(services_id);
-            }}
-          >
-            <div className="individual--category--image--box">
-              <div className="services--image--box">
-                <img
-                  src={image_url ? image_url : default_image}
-                  className="individual--category--image"
-                  alt="images"
-                />
-              </div>
-            </div>
-            <div className="individual--category--description--container--findservices">
-              <div className="hm3--info--description--mega--container">
-                <p
-                  className="individual--category--title fs16 fw700 m0 white mb4 ml12"
-                  style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
-                >
-                  {truncate(title.charAt(0).toUpperCase() + title.slice(1), 25)}
-                </p>
-                <div className="individual--category--description--section ml12">
-                  <p className="individual--category--name fs12 fw400 m0 white mb4">
-                    {first_name.charAt(0).toUpperCase() + first_name.slice(1)}
-                  </p>
-                  <div className="individual--category--profile--stars mb4">
+      <Navbar userNotifications={userNotifications} />
+      <div className="notifications--main--container">
+        <p className="notifications--header">Your Notifications</p>
+        {userNotifications.map((items) => {
+          return (
+            <div>
+              <div className="individual--notification--card relative mt24">
+                <div className="individual--notification--image--box">
+                  <div className="notifications--image--box">
                     <img
-                      src={hmProfileImage}
+                      src={
+                        items.profile_image
+                          ? items.profile_image
+                          : defaultavatar
+                      }
                       alt="images"
                       className="profile--image--small"
                     ></img>
-                    <div className="individual--category--stars">{starRating}</div>
                   </div>
-                  {hmRatings.length > 0 ? (
-                    <p className="m0 fw700 fs8 white">
-                      {hmRatings[0].total_jobs} job(s) completed
+                </div>
+                <div className="individual--notifications--description--container--findservices">
+                  <div className="individual--notifications--title">
+                    <p
+                      className="individual--notifications--title--text fs16 fw700 m0 white"
+                      style={{
+                        whiteSpace: "pre-wrap",
+                        overflowWrap: "break-word",
+                      }}
+                    >
+                      {truncate(
+                        items.title.charAt(0).toUpperCase() +
+                          items.title.slice(1),
+                        25
+                      )}
                     </p>
-                  ) : (
-                    <p className="m0 fw700 fs8 white">0 job completed</p>
-                  )}
+                  </div>
+                  <div className="individual--notification--description--section">
+                    <p className="individual--notification--name fs12 fw400 m0 white">
+                      {items.first_name.charAt(0).toUpperCase() +
+                        items.first_name.slice(1)}{" "}
+                      {items.status_id === "inprogress"
+                        ? "has accepted this job request."
+                        : items.status_id}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="individual--category--price ml12">
-                <p className="starting--from m0 white fw700">starting from</p>
-                <p className="starting--from--price m0 fs28 fw700">${price_from}</p>
-              </div>
             </div>
-          </div> */}
-          </>
-        );
-      })}
+          );
+        })}
+      </div>
     </>
   );
 };

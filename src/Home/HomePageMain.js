@@ -91,7 +91,6 @@ const HomePageMain = ({
     }
   };
 
-  const retrieveUserNotifications = async () => {};
   //============================= Get Handyman Ratings ================================
 
   // const getUserID = async () => {
@@ -159,7 +158,6 @@ const HomePageMain = ({
   useEffect(() => {
     getHandymanID();
     getUserID();
-    retrieveUserNotifications();
   }, []);
 
   return (
@@ -174,7 +172,6 @@ const HomePageMain = ({
         <HomePage
           setBackButtonVisibility={setBackButtonVisibility}
           setFilteredServicesData={setFilteredServicesData}
-          userNotifications={userNotifications}
         />
       )}
       {charSelect == "handyman" && updateService == false && (

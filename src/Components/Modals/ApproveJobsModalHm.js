@@ -8,28 +8,28 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
   const [userProfile_image, setUserProfile_image] = useState("");
 
   //=============================Fetch Profile Image ===================================
-  const fetchUserProfileImage = async () => {
-    try {
-      const res = await fetch(
-        `http://127.0.0.1:8001/handyman/${cardClicked.user_id}/profileimage/any`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "GET",
-        }
-      );
-      const userProfileImage = await res.json();
-      if (userProfileImage.length === 0) {
-        setUserProfile_image(defaultavatar);
-      } else {
-        setUserProfile_image(userProfileImage[0].image_url);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  // const fetchUserProfileImage = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       `http://127.0.0.1:8001/handyman/${cardClicked.eachJobData.user_id}/profileimage/any`,
+  //       {
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //         method: "GET",
+  //       }
+  //     );
+  //     const userProfileImage = await res.json();
+  //     if (userProfileImage.length === 0) {
+  //       setUserProfile_image(defaultavatar);
+  //     } else {
+  //       setUserProfile_image(userProfileImage[0].image_url);
+  //     }
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   //====================Change status to inprogress===================================
   console.log(cardClicked);
@@ -42,7 +42,7 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
         },
         method: "PUT",
         body: JSON.stringify({
-          id: cardClicked.jobs_id,
+          id: cardClicked.eachJobData.jobs_id,
           status_id: "inprogress",
         }),
       });
@@ -52,9 +52,9 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
     }
   };
 
-  useEffect(() => {
-    fetchUserProfileImage();
-  }, []);
+  // useEffect(() => {
+  //   fetchUserProfileImage();
+  // }, []);
 
   return (
     <div>
@@ -67,12 +67,16 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
               </p>
               <p className="m0 white fw700 fs16 mb8 modal--text--approvebooking">
                 You are about to accept a job request by{" "}
-                {cardClicked.user_first_name}!
+                {cardClicked.eachJobData.user_first_name}!
               </p>
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
-                    src={userProfile_image}
+                    src={
+                      cardClicked.userProfile_image
+                        ? cardClicked.userProfile_image
+                        : defaultavatar
+                    }
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>
@@ -81,7 +85,7 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
                     Title
                   </p>
                   <p className="m0 white fw400 fs12 mt8 modal--text--confirmbooking--description">
-                    {cardClicked.title}
+                    {cardClicked.eachJobData.title}
                   </p>
                 </div>
                 <div className="confirm--booking--description--box">
@@ -95,7 +99,7 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
                       "overflow-wrap": "break-word",
                     }}
                   >
-                    {cardClicked.job_requirement}
+                    {cardClicked.eachJobData.job_requirement}
                   </p>
                 </div>
               </div>

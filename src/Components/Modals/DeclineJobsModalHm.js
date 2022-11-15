@@ -13,7 +13,7 @@ const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
         },
         method: "PUT",
         body: JSON.stringify({
-          id: cardClicked.jobs_id,
+          id: cardClicked.eachJobData.jobs_id,
           status_id: "cancelled",
         }),
       });
@@ -34,12 +34,16 @@ const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
               </p>
               <p className="m0 white fw700 fs16 mb8 modal--text--approvebooking">
                 You are about to decline a job request from{" "}
-                {cardClicked.user_first_name}!
+                {cardClicked.eachJobData.user_first_name}!
               </p>
               <div className="confirm--booking--hm--profile--box">
                 <div className="confirm--booking--profileimage--box">
                   <img
-                    src={defaultavatar}
+                    src={
+                      cardClicked.userProfile_image
+                        ? cardClicked.userProfile_image
+                        : defaultavatar
+                    }
                     className="confirm--booking--hm--profile--image"
                   />
                 </div>
@@ -48,7 +52,7 @@ const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
                     Title
                   </p>
                   <p className="m0 white fw400 fs12 mt8 modal--text--confirmbooking--description">
-                    {cardClicked.title}
+                    {cardClicked.eachJobData.title}
                   </p>
                 </div>
                 <div className="confirm--booking--description--box">
@@ -62,7 +66,7 @@ const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
                       "overflow-wrap": "break-word",
                     }}
                   >
-                    {cardClicked.job_requirement}
+                    {cardClicked.eachJobData.job_requirement}
                   </p>
                 </div>
               </div>

@@ -68,12 +68,12 @@ const MyHandymanServicesCard = ({
   //===================================================================
   const handleApproveMyService = () => {
     setApproveJobsModalValue(true);
-    setCardClicked(eachJobData);
+    setCardClicked({ eachJobData, userProfile_image });
     console.log("clicked");
   };
   const handleDeclineMyService = () => {
     setDeclineJobsModalValue(true);
-    setCardClicked(eachJobData);
+    setCardClicked({ eachJobData, userProfile_image });
   };
   //===================================================================
 

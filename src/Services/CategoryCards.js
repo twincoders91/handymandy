@@ -101,11 +101,13 @@ const CategoryCards = ({
       }}
     >
       <div className="individual--category--image--box">
-        <img
-          src={image_url ? image_url : default_image}
-          className="individual--category--image absolute"
-          alt="images"
-        />
+        <div className="services--image--box">
+          <img
+            src={image_url ? image_url : default_image}
+            className="individual--category--image"
+            alt="images"
+          />
+        </div>
       </div>
       <div className="individual--category--description--container--findservices">
         <div className="hm3--info--description--mega--container">

@@ -187,15 +187,17 @@ const ServiceInfo = ({
       <span className="fw700 fs32 mt24 mb24 white">Service Info</span>
       <div className="service--info--card">
         <div className="service--info--card--top">
-          <img
-            src={
-              serviceInfo[0].image_url
-                ? serviceInfo[0].image_url
-                : default_image
-            }
-            className="service--info--image"
-            alt="images"
-          />
+          <div className="services--image--box">
+            <img
+              src={
+                serviceInfo[0].image_url
+                  ? serviceInfo[0].image_url
+                  : default_image
+              }
+              className="service--info--image"
+              alt="images"
+            />
+          </div>
           <div className="hm3--info--description--mega--container">
             <p className="service--info--title2 fs16 fw700 m0 white mb4 ml12 mt8">
               {truncate(

@@ -38,11 +38,13 @@ const HmServicesCards = ({
       <div className="hm3--page--container mt24" key={Math.random() * 1000}>
         <div className="hm3--info--card">
           <div className="hm3--info--card--top">
-            <img
-              src={services.image_url ? services.image_url : default_image}
-              className="hm3--info--image"
-              alt="images"
-            />
+            <div className="services--image--box">
+              <img
+                src={services.image_url ? services.image_url : default_image}
+                className="hm3--info--image"
+                alt="images"
+              />
+            </div>
             <div className="hm3--info--description--mega--container">
               <div className="hm3--info--description--easter--container">
                 <p className="hm3--info--title fs16 fw700 m0 ml12 mt8 white mb4">

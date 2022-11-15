@@ -81,11 +81,15 @@ const MyHandymanServicesCard = ({
     <div>
       <div className="myuserservice--card mb24">
         <div className="myuserservice--card--top">
-          <img
-            src={eachJobData.image_url ? eachJobData.image_url : default_image}
-            className="myuserservice--image"
-            alt="images"
-          />
+          <div className="services--image--box">
+            <img
+              src={
+                eachJobData.image_url ? eachJobData.image_url : default_image
+              }
+              className="myuserservice--image"
+              alt="images"
+            />
+          </div>
           <div className="hm3--info--description--mega--container">
             <p className="myhmservice--title fs16 fw700 m0 white mb4 ml12 mt8">
               {truncate(

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import recommended4usampleimage from "../Assets/homepage/recommended4usampleimage.svg";
+import default_image from "../Assets/homepage/recommended4usampleimage.svg";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import wrench from "../Assets/services/wrench.svg";
 
@@ -82,7 +82,7 @@ const MyHandymanServicesCard = ({
       <div className="myuserservice--card mb24">
         <div className="myuserservice--card--top">
           <img
-            src={recommended4usampleimage}
+            src={eachJobData.image_url ? eachJobData.image_url : default_image}
             className="myuserservice--image"
             alt="images"
           />

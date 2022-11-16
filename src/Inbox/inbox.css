@@ -60,12 +60,18 @@
 }
 .message--input--box {
   width: 400px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   border: 2px solid black;
   border-radius: 6px;
   box-shadow: var(--shadowing);
-  background: rgba(207, 207, 207, 0.4);
+  background: rgba(235, 235, 235, 0.4);
   color: black;
   margin-bottom: 24px;
+  color: black;
+}
+.message--input--box:focus {
+  outline-color: var(--orange);
 }
 .inbox--text--container {
   margin-left: 10px;
@@ -78,7 +84,7 @@
   border: 2px solid black;
   border-radius: 6px;
   box-shadow: var(--shadowing);
-  background: rgba(207, 207, 207, 0.4);
+  background: rgba(203, 203, 135, 0.8);
   color: black;
 }
 .inbox--text--container--hm {
@@ -92,7 +98,7 @@
   border: 2px solid black;
   border-radius: 6px;
   box-shadow: var(--shadowing);
-  background: rgba(207, 207, 207, 0.4);
+  background: rgba(116, 179, 198, 0.8);
   color: black;
 }
 .inbox--profile--image--small {

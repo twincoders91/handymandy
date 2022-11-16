@@ -92,6 +92,11 @@ const Notifications = ({ userNotifications, user_id }) => {
               </div>
             );
           })}
+        {userNotifications.length === 0 && (
+          <p className="0 no--new--notifications fs24 fw700">
+            No New Notifications
+          </p>
+        )}
       </div>
     </>
   );

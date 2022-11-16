@@ -22,6 +22,7 @@ const Navbar = ({
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
   const [hamburgerModal, setHamburgerModal] = useState(false); //modal animation states
+  console.log(userNotifications);
 
   const userNotiCircle = () => {
     if (userNotifications) {

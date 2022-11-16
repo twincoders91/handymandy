@@ -73,6 +73,7 @@ export default function App() {
   console.log(currentPage);
   console.log(inboxData);
   console.log(hmNotifications);
+  console.log(userNotifications);
   return (
     <div>
       <Routes>

@@ -606,6 +606,17 @@
   margin-top: 5px;
 }
 
+.individual--notification--card--pending {
+  display: flex;
+  width: 370px;
+  height: 60px;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(181, 123, 0, 0.4);
+  margin-top: 5px;
+}
+
 .individual--notification--card--cancelled {
   display: flex;
   width: 370px;

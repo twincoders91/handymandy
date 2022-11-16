@@ -42,7 +42,9 @@ const NotificationsHM = ({ hmNotifications, hm_id }) => {
               <div>
                 <div
                   className={
-                    "individual--notification--card--inprogress relative"
+                    items.status_id === "pending"
+                      ? "individual--notification--card--pending relative"
+                      : "individual--notification--card--inprogress relative"
                   }
                 >
                   <div className="individual--notification--image--box">
@@ -89,6 +91,11 @@ const NotificationsHM = ({ hmNotifications, hm_id }) => {
               </div>
             );
           })}
+        {hmNotifications.length === 0 && (
+          <p className="0 no--new--notifications fs24 fw700">
+            No New Notifications
+          </p>
+        )}
       </div>
     </>
   );

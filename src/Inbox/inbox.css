@@ -52,8 +52,15 @@
   flex-direction: column;
   overflow: auto;
 }
+
+.inbox--input--main--container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .inbox--input--container {
   position: relative;
+  width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,7 +152,7 @@
   height: 32px;
   border-radius: 50%;
   top: 14px;
-  right: 140px;
+  right: 10px;
   /* z-index: +99; */
 }
 
@@ -170,7 +177,7 @@
   position: absolute;
   z-index: 0;
   top: 14px;
-  right: 140px;
+  right: 10px;
 }
 
 .image--message {

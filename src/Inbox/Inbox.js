@@ -226,27 +226,32 @@ const Inbox = ({
           })}
         </div>
       </div>
-
-      <div className="inbox--input--container mt24">
-        <textarea
-          className="message--input--box"
-          id="message--input--box"
-          placeholder="input your message here"
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyPress={handleKeyPress}
-          maxLength={300}
-        ></textarea>
-        <img src={imageupload} alt="images" className="image--upload--inbox" />
-        <form className="inbox--image--form">
-          <input
-            onChange={(e) => {
-              postImage(e);
-            }}
-            type="file"
-            accept="image/*"
-            className="upload--image--button"
-          ></input>
-        </form>
+      <div className="inbox--input--main--container">
+        <div className="inbox--input--container mt24">
+          <textarea
+            className="message--input--box relative"
+            id="message--input--box"
+            placeholder="input your message here"
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            maxLength={300}
+          ></textarea>
+          <img
+            src={imageupload}
+            alt="images"
+            className="image--upload--inbox"
+          />
+          <form className="inbox--image--form">
+            <input
+              onChange={(e) => {
+                postImage(e);
+              }}
+              type="file"
+              accept="image/*"
+              className="upload--image--button"
+            ></input>
+          </form>
+        </div>
       </div>
     </>
   );

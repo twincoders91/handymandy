@@ -6,6 +6,7 @@ import ServiceInfo from "./ServiceInfo";
 import HamburgerModal from "../Components/Modals/HamburgerModal";
 
 const Services = ({
+  charSelect,
   totalReviews,
   totalJobs,
   handymanServicesData,
@@ -30,6 +31,9 @@ const Services = ({
   user_id,
   userNotifications,
   hmNotifications,
+  setUserNotifications,
+  setHMNotifications,
+  username,
 }) => {
   //====================== States for Services ======================
   const [chooseCategory, setChooseCategory] = useState(false);
@@ -41,12 +45,16 @@ const Services = ({
     <>
       <Navbar
         backButtonVisibility={backButtonVisibility}
+        charSelect={charSelect}
         currentPage={currentPage}
         chooseCategory={chooseCategory}
         setChooseCategory={setChooseCategory}
         setCurrentPage={setCurrentPage}
         hmNotifications={hmNotifications}
         userNotifications={userNotifications}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
+        username={username}
       />
       <div className="category--page--container">
         {!chooseCategory && (

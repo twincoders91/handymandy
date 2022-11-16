@@ -53,22 +53,22 @@ const HomePageMain = ({
 
       //=============== Fetch notifications by HM ID ===============
 
-      try {
-        const res = await fetch(
-          `http://127.0.0.1:8001/handyman/notifications/${data.id}`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            method: "GET",
-          }
-        );
-        const notiData = await res.json();
-        setHMNotifications(notiData);
-      } catch (e) {
-        console.error(e);
-      }
+      // try {
+      //   const res = await fetch(
+      //     `http://127.0.0.1:8001/handyman/notifications/${data.id}`,
+      //     {
+      //       headers: {
+      //         Accept: "application/json",
+      //         "Content-Type": "application/json",
+      //       },
+      //       method: "GET",
+      //     }
+      //   );
+      //   const notiData = await res.json();
+      //   setHMNotifications(notiData);
+      // } catch (e) {
+      //   console.error(e);
+      // }
     } catch (e) {
       console.error(e);
     }
@@ -91,23 +91,23 @@ const HomePageMain = ({
 
       //=============== Fetch notifications by User ID ===============
 
-      try {
-        const res = await fetch(
-          `http://127.0.0.1:8001/user/notifications/${data.id}`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            method: "GET",
-          }
-        );
+      // try {
+      //   const res = await fetch(
+      //     `http://127.0.0.1:8001/user/notifications/${data.id}`,
+      //     {
+      //       headers: {
+      //         Accept: "application/json",
+      //         "Content-Type": "application/json",
+      //       },
+      //       method: "GET",
+      //     }
+      //   );
 
-        const notiData = await res.json();
-        setUserNotifications(notiData);
-      } catch (e) {
-        console.error(e);
-      }
+      //   const notiData = await res.json();
+      //   setUserNotifications(notiData);
+      // } catch (e) {
+      //   console.error(e);
+      // }
     } catch (e) {
       console.error(e);
     }
@@ -189,7 +189,10 @@ const HomePageMain = ({
         charSelect={charSelect}
         setCurrentPage={setCurrentPage}
         userNotifications={userNotifications}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
         hmNotifications={hmNotifications}
+        username={username}
       />
       {charSelect == "user" && (
         <HomePage

@@ -2,7 +2,14 @@ import React, { useEffect } from "react";
 import defaultavatar from "./Assets/profile/defaultavatar.svg";
 import Navbar from "./Components/Navbar";
 
-const NotificationsHM = ({ hmNotifications, hm_id, charSelect }) => {
+const NotificationsHM = ({
+  hmNotifications,
+  hm_id,
+  charSelect,
+  setUserNotifications,
+  setHMNotifications,
+  username,
+}) => {
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
@@ -28,12 +35,20 @@ const NotificationsHM = ({ hmNotifications, hm_id, charSelect }) => {
   };
 
   useEffect(() => {
-    updateHMNotifications();
+    setTimeout(() => {
+      updateHMNotifications();
+    }, 1000);
   }, []);
 
   return (
     <>
-      <Navbar hmNotifications={hmNotifications} charSelect={charSelect} />
+      <Navbar
+        hmNotifications={hmNotifications}
+        charSelect={charSelect}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
+        username={username}
+      />
       <div className="notifications--main--container">
         <p className="notifications--header">Your Notifications</p>
         {hmNotifications.length > 0 &&

@@ -15,6 +15,9 @@ const Inbox = ({
   currentPage,
   setViewHmProfile,
   setCurrentPage,
+  setUserNotifications,
+  setHMNotifications,
+  username,
 }) => {
   const [userProfile_image, setUserProfile_image] = useState("");
   const [hmProfile_image, setHmProfile_image] = useState("");
@@ -206,6 +209,10 @@ const Inbox = ({
         currentPage={currentPage}
         setViewHmProfile={setViewHmProfile}
         setCurrentPage={setCurrentPage}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
+        username={username}
+        charSelect={charSelect}
       />
       <div className="inbox--global--container">
         <div className="inbox--title--box ">

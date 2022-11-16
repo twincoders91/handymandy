@@ -25,6 +25,10 @@ const FeaturedServiceInfo = ({
   setViewHmProfile,
   userNotifications,
   hmNotifications,
+  setUserNotifications,
+  setHMNotifications,
+  username,
+  charSelect,
 }) => {
   console.log(featuredData);
   const [hmRatings, setHmRatings] = useState([]);
@@ -182,6 +186,10 @@ const FeaturedServiceInfo = ({
         setCurrentPage={setCurrentPage}
         userNotifications={userNotifications}
         hmNotifications={hmNotifications}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
+        username={username}
+        charSelect={charSelect}
       />
       <div className="category--page--container">
         {acceptedServicesModal && (

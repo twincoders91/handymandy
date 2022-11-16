@@ -12,7 +12,6 @@ const MyServices = ({
   loading,
   setHmProfile,
   userDetails,
-
   setHmAverageRating,
   setIndividualHmStar,
   setJobsCompleted,
@@ -23,12 +22,19 @@ const MyServices = ({
   setInboxData,
   setCurrentPage,
   setBackButtonVisibility,
+  setUserNotifications,
+  setHMNotifications,
+  username,
 }) => {
   return (
     <div>
       <Navbar
         userNotifications={userNotifications}
         hmNotifications={hmNotifications}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
+        username={username}
+        charSelect={charSelect}
       />
       {charSelect == "handyman" && (
         <MyHandymanServices

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
@@ -16,13 +16,95 @@ const Navbar = ({
   currentPage,
   userNotifications,
   hmNotifications,
+  setUserNotifications,
+  setHMNotifications,
+  username,
 }) => {
   const navigate = useNavigate();
   //===============================STATES=======================================
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
   const [hamburgerModal, setHamburgerModal] = useState(false); //modal animation states
-  console.log(userNotifications);
+
+  //================================================================================
+
+  //===================================== Get HM ID ========================================
+  //============================= Get Handyman ID ================================
+
+  const getHandymanID = async () => {
+    if (!username || charSelect === "user") return;
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/handyman/${username}/id`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const data = await res.json();
+
+      //=============== Fetch notifications by HM ID ===============
+
+      try {
+        const res = await fetch(
+          `http://127.0.0.1:8001/handyman/notifications/${data.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        );
+        const notiData = await res.json();
+        setHMNotifications(notiData);
+      } catch (e) {
+        console.error(e);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //===================================== Get User ID ========================================
+
+  const getUserID = async () => {
+    if (!username || charSelect === "handyman") return;
+    try {
+      const res = await fetch(`http://127.0.0.1:8001/user/${username}/id`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      });
+      const data = await res.json();
+
+      //=============== Fetch notifications by User ID ===============
+
+      try {
+        const res = await fetch(
+          `http://127.0.0.1:8001/user/notifications/${data.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        );
+
+        const notiData = await res.json();
+        setUserNotifications(notiData);
+      } catch (e) {
+        console.error(e);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //================================================================================
 
   const userNotiCircle = () => {
     if (userNotifications) {
@@ -77,9 +159,17 @@ const Navbar = ({
       console.log("easter egg!");
     }
   };
-  // console.log(userNotifications);
+
+  useEffect(() => {
+    getHandymanID();
+    getUserID();
+  }, []);
+
   console.log(userNotifications);
+  console.log(username);
+  console.log(charSelect);
   console.log(hmNotifications);
+
   return (
     <>
       {hamburgerModal && (

@@ -139,6 +139,7 @@ export default function App() {
             <Services
               // averageRating={averageRating}
               // handymanServicesData={handymanServicesData}
+              charSelect={charSelect}
               servicesCategory={servicesCategory}
               servicesCategorySelection={servicesCategorySelection}
               backButtonVisibility={backButtonVisibility}
@@ -157,6 +158,9 @@ export default function App() {
               user_id={user_id}
               hmNotifications={hmNotifications}
               userNotifications={userNotifications}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
             />
           }
         />
@@ -174,6 +178,10 @@ export default function App() {
               setIndividualHMServices={setIndividualHMServices}
               hmNotifications={hmNotifications}
               userNotifications={userNotifications}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
+              charSelect={charSelect}
             />
           }
         />
@@ -219,6 +227,9 @@ export default function App() {
               currentPage={currentPage}
               userNotifications={userNotifications}
               hmNotifications={hmNotifications}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
             />
           }
         />
@@ -253,6 +264,9 @@ export default function App() {
               hmNotifications={hmNotifications}
               setInboxData={setInboxData}
               setBackButtonVisibility={setBackButtonVisibility}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
             />
           }
         />
@@ -275,6 +289,10 @@ export default function App() {
               user_id={user_id}
               userNotifications={userNotifications}
               hmNotifications={hmNotifications}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
+              charSelect={charSelect}
             />
           }
         />
@@ -291,6 +309,9 @@ export default function App() {
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
               setViewHmProfile={setViewHmProfile}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
             />
           }
         />
@@ -301,6 +322,9 @@ export default function App() {
               userNotifications={userNotifications}
               user_id={user_id}
               charSelect={charSelect}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
             />
           }
         />
@@ -311,6 +335,9 @@ export default function App() {
               hmNotifications={hmNotifications}
               hm_id={hm_id}
               charSelect={charSelect}
+              setUserNotifications={setUserNotifications}
+              setHMNotifications={setHMNotifications}
+              username={username}
             />
           }
         />

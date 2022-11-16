@@ -12,6 +12,10 @@ const CreateServicesHandyman = ({
   setIndividualHMServices,
   userNotifications,
   hmNotifications,
+  setUserNotifications,
+  setHMNotifications,
+  charSelect,
+  username,
 }) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
@@ -166,6 +170,10 @@ const CreateServicesHandyman = ({
         backButtonVisibility={backButtonVisibility}
         userNotifications={userNotifications}
         hmNotifications={hmNotifications}
+        setUserNotifications={setUserNotifications}
+        setHMNotifications={setHMNotifications}
+        username={username}
+        charSelect={charSelect}
       />
       <div className="mb36">
         <div className="create--services--container">

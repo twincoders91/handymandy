@@ -18,6 +18,7 @@ const HamburgerModal = ({
   const navigate = useNavigate();
   console.log(charSelect);
   console.log(userNotifications);
+  console.log(hmNotifications);
 
   const userNotiCircle = () => {
     if (userNotifications) {

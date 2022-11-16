@@ -34,6 +34,7 @@ const HomePageMain = ({
   //===================================== Get HM ID ========================================
   //============================= Get Handyman ID ================================
   console.log(userNotifications);
+  console.log(hmNotifications);
 
   const getHandymanID = async () => {
     if (!username || charSelect === "user") return;

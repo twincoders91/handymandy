@@ -3,7 +3,7 @@ import default_image from "./Assets/homepage/recommended4usampleimage.svg";
 import defaultavatar from "./Assets/profile/defaultavatar.svg";
 import Navbar from "./Components/Navbar";
 
-const Notifications = ({ userNotifications, user_id }) => {
+const Notifications = ({ userNotifications, user_id, charSelect }) => {
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
@@ -34,7 +34,7 @@ const Notifications = ({ userNotifications, user_id }) => {
 
   return (
     <>
-      <Navbar userNotifications={userNotifications} />
+      <Navbar userNotifications={userNotifications} charSelect={charSelect} />
       <div className="notifications--main--container">
         <p className="notifications--header">Your Notifications</p>
         {userNotifications.length > 0 &&

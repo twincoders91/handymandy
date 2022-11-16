@@ -300,13 +300,18 @@ export default function App() {
             <Notifications
               userNotifications={userNotifications}
               user_id={user_id}
+              charSelect={charSelect}
             />
           }
         />
         <Route
           path="/hmnotifications"
           element={
-            <NotificationsHM hmNotifications={hmNotifications} hm_id={hm_id} />
+            <NotificationsHM
+              hmNotifications={hmNotifications}
+              hm_id={hm_id}
+              charSelect={charSelect}
+            />
           }
         />
       </Routes>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import defaultavatar from "./Assets/profile/defaultavatar.svg";
 import Navbar from "./Components/Navbar";
 
-const NotificationsHM = ({ hmNotifications, hm_id }) => {
+const NotificationsHM = ({ hmNotifications, hm_id, charSelect }) => {
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
@@ -33,7 +33,7 @@ const NotificationsHM = ({ hmNotifications, hm_id }) => {
 
   return (
     <>
-      <Navbar hmNotifications={hmNotifications} />
+      <Navbar hmNotifications={hmNotifications} charSelect={charSelect} />
       <div className="notifications--main--container">
         <p className="notifications--header">Your Notifications</p>
         {hmNotifications.length > 0 &&

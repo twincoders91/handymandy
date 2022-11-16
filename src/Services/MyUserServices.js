@@ -105,7 +105,7 @@ const MyUserServices = ({
                     alt="images"
                   ></img>
                 ) : (
-                  <div className="hm--category--buttons--text">
+                  <div className="my--services--category--buttons--text">
                     <p className="m0">{progressStatus.category}</p>
                   </div>
                 )}

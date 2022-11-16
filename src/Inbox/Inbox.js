@@ -25,6 +25,7 @@ const Inbox = ({
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       postMessage();
+      document.getElementById("message--input--box").value = "";
     }
   };
 
@@ -167,13 +168,14 @@ const Inbox = ({
       </div>
 
       <div className="inbox--input--container mt24">
-        <input
+        <textarea
           className="message--input--box"
+          id="message--input--box"
           placeholder="input your message here"
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={handleKeyPress}
           maxLength={300}
-        ></input>
+        ></textarea>
       </div>
     </>
   );

@@ -263,7 +263,7 @@ const MyUserServicesCard = ({
                   getHmProfile(item);
                 }}
               >
-                View profile
+                Profile
               </button>
               {item.job_status === "inprogress" && (
                 <>

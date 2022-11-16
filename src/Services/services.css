@@ -397,7 +397,37 @@
   align-items: center;
   position: relative;
 }
-
+.my--services--filter--by--progress--container {
+  margin-bottom: 20px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 50px);
+  grid-gap: 15px;
+  grid-row-gap: 15px;
+}
+.my--services--category--buttons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  outline: none;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+  font-family: "Exo", sans-serif;
+  color: var(--white);
+}
+.my-services--category--cards--icon {
+  scale: 1.5;
+}
+.my-services--category--cards--icon--hidden {
+  scale: 0;
+}
 .userservices--card--job--status--box {
   display: flex;
   position: absolute;

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactDom from "react-dom";
 import crossButton from "../../Assets/services/crossbutton.svg";
+import closebutton from "../../Assets/universal/closesign.svg";
 import facebookIcon from "../../Assets/universal/facebook2.svg";
 import instagramIcon from "../../Assets/universal/instagram2.svg";
 import twitterIcon from "../../Assets/universal/twitter2.svg";
@@ -118,7 +119,7 @@ const HamburgerModal = ({
               </p>
             </NavLink>
             <img
-              src={crossButton}
+              src={closebutton}
               className="modal--cross--button"
               onClick={() => {
                 setHamburgerModal(false);

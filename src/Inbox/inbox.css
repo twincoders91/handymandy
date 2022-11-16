@@ -66,6 +66,7 @@
   align-items: center;
 }
 .message--input--box {
+  min-height: 60px;
   width: 400px;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -76,6 +77,9 @@
   color: black;
   margin-bottom: 24px;
   color: black;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  padding-right: 50px;
 }
 .message--input--box:focus {
   outline-color: var(--orange);

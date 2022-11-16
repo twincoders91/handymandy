@@ -80,11 +80,13 @@ const Notifications = ({ userNotifications, user_id, charSelect }) => {
                     </div>
                     <div className="individual--notification--description--section">
                       <p className="individual--notification--name fs12 fw400 m0 white">
-                        {items.first_name.charAt(0).toUpperCase() +
-                          items.first_name.slice(1)}{" "}
-                        {items.status_id === "inprogress"
-                          ? "has accepted this job request."
-                          : `has ${items.status_id} this job request.`}
+                        {items.status_id === "inprogress" &&
+                          `${
+                            items.first_name.charAt(0).toUpperCase() +
+                            items.first_name.slice(1)
+                          } has accepted this job request.`}
+                        {items.status_id === "cancelled" &&
+                          "This job has been cancelled"}
                       </p>
                     </div>
                   </div>

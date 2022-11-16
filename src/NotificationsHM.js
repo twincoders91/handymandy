@@ -44,7 +44,9 @@ const NotificationsHM = ({ hmNotifications, hm_id, charSelect }) => {
                   className={
                     items.status_id === "pending"
                       ? "individual--notification--card--pending relative"
-                      : "individual--notification--card--inprogress relative"
+                      : items.status_id === "completed"
+                      ? "individual--notification--card--inprogress relative"
+                      : "individual--notification--card--cancelled relative"
                   }
                 >
                   <div className="individual--notification--image--box">
@@ -79,11 +81,19 @@ const NotificationsHM = ({ hmNotifications, hm_id, charSelect }) => {
                     </div>
                     <div className="individual--notification--description--section">
                       <p className="individual--notification--name fs12 fw400 m0 white">
-                        {items.first_name.charAt(0).toUpperCase() +
-                          items.first_name.slice(1)}{" "}
-                        {items.status_id === "pending"
-                          ? "has requested for this job request."
-                          : `has ${items.status_id} this job request.`}
+                        {items.status_id === "pending" &&
+                          `${
+                            items.first_name.charAt(0).toUpperCase() +
+                            items.first_name.slice(1)
+                          } has requested for this job service.`}
+                        {items.status_id === "completed" &&
+                          `${
+                            items.first_name.charAt(0).toUpperCase() +
+                            items.first_name.slice(1)
+                          } has completed this job service.`}
+
+                        {items.status_id === "cancelled" &&
+                          "This job has been cancelled"}
                       </p>
                     </div>
                   </div>

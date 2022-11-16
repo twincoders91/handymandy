@@ -323,7 +323,15 @@ const CreateAccount2Handyman = ({ setCharSelect, username }) => {
             <button
               className="user--create--account--button"
               onClick={createHmProfile}
-              disabled={errorEmailModal}
+              disabled={
+                errorEmailModal ||
+                firstName === "" ||
+                lastName === "" ||
+                email === "" ||
+                businessName === "" ||
+                yearsSelection === "Select number of years" ||
+                aboutBusiness === ""
+              }
             >
               Submit
             </button>

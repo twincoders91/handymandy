@@ -116,7 +116,8 @@ const Navbar = ({
             !chooseCategory &&
             !viewHmProfile &&
             currentPage !== "From Home's Featured" &&
-            currentPage !== "Service Info" && (
+            currentPage !== "Service Info" &&
+            currentPage !== "My jobs" && (
               <NavLink to="/home">
                 <img src={backButton} className="back--button" />
               </NavLink>

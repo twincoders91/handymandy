@@ -447,6 +447,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .myuserservice--description--section {
   display: flex;

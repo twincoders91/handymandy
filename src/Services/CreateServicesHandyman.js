@@ -16,6 +16,7 @@ const CreateServicesHandyman = ({
   setHMNotifications,
   charSelect,
   username,
+  setCurrentPage,
 }) => {
   const [tOWInput, setTOWInput] = useState("");
   const [tOWArray, setTOWArray] = useState([]);
@@ -174,6 +175,7 @@ const CreateServicesHandyman = ({
         setHMNotifications={setHMNotifications}
         username={username}
         charSelect={charSelect}
+        setCurrentPage={setCurrentPage}
       />
       <div className="mb36">
         <div className="create--services--container">

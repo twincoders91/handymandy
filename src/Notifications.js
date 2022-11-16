@@ -10,6 +10,7 @@ const Notifications = ({
   setUserNotifications,
   setHMNotifications,
   username,
+  setCurrentPage,
 }) => {
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -49,6 +50,7 @@ const Notifications = ({
         setUserNotifications={setUserNotifications}
         setHMNotifications={setHMNotifications}
         username={username}
+        setCurrentPage={setCurrentPage}
       />
       <div className="notifications--main--container">
         <p className="notifications--header">Your Notifications</p>

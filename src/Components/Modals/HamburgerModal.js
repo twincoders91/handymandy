@@ -73,6 +73,7 @@ const HamburgerModal = ({
     navigate("/myservices");
   };
 
+  console.log(charSelect);
   return (
     <>
       {ReactDom.createPortal(

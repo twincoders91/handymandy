@@ -35,6 +35,7 @@ const MyServices = ({
         setHMNotifications={setHMNotifications}
         username={username}
         charSelect={charSelect}
+        setCurrentPage={setCurrentPage}
       />
       {charSelect == "handyman" && (
         <MyHandymanServices

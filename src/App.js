@@ -182,6 +182,7 @@ export default function App() {
               setHMNotifications={setHMNotifications}
               username={username}
               charSelect={charSelect}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -325,6 +326,7 @@ export default function App() {
               setUserNotifications={setUserNotifications}
               setHMNotifications={setHMNotifications}
               username={username}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -338,6 +340,7 @@ export default function App() {
               setUserNotifications={setUserNotifications}
               setHMNotifications={setHMNotifications}
               username={username}
+              setCurrentPage={setCurrentPage}
             />
           }
         />

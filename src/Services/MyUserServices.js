@@ -79,12 +79,14 @@ const MyUserServices = ({
         <CancelJobsModal
           setCancelJobsModalValue={setCancelJobsModalValue}
           cardClicked={cardClicked}
+          setFilteredClicked={setFilteredClicked}
         />
       )}
       {approveJobsModalValue && (
         <ApproveJobsModal
           setApproveJobsModalValue={setApproveJobsModalValue}
           cardClicked={cardClicked}
+          setFilteredClicked={setFilteredClicked}
         />
       )}
       <div className="my--services--main--container">
@@ -174,6 +176,11 @@ const MyUserServices = ({
         )}
         {filteredArray.length === 0 && filteredClicked === true && (
           <div className="hm3--noservices--text--box">No Services</div>
+        )}
+        {filteredArray.length !== 0 && filteredClicked === false && (
+          <div className="hm3--noservices--text--box">
+            Your services has been updated
+          </div>
         )}
       </div>
     </>

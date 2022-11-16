@@ -5,12 +5,18 @@ import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.svg";
 import starUnfilled from "../../Assets/services/starunfilled.svg";
 import starFilled from "../../Assets/services/starfilled.svg";
+import { useNavigate } from "react-router-dom";
 
-const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
+const ApproveJobsModal = ({
+  setApproveJobsModalValue,
+  cardClicked,
+  setFilteredClicked,
+}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [reviews, setReviews] = useState("");
   const [hmProfile_image, setHmProfile_image] = useState("");
+  const navigate = useNavigate();
 
   console.log(cardClicked);
   //=============================Fetch Profile Image ===================================
@@ -70,7 +76,7 @@ const ApproveJobsModal = ({ setApproveJobsModalValue, cardClicked }) => {
       } catch (e) {
         console.error(e);
       }
-
+      setFilteredClicked(false);
       setApproveJobsModalValue(false);
     } catch (e) {
       console.error(e);

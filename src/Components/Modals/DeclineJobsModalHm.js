@@ -3,7 +3,11 @@ import ReactDom from "react-dom";
 import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
-const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
+const DeclineJobsModalHm = ({
+  setDeclineJobsModalValue,
+  cardClicked,
+  setFilteredClicked,
+}) => {
   const declineService = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8001/jobs/", {
@@ -17,6 +21,7 @@ const DeclineJobsModalHm = ({ setDeclineJobsModalValue, cardClicked }) => {
           status_id: "cancelled",
         }),
       });
+      setFilteredClicked(false);
       setDeclineJobsModalValue(false);
     } catch (e) {
       console.error(e);

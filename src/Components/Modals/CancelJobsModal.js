@@ -4,7 +4,11 @@ import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.jpeg";
 
-const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
+const CancelJobsModal = ({
+  setCancelJobsModalValue,
+  cardClicked,
+  setFilteredClicked,
+}) => {
   console.log(cardClicked);
   const deleteService = async () => {
     try {
@@ -19,7 +23,7 @@ const CancelJobsModal = ({ setCancelJobsModalValue, cardClicked }) => {
           status_id: "cancelled",
         }),
       });
-
+      setFilteredClicked(false);
       setCancelJobsModalValue(false);
     } catch (e) {
       console.error(e);

@@ -172,6 +172,9 @@ const MyUserServices = ({
         {allJobs.length === 0 && !loading && (
           <div className="fs32 fw700 mt24">No Services yet</div>
         )}
+        {filteredArray.length === 0 && filteredClicked === true && (
+          <div className="hm3--noservices--text--box">No Services</div>
+        )}
       </div>
     </>
   );

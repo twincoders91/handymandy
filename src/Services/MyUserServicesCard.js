@@ -228,10 +228,7 @@ const MyUserServicesCard = ({
         </div>
         <div className="myuserservice--card--bottom">
           <p className="m0 fs14 fw700 mb8 mt8">Job Requirement</p>
-          <span
-            className="myuserservice--desc fs12 fw400 white"
-            style={{ "white-space": "pre-wrap", "overflow-wrap": "break-word" }}
-          >
+          <span className="myuserservice--desc fs12 fw400 white">
             {item.job_requirement}
           </span>
           <p className="m0 fs14 fw700 mb8 mt12">{item.category}</p>

@@ -148,19 +148,6 @@ const Inbox = ({
       />
       <div className="inbox--global--container">
         <div className="inbox--title--box ">
-          <span className="inbox--title--font fw300 mt8">
-            Chat between{" "}
-            <span className="inbox--title--name fw700">
-              {inboxData.first_name.charAt(0).toUpperCase() +
-                inboxData.first_name.slice(1)}
-            </span>{" "}
-            and{" "}
-            <span className="inbox--title--name fw700">
-              {inboxData.hm_first_name.charAt(0).toUpperCase() +
-                inboxData.hm_first_name.slice(1)}
-            </span>
-          </span>
-          <span className="inbox--title--font fs16 fw300 mt4">for </span>
           <span className="inbox--title--name fs16 fw700 mt4">
             {inboxData.title.charAt(0).toUpperCase() + inboxData.title.slice(1)}
           </span>
@@ -185,7 +172,7 @@ const Inbox = ({
           placeholder="input your message here"
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={handleKeyPress}
-          maxLength={200}
+          maxLength={300}
         ></input>
       </div>
     </>

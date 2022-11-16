@@ -1,20 +1,56 @@
 .inbox--toggle--container {
+  display: flex;
+  justify-content: left;
+}
+.inbox--toggle--container--hm {
+  display: flex;
+  justify-content: right;
 }
 
 .inbox--global--container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-top: 24px;
+}
+.inbox--title--box {
+  width: 400px;
+  height: fit-content;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+  margin-bottom: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.inbox--title--box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+.inbox--title--font {
+  color: white;
+}
+.inbox--title--name {
+  color: var(--orange);
 }
 .inbox--container {
   width: 400px;
-  height: 400px;
+  min-height: 400px;
+  max-height: 500px;
   border: 2px solid black;
   border-radius: 6px;
   box-shadow: var(--shadowing);
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 .inbox--input--container {
   /* height: 200px; */
@@ -24,14 +60,29 @@
 }
 .message--input--box {
   width: 400px;
-
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(207, 207, 207, 0.4);
+  color: black;
+  margin-bottom: 24px;
+}
+.inbox--text--container {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 300px;
+  min-height: 60px;
+  height: fit-content;
   border: 2px solid black;
   border-radius: 6px;
   box-shadow: var(--shadowing);
   background: rgba(207, 207, 207, 0.4);
   color: black;
 }
-.inbox--text--container {
+.inbox--text--container--hm {
+  margin-right: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -54,7 +105,27 @@
   width: 40px;
   object-fit: cover;
 }
+.inbox--profile--image--small--hm {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 1px solid var(--orange);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
 
 .inbox--text--box {
-  margin-left: 69px;
+  margin-left: 60px;
+  width: 70%;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.inbox--text--box--hm {
+  margin-right: 50px;
+  margin-left: 10px;
+  width: 70%;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }

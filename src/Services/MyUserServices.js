@@ -15,6 +15,8 @@ const MyUserServices = ({
   setJobsCompleted,
   setTotalRatings,
   setIndividualHmReviews,
+  setInboxData,
+  setBackButtonVisibility,
 }) => {
   const [allJobs, setAllJobs] = useState("");
   const [cancelJobsModalValue, setCancelJobsModalValue] = useState(false);
@@ -85,6 +87,8 @@ const MyUserServices = ({
                 cancelJobsModalValue={cancelJobsModalValue}
                 setApproveJobsModalValue={setApproveJobsModalValue}
                 setCardClicked={setCardClicked}
+                setInboxData={setInboxData}
+                setBackButtonVisibility={setBackButtonVisibility}
               />
             );
           })

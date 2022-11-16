@@ -251,6 +251,7 @@ export default function App() {
               userNotifications={userNotifications}
               hmNotifications={hmNotifications}
               setInboxData={setInboxData}
+              setBackButtonVisibility={setBackButtonVisibility}
             />
           }
         />
@@ -284,6 +285,11 @@ export default function App() {
               userNotifications={userNotifications}
               inboxData={inboxData}
               charSelect={charSelect}
+              setBackButtonVisibility={setBackButtonVisibility}
+              backButtonVisibility={backButtonVisibility}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              setViewHmProfile={setViewHmProfile}
             />
           }
         />

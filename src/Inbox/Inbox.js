@@ -9,6 +9,11 @@ const Inbox = ({
   hmNotifications,
   charSelect,
   inboxData,
+  setBackButtonVisibility,
+  backButtonVisibility,
+  currentPage,
+  setViewHmProfile,
+  setCurrentPage,
 }) => {
   const [userProfile_image, setUserProfile_image] = useState("");
   const [hmProfile_image, setHmProfile_image] = useState("");
@@ -121,6 +126,11 @@ const Inbox = ({
     }
   };
 
+  function updateScroll() {
+    var element = document.getElementById("inbox--container");
+    element.scrollTop = element.scrollHeight;
+  }
+
   useEffect(() => {
     fetchPfps();
   }, []);
@@ -130,15 +140,39 @@ const Inbox = ({
       <Navbar
         userNotifications={userNotifications}
         hmNotifications={hmNotifications}
+        setBackButtonVisibility={setBackButtonVisibility}
+        backButtonVisibility={backButtonVisibility}
+        currentPage={currentPage}
+        setViewHmProfile={setViewHmProfile}
+        setCurrentPage={setCurrentPage}
       />
-      <div className="inbox--global--container mt24">
-        <div className="inbox--container">
+      <div className="inbox--global--container">
+        <div className="inbox--title--box ">
+          <span className="inbox--title--font fw300 mt8">
+            Chat between{" "}
+            <span className="inbox--title--name fw700">
+              {inboxData.first_name.charAt(0).toUpperCase() +
+                inboxData.first_name.slice(1)}
+            </span>{" "}
+            and{" "}
+            <span className="inbox--title--name fw700">
+              {inboxData.hm_first_name.charAt(0).toUpperCase() +
+                inboxData.hm_first_name.slice(1)}
+            </span>
+          </span>
+          <span className="inbox--title--font fs16 fw300 mt4">for </span>
+          <span className="inbox--title--name fs16 fw700 mt4">
+            {inboxData.title.charAt(0).toUpperCase() + inboxData.title.slice(1)}
+          </span>
+        </div>
+        <div className="inbox--container" id="inbox--container">
           {newInboxData.map((item) => {
             return (
               <InboxMessagesCard
                 item={item}
                 hmProfile_image={hmProfile_image}
                 userProfile_image={userProfile_image}
+                updateScroll={updateScroll}
               />
             );
           })}
@@ -151,6 +185,7 @@ const Inbox = ({
           placeholder="input your message here"
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={handleKeyPress}
+          maxLength={200}
         ></input>
       </div>
     </>

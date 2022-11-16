@@ -12,11 +12,12 @@ const MyHandymanServicesCard = ({
   setApproveJobsModalValue,
   setCardClicked,
   setInboxData,
+  setBackButtonVisibility,
 }) => {
   const [userRatings, setUserRatings] = useState([]);
   const [userProfile_image, setUserProfile_image] = useState("");
   const navigate = useNavigate();
-  console.log(eachJobData);
+  // console.log(eachJobData);
 
   //=================== Truncate String =======================
   const truncate = (str, n) => {
@@ -80,23 +81,10 @@ const MyHandymanServicesCard = ({
   };
 
   const handleMessageMyService = () => {
-    // try {
-    //   const res = await fetch(`http://127.0.0.1:8001/inbox/${id}`, {
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     method: "GET",
-    //   });
-
-    //   const getInboxData = await res.json();
-    //   const overallData = { eachJobData, getInboxData };
-    //   setInboxData(overallData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
     setInboxData(eachJobData);
     navigate("/inbox");
+    setCurrentPage("My jobs");
+    setBackButtonVisibility(true);
   };
   //===================================================================
 

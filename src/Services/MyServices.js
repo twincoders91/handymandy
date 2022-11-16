@@ -12,7 +12,7 @@ const MyServices = ({
   loading,
   setHmProfile,
   userDetails,
-  setCurrentPage,
+
   setHmAverageRating,
   setIndividualHmStar,
   setJobsCompleted,
@@ -21,6 +21,8 @@ const MyServices = ({
   userNotifications,
   hmNotifications,
   setInboxData,
+  setCurrentPage,
+  setBackButtonVisibility,
 }) => {
   return (
     <div>
@@ -34,9 +36,10 @@ const MyServices = ({
           setLoading={setLoading}
           loading={loading}
           userDetails={userDetails}
-          setCurrentPage={setCurrentPage}
           charSelect={charSelect}
           setInboxData={setInboxData}
+          setCurrentPage={setCurrentPage}
+          setBackButtonVisibility={setBackButtonVisibility}
         />
       )}
       {charSelect == "user" && (
@@ -51,6 +54,8 @@ const MyServices = ({
           setJobsCompleted={setJobsCompleted}
           setTotalRatings={setTotalRatings}
           setIndividualHmReviews={setIndividualHmReviews}
+          setInboxData={setInboxData}
+          setBackButtonVisibility={setBackButtonVisibility}
         />
       )}
     </div>

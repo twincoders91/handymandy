@@ -13,8 +13,48 @@ const HamburgerModal = ({
   charSelect,
   setCurrentPage,
   userNotifications,
+  hmNotifications,
 }) => {
   const navigate = useNavigate();
+  console.log(charSelect);
+  console.log(userNotifications);
+
+  const userNotiCircle = () => {
+    if (userNotifications) {
+      return (
+        <>
+          {userNotifications &&
+            userNotifications.length > 0 &&
+            userNotifications.length !== 0 && (
+              <div className="notifications--cirle">
+                <p className="notifications--number m0">
+                  {userNotifications.length}
+                </p>
+              </div>
+            )}
+          {userNotifications.length === 0 && <></>}
+        </>
+      );
+    }
+  };
+  const hmNotiCircle = () => {
+    if (hmNotifications) {
+      return (
+        <>
+          {hmNotifications &&
+            hmNotifications.length > 0 &&
+            hmNotifications.length !== 0 && (
+              <div className="notifications--cirle">
+                <p className="notifications--number m0">
+                  {hmNotifications.length}
+                </p>
+              </div>
+            )}
+          {hmNotifications.length === 0 && <></>}
+        </>
+      );
+    }
+  };
 
   const handleHomeButtonClick = () => {
     setHamburgerModal((current) => !current);
@@ -50,18 +90,13 @@ const HamburgerModal = ({
             </NavLink>
             <NavLink
               className="navlinks"
-              to="/notifications"
+              to={userNotifications ? "/notifications" : "/hmnotifications"}
               onClick={() => handleHomeButtonClick()}
             >
               <div className="modal--hamburger--text white fs16 fw700 m0 mt24">
                 Notifications
-                {(userNotifications || userNotifications.length > 0) && (
-                  <div className="notifications--hamburgermodal--circle">
-                    <p className="notifications--number m0">
-                      {userNotifications.length}
-                    </p>
-                  </div>
-                )}
+                {userNotiCircle()}
+                {hmNotiCircle()}
               </div>
             </NavLink>
             <p

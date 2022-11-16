@@ -19,11 +19,15 @@ const MyServices = ({
   setTotalRatings,
   setIndividualHmReviews,
   userNotifications,
+  hmNotifications,
   setInboxData,
 }) => {
   return (
     <div>
-      <Navbar userNotifications={userNotifications} />
+      <Navbar
+        userNotifications={userNotifications}
+        hmNotifications={hmNotifications}
+      />
       {charSelect == "handyman" && (
         <MyHandymanServices
           hm_id={hm_id}

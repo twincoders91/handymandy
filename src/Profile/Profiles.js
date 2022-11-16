@@ -29,6 +29,7 @@ const Profiles = ({
   setCurrentPage,
   currentPage,
   userNotifications,
+  hmNotifications,
 }) => {
   console.log(currentPage);
   return (
@@ -41,6 +42,7 @@ const Profiles = ({
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         userNotifications={userNotifications}
+        hmNotifications={hmNotifications}
       />
       {charSelect == "handyman" && (
         <ProfileHandyman

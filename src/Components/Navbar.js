@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import backButton from "../Assets/universal/backbutton.svg";
@@ -15,12 +15,51 @@ const Navbar = ({
   setCurrentPage,
   currentPage,
   userNotifications,
+  hmNotifications,
 }) => {
   const navigate = useNavigate();
   //===============================STATES=======================================
   //============================NavBar states===================================
   const [isActive, setIsActive] = useState(false); //hamburger animation states
   const [hamburgerModal, setHamburgerModal] = useState(false); //modal animation states
+
+  const userNotiCircle = () => {
+    if (userNotifications) {
+      return (
+        <>
+          {userNotifications &&
+            userNotifications.length > 0 &&
+            userNotifications.length !== 0 && (
+              <div className="notifications--cirle">
+                <p className="notifications--number m0">
+                  {userNotifications.length}
+                </p>
+              </div>
+            )}
+          {userNotifications.length === 0 && <></>}
+        </>
+      );
+    }
+  };
+  const hmNotiCircle = () => {
+    if (hmNotifications) {
+      return (
+        <>
+          {hmNotifications &&
+            hmNotifications.length > 0 &&
+            hmNotifications.length !== 0 && (
+              <div className="notifications--cirle">
+                <p className="notifications--number m0">
+                  {hmNotifications.length}
+                </p>
+              </div>
+            )}
+          {hmNotifications.length === 0 && <></>}
+        </>
+      );
+    }
+  };
+
   const handleBackButtonClick = () => {
     setChooseCategory(false);
   };
@@ -38,6 +77,7 @@ const Navbar = ({
     }
   };
   console.log(userNotifications);
+  console.log(hmNotifications);
   return (
     <>
       {hamburgerModal && (
@@ -47,6 +87,7 @@ const Navbar = ({
           charSelect={charSelect}
           setCurrentPage={setCurrentPage}
           userNotifications={userNotifications}
+          hmNotifications={hmNotifications}
         />
       )}
       <div className="navbar--wrapper">
@@ -119,15 +160,8 @@ const Navbar = ({
             <span></span>
             <span></span>
             <span></span>
-            {(userNotifications || userNotifications.length > 0) &&
-              userNotifications.length !== 0 && (
-                <div className="notifications--cirle">
-                  <p className="notifications--number m0">
-                    {userNotifications.length}
-                  </p>
-                </div>
-              )}
-            {userNotifications.length === 0 && <></>}
+            {userNotiCircle()}
+            {hmNotiCircle()}
           </button>
         </div>
       </div>

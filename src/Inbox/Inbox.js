@@ -4,7 +4,12 @@ import "./inbox.css";
 import defaultavatar from "../Assets/profile/defaultavatar.svg";
 import InboxMessagesCard from "./InboxMessagesCard";
 
-const Inbox = ({ userNotifications, charSelect, inboxData }) => {
+const Inbox = ({
+  userNotifications,
+  hmNotifications,
+  charSelect,
+  inboxData,
+}) => {
   const [userProfile_image, setUserProfile_image] = useState("");
   const [hmProfile_image, setHmProfile_image] = useState("");
   const [message, setMessage] = useState("");
@@ -122,7 +127,10 @@ const Inbox = ({ userNotifications, charSelect, inboxData }) => {
 
   return (
     <>
-      <Navbar userNotifications={userNotifications} />
+      <Navbar
+        userNotifications={userNotifications}
+        hmNotifications={hmNotifications}
+      />
       <div className="inbox--global--container mt24">
         <div className="inbox--container">
           {newInboxData.map((item) => {

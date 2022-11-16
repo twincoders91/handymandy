@@ -23,6 +23,8 @@ const HomePageMain = ({
   setFeaturedData,
   userNotifications,
   setUserNotifications,
+  hmNotifications,
+  setHMNotifications,
 }) => {
   //============================States to make sure correct pages show============================
   const [updateService, setUpdateService] = useState(false);
@@ -31,8 +33,7 @@ const HomePageMain = ({
 
   //===================================== Get HM ID ========================================
   //============================= Get Handyman ID ================================
-  console.log(charSelect);
-  console.log(username);
+  console.log(userNotifications);
 
   const getHandymanID = async () => {
     if (!username || charSelect === "user") return;
@@ -48,7 +49,25 @@ const HomePageMain = ({
       setHm_id(data.id);
       getHmRatings(data.id);
       fetchIndividualHMServices(data.id);
-      return data;
+
+      //=============== Fetch notifications by HM ID ===============
+
+      try {
+        const res = await fetch(
+          `http://127.0.0.1:8001/handyman/notifications/${data.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        );
+        const notiData = await res.json();
+        setHMNotifications(notiData);
+      } catch (e) {
+        console.error(e);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -169,6 +188,7 @@ const HomePageMain = ({
         charSelect={charSelect}
         setCurrentPage={setCurrentPage}
         userNotifications={userNotifications}
+        hmNotifications={hmNotifications}
       />
       {charSelect == "user" && (
         <HomePage

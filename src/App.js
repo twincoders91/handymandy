@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import CreateAccountMain from "./LoginPage/CreateAccountMain";
 import LoginPage from "./LoginPage/LoginPage";
@@ -18,6 +18,7 @@ import MyServices from "./Services/MyServices";
 import Notifications from "./Notifications";
 import FeaturedServiceInfo from "./Home/FeaturedServiceInfo";
 import Inbox from "./Inbox/Inbox";
+import NotificationsHM from "./NotificationsHM";
 
 export default function App() {
   //================================== Navbar States===========================================
@@ -65,10 +66,13 @@ export default function App() {
 
   //============================Notifications States=====================================
   const [userNotifications, setUserNotifications] = useState("");
+  const [hmNotifications, setHMNotifications] = useState("");
 
   //======================= Back button settings ===========================
+
   console.log(currentPage);
   console.log(inboxData);
+  console.log(hmNotifications);
   return (
     <div>
       <Routes>
@@ -123,6 +127,8 @@ export default function App() {
               setFeaturedData={setFeaturedData}
               userNotifications={userNotifications}
               setUserNotifications={setUserNotifications}
+              hmNotifications={hmNotifications}
+              setHMNotifications={setHMNotifications}
             />
           }
         />
@@ -148,6 +154,7 @@ export default function App() {
               setTotalRatings={setTotalRatings}
               setCurrentPage={setCurrentPage}
               user_id={user_id}
+              hmNotifications={hmNotifications}
               userNotifications={userNotifications}
             />
           }
@@ -164,6 +171,7 @@ export default function App() {
               setServicePriceFrom={setServicePriceFrom}
               hm_id={hm_id}
               setIndividualHMServices={setIndividualHMServices}
+              hmNotifications={hmNotifications}
               userNotifications={userNotifications}
             />
           }
@@ -209,6 +217,7 @@ export default function App() {
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
               userNotifications={userNotifications}
+              hmNotifications={hmNotifications}
             />
           }
         />
@@ -240,6 +249,7 @@ export default function App() {
               setTotalRatings={setTotalRatings}
               setIndividualHmReviews={setIndividualHmReviews}
               userNotifications={userNotifications}
+              hmNotifications={hmNotifications}
               setInboxData={setInboxData}
             />
           }
@@ -262,6 +272,7 @@ export default function App() {
               setViewHmProfile={setViewHmProfile}
               user_id={user_id}
               userNotifications={userNotifications}
+              hmNotifications={hmNotifications}
             />
           }
         />
@@ -269,6 +280,7 @@ export default function App() {
           path="/inbox"
           element={
             <Inbox
+              hmNotifications={hmNotifications}
               userNotifications={userNotifications}
               inboxData={inboxData}
               charSelect={charSelect}
@@ -282,6 +294,12 @@ export default function App() {
               userNotifications={userNotifications}
               user_id={user_id}
             />
+          }
+        />
+        <Route
+          path="/hmnotifications"
+          element={
+            <NotificationsHM hmNotifications={hmNotifications} hm_id={hm_id} />
           }
         />
       </Routes>

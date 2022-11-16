@@ -151,7 +151,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  top: 14px;
+  top: 10px;
   right: 10px;
   /* z-index: +99; */
 }
@@ -176,7 +176,7 @@
 .image--upload--inbox {
   position: absolute;
   z-index: 0;
-  top: 14px;
+  top: 10px;
   right: 10px;
 }
 

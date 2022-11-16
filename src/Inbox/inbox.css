@@ -53,7 +53,7 @@
   overflow: auto;
 }
 .inbox--input--container {
-  /* height: 200px; */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,6 +125,70 @@
 .inbox--text--box {
   margin-left: 60px;
   width: 70%;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.inbox--text--box--hm {
+  margin-right: 50px;
+  margin-left: 10px;
+  width: 70%;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.inbox--image--form {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  top: 14px;
+  right: 140px;
+  /* z-index: +99; */
+}
+
+.upload--image--button {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: transparent;
+  z-index: +99;
+}
+
+.upload--image--button:hover {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--orange);
+}
+
+.image--upload--inbox {
+  position: absolute;
+  z-index: 0;
+  top: 14px;
+  right: 140px;
+}
+
+.image--message {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.inbox--image--box--hm {
+  width: 100%;
+}
+
+.inbox--text--box {
+  margin-left: 60px;
+
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }

@@ -4,16 +4,16 @@ const progressData = [
     icon: "pending",
   },
   {
+    category: "inprogress",
+    icon: "inprogress",
+  },
+  {
     category: "completed",
     icon: "completed",
   },
   {
     category: "cancelled",
     icon: "cancelled",
-  },
-  {
-    category: "inprogress",
-    icon: "inprogress",
   },
 ];
 

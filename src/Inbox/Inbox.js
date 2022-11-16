@@ -116,6 +116,11 @@ const Inbox = ({ userNotifications, charSelect, inboxData }) => {
     }
   };
 
+  function updateScroll() {
+    var element = document.getElementById("inbox--container");
+    element.scrollTop = element.scrollHeight;
+  }
+
   useEffect(() => {
     fetchPfps();
   }, []);
@@ -124,13 +129,14 @@ const Inbox = ({ userNotifications, charSelect, inboxData }) => {
     <>
       <Navbar userNotifications={userNotifications} />
       <div className="inbox--global--container mt24">
-        <div className="inbox--container">
+        <div className="inbox--container" id="inbox--container">
           {newInboxData.map((item) => {
             return (
               <InboxMessagesCard
                 item={item}
                 hmProfile_image={hmProfile_image}
                 userProfile_image={userProfile_image}
+                updateScroll={updateScroll}
               />
             );
           })}
@@ -143,6 +149,7 @@ const Inbox = ({ userNotifications, charSelect, inboxData }) => {
           placeholder="input your message here"
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={handleKeyPress}
+          maxLength={200}
         ></input>
       </div>
     </>

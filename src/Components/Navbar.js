@@ -37,7 +37,7 @@ const Navbar = ({
       console.log("easter egg!");
     }
   };
-  console.log(userNotifications);
+  // console.log(userNotifications);
   return (
     <>
       {hamburgerModal && (
@@ -88,6 +88,15 @@ const Navbar = ({
             )}
           {backButtonVisibility && !chooseCategory && viewHmProfile && (
             <NavLink to="/services">
+              <img
+                src={backButton}
+                className="back--button"
+                onClick={handleBackButtonClick2}
+              />
+            </NavLink>
+          )}
+          {backButtonVisibility && currentPage === "My jobs" && (
+            <NavLink to="/myservices">
               <img
                 src={backButton}
                 className="back--button"

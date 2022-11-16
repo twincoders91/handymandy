@@ -14,6 +14,7 @@ const MyHandymanServices = ({
   setCurrentPage,
   charSelect,
   setInboxData,
+  setBackButtonVisibility,
 }) => {
   const [allJobs, setAllJobs] = useState("");
   const [approveJobsModalValue, setApproveJobsModalValue] = useState(false);
@@ -83,6 +84,7 @@ const MyHandymanServices = ({
                 setApproveJobsModalValue={setApproveJobsModalValue}
                 setCardClicked={setCardClicked}
                 setInboxData={setInboxData}
+                setBackButtonVisibility={setBackButtonVisibility}
               />
             );
           })

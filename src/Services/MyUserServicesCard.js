@@ -19,6 +19,8 @@ const MyUserServicesCard = ({
   setCancelJobsModalValue,
   setApproveJobsModalValue,
   setCardClicked,
+  setInboxData,
+  setBackButtonVisibility,
 }) => {
   const [hmRatings, setHmRatings] = useState([]);
   const [hmProfile_image, setHmProfile_image] = useState("");
@@ -28,7 +30,7 @@ const MyUserServicesCard = ({
   };
 
   const navigate = useNavigate();
-  console.log(item);
+  // console.log(item);
   //====================== RATINGS FETCHING =======================
   const getHmRatings = async () => {
     try {
@@ -162,6 +164,13 @@ const MyUserServicesCard = ({
     setCardClicked(item);
   };
 
+  const handleMessageMyService = () => {
+    setInboxData(item);
+    setCurrentPage("My jobs");
+    setBackButtonVisibility(true);
+    navigate("/inbox");
+  };
+
   //===================================================================
 
   useEffect(() => {
@@ -260,14 +269,24 @@ const MyUserServicesCard = ({
                 View profile
               </button>
               {item.job_status === "inprogress" && (
-                <button
-                  className="myuserservice--view--approve--button fw700 fs12"
-                  onClick={() => {
-                    handleApproveMyService();
-                  }}
-                >
-                  Complete
-                </button>
+                <>
+                  <button
+                    className="myuserservice--view--approve--button fw700 fs12"
+                    onClick={() => {
+                      handleApproveMyService();
+                    }}
+                  >
+                    Complete
+                  </button>
+                  <button
+                    className="myuserservice--view--message--button fw700 fs12"
+                    onClick={() => {
+                      handleMessageMyService(item.jobs_id);
+                    }}
+                  >
+                    Message
+                  </button>
+                </>
               )}
               {item.job_status === "inprogress" ||
               item.job_status === "pending" ? (

@@ -294,7 +294,7 @@ const ProfileHandyman = ({
     retreiveHandymanRatingsSummary();
     retreiveHandymanInfo();
   }, []);
-
+  console.log(specialitiesHM);
   return (
     <div className="profile--info--container">
       <div className="profile--image--box">

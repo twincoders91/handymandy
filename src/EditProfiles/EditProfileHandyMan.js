@@ -48,12 +48,12 @@ const EditProfileHandyMan = ({ hm_id, hMDetails }) => {
 
   const handleAddSpecialities = (details) => {
     if (specialitiesArray.length === 0) {
-      addIntoArray(details);
+      addIntoArray(details.toLowerCase());
     } else if (specialitiesArray.length > 0) {
-      if (specialitiesArray.includes(details)) {
+      if (specialitiesArray.includes(details.toLowerCase())) {
         return null;
       } else {
-        addIntoArray(details);
+        addIntoArray(details.toLowerCase());
       }
     }
   };

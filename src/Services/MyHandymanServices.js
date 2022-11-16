@@ -81,12 +81,14 @@ const MyHandymanServices = ({
         <ApproveJobsModalHm
           setApproveJobsModalValue={setApproveJobsModalValue}
           cardClicked={cardClicked}
+          setFilteredClicked={setFilteredClicked}
         />
       )}
       {declineJobsModalValue && (
         <DeclineJobsModalHm
           setDeclineJobsModalValue={setDeclineJobsModalValue}
           cardClicked={cardClicked}
+          setFilteredClicked={setFilteredClicked}
         />
       )}
       <div className="my--services--main--container">
@@ -165,6 +167,11 @@ const MyHandymanServices = ({
         )}
         {filteredArray.length === 0 && filteredClicked === true && (
           <div className="hm3--noservices--text--box">No Services</div>
+        )}
+        {filteredArray.length !== 0 && filteredClicked === false && (
+          <div className="hm3--noservices--text--box">
+            Your services has been updated
+          </div>
         )}
       </div>
     </div>

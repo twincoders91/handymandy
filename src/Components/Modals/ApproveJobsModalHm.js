@@ -4,7 +4,11 @@ import "./modal.css";
 import closesign from "../../Assets/universal/closesign.svg";
 import defaultavatar from "../../Assets/profile/defaultavatar.svg";
 
-const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
+const ApproveJobsModalHm = ({
+  setApproveJobsModalValue,
+  cardClicked,
+  setFilteredClicked,
+}) => {
   const [userProfile_image, setUserProfile_image] = useState("");
 
   //=============================Fetch Profile Image ===================================
@@ -46,6 +50,7 @@ const ApproveJobsModalHm = ({ setApproveJobsModalValue, cardClicked }) => {
           status_id: "inprogress",
         }),
       });
+      setFilteredClicked(false);
       setApproveJobsModalValue(false);
     } catch (e) {
       console.error(e);

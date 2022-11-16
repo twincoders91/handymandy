@@ -3,6 +3,7 @@ import ClipLoader from "react-spinners/RiseLoader";
 import MyUserServicesCard from "./MyUserServicesCard";
 import CancelJobsModal from "../Components/Modals/CancelJobsModal";
 import ApproveJobsModal from "../Components/Modals/ApproveJobsModal";
+import progressData from "../DummyDataSets/Progress";
 
 const MyUserServices = ({
   user_id,
@@ -22,6 +23,9 @@ const MyUserServices = ({
   const [cancelJobsModalValue, setCancelJobsModalValue] = useState(false);
   const [approveJobsModalValue, setApproveJobsModalValue] = useState(false);
   const [cardClicked, setCardClicked] = useState("");
+  const [filteredArray, setFilteredArray] = useState([]);
+  const [filteredClicked, setFilteredClicked] = useState(false);
+  const [currentFilteredCategory, setCurrentFilteredCategory] = useState("");
 
   const fetchJobsByUser = async () => {
     setLoading(true);
@@ -41,9 +45,29 @@ const MyUserServices = ({
       console.error(e);
     }
   };
-
+  console.log(allJobs);
   console.log(cancelJobsModalValue);
   //===================================================================
+
+  //=========================Filter by Category Button============================
+
+  const handleFilterByProgress = (categories) => {
+    setFilteredArray(
+      allJobs.filter(
+        (services) => services.job_status === categories.category.toLowerCase()
+      )
+    );
+    if (categories.category === currentFilteredCategory) {
+      setFilteredClicked(false);
+      setCurrentFilteredCategory("");
+      setFilteredArray([]);
+    } else {
+      setFilteredClicked(true);
+      setCurrentFilteredCategory(categories.category);
+    }
+  };
+  console.log(filteredArray);
+  console.log(filteredClicked);
 
   useEffect(() => {
     fetchJobsByUser();
@@ -65,12 +89,40 @@ const MyUserServices = ({
       )}
       <div className="my--services--main--container">
         <span className="fw700 fs32 mt24 mb24 white">My Services</span>
+        <div className="my--services--filter--by--progress--container">
+          {progressData.map((progressStatus) => {
+            return (
+              <div
+                className="my--services--category--buttons"
+                onClick={() => {
+                  handleFilterByProgress(progressStatus);
+                }}
+              >
+                {currentFilteredCategory !== progressStatus.category ? (
+                  <img
+                    src={require(`../Assets/services/${progressStatus.icon}.svg`)}
+                    className={"my-services--category--cards--icon"}
+                    alt="images"
+                  ></img>
+                ) : (
+                  <div className="hm--category--buttons--text">
+                    <p className="m0">{progressStatus.category}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
 
-        {loading ? (
+        {loading && (
           <div className="my--services--loading--container">
             <ClipLoader size={50} color={"#FFBA0A"} loading={loading} />
           </div>
-        ) : allJobs.length > 0 ? (
+        )}
+        {allJobs.length > 0 &&
+          !loading &&
+          filteredArray.length === 0 &&
+          filteredClicked === false &&
           allJobs.map((item) => {
             return (
               <MyUserServicesCard
@@ -91,8 +143,33 @@ const MyUserServices = ({
                 setBackButtonVisibility={setBackButtonVisibility}
               />
             );
-          })
-        ) : (
+          })}
+        {allJobs.length > 0 &&
+          !loading &&
+          filteredArray.length > 0 &&
+          filteredClicked === true &&
+          filteredArray.map((item) => {
+            return (
+              <MyUserServicesCard
+                key={item.jobs_id}
+                item={item}
+                setHmProfile={setHmProfile}
+                setCurrentPage={setCurrentPage}
+                setHmAverageRating={setHmAverageRating}
+                setIndividualHmStar={setIndividualHmStar}
+                setJobsCompleted={setJobsCompleted}
+                setTotalRatings={setTotalRatings}
+                setIndividualHmReviews={setIndividualHmReviews}
+                setCancelJobsModalValue={setCancelJobsModalValue}
+                cancelJobsModalValue={cancelJobsModalValue}
+                setApproveJobsModalValue={setApproveJobsModalValue}
+                setCardClicked={setCardClicked}
+                setInboxData={setInboxData}
+                setBackButtonVisibility={setBackButtonVisibility}
+              />
+            );
+          })}
+        {allJobs.length === 0 && !loading && (
           <div className="fs32 fw700 mt24">No Services yet</div>
         )}
       </div>

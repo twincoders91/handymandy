@@ -83,7 +83,7 @@ const UserLoginPage = ({
         <div className="universal--input--forms">
           <img src={passwordKey} className="user--login--input--icon ml12" />
           <input
-            type="text"
+            type="password"
             placeholder="password"
             className="user--login-input ml12 fw400 fs16"
             onChange={(e) => setPassword(e.target.value)}

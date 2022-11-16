@@ -105,7 +105,7 @@ const CreateAccount1 = ({
         <div className="universal--input--forms mb24">
           <img src={passwordImage} className="user--login--input--icon ml12" />
           <input
-            type="text"
+            type="password"
             placeholder="password"
             className="create--account--input ml12"
           />
@@ -113,7 +113,7 @@ const CreateAccount1 = ({
         <div className="universal--input--forms mb36">
           <img src={passwordImage} className="user--login--input--icon ml12" />
           <input
-            type="text"
+            type="password"
             placeholder="password"
             className="create--account--input ml12"
             onChange={(e) => {

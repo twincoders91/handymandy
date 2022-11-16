@@ -11,6 +11,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-top: 24px;
+}
+.inbox--title--box {
+  width: 400px;
+  height: fit-content;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-shadow: var(--shadowing);
+  background: rgba(0, 0, 0, 0.4);
+  margin-bottom: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.inbox--title--box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+.inbox--title--font {
+  color: white;
+}
+.inbox--title--name {
+  color: var(--orange);
 }
 .inbox--container {
   width: 400px;

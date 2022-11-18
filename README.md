@@ -56,4 +56,7 @@ If an SQL database is used, an SQL file for creating the SQL tables.
 16) User Job's Page =====> <img width="548" alt="Screenshot 2022-11-18 at 5 47 51 PM" src="https://user-images.githubusercontent.com/115208112/202672458-083c98f8-1805-4aed-8291-1d7d2bb3bb6b.png">
 17) User Complete Job's Page =====> <img width="557" alt="Screenshot 2022-11-18 at 5 49 34 PM" src="https://user-images.githubusercontent.com/115208112/202672916-afa226ca-5bc2-4944-85cb-97b3a67e7cd6.png">
 18) User Cancel Job's Page =====> <img width="565" alt="Screenshot 2022-11-18 at 5 49 49 PM" src="https://user-images.githubusercontent.com/115208112/202672942-d438470c-3171-45ee-87e2-799b25dc87f0.png">
+19) User + Handyman's Chat Function =====> <img width="535" alt="Screenshot 2022-11-18 at 7 22 05 PM" src="https://user-images.githubusercontent.com/115208112/202694440-7d57c1dd-5997-484f-9f73-330c3deb48ba.png">
+20) User Review Page =====> <img width="498" alt="Screenshot 2022-11-18 at 7 27 52 PM" src="https://user-images.githubusercontent.com/115208112/202695365-118ea61f-58cd-4bb2-ac3c-daf40230b5cc.png">
+21) Handyman Profile Page with Review =====> <img width="489" alt="Screenshot 2022-11-18 at 7 28 15 PM" src="https://user-images.githubusercontent.com/115208112/202695472-84edd3fb-a641-4de5-9bc7-c85bf27f5e06.png">
 

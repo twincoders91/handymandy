@@ -29,6 +29,7 @@ AWS S3 bucket cloud service.
 
 # Application Structure
 
+```
 --> Root (/)
     |--> login page (/)
       |--> User login page (/login)
@@ -42,41 +43,7 @@ AWS S3 bucket cloud service.
         |--> Create account 2 handyman
           |--> Create account error modal
     |--> Account Creation (/create-account)
-         |--> User Account Creation - Generic account creation, tags the type of account (i.e. migrant worker, donor or volunteer)
-         |--> Profile Creation - Only for migrant workers, to facilitate delivery of items
-    |--> Home (/home)
-         |--> Homepage - Separate views for migrant workers and donors
-         |--> Application - Separate views for migrant workers and donors
-    |--> Donate (/donate)
-         |--> Donate homepage
-              |--> Modals components (donate information)
-         |--> Donate dashboard
-              |--> Item status information (modal)
-              |--> Donate top 4 Category component - map and display donate categories (dynamic dataset)
-              |--> In-need of item Card (dynamic dataset with sorting functionality)
-              |--> How to donate instruction (modal)
-         |--> Donate location selection
-              |--> Navbar (Donate items) 
-              |--> Drop Menu Area selection (select NSEW states)
-              |--> Maps NSEW (pick location to drop off items, and filter volunteer data to areas)
-                   |--> Drop off information - Map and display filtered volunteer information such as available time and contact details (dynamic dataset)
-         |--> Donate items 1
-              |--> Donate Category (Generic Layer ) - map and display donate categories in the form of icons and words (dynamic data set)
-         |--> Donate items 2
-              |--> Donate Category Detailed (Detailed Layer) - Filter data based on Donate Items 1 selection. Map and display filtered donate categories
-              |--> Donate Item Description - Create backend data through POST method. Users will define item details through onclick buttons which set the states for required body values.
-                   |--> Upload photo - Currently hardcoded the photo upload to pull specific images from imgur, based on what user has selected.
-         |--> Donate confirmation - Page to confirm submission, as well as option to donate a new item or view overall application.
-         |--> Donate Application - Overview of items donated through image and texts
-              |--> Donate Application Card - Users will be able to see all their donated items by fetching the data from the backend. Users can delete specific item data in the Backend through the DELETE method. Subsequently mapping and displaying the data through text and photo.
- 
- 
-    |--> Item Request (/item-request)
-         |--> Item Category
-              |--> Pre-set Items
-              |--> Other requests - Through text inputs or photo inputs
-         |--> Item Cart
-         |--> Delivery Methods - Delivery to the migrant worker's dormitory or self-pickup
+```
 
 
 Technical Requirements

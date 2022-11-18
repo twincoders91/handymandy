@@ -9,23 +9,25 @@ HandyMandy app provides users with on-demand handyman services via a web/mobile 
 <li>Once a job is completed, users can provide constructive reviews which will be displayed on the handyman's profile. </li>
 
 # User stories
-A user story used for presentation. Ignore if not interested. 
+<li>A user story used for presentation. Ignore if not interested. </li>
 It was 4am, and it was a cold dark night. I woke up and had to use the toilet urgently. The light was busted and not working, the pipes and toilet were clogged. I was not able to use the toilet in the dark and worst of all I did not know how to fix the problem. Thankfully, I remembered I had HandyMandy, a one stop application to engage a competent handyman to fix my home problems.
 
 # Technologies used
 Handyman app is built on PERN stack (Postgresql, Express, React and NodeJs) with its own backend and frontend. The application is a complete product, which is usable from head-to-tail.
 ## Technologies used to build frontend:
-React.js 
-Vanilla CSS
-Github repo: https://github.com/twincoders91/shareable
+<li>React.js </li>
+<li>Vanilla CSS</li>
+<li>Github repo: https://github.com/twincoders91/shareable</li>
 ## Technologies used to build backend:
-Express.js
-Postgresql
-BCrypt is used for the hashing of passwords
-Backend server name : handymandy
-Github repo: https://github.com/twincoders91/handymandybackend
+<li>Express.js</li>
+<li>Postgresql</li>
+<li>BCrypt is used for the hashing of passwords</li>
+## Backend server name : handymandy
+<li>Github repo: https://github.com/twincoders91/handymandybackend</li>
 ## Cloud Technologies used:
-AWS S3 bucket cloud service.
+<li>AWS S3 bucket cloud service.</li>
+<li>AWS S3 bucket name: handymandy</li>
+<li>AWS S3 bucket region: ap-southeast-1</li>
 
 # Application Structure
 
@@ -78,7 +80,7 @@ AWS S3 bucket cloud service.
     |--> Inbox
         |--> Inbox Messages Card
     |--> Notifications       
-
+    |--> Notifications Handyman
 ```
 
 

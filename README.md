@@ -2,7 +2,12 @@
 HandyMandy is a full stack application for on demand handyman services. Think of it like grab but for handyman services.
 
 # Project Description:
-HandyMandy app provides users with on-demand handyman services via a web/mobile app, by connecting the 2 main types of accounts, a general user and a handyman user. HandyMandy has an in-app instant messaging feature that allows simple communication between users and handymans. In a summarised format, handyman users create services which will be displayed on the application. Users can view and select services that appeal to them, the app then creates a job request. Handyman users can choose to accept job requests which will be converted into jobs. Once a job is completed, users can provide constructive reviews which will be displayed on the handyman's profile.
+HandyMandy app provides users with on-demand handyman services via a web/mobile app, by connecting the 2 main types of accounts, a general user and a handyman user. HandyMandy has an in-app instant messaging feature that allows simple communication between users and handymans. In a summarised format,
+<li>handyman users create services which will be displayed on the application.</li>
+<li>Users can view and select services that appeal to them, the app then creates a job request. </li>
+<li>Handyman users can choose to accept job requests which will be converted into jobs. </li>
+<li>Once a job is completed, users can provide constructive reviews which will be displayed on the handyman's profile. </li>
+
 
 is built on PERN stack (Postgresql, Express, React and NodeJs)
 is an inclusive social space found within Rainbow Centre at 501 Margaret Drive Singapore 149306. It is a vocational training ground for students from the Rainbow Centre so that they can transit to open employment, and a platform to advocate for a more inclusive community.

@@ -32,17 +32,26 @@ AWS S3 bucket cloud service.
 ```
 --> Root (/)
     |--> login page (/)
-      |--> User login page (/login)
-        |--> Login Error Modal
-      |--> Create account Main (/signup)
-        |--> Create account 1 
-          |--> Create account error modal
+        |--> User login page (/login)
+            |--> Login Error Modal
+        |--> Create account Main (/signup)
+            |--> Create account 1 
+            |--> Create account error modal
         |--> Character select
         |--> Create account 2 user
-          |--> Create account error modal
+            |--> Create account error modal
         |--> Create account 2 handyman
-          |--> Create account error modal
-    |--> Account Creation (/create-account)
+            |--> Create account error modal
+     |--> Home Page Main
+        |--> Home Page (user)
+            |--> Featured services card
+        |--> Home Page Handyman
+            |--> Home Page 2 handyman
+            |--> Home Page 3 handyman 
+                |--> Handyman services cards
+     |--> Services
+                
+
 ```
 
 

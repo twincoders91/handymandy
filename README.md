@@ -8,18 +8,16 @@ HandyMandy app provides users with on-demand handyman services via a web/mobile 
 <li>Handyman users can choose to accept job requests which will be converted into jobs. </li>
 <li>Once a job is completed, users can provide constructive reviews which will be displayed on the handyman's profile. </li>
 
+# Technical requirement
+Handyman app is built on PERN stack (Postgresql, Express, React and NodeJs) with its own backend and frontend. The application is a complete product, which is usable from head-to-tail.
 
-is built on PERN stack (Postgresql, Express, React and NodeJs)
-is an inclusive social space found within Rainbow Centre at 501 Margaret Drive Singapore 149306. It is a vocational training ground for students from the Rainbow Centre so that they can transit to open employment, and a platform to advocate for a more inclusive community.
-
-The main aim of the app is to create a digital platform for diners to order food and explore artwork done by Rainbow Centre’s students.
-
+# User stories
+A user story used for presentation. Ignore if not interested. 
+It was 4am, and it was a cold dark night. I woke up and had to use the toilet urgently. The light was busted and not working, the pipes and toilet were clogged. I was not able to use the toilet in the dark and worst of all I did not know how to fix the problem. Thankfully, I remembered I had HandyMandy, a one stop application to engage a competent handyman to fix my home problems.
 
 Technical Requirements
 Your app must:
 
-Build a full-stack application by making your own backend and your own front-end.
-Be a complete product, which means that it is usable from head-to-tail, in the environment it is meant for.
 Implement thoughtful user stories that are significant enough to help you know which features to build and which to scrap
 Implement full CRUD the app has to be able to create, read, update and delete data from the database
 Have at least 2 types of login, mainly user and admin, the different types should have difference accesses to the APIs and Webpages

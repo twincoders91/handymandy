@@ -54,6 +54,87 @@ AWS S3 bucket cloud service.
 
 ```
 
+# Amazon S3 Bucket, Cloud Service setup
+## Creating profile images for users as primary example
+```                
+------Front End------ 
+const updateProfileImage = async (event) => {
+    try {
+      const file = event.target.files[0];
+      
+      // GET SECURE URL FROM OUR SERVER TO ACCESS S3 BUCKET
+      const { url } = await fetch("http://localhost:8001/s3url").then((res) =>
+        res.json()
+      );
+      console.log(url);
+
+      // POST THE IMAGE DIRECTLY TO THE S3 BUCKET
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      });
+
+      const imageUrl = url.split("?")[0];
+      // setProfile_image(imageUrl);
+      // POST REQUEST TO MY SERVER TO STORE ANY EXTRA
+      
+      if (userDetails.image_url === null || !userDetails.image_url) {
+        try {
+          const res = await fetch("http://127.0.0.1:8001/profileimage/", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+              image_url: imageUrl,
+              user_id: user_id,
+            }),
+          });
+          console.log(res);
+          retreiveUserInfo();
+        } catch (e) {
+          console.error(e);
+        }
+      } else {
+        try {
+          const res = await fetch("http://127.0.0.1:8001/profileimage/", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify({
+              user_id: user_id,
+              image_url: imageUrl,
+            }),
+          });
+          console.log(res);
+          retreiveUserInfo();
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+------Backend------
+const s3 = require("./s3");
+
+app.use(express.static("front"));
+app.use(cors());
+
+app.get("/s3Url", async (req, res) => {
+  const url = await s3.generateUploadURL();
+  res.send({ url });
+});
+```
+
 
 Technical Requirements
 Your app must:

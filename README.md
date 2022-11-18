@@ -8,12 +8,18 @@ HandyMandy app provides users with on-demand handyman services via a web/mobile 
 <li>Handyman users can choose to accept job requests which will be converted into jobs. </li>
 <li>Once a job is completed, users can provide constructive reviews which will be displayed on the handyman's profile. </li>
 
-# Technical requirement
-Handyman app is built on PERN stack (Postgresql, Express, React and NodeJs) with its own backend and frontend. The application is a complete product, which is usable from head-to-tail.
-
 # User stories
 A user story used for presentation. Ignore if not interested. 
 It was 4am, and it was a cold dark night. I woke up and had to use the toilet urgently. The light was busted and not working, the pipes and toilet were clogged. I was not able to use the toilet in the dark and worst of all I did not know how to fix the problem. Thankfully, I remembered I had HandyMandy, a one stop application to engage a competent handyman to fix my home problems.
+
+# Technical requirement
+Handyman app is built on PERN stack (Postgresql, Express, React and NodeJs) with its own backend and frontend. The application is a complete product, which is usable from head-to-tail.
+# Technologies used to build frontend:
+React.js 
+Vanilla CSS
+# Technologies used to build backend:
+Express.js
+Postgresql
 
 Technical Requirements
 Your app must:

@@ -49,14 +49,14 @@ If an SQL database is used, an SQL file for creating the SQL tables.
 9) User Home Page =====> <img width="664" alt="Screenshot 2022-11-18 at 5 27 11 PM" src="https://user-images.githubusercontent.com/115208112/202668263-3f1d9e46-8221-4570-af58-f1a542c63919.png">
 10) User Profile Page =====> <img width="714" alt="Screenshot 2022-11-18 at 5 28 20 PM" src="https://user-images.githubusercontent.com/115208112/202668500-004ebbf4-f654-4b0c-bcb5-10c31ebbcfda.png">
 11) Handyman Profile Page =====> <img width="573" alt="Screenshot 2022-11-18 at 5 29 32 PM" src="https://user-images.githubusercontent.com/115208112/202668765-3917fc24-74b6-4a5c-a589-3bfc13a669c0.png">
-12) User notifications Page =====> <img width="568" alt="Screenshot 2022-11-18 at 5 50 43 PM" src="https://user-images.githubusercontent.com/115208112/202673087-2c6f3acc-8e3e-443f-8b42-5e3a31de037c.png">
-13) Handyman notifications Page =====> <img width="513" alt="Screenshot 2022-11-18 at 5 32 38 PM" src="https://user-images.githubusercontent.com/115208112/202669449-1149f86a-779d-4f5c-a6d8-ac7bca3fb5a1.png">
-14) Handyman Job's Page =====> <img width="482" alt="Screenshot 2022-11-18 at 5 44 25 PM" src="https://user-images.githubusercontent.com/115208112/202671749-d87cd018-5655-42ec-8a46-c8a80330edff.png">
-15) Handyman Approve Job Page =====> <img width="401" alt="Screenshot 2022-11-18 at 5 46 16 PM" src="https://user-images.githubusercontent.com/115208112/202672138-6c258c07-4350-4e18-b0a2-7253384cf143.png">
-16) User Job's Page =====> <img width="548" alt="Screenshot 2022-11-18 at 5 47 51 PM" src="https://user-images.githubusercontent.com/115208112/202672458-083c98f8-1805-4aed-8291-1d7d2bb3bb6b.png">
-17) User Complete Job's Page =====> <img width="557" alt="Screenshot 2022-11-18 at 5 49 34 PM" src="https://user-images.githubusercontent.com/115208112/202672916-afa226ca-5bc2-4944-85cb-97b3a67e7cd6.png">
-18) User Cancel Job's Page =====> <img width="565" alt="Screenshot 2022-11-18 at 5 49 49 PM" src="https://user-images.githubusercontent.com/115208112/202672942-d438470c-3171-45ee-87e2-799b25dc87f0.png">
-19) User + Handyman's Chat Function =====> <img width="535" alt="Screenshot 2022-11-18 at 7 22 05 PM" src="https://user-images.githubusercontent.com/115208112/202694440-7d57c1dd-5997-484f-9f73-330c3deb48ba.png">
-20) User Review Page =====> <img width="498" alt="Screenshot 2022-11-18 at 7 27 52 PM" src="https://user-images.githubusercontent.com/115208112/202695365-118ea61f-58cd-4bb2-ac3c-daf40230b5cc.png">
-21) Handyman Profile Page with Review =====> <img width="489" alt="Screenshot 2022-11-18 at 7 28 15 PM" src="https://user-images.githubusercontent.com/115208112/202695472-84edd3fb-a641-4de5-9bc7-c85bf27f5e06.png">
-
+12) View Handyman Profile Page =====> <img width="414" alt="Screenshot 2022-11-18 at 7 30 14 PM" src="https://user-images.githubusercontent.com/115208112/202695807-ec3a369b-4ed1-4ee6-8333-3366be045f7b.png">
+13) User notifications Page =====> <img width="568" alt="Screenshot 2022-11-18 at 5 50 43 PM" src="https://user-images.githubusercontent.com/115208112/202673087-2c6f3acc-8e3e-443f-8b42-5e3a31de037c.png">
+14) Handyman notifications Page =====> <img width="513" alt="Screenshot 2022-11-18 at 5 32 38 PM" src="https://user-images.githubusercontent.com/115208112/202669449-1149f86a-779d-4f5c-a6d8-ac7bca3fb5a1.png">
+15) Handyman Job's Page =====> <img width="482" alt="Screenshot 2022-11-18 at 5 44 25 PM" src="https://user-images.githubusercontent.com/115208112/202671749-d87cd018-5655-42ec-8a46-c8a80330edff.png">
+16) Handyman Approve Job Page =====> <img width="401" alt="Screenshot 2022-11-18 at 5 46 16 PM" src="https://user-images.githubusercontent.com/115208112/202672138-6c258c07-4350-4e18-b0a2-7253384cf143.png">
+17) User Job's Page =====> <img width="548" alt="Screenshot 2022-11-18 at 5 47 51 PM" src="https://user-images.githubusercontent.com/115208112/202672458-083c98f8-1805-4aed-8291-1d7d2bb3bb6b.png">
+18) User Complete Job's Page =====> <img width="557" alt="Screenshot 2022-11-18 at 5 49 34 PM" src="https://user-images.githubusercontent.com/115208112/202672916-afa226ca-5bc2-4944-85cb-97b3a67e7cd6.png">
+19) User Cancel Job's Page =====> <img width="565" alt="Screenshot 2022-11-18 at 5 49 49 PM" src="https://user-images.githubusercontent.com/115208112/202672942-d438470c-3171-45ee-87e2-799b25dc87f0.png">
+20) User + Handyman's Chat Function =====> <img width="535" alt="Screenshot 2022-11-18 at 7 22 05 PM" src="https://user-images.githubusercontent.com/115208112/202694440-7d57c1dd-5997-484f-9f73-330c3deb48ba.png">
+21) User Review Page =====> <img width="498" alt="Screenshot 2022-11-18 at 7 27 52 PM" src="https://user-images.githubusercontent.com/115208112/202695365-118ea61f-58cd-4bb2-ac3c-daf40230b5cc.png">
+22) Handyman Profile Page with Review =====> <img width="489" alt="Screenshot 2022-11-18 at 7 28 15 PM" src="https://user-images.githubusercontent.com/115208112/202695472-84edd3fb-a641-4de5-9bc7-c85bf27f5e06.png">
